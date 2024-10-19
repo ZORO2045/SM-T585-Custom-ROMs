@@ -10,120 +10,108 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            background-color: #121212; /* Dark background */
-            color: #e0e0e0; /* Light text */
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
+            background-color: #121212; 
+            color: #e0e0e0;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.8;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
         }
-
         header {
-            width: 100%; 
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 20px; 
-            background: linear-gradient(to right, #00796b, #004d40); /* Teal gradient */
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+            padding: 40px 20px;
+            background: linear-gradient(to right, #000000, #004d40); 
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7); 
         }
-
         h1 {
-            font-size: 2.5rem; /* Adjusted font size */
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
-            color: #ffffff; 
-            z-index: 1; 
-            text-align: center; 
-            margin: 0; 
+            font-size: 3rem; 
+            color: #ffffff;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            margin: 0;
         }
-
         .roms-section {
-            padding: 20px;
+            padding: 25px;
             text-align: center;
             width: 100%;
-            max-width: 800px;
-            margin-top: 20px;
-            background-color: #1e1e1e; /* Darker background for section */
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            max-width: 900px;
+            margin-top: 30px;
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
         }
-
         .rom-button {
             display: block;
-            background-color: #00796b; /* Button color */
-            color: #ffffff; /* Button text color */
+            background-color: #1c313a; 
+            color: #ffffff;
             padding: 15px;
-            margin: 10px 0;
+            margin: 15px 0;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             text-align: center;
             text-decoration: none;
             font-size: 1.2rem;
-            transition: background-color 0.3s; /* Smooth transition */
+            transition: background-color 0.3s, transform 0.2s; 
             cursor: pointer;
-            width: 100%; /* Full width */
-            max-width: 300px; /* Set a max width */
-            margin-left: auto; /* Centering */
-            margin-right: auto; /* Centering */
+            width: 100%;
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
         .rom-button:hover {
-            background-color: #004d40; /* Darker shade on hover */
+            background-color: #004d40;
+            transform: scale(1.05); 
         }
-
         .action-buttons {
-            display: none; /* Hide by default */
+            display: none;
             margin-top: 10px;
         }
-
         .action-button {
             display: inline-block;
-            background: linear-gradient(45deg, #ff9800, #ca6702); /* Gradient background */
+            background: linear-gradient(45deg, #ff9800, #f57c00);
             color: #ffffff;
             padding: 15px;
-            margin: 5px;
-            border-radius: 5px;
+            margin: 10px;
+            border-radius: 10px;
             text-decoration: none;
-            transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
-            width: 100%; /* Full width */
-            max-width: 300px; /* Set a max width */
+            transition: background-color 0.3s, transform 0.3s;
+            width: 100%;
+            max-width: 350px;
             text-align: center;
         }
-
         .action-button:hover {
-            background: linear-gradient(45deg, #f57c00, #ff9800); /* Darker gradient on hover */
-            transform: scale(1.05); /* Slightly enlarge on hover */
+            background: linear-gradient(45deg, #f57c00, #e65100);
+            transform: scale(1.1);
         }
-
         .donations-section {
             text-align: center;
-            padding: 20px;
-            background-color: #00796b; /* Teal background */
-            margin-top: 20px;
+            padding: 25px;
+            background-color: #1c313a;
+            margin-top: 30px;
             width: 100%;
-            max-width: 800px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            max-width: 900px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
         }
-
         footer {
             text-align: center;
-            padding: 10px;
+            padding: 15px;
             background-color: #1e1e1e;
-            margin-top: 20px;
+            margin-top: 30px;
             width: 100%;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
         }
-
         footer a {
             color: #81d4fa;
             text-decoration: none;
+            font-size: 1rem;
         }
     </style>
 </head>
@@ -131,7 +119,7 @@
     <header>
         <h1>Samsung Galaxy Tab A 10.1 2016 Custom ROMs</h1>
     </header>
-
+    
     <section class="roms-section">
         <h2>Available ROMs</h2>
         <div>
@@ -314,8 +302,9 @@
             </div>
         </div>
     </section>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <section class="donations-section">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <section class="donations-section" style="text-align: center; padding: 20px;">
     <h2>Support the ROM Development</h2>
@@ -334,23 +323,17 @@
             <i class="fab fa-youtube" style="margin-right: 8px;"></i> YouTube Channel
         </a>
     </div>
-</section>
-
+    </section>
+    
     <footer>
         <p>Developed by <a href="https://t.me/ZORO2045">ፚ Ꭷ Ꮢ Ꭷ ❥</a></p>
     </footer>
-
+    
     <script>
-        function toggleButtons(romId) {
-            const buttons = document.querySelectorAll('.action-buttons');
-            buttons.forEach(button => {
-                if (button.id === romId) {
-                    button.style.display = button.style.display === 'block' ? 'none' : 'block';
-                } else {
-                    button.style.display = 'none';
-                }
-            });
+        function toggleButtons(id) {
+            var buttons = document.getElementById(id);
+            buttons.style.display = buttons.style.display === "block" ? "none" : "block";
         }
     </script>
 </body>
-                    </html>
+    </html>
