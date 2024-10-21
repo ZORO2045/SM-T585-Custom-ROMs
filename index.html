@@ -67,7 +67,7 @@
             justify-content: center;
             gap: 20px;
         }
-        .rom-card {
+        .android-card {
             background-color: #121212;
             border-radius: 15px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
@@ -75,53 +75,28 @@
             padding: 20px;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
-        .rom-card h3 {
-            color: #ffffff;
+        .android-card img {
+            width: 100px;
             margin-bottom: 15px;
+        }
+        .android-card h3 {
+            color: #ffffff;
             font-size: 1.5rem;
+            margin-bottom: 10px;
         }
-        .rom-card p {
-            color: #9e9e9e;
-            margin-bottom: 20px;
-            font-size: 1rem;
-        }
-        .rom-card a {
+        .android-card button {
             padding: 10px 20px;
             background-color: #1b004d;
             color: #ffffff;
             border-radius: 5px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-block;
+            font-weight: 800;
+            cursor: pointer;
             transition: background-color 0.3s ease;
+            border: none;
         }
-        .rom-card a:hover {
-            background-color: #2e0079;
-        }
-        .download-options {
-            display: none;
-            margin-top: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            transform: translateY(20px);
-        }
-        .download-options.show {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .download-options a {
-            display: block;
-            margin: 10px 0;
-            background-color: #1b004d;
-            padding: 10px 20px;
-            border-radius: 5px;
-            color: #ffffff;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-        .download-options a:hover {
+        .android-card button:hover {
             background-color: #2e0079;
         }
         .donations-section {
@@ -167,341 +142,67 @@
             }
         }
     </style>
-    <script>
-        function toggleDownloadOptions(event) {
-            const options = event.currentTarget.nextElementSibling;
-            const allOptions = document.querySelectorAll('.download-options');
-
-            allOptions.forEach(option => {
-                if (option !== options) {
-                    option.classList.remove('show');
-                }
-            });
-
-            options.classList.toggle('show');
+   <script>
+        function redirectToRomPage(version) {
+            window.location.href = version + '.html';
         }
     </script>
 </head>
 <body>
 
-    <header>
-        <h1>Custom ROMs for Samsung Galaxy Tab A 10.1 2016</h1>
-        <p>Unlock amazing performance with custom ROMs for your device! 🚀</p>
-        <a href="#roms">Let’s go!</a>
-    </header>
+<header>
+    <h1>Custom ROMs for Samsung Galaxy Tab A 10.1 2016</h1>
+    <p>Unlock amazing performance with custom ROMs for your device! 🚀</p>
+    <a href="#roms">Let’s go!</a>
+</header>
 
 <section id="roms" class="roms-section">
-    <h2>Available ROMs</h2>
+    <h2>Android Versions</h2>
     <div class="rom-cards">
-        <div class="rom-card">
-            <h3>LineageOS 15.1</h3>
-            <p>Android 8 - Size: 441 mb - ARM64 - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://drive.google.com/file/d/1EDIZPh5SOa36nUErAvFBREzRAhZCtHGa/view">Download ROM</a>
-                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-8.1-pico-20220215.zip/download?use_mirror=yer&r=&use_mirror=autoselect">Download GApps</a>
-            </div>
+        <!-- Android 8 -->
+        <div class="android-card">
+            <img src="https://i.ibb.co/1r3HW3v/8.png" alt="Android 8">
+            <h3>Android 8 O</h3>
+            <button onclick="window.location.href='8/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-        <div class="rom-card">
-            <h3>RR OS</h3>
-            <p>Android 8 - Size: 377 mb - ARM - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://androidfilehost.com/?fid=11410963190603910293">Download ROM</a>
-                <a href="https://sourceforge.net/projects/opengapps/files/arm/20220215/open_gapps-arm-8.1-pico-20220215.zip/download?use_mirror=master&r=&use_mirror=autoselect">Download GApps</a>
-                <a href="https://youtu.be/zrsI52LtF2U?feature=shared">View Video</a>
-            </div>
+        
+        <!-- Android 9 -->
+        <div class="android-card">
+            <img src="https://i.ibb.co/yW7xv8p/9.png" alt="Android 9">
+            <h3>Android 9 P</h3>
+            <button onclick="window.location.href='9/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-        <div class="rom-card">
-            <h3>Super OneUI</h3>
-            <p>Android 8 - Size: 1.16 GB - ARM - Gapps</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://www.mediafire.com/file/tn1l8lr4h571pl5/SUPER_ONE_UI-8.0-20221003-OFFICIAL-gtaxllte.zip/file">Download ROM</a>
-                <a href="https://youtu.be/K4qZyOSyYWY?feature=shared">View Video</a>
-            </div>
+                <!-- Android 10 -->
+        <div class="android-card">
+            <img src="https://i.ibb.co/1dMKbh1/10.png" alt="Android 9">
+            <h3>Android 10 Q</h3>
+            <button onclick="window.location.href='10/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-        <div class="rom-card">
-            <h3>Liquid Remix</h3>
-            <p>Android 9 - Size: 511 mb - ARM64 - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://sourceforge.net/projects/liquid-remix/files/gtaxllte/liquid_remix-10.0.11-20190817-OFFICIAL-gtaxllte.zip/download">Download ROM</a>
-                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-9.0-pico-20220215.zip/download?use_mirror=master&r=&use_mirror=autoselect">Download GApps</a>
-                <a href="https://youtu.be/rv35xmA0nRU?feature=shared">View Video</a>
-            </div>
+                <!-- Android 11 -->
+        <div class="android-card">
+            <img src="https://i.ibb.co/C9J2Mh1/11.png" alt="Android 9">
+            <h3>Android 11 R</h3>
+            <button onclick="window.location.href='11/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-        <div class="rom-card">
-            <h3>Bootleggers</h3>
-            <p>Android 9 - Size: 556 mb - ARM64 - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://drive.google.com/file/d/1Lcnjh49KLfSfQG3bx0Vz0EqaD46QKHpw/view">Download ROM</a>
-                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-9.0-pico-20220215.zip/download?use_mirror=master&r=&use_mirror=autoselect">Download GApps</a>
-                <a href="https://youtu.be/GinSvzn0xl4?feature=shared">View Video</a>
-            </div>
+                <!-- Android 12 -->
+        <div class="android-card">
+            <img src="https://i.ibb.co/M97HbCf/12.png" alt="Android 9">
+            <h3>Android 12 S</h3>
+            <button onclick="window.location.href='12/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-        <div class="rom-card">
-            <h3>Aicp</h3>
-            <p>Android 9 - Size: 680 mb - ARM64 - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://androidfilehost.com/?fid=1899786940962594399">Download ROM</a>
-                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-9.0-pico-20220215.zip/download?use_mirror=master&r=&use_mirror=autoselect">Download GApps</a>
-            </div>
+                <!-- Android 13 -->
+        <div class="android-card">
+            <img src="https://i.ibb.co/dbRcgXf/13.png" alt="Android 9">
+            <h3>Android 13 T</h3>
+            <button onclick="window.location.href='13/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-        <div class="rom-card">
-            <h3>RR OS</h3>
-            <p>Android 9 - Size: 588 mb - ARM64 - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://androidfilehost.com/?fid=4349826312261623183">Download ROM</a>
-                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-9.0-pico-20220215.zip/download?use_mirror=master&r=&use_mirror=autoselect">Download GApps</a>
-                <a href="https://youtu.be/k2Uz03oTOdo?feature=shared">View Video</a>
-            </div>
+                <!-- Android 14 -->
+        <div class="android-card">
+            <img src="https://i.ibb.co/StgJGxy/14.png" alt="Android 9">
+            <h3>Android 14 U</h3>
+            <button onclick="window.location.href='14/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-        <div class="rom-card">
-            <h3>Pixel Experience</h3>
-            <p>Android 9 - Size: 803 mb - ARM64 - Pure Pixel</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://androidfilehost.com/?fid=1395089523397888839">Download ROM</a>
-                <a href="https://youtu.be/SjZq9U5TJJs?feature=shared">View Video</a>
-            </div>
-        </div>
-        <div class="rom-card">
-            <h3>Pixel Experience Plus</h3>
-            <p>Android 9 - Size: 834 mb - ARM64 - More Customization</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://androidfilehost.com/?fid=1899786940962586970">Download ROM</a>
-                <a href="https://youtu.be/SjZq9U5TJJs?feature=shared">View Video</a>
-            </div>
-        </div>
-        <div class="rom-card">
-            <h3>AOSP</h3>
-            <p>Android 9 - Size: 468 mb - ARM64 - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://androidfilehost.com/?fid=6006931924117901706">Download ROM</a>
-                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-9.0-pico-20220215.zip/download?use_mirror=master&r=&use_mirror=autoselect">Download GApps</a>
-                <a href="https://youtu.be/CYOnXPDUBrQ?feature=shared">View Video</a>
-            </div>
-        </div>
-        <div class="rom-card">
-            <h3>Crdroid</h3>
-            <p>Android 9 - Size: 554 mb - ARM64 - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://drive.google.com/file/d/1X4O_4XKwjjQnX8f1EwOs7D3gDsMfZ_Ds/view">Download ROM</a>
-                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-9.0-pico-20220215.zip/download?use_mirror=master&r=&use_mirror=autoselect">Download GApps</a>
-                <a href="https://youtu.be/8z7Lhz1vDBI?feature=shared">View Video</a>
-            </div>
-        </div>
-        <div class="rom-card">
-            <h3>LineageOS 16.1</h3>
-            <p>Android 9 - Size: 521 mb - ARM64 - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://androidfilehost.com/?fid=14655340768118470410">Download ROM</a>
-                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-9.0-pico-20220215.zip/download?use_mirror=master&r=&use_mirror=autoselect">Download GApps</a>
-                <a href="https://youtu.be/Pq73s-Evwn4?feature=shared">View Video</a>
-            </div>
-        </div>
-        <div class="rom-card">
-            <h3>OneUI 1.0 Port</h3>
-            <p>Android 9 - Size: 1.46 GB - ARM - Gapps</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://www.mediafire.com/folder/ogy5c34eagm1s/ONEUI">Download ROM</a>
-                <a href="https://youtu.be/3D0hAhC6XwE?feature=shared">View Video</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>AncientOS</h3>
-            <p>Android 10 - Size: 1 GB - ARM64 - Gapps</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://sourceforge.net/projects/gtaxllte/files/AncientOS-CIVILIZATION-v4.0.1-Final-gtaxllte-PREHISTORIC-20201219-1941-GApps.zip/download">Download ROM</a>
-                <a href="https://youtu.be/zlrQhz3AZnY?feature=shared">View Video</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>Pixel Experience</h3>
-            <p>Android 10 - Size: 1 GB - ARM64 - Pure Pixel</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://androidfilehost.com/?fid=4349826312261733398">Download ROM</a>
-                <a href="https://youtu.be/Z6Yg6Sjn7kw?feature=shared">View Video</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>Pixel Experience Plus</h3>
-            <p>Android 10 - Size: 1 GB - ARM64 - More Customization</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://androidfilehost.com/?fid=4349826312261779895">Download ROM</a>
-                <a href="https://youtu.be/nUehGfFloDA?feature=shared">View Video</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>Aicp</h3>
-            <p>Android 10 - Size: 563 mb - ARM64 - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://androidfilehost.com/?fid=4349826312261673170">Download ROM</a>
-                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-10.0-pico-20220215.zip/download?use_mirror=master&r=&use_mirror=autoselect">Download GApps</a>
-                <a href="https://youtu.be/IvcSwFJ4lfk?feature=shared">View Video</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>LineageOS 17.1</h3>
-            <p>Android 10 - Size: 623 mb - ARM64 - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://onedrive.live.com/?cid=aa907ddc49f3e3ef&id=AA907DDC49F3E3EF%21159303&authkey=!AMwvN3pJO8_suMk">Download ROM</a>
-                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-10.0-pico-20220215.zip/download?use_mirror=master&r=&use_mirror=autoselect">Download GApps</a>
-                <a href="https://youtu.be/F-gmAjSq1CY?feature=shared">View Video</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>Crdroid</h3>
-            <p>Android 10 - Size: 618 mb - ARM64 - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://drive.google.com/file/d/1JtiHCkM6D7jwAT20aHCjrwN8cYWz073K/view">Download ROM</a>
-                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-10.0-pico-20220215.zip/download?use_mirror=master&r=&use_mirror=autoselect">Download GApps</a>
-                <a href="https://youtu.be/QYzvo9QVrWM?feature=shared">View Video</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>E OS</h3>
-            <p>Android 10 - Size: 940 mb - ARM64 - MicroG</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://onedrive.live.com/?authkey=%21AFn3nWD7TisVyVc&id=AA907DDC49F3E3EF%21161017&cid=AA907DDC49F3E3EF&parId=root&parQt=sharedby&o=OneUp">Download ROM</a>
-                <a href="https://youtu.be/OvFrWt8kE48?feature=shared">View Video</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>Bliss</h3>
-            <p>Android 10 - Size: 1.2 GB - ARM64 - Gapps</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://sourceforge.net/projects/blissroms/files/Q/gtaxllte/Bliss-v12.12-gtaxllte-OFFICIAL-20200920.zip/download">Download ROM</a>
-                <a href="https://youtu.be/nt7HJt1q5rI?feature=shared">View Video</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>OneUi 2.0 Port</h3>
-            <p>Android 10 - Size: 1.74 GB - ARM64 - Gapps</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://www.mediafire.com/file/4b69ax4y06vdorc/A750F_TW2_T585.zip/file">Download ROM</a>
-                <a href="https://www.mediafire.com/file/99ruifmgyp0155h/Exynos7870_CreateVendor_3.0.zip/file">Create Vendor</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>LineageOS 18.1</h3>
-            <p>Android 11 - Size: 567 mb - ARM64 - NO LTE - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://onedrive.live.com/?id=AA907DDC49F3E3EF!161994&resid=AA907DDC49F3E3EF!161994&authkey=!ACN9xkhssdHvle8&cid=aa907ddc49f3e3ef">Download ROM</a>
-                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-11.0-pico-20220215.zip/download?use_mirror=netix&r=&use_mirror=autoselect">Download GApps</a>
-                <a href="https://youtu.be/QYD_2KdsB8A?feature=shared">View Video</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>Crdroid</h3>
-            <p>Android 11 - Size: 691 mb - ARM64 - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://drive.google.com/file/d/18F-B0hySRUx5GjCtSTXgSCkR1gQA_9Lx/view">Download ROM</a>
-                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-11.0-pico-20220215.zip/download?use_mirror=netix&r=&use_mirror=autoselect">Download GApps</a>
-                <a href="https://youtu.be/WK-Oiuh12J4?feature=shared">View Video</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>LineageOS 19.1</h3>
-            <p>Android 12 - Size: 657 mb - ARM64 - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://drive.google.com/file/d/172uaK_cAVA6pmCdl9fdWj7BKhwt8kTdr/edit">Download ROM</a>
-                <a href="https://sourceforge.net/projects/nikgapps/files/Releases/Android-12.1/13-Aug-2024/NikGapps-core-arm64-12.1-20240813-signed.zip/download">Download GApps</a>
-                <a href="https://youtu.be/tEB2Ht9iKko?feature=shared">View Video</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>E OS</h3>
-            <p>Android 12 - Size: 988 mb - ARM64 - MicroG</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://onedrive.live.com/?authkey=%21APVyZjYAfDM%5Fkgc&id=AA907DDC49F3E3EF%21164270&cid=AA907DDC49F3E3EF&parId=root&parQt=sharedby&o=OneUp">Download ROM</a>
-                <a href="https://t.me/gtaxllte/2229?single">Screenshots</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>Crdroid</h3>
-            <p>Android 12 - Size: 788 mb - ARM64 - NO LTE - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://androidfilehost.com/?fid=14871746926876839254">Download ROM</a>
-                <a href="https://sourceforge.net/projects/nikgapps/files/Releases/Android-12.1/13-Aug-2024/NikGapps-core-arm64-12.1-20240813-signed.zip/download">Download GApps</a>
-                <a href="https://youtu.be/WBybsdTPqp4?feature=shared">View Video</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>Crdroid</h3>
-            <p>Android 13 - Size: 742 mb - ARM64 - NO LTE - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://androidfilehost.com/?fid=4279422670115721555">Download ROM</a>
-                <a href="https://github.com/BiTGApps/BiTGApps-Release/releases/download/v3.8/BiTGApps-arm64-13.0.0-v3.8-CORE.zip">Download GApps</a>
-                <a href="https://youtu.be/UDTVq4ZjkSg?feature=shared">View Video</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>E OS</h3>
-            <p>Android 13 - Size: 990 mb - ARM64 - MicroG</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://sourceforge.net/projects/eosbuildsronnz98/files/SamsungSmartphones/e-2.0-t-20240603-UNOFFICIAL-gtaxllte.zip/download">Download ROM</a>
-                <a href="https://drive.google.com/file/d/1eorj5lY9IduYtJrDumyqLnXWLOhH5rLQ">TWRP Recovery A13+</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>LineageOS 20</h3>
-            <p>Android 13 - Size: 680 mb - ARM64 - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://drive.google.com/file/d/1pr8BfM_kj43V5EooPHyCxoL4d8yjfzrV/edit">Download ROM</a>
-                <a href="https://github.com/BiTGApps/BiTGApps-Release/releases/download/v3.8/BiTGApps-arm64-13.0.0-v3.8-CORE.zip">Download GApps</a>
-                <a href="https://drive.google.com/file/d/1eorj5lY9IduYtJrDumyqLnXWLOhH5rLQ">TWRP Recovery A13+</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>LineageOS 21</h3>
-            <p>Android 14 - Size: 821 mb - ARM64 - Beta - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="https://drive.google.com/file/d/156M8zJL8O2b1o5qukuC8EOjGGR65pBVb">Download ROM</a>
-                <a href="https://github.com/BiTGApps/BiTGApps-Release/releases/download/v4.1/BiTGApps-arm64-14.0.0-v4.1-CORE.zip">Download GApps</a>
-                <a href="https://drive.google.com/file/d/1eorj5lY9IduYtJrDumyqLnXWLOhH5rLQ">TWRP Recovery A13+</a>
-            </div>
-        </div>
-                <div class="rom-card">
-            <h3>RisingOS 5.2.1</h3>
-            <p>Android 14 - Size: - mb - ARM64 - Beta - Vanilla</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
-            <div class="download-options">
-                <a href="#">Not Available Yet</a>
-                <a href="https://github.com/BiTGApps/BiTGApps-Release/releases/download/v4.1/BiTGApps-arm64-14.0.0-v4.1-CORE.zip">Download GApps</a>
-                <a href="https://drive.google.com/file/d/1eorj5lY9IduYtJrDumyqLnXWLOhH5rLQ">TWRP Recovery A13+</a>
-                <a href="https://youtu.be/bwIWnQ2YXAE">View Video</a>
-            </div>
-        </div>                
     </div>
-</section>
     <section class="donations-section">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <section class="donations-section">
