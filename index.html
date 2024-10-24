@@ -43,17 +43,17 @@
             padding: 15px 30px;
             background-color: #1b004d;
             color: #ffffff;
-            border-radius: 5px;
+            border-radius: 25px;
             text-decoration: none;
             font-weight: 700;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
         header a:hover {
             background-color: #2e0079;
+            transform: scale(1.05);
         }
         .roms-section {
             padding: 50px 20px;
-            background-color: #000000;
             text-align: center;
         }
         .roms-section h2 {
@@ -76,6 +76,11 @@
             position: relative;
             overflow: hidden;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .android-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
         }
         .android-card img {
             width: 100px;
@@ -90,14 +95,23 @@
             padding: 10px 20px;
             background-color: #1b004d;
             color: #ffffff;
-            border-radius: 5px;
+            border-radius: 25px;
             font-weight: 800;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
             border: none;
         }
         .android-card button:hover {
             background-color: #2e0079;
+            transform: scale(1.05);
+        }
+        .donations-section {
+            background-color: #1c1c3a;
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
         }
         .donations-section {
             background-color: #1c1c3a;
@@ -115,6 +129,44 @@
         .donations-section p {
             font-size: 1.2rem;
             color: #e0e0e0;
+        }
+        .donation-button {
+            text-decoration: none;
+            color: #ffffff; 
+            padding: 12px 25px;
+            border-radius: 25px;
+            margin: 5px 0;
+            font-size: 16px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .donation-button.youtube {
+            background-color: #ff0000;
+        }
+        .donation-button.youtube:hover {
+            background-color: #cc0000;
+        }
+        .donation-button.telegram {
+            background-color: #0088cc;
+        }
+        .donation-button.telegram:hover {
+            background-color: #006699;
+        }
+        .donation-button.chat {
+            background-color: #4caf50;
+        }
+        .donation-button.chat:hover {
+            background-color: #388e3c;
+        }
+        footer {
+            padding: 20px;
+            background-color: #0a0a0a;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
         }
         footer {
             padding: 20px;
@@ -142,9 +194,11 @@
             }
         }
     </style>
-   <script>
-        function redirectToRomPage(version) {
-            window.location.href = version + '.html';
+    <script>
+        function smoothScroll(target) {
+            document.querySelector(target).scrollIntoView({
+                behavior: 'smooth'
+            });
         }
     </script>
 </head>
@@ -153,7 +207,7 @@
 <header>
     <h1>Custom ROMs for Samsung Galaxy Tab A 10.1 2016</h1>
     <p>Unlock amazing performance with custom ROMs for your device! 🚀</p>
-    <a href="#roms">Let’s go!</a>
+    <a onclick="smoothScroll('#roms')">Let’s go!</a>
 </header>
 
 <section id="roms" class="roms-section">
@@ -203,29 +257,30 @@
             <button onclick="window.location.href='14/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
     </div>
-    <section class="donations-section">
+    
+<section class="donations-section">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <section class="donations-section">
-        <h2>Support the ROM Development</h2>
-        <p>You can support by sending donations via Vodafone Cash.</p>
-        <p style="font-size: 18px; margin: 10px 0;">
-            <i class="fas fa-money-bill-wave"></i> Vodafone Cash: <strong>01095673573</strong>
-        </p>
-        <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center;">
-            <a href="https://t.me/gtaxllte" class="button" style="text-decoration: none; color: #fff; background: linear-gradient(45deg, #007BFF, #00D2FF); padding: 0; border-radius: 5px; display: flex; justify-content: center; align-items: center; width: 200px; height: 60px; font-size: 16px; margin: 5px 0;">
-                <i class="fab fa-telegram" style="margin-right: 8px;"></i> Telegram Channel
-            </a>
-            <a href="https://t.me/smt585chat" class="button" style="text-decoration: none; color: #fff; background: linear-gradient(45deg, #34a853, #00FF6A); padding: 0; border-radius: 5px; display: flex; justify-content: center; align-items: center; width: 200px; height: 60px; font-size: 16px; margin: 5px 0;">
-                <i class="fas fa-comments" style="margin-right: 8px;"></i> Chat Group
-            </a>
-            <a href="https://youtube.com/@seifel-deinhossam6690?feature=shared" class="button" style="text-decoration: none; color: #fff; background: linear-gradient(45deg, #FF0000, #FF6347); padding: 0; border-radius: 5px; display: flex; justify-content: center; align-items: center; width: 200px; height: 60px; font-size: 16px; margin: 5px 0;">
-                <i class="fab fa-youtube" style="margin-right: 8px;"></i> YouTube Channel
-            </a>
-        </div>
-    </section>
+<section class="donations-section">
+    <h2>Support the ROM Development</h2>
+    <p>You can support by sending donations via Vodafone Cash.</p>
+    <p style="font-size: 18px; margin: 10px 0;">
+        <i class="fas fa-money-bill-wave"></i> Vodafone Cash: <strong>01095673573</strong>
+    </p>
+    <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center;">
+        <a href="https://t.me/gtaxllte" class="donation-button telegram">
+            <i class="fab fa-telegram" style="margin-right: 8px;"></i> Telegram Channel
+        </a>
+        <a href="https://t.me/smt585chat" class="donation-button chat">
+            <i class="fas fa-comments" style="margin-right: 8px;"></i> Chat Group
+        </a>
+        <a href="https://youtube.com/@seifel-deinhossam6690?feature=shared" class="donation-button youtube">
+            <i class="fab fa-youtube" style="margin-right: 8px;"></i> YouTube Channel
+        </a>
+    </div>
+</section>
 
     <footer>
         <p>Developed by <a href="https://zoro2045.github.io/">ፚ Ꭷ Ꮢ Ꭷ ❥</a></p>
     </footer>
 </body>
-                </html>
+</html>
