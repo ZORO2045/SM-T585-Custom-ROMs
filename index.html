@@ -47,6 +47,7 @@
             text-decoration: none;
             font-weight: 700;
             transition: background-color 0.3s ease, transform 0.3s ease;
+            margin: 0 5px;
         }
         header a:hover {
             background-color: #2e0079;
@@ -113,14 +114,6 @@
             border-radius: 15px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
         }
-        .donations-section {
-            background-color: #1c1c3a;
-            padding: 50px 20px;
-            text-align: center;
-            margin-top: 50px;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
-        }
         .donations-section h2 {
             font-size: 2rem;
             margin-bottom: 20px;
@@ -168,14 +161,6 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
         }
-        footer {
-            padding: 20px;
-            background-color: #0a0a0a;
-            text-align: center;
-            margin-top: 50px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-        }
         footer a {
             color: #81d4fa;
             text-decoration: none;
@@ -207,7 +192,10 @@
 <header>
     <h1>Custom ROMs for Samsung Galaxy Tab A 10.1 2016</h1>
     <p>Unlock amazing performance with custom ROMs for your device! 🚀</p>
-    <a onclick="smoothScroll('#roms')">Let’s go!</a>
+    <div>
+        <a onclick="smoothScroll('#roms')">Let’s go!</a>
+        <a onclick="smoothScroll('.donations-section')" style="margin-left: 15px;">Support</a>
+    </div>
 </header>
 
 <section id="roms" class="roms-section">
@@ -226,31 +214,36 @@
             <h3>Android 9 P</h3>
             <button onclick="window.location.href='9/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-                <!-- Android 10 -->
+        
+        <!-- Android 10 -->
         <div class="android-card">
             <img src="https://i.ibb.co/1dMKbh1/10.png" alt="Android 10">
             <h3>Android 10 Q</h3>
             <button onclick="window.location.href='10/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-                <!-- Android 11 -->
+        
+        <!-- Android 11 -->
         <div class="android-card">
             <img src="https://i.ibb.co/C9J2Mh1/11.png" alt="Android 11">
             <h3>Android 11 R</h3>
             <button onclick="window.location.href='11/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-                <!-- Android 12 -->
+        
+        <!-- Android 12 -->
         <div class="android-card">
             <img src="https://i.ibb.co/M97HbCf/12.png" alt="Android 12">
             <h3>Android 12 S</h3>
             <button onclick="window.location.href='12/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-                <!-- Android 13 -->
+        
+        <!-- Android 13 -->
         <div class="android-card">
             <img src="https://i.ibb.co/dbRcgXf/13.png" alt="Android 13">
             <h3>Android 13 T</h3>
             <button onclick="window.location.href='13/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-                <!-- Android 14 -->
+        
+        <!-- Android 14 -->
         <div class="android-card">
             <img src="https://i.ibb.co/StgJGxy/14.png" alt="Android 14">
             <h3>Android 14 U</h3>
@@ -259,7 +252,6 @@
     </div>
     
 <section class="donations-section">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <section class="donations-section">
     <h2>Support the ROM Development</h2>
     <p>You can support by sending donations via Vodafone Cash.</p>
@@ -279,8 +271,8 @@
     </div>
 </section>
 
-    <footer>
-        <p>Developed by <a href="https://zoro2045.github.io/">ፚ Ꭷ Ꮢ Ꭷ ❥</a></p>
-    </footer>
+<footer>
+    <p>Developed by <a href="https://zoro2045.github.io/">ፚ Ꭷ Ꮢ Ꭷ ❥</a></p>
+</footer>
 </body>
-    </html>
+</html>
