@@ -20,6 +20,7 @@
             line-height: 1.6;
         }
         header {
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -52,6 +53,48 @@
         header a:hover {
             background-color: #2e0079;
             transform: scale(1.05);
+        }
+        .sidebar {
+            position: absolute;
+            top: 20px;
+            left: -250px;
+            width: 250px;
+            height: auto;
+            background-color: #1b004d;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            transition: left 0.3s ease;
+        }
+        .sidebar h2 {
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        .sidebar a {
+            display: block;
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 10px 0;
+            transition: color 0.3s ease;
+        }
+        .sidebar a:hover {
+            color: #ffffff;
+        }
+        .close-btn {
+            font-size: 20px;
+            color: #ffffff;
+            cursor: pointer;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: #ffffff;
+            cursor: pointer;
         }
         .roms-section {
             padding: 50px 20px;
@@ -185,11 +228,26 @@
                 behavior: 'smooth'
             });
         }
+        
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.left = sidebar.style.left === '0px' ? '-250px' : '0px';
+        }
     </script>
 </head>
 <body>
 
 <header>
+    <span class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></span>
+    <div class="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
+        <h2>Related Topics</h2>
+        <a href="https://developer.samsung.com/android-usb-driver">USB Drivers</a>
+        <a href="https://odindownload.com/mobile/">Odin3</a>
+        <a href="https://samfw.com/firmware/SM-T585/EGY/">Firmware</a>
+        <a href="topics/index.html">TWRP</a>
+        <a href="https://github.com/ZORO2045/SM-T585-Custom-ROMs/releases/download/6.1/no-verity-opt-encrypt-6.1.zip">Disable encryption</a>
+    </div>
     <h1>Custom ROMs for Samsung Galaxy Tab A 10.1 2016</h1>
     <p>Unlock amazing performance with custom ROMs for your device! 🚀</p>
     <div>
@@ -250,7 +308,7 @@
             <button onclick="window.location.href='14/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
     </div>
-    
+
 <section class="donations-section">
 <section class="donations-section">
     <h2>Support the ROM Development</h2>
