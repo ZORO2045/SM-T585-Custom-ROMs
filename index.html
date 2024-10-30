@@ -31,6 +31,9 @@
             color: #ffffff;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
+        header h1, header p, header a {
+            user-select: none;
+        }
         header h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
@@ -49,6 +52,7 @@
             font-weight: 700;
             transition: background-color 0.3s ease, transform 0.3s ease;
             margin: 0 5px;
+            user-select: none;
         }
         header a:hover {
             background-color: #2e0079;
@@ -233,10 +237,15 @@
             const sidebar = document.querySelector('.sidebar');
             sidebar.style.left = sidebar.style.left === '0px' ? '-250px' : '0px';
         }
+        document.addEventListener('copy', function(e) {
+            const header = document.querySelector('header');
+            if (header.contains(e.target)) {
+                e.preventDefault();
+            }
+        });
     </script>
 </head>
 <body>
-
 <header>
     <span class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></span>
     <div class="sidebar">
