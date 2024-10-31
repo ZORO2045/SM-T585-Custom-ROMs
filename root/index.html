@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magisk & Apatch</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/JrQ2CpZ/pngwing-com.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #000000;
+            color: #e0e0e0;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 70vh;
+            background: linear-gradient(to bottom right, #000000, #1b004d);
+            text-align: center;
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+        header img {
+            max-width: 150px; 
+            margin-bottom: 20px; 
+        }
+        header h1 {
+            font-size: 3rem; 
+            margin-bottom: 10px; 
+            text-shadow: 3px 3px 20px rgba(0, 0, 0, 0.6);
+        }
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        header a {
+            padding: 15px 30px;
+            background-color: #1b004d;
+            color: #ffffff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+        header a:hover {
+            background-color: #2e0079;
+        }
+        .roms-section {
+            padding: 50px 20px;
+            background-color: #000000;
+            text-align: center;
+        }
+        .roms-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #8b81fa;
+        }
+        .rom-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .rom-card {
+            background-color: #121212;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+            width: 300px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .rom-card h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .rom-card p {
+            color: #9e9e9e;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        .rom-card a {
+            padding: 10px 20px;
+            background-color: #1b004d;
+            color: #ffffff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .rom-card a:hover {
+            background-color: #2e0079;
+        }
+        .download-options {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
+        }
+        .download-options.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .download-options a {
+            display: block;
+            margin: 10px 0;
+            background-color: #1b004d;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .download-options a:hover {
+            background-color: #2e0079;
+        }
+        .donations-section {
+            background-color: #1c1c3a;
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+        }
+        .donations-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        .donations-section p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+        }
+        footer {
+            padding: 20px;
+            background-color: #1b004d;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+        footer a {
+            color: #81d4fa;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1.2rem;
+            }
+            .rom-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <script>
+        function toggleDownloadOptions(event) {
+            const options = event.currentTarget.nextElementSibling;
+            const allOptions = document.querySelectorAll('.download-options');
+
+            allOptions.forEach(option => {
+                if (option !== options) {
+                    option.classList.remove('show');
+                }
+            });
+
+            options.classList.toggle('show');
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <img src="https://i.ibb.co/JrQ2CpZ/pngwing-com.png" alt="SU Logo">
+    <h1>Root Your Device!</h1>
+</header>
+<section id="roms" class="roms-section">
+    <h2>Available Methods</h2>
+    <div class="rom-cards">
+        <div class="rom-card">
+            <h3>Magisk</h3>
+            <p>The Magic Mask for Android. Supports all ROMs</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
+            <div class="download-options">
+                <a href="https://github.com/topjohnwu/Magisk/releases/download/v28.0/Magisk-v28.0.apk">Stable</a>
+                <a href="https://github.com/topjohnwu/Magisk/releases/download/canary-28001/app-release.apk">Canary</a>
+                <a href="https://github.com/ZORO2045/SM-T585-Custom-ROMs/releases/download/1.0/app-release.apk">Alpha</a>
+                <a href="https://github.com/HuskyDG/magisk-files/releases/download/1720171347/app-release.apk">Kitsune Mask</a>
+            </div>
+        </div>
+        <div class="rom-card">
+            <h3>Apatch</h3>
+            <p>Supports: LineageOS 19/20/21 & E OS Android 12/13 & RisingOS 5.2.1</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download</a>
+            <div class="download-options">
+                <a href="https://github.com/bmax121/APatch/releases">Apatch</a>
+                <a href="https://github.com/ponces/APatchLite/releases/download/10765/APatchLite_10765_10765-release-signed.apk">Apatch Lite</a>
+            </div>
+        </div>
+    </div>
+</section>        
+<footer>
+    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/">Go Back ></a>
+</footer>
+
+</body>
+</html>
