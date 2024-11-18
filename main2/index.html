@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung Galaxy Tab A 10.1 ROMs</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/6ZMdBQH/IMG-20241021-043545-289.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f5f5f5;
+            color: #333333;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+        }
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 8px solid rgba(0, 0, 0, 0.1);
+            border-top-color: #5e3b9a;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        header {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to bottom right, #ffffff, #e0e0e0);
+            text-align: center;
+            color: #333;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+        }
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+        }
+        header a {
+            padding: 15px 30px;
+            background-color: #5e3b9a;
+            color: #ffffff;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin: 0 5px;
+        }
+        header a:hover {
+            background-color: #5e3b9a;
+            transform: scale(1.05);
+        }
+        .sidebar {
+            position: absolute;
+            top: 20px;
+            left: -250px;
+            width: 250px;
+            height: auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: left 0.3s ease;
+        }
+        .sidebar h2 {
+            margin-bottom: 20px;
+            color: #333333;
+        }
+        .sidebar a {
+            display: block;
+            color: #000000;
+            text-decoration: none;
+            padding: 10px 0;
+            transition: color 0.3s ease;
+            background: none;
+        }
+        .sidebar a:hover, .sidebar a:focus {
+            color: #ffffff;
+        }
+        .close-btn {
+            font-size: 20px;
+            color: #333333;
+            cursor: pointer;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: #333333;
+            cursor: pointer;
+        }
+        .logo {
+            position: absolute;
+            right: 5px;
+            top: 10px;
+            font-size: 24px;
+            color: black;
+            text-decoration: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+       .logo:focus,
+.logo:active {
+    background: none;
+    outline: none;
+        }
+        .roms-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .roms-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #5e3b9a;
+        }
+        .rom-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .android-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .android-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+        .android-card img {
+            width: 100px;
+            margin-bottom: 15px;
+        }
+        .android-card h3 {
+            color: #333333;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .android-card button {
+            padding: 10px 20px;
+            background-color: #5e3b9a;
+            color: #ffffff;
+            border-radius: 25px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none;
+        }
+        .android-card button:hover {
+            background-color: #5e3b9a;
+            transform: scale(1.05);
+        }
+        .donations-section {
+            background-color: #ffffff;
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .donations-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+        .donations-section p {
+            font-size: 1.2rem;
+            color: #333333;
+        }
+        .donation-button {
+            text-decoration: none;
+            color: #ffffff; 
+            padding: 12px 25px;
+            border-radius: 25px;
+            margin: 5px 0;
+            font-size: 16px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .donation-button.youtube {
+            background-color: #ff0000;
+        }
+        .donation-button.youtube:hover {
+            background-color: #cc0000;
+        }
+        .donation-button.telegram {
+            background-color: #0088cc;
+        }
+        .donation-button.telegram:hover {
+            background-color: #006699;
+        }
+        .donation-button.chat {
+            background-color: #4caf50;
+        }
+        .donation-button.chat:hover {
+            background-color: #388e3c;
+        }
+        footer {
+            padding: 20px;
+            background-color: #ffffff;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        footer a {
+            color: #5e3b9a;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1.2rem;
+            }
+            .rom-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <script>
+        function smoothScroll(target) {
+            document.querySelector(target).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.left = sidebar.style.left === '0px' ? '-250px' : '0px';
+        }
+        document.addEventListener('copy', function(e) {
+            const header = document.querySelector('header');
+            if (header.contains(e.target)) {
+                e.preventDefault();
+            }
+        });
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        });
+    </script>
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="spinner"></div>
+    </div>
+<header>
+    <span class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></span>
+        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/" class="logo">
+    <i class="fas fa-moon"></i>
+</a>
+    <div class="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
+        <h2>Related Topics</h2>
+        <a href="https://developer.samsung.com/android-usb-driver">USB Drivers</a>
+        <a href="https://odindownload.com/mobile/">Odin3</a>
+        <a href="https://samfw.com/firmware/SM-T585/EGY/">Firmware</a>
+        <a href="twrp/index.html">TWRP</a>
+        <a href="custom_recovery/index.html">Custom Recoveries</a>
+        <a href="flash_firmware/index.html">Flash Firmware</a>
+        <a href="fix_partitions/index.html">Fix Partitions</a>
+        <a href="disable_encryption/index.html">Disable Encryption</a>
+        <a href="gapps/index.html">Gapps Packages</a>
+        <a href="root/index.html">Magisk & Apatch</a>
+    </div>
+    <h1>Custom ROMs for Samsung Galaxy Tab A 10.1 2016</h1>
+    <p>Unlock amazing performance with custom ROMs for your device! 🚀</p>
+    <div>
+        <a onclick="smoothScroll('#roms')">Let’s go!</a>
+        <a onclick="smoothScroll('.donations-section')" style="margin-left: 15px;">Support</a>
+    </div>
+</header>
+
+<section id="roms" class="roms-section">
+    <h2>Android Versions</h2>
+    <div class="rom-cards">
+        <!-- Android 8 -->
+        <div class="android-card">
+            <img src="https://i.ibb.co/1r3HW3v/8.png" alt="Android 8">
+            <h3>Android 8 O</h3>
+            <button onclick="window.location.href='8/index.html'" style="font-size: 18px;">View Available ROMs</button>
+        </div>
+        
+        <!-- Android 9 -->
+        <div class="android-card">
+            <img src="https://i.ibb.co/DVwL19b/IMG-20241021-165705-570.png" alt="Android 9">
+            <h3>Android 9 P</h3>
+            <button onclick="window.location.href='9/index.html'" style="font-size: 18px;">View Available ROMs</button>
+        </div>
+        
+        <!-- Android 10 -->
+        <div class="android-card">
+            <img src="https://i.ibb.co/1dMKbh1/10.png" alt="Android 10">
+            <h3>Android 10 Q</h3>
+            <button onclick="window.location.href='10/index.html'" style="font-size: 18px;">View Available ROMs</button>
+        </div>
+        
+        <!-- Android 11 -->
+        <div class="android-card">
+            <img src="https://i.ibb.co/C9J2Mh1/11.png" alt="Android 11">
+            <h3>Android 11 R</h3>
+            <button onclick="window.location.href='11/index.html'" style="font-size: 18px;">View Available ROMs</button>
+        </div>
+        
+        <!-- Android 12 -->
+        <div class="android-card">
+            <img src="https://i.ibb.co/M97HbCf/12.png" alt="Android 12">
+            <h3>Android 12 S</h3>
+            <button onclick="window.location.href='12/index.html'" style="font-size: 18px;">View Available ROMs</button>
+        </div>
+        
+        <!-- Android 13 -->
+        <div class="android-card">
+            <img src="https://i.ibb.co/dbRcgXf/13.png" alt="Android 13">
+            <h3>Android 13 T</h3>
+            <button onclick="window.location.href='13/index.html'" style="font-size: 18px;">View Available ROMs</button>
+        </div>
+        
+        <!-- Android 14 -->
+        <div class="android-card">
+            <img src="https://i.ibb.co/StgJGxy/14.png" alt="Android 14">
+            <h3>Android 14 U</h3>
+            <button onclick="window.location.href='14/index.html'" style="font-size: 18px;">View Available ROMs</button>
+        </div>
+    </div>
+    
+<section class="donations-section">
+<section class="donations-section">
+    <h2>Support the ROM Development</h2>
+    <p>You can support by sending donations via Vodafone Cash.</p>
+    <p style="font-size: 18px; margin: 10px 0;">
+        <i class="fas fa-money-bill-wave"></i> Vodafone Cash: <strong>01095673573</strong>
+    </p>
+    <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center;">
+        <a href="https://t.me/gtaxllte" class="donation-button telegram">
+            <i class="fab fa-telegram" style="margin-right: 8px;"></i> Telegram Channel
+        </a>
+        <a href="https://t.me/smt585chat" class="donation-button chat">
+            <i class="fas fa-comments" style="margin-right: 8px;"></i> Chat Group
+        </a>
+        <a href="https://youtube.com/@seifel-deinhossam6690?feature=shared" class="donation-button youtube">
+            <i class="fab fa-youtube" style="margin-right: 8px;"></i> YouTube Channel
+        </a>
+    </div>
+</section>
+
+<footer>
+    <p>Developed by <a href="https://zoro2045.github.io/">ፚ Ꭷ Ꮢ Ꭷ ❥</a></p>
+</footer>
+</body>
+</html>
