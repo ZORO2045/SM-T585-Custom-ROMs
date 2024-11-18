@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix Partitions</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/kgdTbnq/CITYPNG-COM-Settings-Repair-Maintenance-Red-Icon-HD-PNG-1500x1500.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 70vh;
+            background: linear-gradient(to bottom right, #ffffff, #e0e0e0);
+            text-align: center;
+            color: #000000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            max-width: 150px; 
+            margin-bottom: 20px; 
+        }
+        header h1 {
+            font-size: 3rem; 
+            margin-bottom: 10px; 
+            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+        }
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        header a {
+            padding: 15px 35px;
+            background-color: #3a1f6d;
+            color: #ffffff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+        header a:hover {
+            background-color: #5e3b9a;
+        }
+        .roms-section {
+            padding: 50px 20px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+        .roms-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #3a1f6d;
+        }
+        .rom-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .rom-card {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .rom-card img {
+            max-width: 100px;
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .rom-card h3 {
+            color: #000000;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .rom-card p {
+            color: #555555;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        .rom-card a {
+            padding: 10px 25px;
+            background-color: #3a1f6d;
+            color: #ffffff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .rom-card a:hover {
+            background-color: #5e3b9a;
+        }
+        .download-options {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
+        }
+        .download-options.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .download-options a {
+            display: block;
+            margin: 10px 0;
+            background-color: #3a1f6d;
+            padding: 10px 25px;
+            border-radius: 5px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .download-options a:hover {
+            background-color: #5e3b9a;
+        }
+        .donations-section {
+            background-color: #f1f1f1;
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .donations-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+        .donations-section p {
+            font-size: 1.2rem;
+            color: #333333;
+        }
+        footer {
+            padding: 20px;
+            background-color: #3a1f6d;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1.2rem;
+            }
+            .rom-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <script>
+        function toggleDownloadOptions(event) {
+            const options = event.currentTarget.nextElementSibling;
+            const allOptions = document.querySelectorAll('.download-options');
+            allOptions.forEach(option => {
+                if (option !== options) {
+                    option.classList.remove('show');
+                }
+            });
+            options.classList.toggle('show');
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <img src="https://i.ibb.co/kgdTbnq/CITYPNG-COM-Settings-Repair-Maintenance-Red-Icon-HD-PNG-1500x1500.png" alt="Fix Partition logo">
+    <h1>Fix Partitions</h1>
+</header>
+<section id="roms" class="roms-section">
+    <h2>Remove Vendor Partition</h2>
+    <div class="rom-cards">
+        <div class="rom-card">
+            <h3>Steps to Remove Vendor Partition</h3>
+            <p>
+                Follow these steps to remove the *Vendor* partition and restore your Galaxy Tab A 10.1 (SM-T585) to its original state:
+            </p>
+            <ul>
+                <li><strong>Step 1:</strong> Format your device to avoid any issues.</li>
+                <li><strong>Step 2:</strong> Download the appropriate <strong>PIT</strong> file for your device.</li>
+                <li><strong>Step 3:</strong> Rename the downloaded file to <strong>gtaxllte.pit</strong>.</li>
+                <li><strong>Step 4:</strong> Boot into TWRP recovery on your device.</li>
+                <li><strong>Step 5:</strong> Go to <strong>Advanced</strong> and then <strong>Terminal</strong>.</li>
+                <li><strong>Step 6:</strong> Place the <strong>gtaxllte.pit</strong> file in the internal storage of your device.</li>
+                <li><strong>Step 7:</strong> In the terminal, type the following command:
+                    <pre>dd if=/sdcard/gtaxllte.pit<br>of=/dev/block/mmcblk0</pre>
+                </li>
+                <li><strong>Step 8:</strong> After executing the command, reboot back into recovery.</li>
+                <li><strong>Step 9:</strong> Once back in recovery, perform <strong>Format Data</strong> to remove encryption.</li>
+                <li><strong>Step 10:</strong> Perform an <strong>Advanced Wipe</strong> as needed and flash your desired ROM.</li>
+            </ul>
+            <p class="note">
+                Note: This process returns the partitions to their official state, which can prevent issues related to custom ROMs.
+            </p>
+            <p class="note">
+    Note: If the recovery is stuck on the logo, you can also flash the PIT file directly using <strong>Odin3</strong> on your PC in the <strong>PIT</strong> field (not CSC) to fix TWRP flashing errors.
+</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://github.com/ZORO2045/SM-T585-Custom-ROMs/releases/download/1.0/GTAXLLTE_EUR_OPEN.pit">Download PIT File</a>
+            </div>
+        </div>
+</section>        
+<footer>
+    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/">Back to Home ></a>
+</footer>
+
+</body>
+  </html>
