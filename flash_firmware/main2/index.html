@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Firmware</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/BC0J6pS/4961639.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 70vh;
+            background: linear-gradient(to bottom right, #ffffff, #e0e0e0);
+            text-align: center;
+            color: #000000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            max-width: 150px; 
+            margin-bottom: 20px; 
+        }
+        header h1 {
+            font-size: 3rem; 
+            margin-bottom: 10px; 
+            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+        }
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        header a {
+            padding: 15px 35px;
+            background-color: #3a1f6d;
+            color: #ffffff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+        header a:hover {
+            background-color: #5e3b9a;
+        }
+        .roms-section {
+            padding: 50px 20px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+        .roms-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #3a1f6d;
+        }
+        .rom-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .rom-card {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .rom-card img {
+            max-width: 100px;
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .rom-card h3 {
+            color: #000000;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .rom-card p {
+            color: #555555;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        .rom-card a {
+            padding: 10px 25px;
+            background-color: #3a1f6d;
+            color: #ffffff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .rom-card a:hover {
+            background-color: #5e3b9a;
+        }
+        .download-options {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
+        }
+        .download-options.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .download-options a {
+            display: block;
+            margin: 10px 0;
+            background-color: #3a1f6d;
+            padding: 10px 25px;
+            border-radius: 5px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .download-options a:hover {
+            background-color: #5e3b9a;
+        }
+        .donations-section {
+            background-color: #f1f1f1;
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .donations-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+        .donations-section p {
+            font-size: 1.2rem;
+            color: #333333;
+        }
+        footer {
+            padding: 20px;
+            background-color: #3a1f6d;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1.2rem;
+            }
+            .rom-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <script>
+        function toggleDownloadOptions(event) {
+            const options = event.currentTarget.nextElementSibling;
+            const allOptions = document.querySelectorAll('.download-options');
+            allOptions.forEach(option => {
+                if (option !== options) {
+                    option.classList.remove('show');
+                }
+            });
+            options.classList.toggle('show');
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <img src="https://i.ibb.co/BC0J6pS/4961639.png" alt="Flash Firmware logo">
+    <h1>Flash Firmware</h1>
+</header>
+<section id="roms" class="roms-section">
+    <h2>Flash Firmware on Samsung Galaxy Tab A 10.1</h2>
+    <div class="rom-cards">
+        <div class="rom-card">
+            <h3>Flash Firmware Instructions</h3>
+            <p>
+                Follow these steps to flash the firmware on your Galaxy Tab A 10.1 (SM-T585):
+            </p>
+            <h4>Method 1:</h4>
+            <ul>
+                <li><strong>Step 1:</strong> Extract Odin Tool 3.14.4.</li>
+                <li><strong>Step 2:</strong> Extract the Firmware Samsung Galaxy Tab A 10.1 (2016) SM-T585 that you have downloaded.</li>
+                <li><strong>Step 3:</strong> Turn off your device and enter Download Mode.</li>
+                <li><strong>Step 4:</strong> Hold Home + Power + Volume Down buttons or Volume Down + Bixby buttons.</li>
+                <li><strong>Step 5:</strong> When the warning appears, press Volume Up to enter Download Mode.</li>
+                <li><strong>Step 6:</strong> Your device should be recognized by Odin, showing a light-blue box in the ID:COM section.</li>
+                <li><strong>Step 7:</strong> Do NOT tick any extra boxes! Add the Samsung firmware file to AP/PDA or multiple files (AP/BL/CP/CSC) to their slots.</li>
+                <li><strong>Step 8:</strong> Click Start to begin the flashing process. Do NOT remove or operate on your device until finished.</li>
+                <li><strong>Step 9:</strong> When done, a big green box saying PASS! will appear.</li>
+                <li><strong>Step 10:</strong> Your device will reboot, and the first boot may take 5-10 minutes.</li>
+            </ul>
+            <h4>Method 2:</h4>
+            <ul>
+                <li>If you don't have a PC or laptop, use the Eros tool.</li>
+                <li>Check the eros guide for instructions.</li>
+                <li>You'll need another phone and an OTG cable for this method.</li>
+            </ul>
+            <h4>Using Eros Tool:</h4>
+<p>
+    To use the Eros tool, follow these steps:
+</p>
+<ul>
+    <li>Enter Download Mode on your device as usual.</li>
+    <li>Open the Eros application on your phone.</li>
+    <li>Connect your tablet to the phone using an OTG cable.</li>
+    <li>Your device should be recognized in the Eros app.</li>
+    <li>Ensure you have downloaded and extracted the firmware files on your phone.</li>
+    <li>You will need four files: AP, BL, CP, and CSC.</li>
+    <li>In the Eros tool, click on "Add File" and select the files in the correct order as shown in the eros guide.</li>
+    <li>Click "Start" and wait for the flashing process to complete.</li>
+    <li>Once finished, your device will reboot and should start normally on stock firmware.</li>
+</ul>
+            <p class="note">
+                Note: Ensure your device is charged and backup any important data before flashing.
+            </p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://developer.samsung.com/android-usb-driver">USB Drivers</a>
+                <a href="https://odindownload.com/mobile/">Odin3</a>
+                <a href="https://samfw.com/firmware/SM-T585/EGY/">Firmware</a>
+                <a href="https://t.me/ErosMobileTool">Eros Tool</a>
+                <a href="https://t.me/ErosMobileTool/10">Eros Guide</a>    
+            </div>
+        </div>
+    </div>
+</section>        
+<footer>
+    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/">Back to Home ></a>
+</footer>
+
+</body>
+  </html>
