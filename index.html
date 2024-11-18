@@ -31,7 +31,6 @@
             align-items: center;
             z-index: 9999;
         }
-
         .spinner {
             width: 60px;
             height: 60px;
@@ -40,7 +39,6 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
-
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -125,6 +123,24 @@
             font-size: 24px;
             color: #ffffff;
             cursor: pointer;
+        }
+        .logo {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+        }
+       .logo:focus,
+.logo:active {
+    background: none;
+    outline: none;
         }
         .roms-section {
             padding: 50px 20px;
@@ -284,6 +300,9 @@
     </div>
 <header>
     <span class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></span>
+    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/index.html"class="logo">
+    <i class="fas fa-sun"></i>
+</a>
     <div class="sidebar">
         <div class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
         <h2>Related Topics</h2>
@@ -309,49 +328,36 @@
 <section id="roms" class="roms-section">
     <h2>Android Versions</h2>
     <div class="rom-cards">
-        <!-- Android 8 -->
         <div class="android-card">
             <img src="https://i.ibb.co/1r3HW3v/8.png" alt="Android 8">
             <h3>Android 8 O</h3>
             <button onclick="window.location.href='8/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-        
-        <!-- Android 9 -->
         <div class="android-card">
             <img src="https://i.ibb.co/DVwL19b/IMG-20241021-165705-570.png" alt="Android 9">
             <h3>Android 9 P</h3>
             <button onclick="window.location.href='9/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-        
-        <!-- Android 10 -->
         <div class="android-card">
             <img src="https://i.ibb.co/1dMKbh1/10.png" alt="Android 10">
             <h3>Android 10 Q</h3>
             <button onclick="window.location.href='10/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-        
-        <!-- Android 11 -->
         <div class="android-card">
             <img src="https://i.ibb.co/C9J2Mh1/11.png" alt="Android 11">
             <h3>Android 11 R</h3>
             <button onclick="window.location.href='11/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-        
-        <!-- Android 12 -->
         <div class="android-card">
             <img src="https://i.ibb.co/M97HbCf/12.png" alt="Android 12">
             <h3>Android 12 S</h3>
             <button onclick="window.location.href='12/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-        
-        <!-- Android 13 -->
         <div class="android-card">
             <img src="https://i.ibb.co/dbRcgXf/13.png" alt="Android 13">
             <h3>Android 13 T</h3>
             <button onclick="window.location.href='13/index.html'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-        
-        <!-- Android 14 -->
         <div class="android-card">
             <img src="https://i.ibb.co/StgJGxy/14.png" alt="Android 14">
             <h3>Android 14 U</h3>
@@ -383,4 +389,4 @@
     <p>Developed by <a href="https://zoro2045.github.io/">ፚ Ꭷ Ꮢ Ꭷ ❥</a></p>
 </footer>
 </body>
-            </html>
+</html>
