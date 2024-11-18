@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android 12 S ROMs</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/M97HbCf/12.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 70vh;
+            background: linear-gradient(to bottom right, #ffffff, #e0e0e0);
+            text-align: center;
+            color: #000000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            max-width: 150px; 
+            margin-bottom: 20px; 
+        }
+        header h1 {
+            font-size: 3rem; 
+            margin-bottom: 10px; 
+            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+        }
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        header a {
+            padding: 15px 35px;
+            background-color: #3a1f6d;
+            color: #ffffff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+        header a:hover {
+            background-color: #5e3b9a;
+        }
+        .roms-section {
+            padding: 50px 20px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+        .roms-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #3a1f6d;
+        }
+        .rom-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .rom-card {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .rom-card img {
+            max-width: 100px;
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .rom-card h3 {
+            color: #000000;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .rom-card p {
+            color: #555555;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        .rom-card a {
+            padding: 10px 25px;
+            background-color: #3a1f6d;
+            color: #ffffff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .rom-card a:hover {
+            background-color: #5e3b9a;
+        }
+        .download-options {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
+        }
+        .download-options.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .download-options a {
+            display: block;
+            margin: 10px 0;
+            background-color: #3a1f6d;
+            padding: 10px 25px;
+            border-radius: 5px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .download-options a:hover {
+            background-color: #5e3b9a;
+        }
+        .donations-section {
+            background-color: #f1f1f1;
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .donations-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+        .donations-section p {
+            font-size: 1.2rem;
+            color: #333333;
+        }
+        footer {
+            padding: 20px;
+            background-color: #3a1f6d;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1.2rem;
+            }
+            .rom-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <script>
+        function toggleDownloadOptions(event) {
+            const options = event.currentTarget.nextElementSibling;
+            const allOptions = document.querySelectorAll('.download-options');
+
+            allOptions.forEach(option => {
+                if (option !== options) {
+                    option.classList.remove('show');
+                }
+            });
+
+            options.classList.toggle('show');
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <img src="https://i.ibb.co/M97HbCf/12.png" alt="Android Logo">
+    <h1>Android 12 S ROMs</h1>
+</header>
+<section id="roms" class="roms-section">
+    <h2>Available ROMs</h2>
+    <div class="rom-cards">
+        <div class="rom-card">
+        <img src="https://i.ibb.co/p2YJSjM/IMG-20241104-011430-274.png" alt="LineageOS Logo">
+            <h3>LineageOS 19.1</h3>
+            <p>Android 12 - Size: 658 mb - ARM64 - Vanilla - Rev05 - Rev07</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://drive.google.com/file/d/1Y_yIp0VyUmluqUqTvCPOurcn_RA4mziA/edit">Download ROM</a>
+                <a href="https://github.com/BiTGApps/BiTGApps-Release/releases/download/v4.2/BiTGApps-arm64-12.1.0-v4.2-CORE.zip">Download GApps</a>
+                <a href="https://youtu.be/tEB2Ht9iKko?feature=shared">View Video</a>
+            </div>
+        </div>
+                <div class="rom-card">
+                <img src="https://i.ibb.co/tb1xWg8/Logo-for-e-mobile-os.png" alt="E OS Logo">
+            <h3>E OS</h3>
+            <p>Android 12 - Size: 1.01 GB - ARM64 - MicroG - Rev05 - Rev07</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://sourceforge.net/projects/eosbuildsronnz98/files/SamsungSmartphones/e-2.5-s-20241113-UNOFFICIAL-gtaxllte.zip/download">Download ROM</a>
+                <a href="https://t.me/gtaxllte/2229?single">Screenshots</a>
+            </div>
+        </div>
+                <div class="rom-card">
+                <img src="https://i.ibb.co/NY7RZWf/IMG-20241104-011429-049.png" alt="Crdroid Logo">
+            <h3>Crdroid</h3>
+            <p>Android 12 - Size: 788 mb - ARM64 - NO LTE - Vanilla - Rev05</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://androidfilehost.com/?fid=14871746926876839254">Download ROM</a>
+                <a href="https://github.com/BiTGApps/BiTGApps-Release/releases/download/v4.2/BiTGApps-arm64-12.1.0-v4.2-CORE.zip">Download GApps</a>
+                <a href="https://youtu.be/WBybsdTPqp4?feature=shared">View Video</a>
+            </div>
+        </div>
+</section>        
+<footer>
+    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/#roms">Back to Home ></a>
+</footer>
+
+</body>
+  </html>
