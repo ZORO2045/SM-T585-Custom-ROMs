@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android 10 (Q) ROMs</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/1dMKbh1/10.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 70vh;
+            background: linear-gradient(to bottom right, #ffffff, #e0e0e0);
+            text-align: center;
+            color: #000000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            max-width: 150px; 
+            margin-bottom: 20px; 
+        }
+        header h1 {
+            font-size: 3rem; 
+            margin-bottom: 10px; 
+            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+        }
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        header a {
+            padding: 15px 35px;
+            background-color: #3a1f6d;
+            color: #ffffff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+        header a:hover {
+            background-color: #5e3b9a;
+        }
+        .roms-section {
+            padding: 50px 20px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+        .roms-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #3a1f6d;
+        }
+        .rom-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .rom-card {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .rom-card img {
+            max-width: 100px;
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .rom-card h3 {
+            color: #000000;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .rom-card p {
+            color: #555555;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        .rom-card a {
+            padding: 10px 25px;
+            background-color: #3a1f6d;
+            color: #ffffff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .rom-card a:hover {
+            background-color: #5e3b9a;
+        }
+        .download-options {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
+        }
+        .download-options.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .download-options a {
+            display: block;
+            margin: 10px 0;
+            background-color: #3a1f6d;
+            padding: 10px 25px;
+            border-radius: 5px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .download-options a:hover {
+            background-color: #5e3b9a;
+        }
+        .donations-section {
+            background-color: #f1f1f1;
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .donations-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+        .donations-section p {
+            font-size: 1.2rem;
+            color: #333333;
+        }
+        footer {
+            padding: 20px;
+            background-color: #3a1f6d;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1.2rem;
+            }
+            .rom-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <script>
+        function toggleDownloadOptions(event) {
+            const options = event.currentTarget.nextElementSibling;
+            const allOptions = document.querySelectorAll('.download-options');
+
+            allOptions.forEach(option => {
+                if (option !== options) {
+                    option.classList.remove('show');
+                }
+            });
+
+            options.classList.toggle('show');
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <img src="https://i.ibb.co/1dMKbh1/10.png" alt="Android Logo">
+    <h1>Android 10 Q ROMs</h1>
+</header>
+<section id="roms" class="roms-section">
+    <h2>Available ROMs</h2>
+    <div class="rom-cards">
+        <div class="rom-card">
+          <img src="https://i.ibb.co/gSL0jsp/output-onlinepngtools-1.png" alt="Ancient Logo">
+            <h3>Ancient OS</h3>
+            <p>Android 10 - Size: 1 GB - ARM64 - Gapps - Rev05</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://sourceforge.net/projects/gtaxllte/files/AncientOS-CIVILIZATION-v4.0.1-Final-gtaxllte-PREHISTORIC-20201219-1941-GApps.zip/download">Download ROM</a>
+                <a href="https://youtu.be/zlrQhz3AZnY?feature=shared">View Video</a>
+            </div>
+        </div>
+                <div class="rom-card">
+                  <img src="https://i.ibb.co/J2YQgJk/IMG-20241104-020238-963.png" alt="Pixel Logo">
+            <h3>Pixel Experience</h3>
+            <p>Android 10 - Size: 1 GB - ARM64 - Pure Pixel - Rev05</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://androidfilehost.com/?fid=4349826312261733398">Download ROM</a>
+                <a href="https://youtu.be/Z6Yg6Sjn7kw?feature=shared">View Video</a>
+            </div>
+        </div>
+                <div class="rom-card">
+                  <img src="https://i.ibb.co/9bZ8Hcx/IMG-20241104-020429-108.png" alt="Pixel+ Logo">
+            <h3>Pixel Experience Plus</h3>
+            <p>Android 10 - Size: 1 GB - ARM64 - More Customization - Rev05</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://androidfilehost.com/?fid=4349826312261779895">Download ROM</a>
+                <a href="https://youtu.be/nUehGfFloDA?feature=shared">View Video</a>
+            </div>
+        </div>
+                <div class="rom-card">
+                  <img src="https://i.ibb.co/BqKbZkY/IMG-20241104-021540-931.png" alt="Aicp Logo">
+            <h3>Aicp</h3>
+            <p>Android 10 - Size: 563 mb - ARM64 - Vanilla - Rev05</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://androidfilehost.com/?fid=4349826312261673170">Download ROM</a>
+                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-10.0-pico-20220215.zip/download?use_mirror=master&r=&use_mirror=autoselect">Download GApps</a>
+                <a href="https://youtu.be/IvcSwFJ4lfk?feature=shared">View Video</a>
+            </div>
+        </div>
+                <div class="rom-card">
+                <img src="https://i.ibb.co/p2YJSjM/IMG-20241104-011430-274.png" alt="LineageOS Logo">
+            <h3>LineageOS 17.1</h3>
+            <p>Android 10 - Size: 623 mb - ARM64 - Vanilla - Rev05</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://onedrive.live.com/?cid=aa907ddc49f3e3ef&id=AA907DDC49F3E3EF%21159303&authkey=!AMwvN3pJO8_suMk">Download ROM</a>
+                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-10.0-pico-20220215.zip/download?use_mirror=master&r=&use_mirror=autoselect">Download GApps</a>
+                <a href="https://youtu.be/F-gmAjSq1CY?feature=shared">View Video</a>
+            </div>
+        </div>
+                <div class="rom-card">
+                <img src="https://i.ibb.co/NY7RZWf/IMG-20241104-011429-049.png" alt="Crdroid Logo">
+            <h3>Crdroid</h3>
+            <p>Android 10 - Size: 618 mb - ARM64 - Vanilla - Rev05</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://drive.google.com/file/d/1JtiHCkM6D7jwAT20aHCjrwN8cYWz073K/view">Download ROM</a>
+                <a href="https://sourceforge.net/projects/opengapps/files/arm64/20220215/open_gapps-arm64-10.0-pico-20220215.zip/download?use_mirror=master&r=&use_mirror=autoselect">Download GApps</a>
+                <a href="https://youtu.be/QYzvo9QVrWM?feature=shared">View Video</a>
+            </div>
+        </div>
+        <div class="rom-card">
+                <img src="https://i.ibb.co/6R68Qb8/IMG-20241104-020241-369.png" alt="Oneui Logo">
+            <h3>OneUi 2.0 Port</h3>
+            <p>Android 10 - Size: 1.74 GB - ARM64 - Gapps - Rev05</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://www.mediafire.com/file/4b69ax4y06vdorc/A750F_TW2_T585.zip/file">Download ROM</a>
+                <a href="https://www.mediafire.com/file/99ruifmgyp0155h/Exynos7870_CreateVendor_3.0.zip/file">Create Vendor</a>
+            </div>
+        </div>
+                <div class="rom-card">
+                <img src="https://i.ibb.co/tb1xWg8/Logo-for-e-mobile-os.png" alt="E OS Logo">
+            <h3>E OS</h3>
+            <p>Android 10 - Size: 940 mb - ARM64 - MicroG - Rev05</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://onedrive.live.com/?authkey=%21AFn3nWD7TisVyVc&id=AA907DDC49F3E3EF%21161017&cid=AA907DDC49F3E3EF&parId=root&parQt=sharedby&o=OneUp">Download ROM</a>
+                <a href="https://youtu.be/OvFrWt8kE48?feature=shared">View Video</a>
+            </div>
+        </div>
+                <div class="rom-card">
+                <img src="https://i.ibb.co/XVCWw9q/output-onlinepngtools.png" alt="Bliss Logo">
+            <h3>Bliss</h3>
+            <p>Android 10 - Size: 1.2 GB - ARM64 - Gapps - Rev05</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://sourceforge.net/projects/blissroms/files/Q/gtaxllte/Bliss-v12.12-gtaxllte-OFFICIAL-20200920.zip/download">Download ROM</a>
+                <a href="https://youtu.be/nt7HJt1q5rI?feature=shared">View Video</a>
+            </div>
+        </div>
+                
+</section>        
+<footer>
+    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/#roms">Back to Home ></a>
+</footer>
+
+</body>
+    </html>
