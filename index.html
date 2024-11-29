@@ -130,22 +130,22 @@
             cursor: pointer;
         }
         .logo {
-    position: absolute;
-    right: 5px;
-    top: 10px;
-    font-size: 24px;
-    color: white;
-    text-decoration: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+            position: absolute;
+            right: 5px;
+            top: 10px;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
         }
        .logo:focus,
-.logo:active {
-    background: none;
-    outline: none;
+       .logo:active {
+            background: none;
+            outline: none;
         }
         .roms-section {
             padding: 50px 20px;
@@ -222,31 +222,49 @@
             color: #ffffff; 
             padding: 12px 25px;
             border-radius: 25px;
-            margin: 5px 0;
+            margin: 10px 0;
             font-size: 16px;
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            transition: background 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
+
+        .donation-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .donation-button i {
+    margin-right: 8px;
+    font-size: 1.2rem;
+        }
+
         .donation-button.youtube {
-            background-color: #ff0000;
+    background-color: #ff0000;
         }
+
         .donation-button.youtube:hover {
-            background-color: #cc0000;
+    background-color: #cc0000;
         }
+
         .donation-button.telegram {
-            background-color: #0088cc;
+    background-color: #0088cc;
         }
+
         .donation-button.telegram:hover {
-            background-color: #006699;
+    background-color: #006699;
         }
+
         .donation-button.chat {
-            background-color: #4caf50;
+    background-color: #4caf50;
         }
+
         .donation-button.chat:hover {
-            background-color: #388e3c;
+    background-color: #388e3c;
         }
+
         footer {
             padding: 20px;
             background-color: #000000;
@@ -388,13 +406,13 @@
     </p>
     <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center;">
         <a href="https://t.me/gtaxllte" class="donation-button telegram">
-            <i class="fab fa-telegram" style="margin-right: 8px;"></i> Telegram Channel
+            <i class="fab fa-telegram"></i> Telegram Channel
         </a>
         <a href="https://t.me/smt585chat" class="donation-button chat">
-            <i class="fas fa-comments" style="margin-right: 8px;"></i> Chat Group
+            <i class="fas fa-comments"></i> Chat Group
         </a>
         <a href="https://youtube.com/@seifel-deinhossam6690?feature=shared" class="donation-button youtube">
-            <i class="fab fa-youtube" style="margin-right: 8px;"></i> YouTube Channel
+            <i class="fab fa-youtube"></i> YouTube Channel
         </a>
     </div>
 </section>
