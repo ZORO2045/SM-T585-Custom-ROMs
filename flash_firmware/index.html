@@ -14,7 +14,7 @@
             box-sizing: border-box;
         }
         body {
-            background-color: #000000;
+            background-color: #000;
             color: #e0e0e0;
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
@@ -25,10 +25,10 @@
             align-items: center;
             justify-content: center;
             height: 70vh;
-            background: linear-gradient(to bottom right, #000000, #1b004d);
+            background: linear-gradient(to bottom right, #000, #1b004d);
             text-align: center;
-            color: #ffffff;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
         }
         header img {
             max-width: 150px; 
@@ -39,26 +39,13 @@
             margin-bottom: 10px; 
             text-shadow: 3px 3px 20px rgba(0, 0, 0, 0.6);
         }
-        header p {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-        header a {
-            padding: 15px 30px;
-            background-color: #1b004d;
-            color: #ffffff;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: background-color 0.3s ease;
-        }
-        header a:hover {
-            background-color: #2e0079;
-        }
         .roms-section {
             padding: 50px 20px;
             background-color: #000000;
             text-align: center;
+            border-radius: 15px;
+            margin: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
         }
         .roms-section h2 {
             font-size: 2.5rem;
@@ -74,14 +61,14 @@
         .rom-card {
             background-color: #121212;
             border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
             width: 300px;
             padding: 20px;
             position: relative;
             overflow: hidden;
         }
         .rom-card h3 {
-            color: #ffffff;
+            color: #fff;
             margin-bottom: 15px;
             font-size: 1.5rem;
         }
@@ -93,6 +80,8 @@
         .rom-card ul {
             list-style-type: none;
             padding-left: 0;
+            text-align: left;
+            color: #e0e0e0;
         }
         .rom-card ul li {
             margin-bottom: 10px;
@@ -100,7 +89,7 @@
         .rom-card a {
             padding: 10px 20px;
             background-color: #1b004d;
-            color: #ffffff;
+            color: #fff;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 700;
@@ -128,7 +117,7 @@
             background-color: #1b004d;
             padding: 10px 20px;
             border-radius: 5px;
-            color: #ffffff;
+            color: #fff;
             text-decoration: none;
             transition: background-color 0.3s ease;
         }
@@ -140,22 +129,15 @@
             font-weight: bold;
             color: #ffcc00;
         }
-        .donations-section {
-            background-color: #1c1c3a;
-            padding: 50px 20px;
-            text-align: center;
-            margin-top: 50px;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+        .method1 {
+            color: #ff8c00;
+            font-weight: bold;
+            margin-top: 20px;
         }
-        .donations-section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-        .donations-section p {
-            font-size: 1.2rem;
-            color: #e0e0e0;
+        .method2 {
+            color: #ff8c00;
+            font-weight: bold;
+            margin-top: 20px;
         }
         footer {
             padding: 20px;
@@ -174,8 +156,8 @@
             header h1 {
                 font-size: 2.5rem;
             }
-            header p {
-                font-size: 1.2rem;
+            .roms-section h2 {
+                font-size: 2rem;
             }
             .rom-cards {
                 flex-direction: column;
@@ -207,46 +189,41 @@
     <div class="rom-cards">
         <div class="rom-card">
             <h3>Flash Firmware Instructions</h3>
-            <p>
-                Follow these steps to flash the firmware on your Galaxy Tab A 10.1 (SM-T585):
-            </p>
-            <h4>Method 1:</h4>
+                        <p class="note">Note: Ensure your device is charged and back up any important data before flashing.</p>
+            <p>Follow these steps to flash the firmware on your Galaxy Tab A 10.1 (SM-T585):</p>
+            <h4 class="method1">Method 1:</h4>
             <ul>
                 <li><strong>Step 1:</strong> Extract Odin Tool 3.14.4.</li>
-                <li><strong>Step 2:</strong> Extract the Firmware Samsung Galaxy Tab A 10.1 (2016) SM-T585 that you have downloaded.</li>
+                <li><strong>Step 2:</strong> Extract the firmware files you downloaded.</li>
                 <li><strong>Step 3:</strong> Turn off your device and enter Download Mode.</li>
-                <li><strong>Step 4:</strong> Hold Home + Power + Volume Down buttons or Volume Down + Bixby buttons.</li>
-                <li><strong>Step 5:</strong> When the warning appears, press Volume Up to enter Download Mode.</li>
-                <li><strong>Step 6:</strong> Your device should be recognized by Odin, showing a light-blue box in the ID:COM section.</li>
-                <li><strong>Step 7:</strong> Do NOT tick any extra boxes! Add the Samsung firmware file to AP/PDA or multiple files (AP/BL/CP/CSC) to their slots.</li>
-                <li><strong>Step 8:</strong> Click Start to begin the flashing process. Do NOT remove or operate on your device until finished.</li>
-                <li><strong>Step 9:</strong> When done, a big green box saying PASS! will appear.</li>
-                <li><strong>Step 10:</strong> Your device will reboot, and the first boot may take 5-10 minutes.</li>
+                <li><strong>Step 4:</strong> Hold Home + Power + Volume Down buttons.</li>
+                <li><strong>Step 5:</strong> When the warning appears, press Volume Up.</li>
+                <li><strong>Step 6:</strong> Your device should be recognized by Odin.</li>
+                <li><strong>Step 7:</strong> Add the firmware file to AP/PDA or multiple files as required.</li>
+                <li><strong>Step 8:</strong> Click Start to begin the flashing process.</li>
+                <li><strong>Step 9:</strong> A green box saying PASS! will appear when done.</li>
+                <li><strong>Step 10:</strong> Your device will reboot; the first boot may take 5-10 minutes.</li>
             </ul>
-            <h4>Method 2:</h4>
+            <h4 class="method2">Method 2:</h4>
             <ul>
-                <li>If you don't have a PC or laptop, use the Eros tool.</li>
-                <li>Check the eros guide for instructions.</li>
-                <li>You'll need another phone and an OTG cable for this method.</li>
+                <li>If you don't have a PC, use the Eros tool.</li>
+                <li>Check the Eros guide for instructions.</li>
+                <li>You'll need another phone and an OTG cable.</li>
             </ul>
             <h4>Using Eros Tool:</h4>
-<p>
-    To use the Eros tool, follow these steps:
-</p>
-<ul>
-    <li>Enter Download Mode on your device as usual.</li>
-    <li>Open the Eros application on your phone.</li>
-    <li>Connect your tablet to the phone using an OTG cable.</li>
-    <li>Your device should be recognized in the Eros app.</li>
-    <li>Ensure you have downloaded and extracted the firmware files on your phone.</li>
-    <li>You will need four files: AP, BL, CP, and CSC.</li>
-    <li>In the Eros tool, click on "Add File" and select the files in the correct order as shown in the eros guide.</li>
-    <li>Click "Start" and wait for the flashing process to complete.</li>
-    <li>Once finished, your device will reboot and should start normally on stock firmware.</li>
-</ul>
-            <p class="note">
-                Note: Ensure your device is charged and backup any important data before flashing.
-            </p>
+            <p>Follow these steps:</p>
+            <ul>
+                <li><strong>Step 1:</strong> Enter Download Mode on your device.</li>
+                <li><strong>Step 2:</strong> Open the Eros application on your phone.</li>
+                <li><strong>Step 3:</strong> Connect your tablet to the phone using an OTG cable.</li>
+                <li>• Your device should be recognized in the Eros app.</li>
+                <li><strong>Step 4:</strong> Download and extract the firmware files on your phone.</li>
+                <li>• You will need files: AP, BL, CP, and CSC.</li>
+                <li><strong>Step 5:</strong> In the Eros tool, click "Add File" and select the files in the correct order.</li>
+                <li><strong>Step 6:</strong> Click "Start" and wait for the flashing process to complete.</li>
+                <li>• Once finished, your device will reboot normally.</li>
+            </ul>
+
             <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
             <div class="download-options">
                 <a href="https://developer.samsung.com/android-usb-driver">USB Drivers</a>
@@ -257,7 +234,7 @@
             </div>
         </div>
     </div>
-</section>        
+</section>
 <footer>
     <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/">Back to Home ></a>
 </footer>
