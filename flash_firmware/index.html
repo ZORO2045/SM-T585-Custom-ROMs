@@ -66,6 +66,7 @@
             padding: 20px;
             position: relative;
             overflow: hidden;
+            text-align: center; 
         }
         .rom-card h3 {
             color: #fff;
@@ -80,7 +81,7 @@
         .rom-card ul {
             list-style-type: none;
             padding-left: 0;
-            text-align: left;
+            text-align: center; 
             color: #e0e0e0;
         }
         .rom-card ul li {
@@ -129,12 +130,7 @@
             font-weight: bold;
             color: #ffcc00;
         }
-        .method1 {
-            color: #ff8c00;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        .method2 {
+        .method1, .method2 {
             color: #ff8c00;
             font-weight: bold;
             margin-top: 20px;
@@ -189,7 +185,7 @@
     <div class="rom-cards">
         <div class="rom-card">
             <h3>Flash Firmware Instructions</h3>
-                        <p class="note">Note: Ensure your device is charged and back up any important data before flashing.</p>
+            <p class="note">Note: Ensure your device is charged and back up any important data before flashing.</p>
             <p>Follow these steps to flash the firmware on your Galaxy Tab A 10.1 (SM-T585):</p>
             <h4 class="method1">Method 1:</h4>
             <ul>
@@ -216,14 +212,13 @@
                 <li><strong>Step 1:</strong> Enter Download Mode on your device.</li>
                 <li><strong>Step 2:</strong> Open the Eros application on your phone.</li>
                 <li><strong>Step 3:</strong> Connect your tablet to the phone using an OTG cable.</li>
-                <li>• Your device should be recognized in the Eros app.</li>
+                <li>Your device should be recognized in the Eros app.</li>
                 <li><strong>Step 4:</strong> Download and extract the firmware files on your phone.</li>
-                <li>• You will need files: AP, BL, CP, and CSC.</li>
+                <li>You will need files: AP, BL, CP, and CSC.</li>
                 <li><strong>Step 5:</strong> In the Eros tool, click "Add File" and select the files in the correct order.</li>
                 <li><strong>Step 6:</strong> Click "Start" and wait for the flashing process to complete.</li>
-                <li>• Once finished, your device will reboot normally.</li>
+                <li>Once finished, your device will reboot normally.</li>
             </ul>
-
             <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
             <div class="download-options">
                 <a href="https://developer.samsung.com/android-usb-driver">USB Drivers</a>
@@ -240,4 +235,4 @@
 </footer>
 
 </body>
-</html>
+                </html>
