@@ -33,11 +33,18 @@
         header img {
             max-width: 150px; 
             margin-bottom: 20px; 
+            opacity: 0;
+            transition: opacity 1s ease;
         }
         header h1 {
             font-size: 3rem; 
             margin-bottom: 10px; 
-            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .fade-in {
+            opacity: 1;
         }
         header p {
             font-size: 1.5rem;
@@ -182,14 +189,18 @@
         function toggleDownloadOptions(event) {
             const options = event.currentTarget.nextElementSibling;
             const allOptions = document.querySelectorAll('.download-options');
-
             allOptions.forEach(option => {
                 if (option !== options) {
                     option.classList.remove('show');
                 }
             });
-
             options.classList.toggle('show');
+        }
+        window.onload = function() {
+            const logo = document.querySelector('header img');
+            const title = document.querySelector('header h1');
+            logo.classList.add('fade-in');
+            title.classList.add('fade-in');
         }
     </script>
 </head>
