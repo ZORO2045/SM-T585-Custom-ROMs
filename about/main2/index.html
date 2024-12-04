@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Our Community</title>
+    <link rel="icon" type="image/png" href="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/welcome.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #ffffff;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            text-align: center;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 70vh;
+            background: linear-gradient(to bottom right, #ffffff, #e0e0e0);
+            text-align: center;
+            color: #333;
+            padding: 20px;
+        }
+        header img {
+            max-width: 150px; 
+            margin-bottom: 20px; 
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        header h1 {
+            font-size: 3.5rem; 
+            margin-bottom: 10px; 
+            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .fade-in {
+            opacity: 1;
+        }
+        .roms-section {
+            padding: 50px 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            margin: 20px auto;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+        .roms-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #3a1f6d;
+        }
+        .rom-cards {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        .rom-card {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            padding: 30px;
+            text-align: center; 
+        }
+        .rom-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        .rom-card p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .rom-card ul {
+            list-style-type: none;
+            padding-left: 0;
+            color: #333;
+        }
+        .rom-card ul li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .rom-card a {
+            padding: 12px 25px;
+            background-color: #1b004d;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .rom-card a:hover {
+            background-color: #2e0079;
+        }
+        footer {
+            padding: 20px;
+            background-color: #3a1f6d;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        footer a {
+            color: #81d4fa;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            .roms-section h2 {
+                font-size: 2rem;
+            }
+            .rom-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            const logo = document.querySelector('header img');
+            const title = document.querySelector('header h1');
+            logo.classList.add('fade-in');
+            title.classList.add('fade-in');
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/welcome.png" alt="Welcome Logo">
+    <h1>Welcome to Our Community</h1>
+</header>
+<section id="roms" class="roms-section">
+    <h2>About the Website</h2>
+    <div class="rom-cards">
+        <div class="rom-card">
+            <p>
+                Welcome to our dedicated site for the <strong>Samsung Galaxy Tab A 10.1 (2016)</strong>! Here, you will find comprehensive resources and information related to customizing your device through a wide selection of <strong>custom ROMs</strong>. Our goal is to enhance your user experience and maximize the performance of your device, allowing you to enjoy the latest features and operating systems.
+            </p>
+            <h3>What We Offer</h3>
+            <ul>
+                <li>🔹 <strong>Custom ROMs</strong>: Explore a variety of custom ROMs collected from multiple reputable sources, each with unique features tailored to meet your needs.</li>
+                <li>🔹 <strong>Detailed Guides</strong>: Access step-by-step guides designed to help you install ROMs and troubleshoot common issues, simplifying the customization process.</li>
+                <li>🔹 <strong>Supportive Community</strong>: Join our active community of users who share their experiences and tips for device customization.</li>
+            </ul>
+            <h3>A Note from the Founder</h3>
+            <p>
+                As the creator of this website, I am dedicated to providing users with the best resources to get the most out of their devices. While I am not a developer of the ROMs themselves, I have compiled a wealth of information and solutions to various issues you may encounter.
+            </p>
+            <p>
+                I would also like to extend my heartfelt gratitude to all the developers who have contributed their time and expertise to support the Galaxy Tab A on platforms like XDA and other communities. Your hard work and dedication have made this customization journey possible for many users. 🙌
+            </p>
+            <p>
+                If you have any questions or need assistance, please feel free to reach out. We invite you to join our community on Telegram, where you can connect with fellow users, share experiences, and get real-time support. Together, we can enhance our customization journey! 🚀
+            </p>
+            <p>
+                Your support helps us develop content and provide more assistance for the Galaxy Tab A 10.1. Every donation or contribution goes a long way in improving the resources available, allowing us to offer more helpful information and support to users. Thank you for your continued support! 🙏
+            </p>
+            <p>
+                Thank you for visiting, and I hope you have a fantastic experience with your Galaxy Tab A 10.1!
+            </p>
+        </div>
+    </div>
+</section>
+<footer>
+    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/index.html">Back to Home ></a>
+</footer>
+
+</body>
+</html>
