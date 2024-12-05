@@ -143,6 +143,20 @@
             background-color: #5e3b9a;
         }
         .donations-section {
+        .download-options a {
+            display: block;
+            margin: 10px 0;
+            background-color: #3a1f6d;
+            padding: 10px 25px;
+            border-radius: 5px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .download-options a:hover {
+            background-color: #5e3b9a;
+        }
+        .donations-section {
             background-color: #f1f1f1;
             padding: 50px 20px;
             text-align: center;
@@ -185,7 +199,6 @@
             }
         }
     </style>
-    <script>
     <script>
         function toggleDownloadOptions(event) {
             const options = event.currentTarget.nextElementSibling;
