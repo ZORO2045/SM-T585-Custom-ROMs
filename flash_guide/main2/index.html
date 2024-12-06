@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Flash Guide</title>
+    <link rel="icon" type="image/png" href="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/flash.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 70vh;
+            background: linear-gradient(to bottom right, #ffffff, #cce7ff);
+            color: #333;
+            padding: 20px;
+        }
+        header img {
+            max-width: 150px; 
+            margin-bottom: 20px; 
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        header h1 {
+            font-size: 3.5rem; 
+            margin-bottom: 10px; 
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .fade-in {
+            opacity: 1;
+        }
+        .roms-section {
+            padding: 50px 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            margin: 20px auto;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px; 
+        }
+        .roms-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: transparent;
+            background: linear-gradient(to right, #007bff, #00bfff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-align: center;
+        }
+        .rom-cards {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            gap: 30px;
+        }
+        .rom-card {
+            background-color: #f0f0f0;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 350px; 
+            padding: 30px; 
+            text-align: center; 
+            margin-top: 0.25px;
+            margin-bottom: 0.25px;
+        }
+        .rom-card img {
+            max-width: 100px;
+            margin: 10px auto;
+            display: block;
+        }
+        .rom-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.8rem; 
+        }
+        .rom-card p {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 1.1rem; 
+        }
+        .rom-card ul {
+            list-style-type: none;
+            padding-left: 0;
+            color: #333;
+        }
+        .rom-card ul li {
+            margin-bottom: 10px;
+            font-size: 1.1rem; 
+        }
+        .rom-card a {
+            padding: 12px 25px; 
+            background-color: #1b004d;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .rom-card a:hover {
+            background-color: #2e0079;
+        }
+        .download-options {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
+        }
+        .download-options.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .download-options a {
+            display: block;
+            margin: 10px 0;
+            background-color: #1b004d;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .download-options a:hover {
+            background-color: #1b004d;
+        }
+        .note {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+        .method1, .method2 {
+            color: transparent;
+            background: linear-gradient(to right, #00bfff, #ff69b4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        footer {
+            padding: 20px;
+            background-color: #1b004d;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            .roms-section h2 {
+                font-size: 2rem;
+            }
+            .rom-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <script>
+        function toggleDownloadOptions(event) {
+            const options = event.currentTarget.nextElementSibling;
+            const allOptions = document.querySelectorAll('.download-options');
+            allOptions.forEach(option => {
+                if (option !== options) {
+                    option.classList.remove('show');
+                }
+            });
+            options.classList.toggle('show');
+        }
+        window.onload = function() {
+            const logo = document.querySelector('header img');
+            const title = document.querySelector('header h1');
+            logo.classList.add('fade-in');
+            title.classList.add('fade-in');
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/flash.png" alt="Flash Logo">
+    <h1>Full Flash Guide</h1>
+</header>
+<section id="roms" class="roms-section">
+    <h2>How to Flash TWRP and Custom ROM with Magisk on Galaxy Tab A 10.1</h2>
+    <div class="rom-cards">
+        <div class="rom-card">
+            <h3><span style="color: transparent; background: linear-gradient(to right, #ff4500, #ffcc00); -webkit-background-clip: text; background-clip: text;"><i>Instructions Before Starting</i></span></h3>
+            <p class="note">🔹Ensure your device is charged and back up any important data before flashing.</p>
+            <p>🔹All the files and download links mentioned will be available below in the "Download Options" section.</p>
+            <p class="note">🔹Browse the 'Related Topics' section in the sidebar on the homepage; you will find solutions to all the problems you may encounter.</p>
+            <p>🔹Follow these steps to flash TWRP, Custom ROM and Magisk on your Galaxy Tab A 10.1 (SM-T585):</p>
+        </div>
+        <div class="rom-card">
+            <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/settings.png" alt="Settings Logo">
+            <ul>
+                <h3><span style="color: transparent; background: linear-gradient(to right, #ff69b4, #ff4500); -webkit-background-clip: text; background-clip: text;"><i>Device Preparation Before Starting</i></span></h3>
+                <li><strong>Step 1:</strong> Enable Developer Options by going to Settings then "About device" and tapping on "Build number" 7 times until the option is activated.</li>
+                <li><strong>Step 2:</strong> Go back to the Settings menu and select "Developer options".</li>
+                <li><strong>Step 3:</strong> Enable "USB Debugging" and disable "OEM Unlock".</li>
+                <li><strong>Step 4:</strong> Power down the device, then hold the Home, Power, and Volume Down buttons to enter Download mode.</li>
+            </ul>
+        </div>
+        <div class="rom-card">
+            <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/odin.png" alt="Odin Logo">
+            <ul>
+                <h3><span style="color: transparent; background: linear-gradient(to right, #00bfff, #007bff); -webkit-background-clip: text; background-clip: text;"><i>Setting Up Odin</i></span></h3>
+                <li><strong>Step 1:</strong> Install Samsung USB drivers on your PC.</li>
+                <li><strong>Step 2:</strong> Download and launch the Odin application on your PC.</li>
+                <li><strong>Step 3:</strong> Hook up the Samsung Galaxy Tab A to the PC using a USB cable.</li>
+                <p class="note">🔹Make sure the device is detected by Odin (you should see a message saying "added!!!").</p>
+                <p class="note">🔹If the device isn't being recognized, double-check the USB connection and consider installing USB drivers on your PC.</p>
+                <li><strong>Step 4:</strong> In Odin, click the AP button to find the 'TWRP file.tar' that you downloaded on your PC.</li>
+                <li><strong>Step 5:</strong> Go to "Options" and uncheck the "Auto Reboot" box.</li>
+                <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+                <div class="download-options">
+                    <a href="https://developer.samsung.com/android-usb-driver">USB Drivers</a>
+                    <a href="https://odindownload.com/mobile/">Odin3</a>
+                    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/main2/index.html">TWRP Recovery</a>
+                </div>
+            </ul>
+        </div>
+        <div class="rom-card">
+            <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/twrp.png" alt="TWRP Logo">
+            <ul>
+                <h3><span style="color: transparent; background: linear-gradient(to right, #00bfff, #ff69b4); -webkit-background-clip: text; background-clip: text;"><i>Flashing TWRP</i></span></h3>
+                <li><strong>Step 1:</strong> Click "Start" in Odin to begin the flashing process.</li>
+                <p class="note">🔹A green box saying PASS! will appear when done.</p>
+                <li><strong>Step 2:</strong> Hold down the Power button for a brief moment to turn off the device.</li>
+                <h4 class="method2">Immediately press and hold the Volume Up, Home, and Power buttons simultaneously until the Samsung logo appears on the screen.</h4>
+                <p class="note">🔹Note: TWRP Recovery asks if you'd like to use it in 'Read Only' mode. 'Read Only' mode means it will remain on your device without making changes until you reboot. Simply swipe the arrow to allow modifications.</p>
+            </ul>
+        </div>
+        <div class="rom-card">
+            <img src="https://i.ibb.co/kgdTbnq/CITYPNG-COM-Settings-Repair-Maintenance-Red-Icon-HD-PNG-1500x1500.png" alt="In TWRP Recovery Mode">
+            <ul>
+                <h3><span style="color: transparent; background: linear-gradient(to right, #ff4500, #ffcc00); -webkit-background-clip: text; background-clip: text;"><i>In TWRP Recovery Mode</i></span></h3>
+                <li><strong>Step 1:</strong> Select 'Wipe', then 'Format data', and confirm with 'yes'.</li>
+                <li><strong>Step 2:</strong> Go back to TWRP home, select 'Reboot', then 'Recovery'.</li>
+                <p class="note">🔹If you don't want to install a custom ROM and prefer to stay on the stock ROM, you can stop at this step and choose "Reboot," then "System." Alternatively, you can proceed to the "Flashing Magisk" section if you want to root your device.</p>
+            </ul>
+        </div>
+        <div class="rom-card">
+            <img src="https://i.ibb.co/vhv4Yw2/pngwing-com.png" alt="Custom ROM Logo">
+            <ul>
+                <h3><span style="color: transparent; background: linear-gradient(to right, #ffcc00, #32cd32); -webkit-background-clip: text; background-clip: text;"><i>Flashing the Custom ROM</i></span></h3>
+                <li><strong>Step 1:</strong> Repeat the 'Wipe' process, but this time select 'Advanced Wipe', then select all options (except SD Card and USB OTG).</li>
+                <li><strong>Step 2:</strong> Select Storage (if your custom ROM is on SD Card or USB OTG).</li>
+                <li><strong>Step 3:</strong> Select the zip file of your custom ROM.</li>
+                <li><strong>Step 4:</strong> Click on 'Add More Zips' and select the GApps file included with the ROM if it requires it.</li>
+                <li><strong>Step 5:</strong> Swipe the arrow to confirm the flash and wait until the flashing process is complete, then press 'reboot system'.</li>
+                <p class="note">🔹Note: In the Android 10 ROMs section, you will find a port for One UI 2.0, along with a file named 'create vendor.' You need to flash this file, then perform a reboot to recovery, and finally flash the port.</p>
+                <p class="note">🔹Note: If you install a custom ROM on your device and wish to switch to another custom ROM, you must perform the Advanced Wipe step again (Step 1) first, and then flash the ROM you wish to switch to.</p>
+                <p class="note">🔹Note: If you install any custom ROM on your device and later wish to flash the One UI 1 port available in the Android 9 ROMs section, you must first flash the stock firmware of the device and then repeat the previous steps again.</p>
+                <p class="note">🔹Note: A "dirty flash" refers to the process of flashing a new version of your ROM over the top of the one you have, without using the "Wipe Data/Advanced Wipe/Factory Reset" option in recovery. Even if you intend to dirty flash the update, you should always wipe cache and dalvik cache.</p>
+                <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+                <div class="download-options">
+                    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/index.html#roms">Custom ROMs</a>
+                    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_firmware/main2/index.html">Flash Stock Firmware</a>
+                </div>
+            </ul>
+        </div>
+        <div class="rom-card">
+            <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/magisk.png" alt="Magisk Logo">
+            <ul>
+                <h3><span style="color: transparent; background: linear-gradient(to right, #32cd32, #ffcc00); -webkit-background-clip: text; background-clip: text;"><i>Flashing Magisk</i></span></h3>
+                <li><strong>Step 1:</strong> Download Magisk apk.</li>
+                <li><strong>Step 2:</strong> Rename extension from .apk to .zip.</li>
+                <li><strong>Step 3:</strong> Flash zip file from TWRP like ROM.</li>
+                <li><strong>Step 4:</strong> Wait until the flashing process is complete, then press 'reboot system'.</li>
+                <li><strong>Step 5:</strong> After rebooting the system, install the Magisk application on your device.</li>
+                <p class="note">🔹Note: In One UI 1.0 Port, you need to flash Magisk Prepare before installing Magisk.</p>
+                <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+                <div class="download-options">
+                    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/root/main2/index.html">Magisk</a>
+                </div>
+            </ul>
+        </div>
+    </div>
+</section>
+<footer>
+    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/index.html">Back to Home ></a>
+</footer>
+
+</body>
+</html>
