@@ -25,7 +25,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
+            background: linear-gradient(to bottom right, #ffffff, #d6ccf5);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -98,6 +98,7 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             transition: left 0.3s ease;
             z-index: 999;
+            overflow-y: auto;
         }
         .sidebar h2 {
             margin-bottom: 20px;
@@ -204,12 +205,20 @@
             color: #ffffff; 
             padding: 12px 25px;
             border-radius: 25px;
-            margin: 5px 0;
+            margin: 10px 0;
             font-size: 16px;
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            transition: background 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .donation-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+        .donation-button i {
+            margin-right: 8px;
         }
         .donation-button.youtube {
             background-color: #ff0000;
@@ -269,27 +278,71 @@
                 behavior: 'smooth'
             });
         }
-        
+
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             const toggleBtn = document.querySelector('.toggle-btn i');
+
             if (sidebar.style.left === '0px') {
-                sidebar.style.left = '-260px';
+                sidebar.style.left = '-260px'; 
+                sidebar.style.visibility = 'hidden'; 
+                sidebar.style.opacity = '0'; 
                 toggleBtn.classList.remove('fa-times');
                 toggleBtn.classList.add('fa-bars');
             } else {
-                sidebar.style.left = '0px';
+                sidebar.style.left = '0px'; 
+                sidebar.style.visibility = 'visible'; 
+                sidebar.style.opacity = '1'; 
                 toggleBtn.classList.remove('fa-bars');
                 toggleBtn.classList.add('fa-times');
             }
         }
+
+        function closeSidebar(event) {
+            const sidebar = document.querySelector('.sidebar');
+            const toggleBtn = document.querySelector('.toggle-btn');
+
+            if (sidebar.style.left === '0px' && 
+                !sidebar.contains(event.target) && 
+                !toggleBtn.contains(event.target)) {
+                sidebar.style.left = '-260px'; 
+                sidebar.style.visibility = 'hidden'; 
+                sidebar.style.opacity = '0'; 
+                toggleBtn.querySelector('i').classList.remove('fa-times');
+                toggleBtn.querySelector('i').classList.add('fa-bars');
+            }
+        }
+
+        function handleScroll() {
+            const sidebar = document.querySelector('.sidebar');
+
+            if (sidebar.style.left === '0px') {
+                sidebar.style.left = '-260px'; 
+                sidebar.style.visibility = 'hidden'; 
+                sidebar.style.opacity = '0'; 
+                const toggleBtn = document.querySelector('.toggle-btn i');
+                toggleBtn.classList.remove('fa-times');
+                toggleBtn.classList.add('fa-bars');
+            }
+        }
+
         window.addEventListener('load', function() {
+            const sidebar = document.querySelector('.sidebar');
+            const toggleBtn = document.querySelector('.toggle-btn i');
+
+            sidebar.style.left = '-260px';
+            sidebar.style.visibility = 'hidden';
+            sidebar.style.opacity = '0';
+
             const loadingScreen = document.getElementById('loading-screen');
             loadingScreen.style.opacity = '0';
             setTimeout(() => {
                 loadingScreen.style.display = 'none';
             }, 500);
         });
+
+        document.addEventListener('click', closeSidebar);
+        window.addEventListener('scroll', handleScroll);
     </script>
 </head>
 <body>
@@ -405,4 +458,4 @@
             </div>
         </footer>
     </body>
-    </html>
+        </html>
