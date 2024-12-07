@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samsung Galaxy Tab A 10.1 ROMs</title>
-    <link rel="icon" type="image/png" href="https://i.ibb.co/6ZMdBQH/IMG-20241021-043545-289.jpg">
+    <link rel="icon" type="image/png" href="images/logo.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -14,7 +14,7 @@
             box-sizing: border-box;
         }
         body {
-            background-color: #f5f5f5;
+            background: linear-gradient(to bottom right, #e8d6f1, #e8d6f1);
             color: #333333;
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
@@ -31,14 +31,14 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            color: #000000;
+            color: #333333;
             font-size: 1.5rem;
             text-align: center;
         }
         .spinner {
             width: 80px;
             height: 80px;
-            border: 8px solid rgba(255, 255, 255, 0.2);
+            border: 8px solid rgba(51, 51, 51, 0.2);
             border-top-color: #8000ff;
             border-radius: 50%;
             animation: spin 1s linear infinite;
@@ -55,10 +55,12 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background: linear-gradient(to bottom right, #ffffff, #e0e0e0);
+            background: linear-gradient(to bottom right, #ffffff, #d6ccf5);
             text-align: center;
-            color: #333;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            color: #333333;
+        }
+        header h1, header p, header a {
+            user-select: none;
         }
         header h1 {
             font-size: 3.5rem;
@@ -80,44 +82,44 @@
             margin: 0 5px;
         }
         header a:hover {
-            background-color: #5e3b9a;
+            background-color: #cccccc;
             transform: scale(1.05);
         }
         .sidebar {
             position: absolute;
-            top: 20px;
-            left: -250px;
-            width: 250px;
-            height: auto;
-            background-color: rgba(255, 255, 255, 0.9);
+            top: 0;
+            left: -260px; 
+            width: 260px; 
+            height: 100%;
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.8), rgba(232, 214, 241, 0.8)); 
             backdrop-filter: blur(10px);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             transition: left 0.3s ease;
+            z-index: 999;
         }
         .sidebar h2 {
             margin-bottom: 20px;
             color: #333333;
+            user-select: none;
         }
         .sidebar a {
-            display: block;
-            color: #000000;
+            display: flex;
+            align-items: center;
+            color: #333333;
             text-decoration: none;
             padding: 10px 0;
             transition: color 0.3s ease;
-            background: none;
+            border-radius: 5px;
+            background: transparent; 
         }
-        .sidebar a:hover, .sidebar a:focus {
-            color: #ffffff;
+        .sidebar a:hover {
+            background-color: rgba(0, 0, 0, 0.1); 
+            color: #000000;
         }
-        .close-btn {
-            font-size: 20px;
-            color: #333333;
-            cursor: pointer;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: flex-end;
+        .sidebar a i {
+            margin-right: 10px;
         }
         .toggle-btn {
             position: absolute;
@@ -126,24 +128,7 @@
             font-size: 24px;
             color: #333333;
             cursor: pointer;
-        }
-        .logo {
-            position: absolute;
-            right: 5px;
-            top: 10px;
-            font-size: 24px;
-            color: black;
-            text-decoration: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-       .logo:focus,
-.logo:active {
-    background: none;
-    outline: none;
+            z-index: 1000;
         }
         .roms-section {
             padding: 50px 20px;
@@ -161,7 +146,7 @@
             gap: 20px;
         }
         .android-card {
-            background-color: #ffffff;
+            background: linear-gradient(to bottom right, #f0e3f8, #f0e3f8);
             border-radius: 15px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
             width: 300px;
@@ -206,15 +191,14 @@
             border-radius: 15px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
-        .donations-section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #333333;
-        }
-        .donations-section p {
-            font-size: 1.2rem;
-            color: #333333;
-        }
+        .donations-section {
+    background: linear-gradient(to bottom right, #f0e3f8, #f0e3f8); 
+    padding: 50px 20px;
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
         .donation-button {
             text-decoration: none;
             color: #ffffff; 
@@ -246,13 +230,13 @@
             background-color: #388e3c;
         }
         footer {
-            padding: 20px;
-            background-color: #ffffff;
-            text-align: center;
-            margin-top: 50px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-        }
+    padding: 20px;
+    background: linear-gradient(to bottom right, #d6ccf5, #d6ccf5);
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
         footer a {
             color: #000000;
             text-decoration: none;
@@ -288,14 +272,17 @@
         
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
-            sidebar.style.left = sidebar.style.left === '0px' ? '-250px' : '0px';
-        }
-        document.addEventListener('copy', function(e) {
-            const header = document.querySelector('header');
-            if (header.contains(e.target)) {
-                e.preventDefault();
+            const toggleBtn = document.querySelector('.toggle-btn i');
+            if (sidebar.style.left === '0px') {
+                sidebar.style.left = '-260px';
+                toggleBtn.classList.remove('fa-times');
+                toggleBtn.classList.add('fa-bars');
+            } else {
+                sidebar.style.left = '0px';
+                toggleBtn.classList.remove('fa-bars');
+                toggleBtn.classList.add('fa-times');
             }
-        });
+        }
         window.addEventListener('load', function() {
             const loadingScreen = document.getElementById('loading-screen');
             loadingScreen.style.opacity = '0';
@@ -308,41 +295,39 @@
 <body>
     <div id="loading-screen">
         <div class="spinner"></div>
+        <p>Loading, please wait...</p>
     </div>
-<header>
-    <span class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></span>
-        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/" class="logo">
-    <i class="fas fa-moon"></i>
-</a>
-    <div class="sidebar">
-        <div class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
-        <h2>Related Topics</h2>
-        <a href="https://developer.samsung.com/android-usb-driver">USB Drivers</a>
-        <a href="https://odindownload.com/mobile/">Odin3</a>
-        <a href="https://samfw.com/firmware/SM-T585/EGY/">Firmware</a>
-        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/main2/index.html">TWRP</a>
-        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/custom_recovery/main2/index.html">Custom Recoveries</a>
-        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/main2/twrp-storage-mount-fix/index.html">TWRP Storage Mount Fix</a>
-        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/main2/index.html">Full Flash Guide</a>
-        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_firmware/main2/index.html">Flash Firmware</a>
-        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/fix_partitions/main2/index.html">Fix Partitions</a>
-        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/disable_encryption/main2/index.html">Disable Encryption</a>
-        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/gapps/main2/index.html">Gapps Packages</a>
-        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/root/main2/index.html">Magisk & Apatch</a>
-        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/about/main2/index.html">About us</a>
-    </div>
-    <h1>Custom ROMs for Samsung Galaxy Tab A 10.1 2016</h1>
-    <p>Unlock amazing performance with custom ROMs for your device! 🚀</p>
-    <div>
-        <a onclick="smoothScroll('#roms')">Let’s go!</a>
-        <a onclick="smoothScroll('.donations-section')" style="margin-left: 15px;">Support</a>
-    </div>
-</header>
+    <header>
+        <span class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></span>
+        <div class="sidebar">
+            <h2>Related Topics</h2>
+              <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/"><i class="fas fa-moon"></i> Dark Mode</a>
+            <a href="https://developer.samsung.com/android-usb-driver"><i class="fas fa-plug"></i> USB Drivers</a>
+            <a href="https://odindownload.com/mobile/"><i class="fas fa-download"></i> Odin3</a>
+            <a href="https://samfw.com/firmware/SM-T585/EGY/"><i class="fas fa-file-alt"></i> Firmware</a>
+            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/main2/index.html"><i class="fas fa-tools"></i> TWRP</a>
+            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/custom_recovery/main2/index.html"><i class="fas fa-hdd"></i> Custom Recoveries</a>
+            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/main2/twrp-storage-mount-fix/index.html"><i class="fas fa-exclamation-triangle"></i> TWRP Storage Mount Fix</a>
+            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/main2/index.html"><i class="fas fa-book"></i> Full Flash Guide</a>
+            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_firmware/main2/index.html"><i class="fas fa-sync"></i> Flash Firmware</a>
+            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/fix_partitions/main2/index.html"><i class="fas fa-cogs"></i> Fix Partitions</a>
+            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/disable_encryption/main2/index.html"><i class="fas fa-unlock"></i> Disable Encryption</a>
+            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/gapps/main2/index.html"><i class="fab fa-google"></i> GApps Packages</a>
+            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/root/main2/index.html"><i class="fas fa-key"></i> Magisk & Apatch</a>
+            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/about/main2/index.html"><i class="fas fa-info-circle"></i> About us</a>
+        </div>
+        <h1>Custom ROMs for Samsung Galaxy Tab A 10.1 2016</h1>
+        <p>Unlock amazing performance with custom ROMs for your device! 🚀</p>
+        <div>
+            <a onclick="smoothScroll('#roms')">Let’s go!</a>
+            <a onclick="smoothScroll('.donations-section')" style="margin-left: 15px;">Support</a>
+        </div>
+    </header>
 
-<section id="roms" class="roms-section">
-    <h2>Android Versions</h2>
-    <div class="rom-cards">
-        <!-- Android 8 -->
+    <section id="roms" class="roms-section">
+        <h2>Android Versions</h2>
+        <div class="rom-cards">
+            <!-- Android 8 -->
         <div class="android-card">
             <img src="https://i.ibb.co/1r3HW3v/8.png" alt="Android 8">
             <h3>Android 8 O</h3>
@@ -390,35 +375,34 @@
             <h3>Android 14 U</h3>
             <button onclick="window.location.href='https://zoro2045.github.io/SM-T585-Custom-ROMs/14/main2'" style="font-size: 18px;">View Available ROMs</button>
         </div>
-    </div>
-    
-<section class="donations-section">
-<section class="donations-section">
-    <h2>Support the ROM Development</h2>
-    <p>You can support by sending donations via Vodafone Cash.</p>
-    <p style="font-size: 18px; margin: 10px 0;">
-        <i class="fas fa-money-bill-wave"></i> Vodafone Cash: <strong>01095673573</strong>
-    </p>
-    <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center;">
-        <a href="https://t.me/gtaxllte" class="donation-button telegram">
-            <i class="fab fa-telegram" style="margin-right: 8px;"></i> Telegram Channel
-        </a>
-        <a href="https://t.me/smt585chat" class="donation-button chat">
-            <i class="fas fa-comments" style="margin-right: 8px;"></i> Chat Group
-        </a>
-        <a href="https://youtube.com/@seifel-deinhossam6690?feature=shared" class="donation-button youtube">
-            <i class="fab fa-youtube" style="margin-right: 8px;"></i> YouTube Channel
-        </a>
-    </div>
-</section>
+   
+        <section class="donations-section">
+        <section class="donations-section">
+            <h2>Support the ROM Development</h2>
+            <p>You can support by sending donations via Vodafone Cash.</p>
+            <p style="font-size: 18px; margin: 10px 0;">
+                <i class="fas fa-money-bill-wave"></i> Vodafone Cash: <strong>01095673573</strong>
+            </p>
+            <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center;">
+                <a href="https://t.me/gtaxllte" class="donation-button telegram">
+                    <i class="fab fa-telegram"></i> Telegram Channel
+                </a>
+                <a href="https://t.me/smt585chat" class="donation-button chat">
+                    <i class="fas fa-comments"></i> Chat Group
+                </a>
+                <a href="https://youtube.com/@seifel-deinhossam6690?feature=shared" class="donation-button youtube">
+                    <i class="fab fa-youtube"></i> YouTube Channel
+                </a>
+            </div>
+        </section>
 
-<footer>
-    <p>Developed by <a href="https://zoro2045.github.io/">ፚ Ꭷ Ꮢ Ꭷ ❥</a></p>
-    <div class="social-icons">
-        <a href="https://twitter.com/DEV_ZORO2045" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://t.me/ZORO2045" target="_blank"><i class="fab fa-telegram"></i></a>
-        <a href="https://github.com/ZORO2045" target="_blank"><i class="fab fa-github"></i></a>
-    </div>
-</footer>
-</body>
-        </html>
+        <footer>
+            <p>Developed by <a href="https://zoro2045.github.io/">ፚ Ꭷ Ꮢ Ꭷ ❥</a></p>
+            <div class="social-icons">
+                <a href="https://twitter.com/DEV_ZORO2045" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://t.me/ZORO2045" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="https://github.com/ZORO2045" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
+    </body>
+    </html>
