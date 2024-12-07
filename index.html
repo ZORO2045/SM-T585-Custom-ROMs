@@ -59,7 +59,7 @@
             text-align: center;
             color: #ffffff;
         }
-        header h1, header p, header a, sidebar {
+        header h1, header p, header a {
             user-select: none;
         }
         header h1 {
@@ -91,13 +91,14 @@
             left: -260px; 
             width: 260px; 
             height: 100%;
-            background: linear-gradient(to bottom, rgba(27, 0, 77, 0.8), rgba(58, 0, 127, 0.8));
+            background: linear-gradient(to bottom right, #4b0082, #00bfff));
             backdrop-filter: blur(10px);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
             transition: left 0.3s ease;
             z-index: 999;
+            overflow-y: auto;
         }
         .sidebar h2 {
             margin-bottom: 20px;
@@ -211,43 +212,33 @@
             justify-content: center;
             align-items: center;
             transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
-
         .donation-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
-
         .donation-button i {
-    margin-right: 8px;
-    font-size: 1.2rem;
+            margin-right: 8px;
         }
-
         .donation-button.youtube {
-    background-color: #ff0000;
+            background-color: #ff0000;
         }
-
         .donation-button.youtube:hover {
-    background-color: #cc0000;
+            background-color: #cc0000;
         }
-
         .donation-button.telegram {
-    background-color: #0088cc;
+            background-color: #0088cc;
         }
-
         .donation-button.telegram:hover {
-    background-color: #006699;
+            background-color: #006699;
         }
-
         .donation-button.chat {
-    background-color: #4caf50;
+            background-color: #4caf50;
         }
-
         .donation-button.chat:hover {
-    background-color: #388e3c;
+            background-color: #388e3c;
         }
-
         footer {
             padding: 20px;
             background-color: #000000;
@@ -288,27 +279,71 @@
                 behavior: 'smooth'
             });
         }
-        
+
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             const toggleBtn = document.querySelector('.toggle-btn i');
+
             if (sidebar.style.left === '0px') {
-                sidebar.style.left = '-260px';
+                sidebar.style.left = '-260px'; 
+                sidebar.style.visibility = 'hidden'; 
+                sidebar.style.opacity = '0'; 
                 toggleBtn.classList.remove('fa-times');
                 toggleBtn.classList.add('fa-bars');
             } else {
-                sidebar.style.left = '0px';
+                sidebar.style.left = '0px'; 
+                sidebar.style.visibility = 'visible'; 
+                sidebar.style.opacity = '1'; 
                 toggleBtn.classList.remove('fa-bars');
                 toggleBtn.classList.add('fa-times');
             }
         }
+
+        function closeSidebar(event) {
+            const sidebar = document.querySelector('.sidebar');
+            const toggleBtn = document.querySelector('.toggle-btn');
+
+            if (sidebar.style.left === '0px' && 
+                !sidebar.contains(event.target) && 
+                !toggleBtn.contains(event.target)) {
+                sidebar.style.left = '-260px'; 
+                sidebar.style.visibility = 'hidden'; 
+                sidebar.style.opacity = '0'; 
+                toggleBtn.querySelector('i').classList.remove('fa-times');
+                toggleBtn.querySelector('i').classList.add('fa-bars');
+            }
+        }
+
+        function handleScroll() {
+            const sidebar = document.querySelector('.sidebar');
+
+            if (sidebar.style.left === '0px') {
+                sidebar.style.left = '-260px'; 
+                sidebar.style.visibility = 'hidden'; 
+                sidebar.style.opacity = '0'; 
+                const toggleBtn = document.querySelector('.toggle-btn i');
+                toggleBtn.classList.remove('fa-times');
+                toggleBtn.classList.add('fa-bars');
+            }
+        }
+
         window.addEventListener('load', function() {
+            const sidebar = document.querySelector('.sidebar');
+            const toggleBtn = document.querySelector('.toggle-btn i');
+
+            sidebar.style.left = '-260px';
+            sidebar.style.visibility = 'hidden';
+            sidebar.style.opacity = '0';
+
             const loadingScreen = document.getElementById('loading-screen');
             loadingScreen.style.opacity = '0';
             setTimeout(() => {
                 loadingScreen.style.display = 'none';
             }, 500);
         });
+
+        document.addEventListener('click', closeSidebar);
+        window.addEventListener('scroll', handleScroll);
     </script>
 </head>
 <body>
@@ -412,4 +447,4 @@
     </div>
 </footer>
 </body>
-        </html>
+    </html>
