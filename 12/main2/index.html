@@ -14,7 +14,7 @@
             box-sizing: border-box;
         }
         body {
-            background-color: #ffffff;
+            background: linear-gradient(to bottom right, #e8d6f1, #e8d6f1);
             color: #333333;
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
@@ -25,10 +25,13 @@
             align-items: center;
             justify-content: center;
             height: 70vh;
-            background: linear-gradient(to bottom right, #ffffff, #e0e0e0);
+            background: linear-gradient(to bottom right, #ffffff, #d6ccf5);
             text-align: center;
-            color: #000000;
+            color: #333333;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        header h1, header p, header a {
+            user-select: none;
         }
         header img {
             max-width: 150px; 
@@ -39,21 +42,20 @@
         header h1 {
             font-size: 3rem; 
             margin-bottom: 10px; 
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
             opacity: 0;
             transition: opacity 1s ease;
         }
         .fade-in {
             opacity: 1;
-        }
+            }
         header p {
             font-size: 1.5rem;
             margin-bottom: 20px;
         }
         header a {
-            padding: 15px 35px;
-            background-color: #3a1f6d;
-            color: #ffffff;
+           padding: 15px 35px;
+            background-color: #5e3b9a;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 700;
@@ -61,16 +63,17 @@
         }
         header a:hover {
             background-color: #5e3b9a;
+            transform: scale(1.05);
         }
         .roms-section {
             padding: 50px 20px;
-            background-color: #ffffff;
             text-align: center;
         }
         .roms-section h2 {
             font-size: 2.5rem;
             margin-bottom: 30px;
-            color: #3a1f6d;
+            color: #5e3b9a;
+            user-select: none;
         }
         .rom-cards {
             display: flex;
@@ -79,13 +82,20 @@
             gap: 20px;
         }
         .rom-card {
-            background-color: #f8f9fa;
+            background: linear-gradient(to bottom right, #f0e3f8, #f0e3f8);
             border-radius: 15px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
             width: 300px;
             padding: 20px;
             position: relative;
             overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            user-select: none;
+        }
+        .rom-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
         }
         .rom-card img {
             max-width: 100px;
@@ -95,9 +105,9 @@
             margin-right: auto;
         }
         .rom-card h3 {
-            color: #000000;
-            margin-bottom: 15px;
+            color: #333333;
             font-size: 1.5rem;
+            margin-bottom: 10px;
         }
         .rom-card p {
             color: #555555;
@@ -251,4 +261,4 @@
 </footer>
 
 </body>
-</html>
+    </html>
