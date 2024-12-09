@@ -28,25 +28,62 @@
             background: linear-gradient(to bottom right, #4b0082, #00bfff));
             backdrop-filter: blur(20px);
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            color: #ffffff;
-            font-size: 1.5rem;
-            text-align: center;
         }
-        .spinner {
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 80px;
             height: 80px;
-            border: 8px solid rgba(255, 255, 255, 0.2);
-            border-top-color: #8000ff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
+            animation: anim 4s linear infinite;
         }
-        @keyframes spin {
+        .box span {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, #5e4b8c, rgb(128, 0, 128), rgb(200, 162, 200));
+            border-radius: 50%;
+        }
+        .box span:nth-child(1) {
+            animation: spn1 1s linear infinite;
+        }
+        @keyframes spn1 {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(80px); }
+        }
+        .box span:nth-child(2) {
+            animation: spn2 1s linear infinite;
+        }
+        @keyframes spn2 {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-80px); }
+        }
+        .box span:nth-child(3) {
+            animation: spn3 1s linear infinite;
+        }
+        @keyframes spn3 {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(80px); }
+        }
+        .box span:nth-child(4) {
+            animation: spn4 1s linear infinite;
+        }
+        @keyframes spn4 {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-80px); }
+        }
+        @keyframes anim {
             0% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
             100% { transform: rotate(360deg); }
         }
         header {
@@ -352,8 +389,14 @@
 </head>
 <body>
     <div id="loading-screen">
-        <div class="spinner"></div>
-        <p>Loading, please wait...</p>
+        <div class="main">
+            <div class="box">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </div>
     <header>
         <span class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></span>
