@@ -14,11 +14,10 @@
             box-sizing: border-box;
         }
         body {
-            background-color: #ffffff;
+            background: linear-gradient(to bottom right, #e8d6f1, #e8d6f1);
             color: #333;
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-            text-align: center;
         }
         header {
             display: flex;
@@ -26,10 +25,13 @@
             align-items: center;
             justify-content: center;
             height: 70vh;
-            background: linear-gradient(to bottom right, #ffffff, #e0e0e0);
+            background: linear-gradient(to bottom right, #ffffff, #d6ccf5);
             text-align: center;
-            color: #333;
-            padding: 20px;
+            color: #333333;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        header h1, header p, header a {
+            user-select: none;
         }
         header img {
             max-width: 150px; 
@@ -38,51 +40,78 @@
             transition: opacity 1s ease;
         }
         header h1 {
-            font-size: 3.5rem; 
+            font-size: 3rem; 
             margin-bottom: 10px; 
-            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.5);
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
             opacity: 0;
             transition: opacity 1s ease;
         }
         .fade-in {
             opacity: 1;
         }
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        } 
+        header a {
+           padding: 15px 35px;
+            background-color: #5e3b9a;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+        header a:hover {
+            background-color: #5e3b9a;
+            transform: scale(1.05);
+        }   
         .roms-section {
             padding: 50px 20px;
-            background-color: #ffffff;
+            background-color: none;
             border-radius: 15px;
             margin: 20px auto;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
+           
+            max-width: 800px; 
         }
         .roms-section h2 {
             font-size: 2.5rem;
             margin-bottom: 30px;
-            color: #3a1f6d;
+            color: transparent;
+            color: #5e3b9a;
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-align: center;
         }
         .rom-cards {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-direction: column; 
+            align-items: center; 
             gap: 30px;
         }
         .rom-card {
-            background-color: #f8f9fa;
+            background: linear-gradient(to bottom right, #f0e3f8, #f0e3f8);
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 350px;
-            padding: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 350px; 
+            padding: 30px; 
             text-align: center; 
+            margin-top: 0.25px;
+            margin-bottom: 0.25px;
+        }
+        .rom-card img {
+            max-width: 100px;
+            margin: 10px auto;
+            display: block;
         }
         .rom-card h3 {
             color: #333;
             margin-bottom: 15px;
-            font-size: 1.8rem;
+            font-size: 1.8rem; 
         }
         .rom-card p {
-            color: #666;
+            color: #555;
             margin-bottom: 20px;
-            font-size: 1.1rem;
+            font-size: 1.1rem; 
         }
         .rom-card ul {
             list-style-type: none;
@@ -91,20 +120,61 @@
         }
         .rom-card ul li {
             margin-bottom: 10px;
-            font-size: 1.1rem;
+            font-size: 1.1rem; 
         }
         .rom-card a {
-            padding: 12px 25px;
-            background-color: #1b004d;
-            color: #fff;
-            border-radius: 5px;
+            padding: 10px 25px;
+            background-color: #3a1f6d;
+            color: #ffffff;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             display: inline-block;
             transition: background-color 0.3s ease;
         }
         .rom-card a:hover {
-            background-color: #2e0079;
+            background-color: #5e3b9a;
+        }
+        .download-options {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
+        }
+        .download-options.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .download-options a {
+            display: block;
+            margin: 10px 0;
+            background-color: #1b004d;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .download-options a:hover {
+            background-color: #5e3b9a;
+        }
+        .note {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+        .method1, .method2 {
+            color: transparent;
+            background: linear-gradient(to right, #00bfff, #ff69b4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
         footer {
             padding: 20px;
@@ -123,8 +193,8 @@
             header h1 {
                 font-size: 2.5rem;
             }
-            .roms-section h2 {
-                font-size: 2rem;
+            header p {
+                font-size: 1.2rem;
             }
             .rom-cards {
                 flex-direction: column;
@@ -133,6 +203,16 @@
         }
     </style>
     <script>
+        function toggleDownloadOptions(event) {
+            const options = event.currentTarget.nextElementSibling;
+            const allOptions = document.querySelectorAll('.download-options');
+            allOptions.forEach(option => {
+                if (option !== options) {
+                    option.classList.remove('show');
+                }
+            });
+            options.classList.toggle('show');
+        }
         window.onload = function() {
             const logo = document.querySelector('header img');
             const title = document.querySelector('header h1');
