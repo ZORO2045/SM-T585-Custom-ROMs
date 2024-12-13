@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flash Firmware - Light Mode</title>
+    <title>Flash Firmware</title>
     <link rel="icon" type="image/png" href="https://i.ibb.co/BC0J6pS/4961639.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -14,7 +14,7 @@
             box-sizing: border-box;
         }
         body {
-            background-color: #ffffff;
+            background: linear-gradient(to bottom right, #e8d6f1, #e8d6f1);
             color: #333;
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
@@ -25,10 +25,13 @@
             align-items: center;
             justify-content: center;
             height: 70vh;
-            background: linear-gradient(to bottom right, #ffffff, #e0e0e0);
+            background: linear-gradient(to bottom right, #ffffff, #d6ccf5);
             text-align: center;
-            color: #000;
-            padding: 20px;
+            color: #333333;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        header h1, header p, header a {
+            user-select: none;
         }
         header img {
             max-width: 150px; 
@@ -39,66 +42,91 @@
         header h1 {
             font-size: 3rem; 
             margin-bottom: 10px; 
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
             opacity: 0;
             transition: opacity 1s ease;
         }
         .fade-in {
             opacity: 1;
         }
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        } 
+        header a {
+           padding: 15px 35px;
+            background-color: #5e3b9a;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+        header a:hover {
+            background-color: #5e3b9a;
+            transform: scale(1.05);
+        }   
         .roms-section {
             padding: 50px 20px;
-            background-color: #ffffff;
-            text-align: center;
+            background-color: none;
             border-radius: 15px;
-            margin: 20px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+           
+            max-width: 800px; 
         }
         .roms-section h2 {
             font-size: 2.5rem;
             margin-bottom: 30px;
-            color: #3a1f6d;
+            color: transparent;
+            color: #5e3b9a;
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-align: center;
         }
         .rom-cards {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+            flex-direction: column; 
+            align-items: center; 
+            gap: 30px;
         }
         .rom-card {
-            background-color: #f5f5f5;
+            background: linear-gradient(to bottom right, #f0e3f8, #f0e3f8);
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 350px; 
+            padding: 30px; 
+            text-align: center; 
+            margin-top: 0.25px;
+            margin-bottom: 0.25px;
+        }
+        .rom-card img {
+            max-width: 100px;
+            margin: 10px auto;
+            display: block;
         }
         .rom-card h3 {
-            color: #000;
+            color: #333;
             margin-bottom: 15px;
-            font-size: 1.5rem;
+            font-size: 1.8rem; 
         }
         .rom-card p {
-            color: #666;
+            color: #555;
             margin-bottom: 20px;
-            font-size: 1rem;
+            font-size: 1.1rem; 
         }
         .rom-card ul {
             list-style-type: none;
             padding-left: 0;
-            text-align: center;
             color: #333;
         }
         .rom-card ul li {
             margin-bottom: 10px;
+            font-size: 1.1rem; 
         }
         .rom-card a {
-            padding: 10px 20px;
+            padding: 10px 25px;
             background-color: #3a1f6d;
-            color: #fff;
-            border-radius: 5px;
+            color: #ffffff;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             display: inline-block;
@@ -122,7 +150,7 @@
         .download-options a {
             display: block;
             margin: 10px 0;
-            background-color: #3a1f6d;
+            background-color: #1b004d;
             padding: 10px 20px;
             border-radius: 5px;
             color: #fff;
@@ -135,12 +163,18 @@
         .note {
             margin-top: 20px;
             font-weight: bold;
-            color: #ff9800;
+            color: #ffcc00;
         }
         .method1, .method2 {
-            color: #ff5722;
+            color: transparent;
+            background: linear-gradient(to right, #00bfff, #ff69b4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-size: 1.2rem;
             font-weight: bold;
+            text-align: center;
             margin-top: 20px;
+            margin-bottom: 20px;
         }
         footer {
             padding: 20px;
@@ -151,7 +185,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         footer a {
-            color: #fff;
+            color: #ffffff;
             text-decoration: none;
             font-size: 1.5rem;
         }
@@ -159,8 +193,8 @@
             header h1 {
                 font-size: 2.5rem;
             }
-            .roms-section h2 {
-                font-size: 2rem;
+            header p {
+                font-size: 1.2rem;
             }
             .rom-cards {
                 flex-direction: column;
@@ -187,6 +221,8 @@
         }
     </script>
 </head>
+<body>
+
 <body>
 
 <header>
@@ -248,4 +284,4 @@
 </footer>
 
 </body>
-</html>
+                        </html>
