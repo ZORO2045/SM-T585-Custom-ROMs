@@ -1,14 +1,14 @@
-## About the Website
+## About the Website 💫
 
 Welcome to our dedicated site for the **Samsung Galaxy Tab A 10.1 2016 (SM-T585)** (gtaxllte)! Here, you will find comprehensive resources and information related to customizing your device through a wide selection of custom ROMs. Our goal is to enhance your user experience and maximize the performance of your device, allowing you to enjoy the latest features and operating systems.
 
-## What We Offer
+## What We Offer ⭐
 
 - **Custom ROMs**: Explore a variety of custom ROMs collected from multiple reputable sources, each with unique features tailored to meet your needs.
 - **Detailed Guides**: Access step-by-step guides designed to help you install ROMs and troubleshoot common issues, simplifying the customization process.
 - **Supportive Community**: Join our active community of users who share their experiences and tips for device customization.
 
-## A Note from the Founder
+## A Note from the Founder ❤️
 
 As the creator of this website, I am dedicated to providing users with the best resources to get the most out of their devices. While I am not a developer of the ROMs themselves, I have compiled a wealth of information and solutions to various issues you may encounter.
 
