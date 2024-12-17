@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #5e3b9a;
+        }    
         * {
             margin: 0;
             padding: 0;
@@ -18,36 +21,6 @@
             color: #333333;
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-        }
-        #loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom right, #ffffff, #d6ccf5);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            color: #333333;
-            font-size: 1.5rem;
-            text-align: center;
-            user-select: none;
-        }
-        .spinner {
-            width: 80px;
-            height: 80px;
-            border: 8px solid rgba(51, 51, 51, 0.2);
-            border-top-color: #8000ff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
         header {
             position: relative;
@@ -67,10 +40,12 @@
             font-size: 3.5rem;
             margin-bottom: 20px;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 1s ease forwards;
         }
         header p {
             font-size: 1.5rem;
             margin-bottom: 40px;
+            animation: fadeIn 1s ease forwards;
         }
         header a {
             padding: 15px 30px;
@@ -81,10 +56,41 @@
             font-weight: 700;
             transition: background-color 0.3s ease, transform 0.3s ease;
             margin: 0 5px;
+            animation: fadeIn 1s ease forwards;
         }
         header a:hover {
-            background-color: #5e3b9a;
+            background-color: #8465c0;
             transform: scale(1.05);
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+          @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
         .sidebar {
             position: absolute;
@@ -93,7 +99,7 @@
             width: 260px; 
             height: 100%;
             background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.8), rgba(232, 214, 241, 0.8)); 
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -128,9 +134,13 @@
             top: 20px;
             left: 20px;
             font-size: 24px;
-            color: #333333;
+            color: var(--text-white);
             cursor: pointer;
             z-index: 1000;
+            transition: color 0.3s ease;
+        }
+        .toggle-btn:hover {
+             color: var(--primary-color);
         }
         .roms-section {
             padding: 50px 20px;
@@ -337,12 +347,6 @@
             sidebar.style.left = '-260px';
             sidebar.style.visibility = 'hidden';
             sidebar.style.opacity = '0';
-
-            const loadingScreen = document.getElementById('loading-screen');
-            loadingScreen.style.opacity = '0';
-            setTimeout(() => {
-                loadingScreen.style.display = 'none';
-            }, 500);
         });
 
         document.addEventListener('click', closeSidebar);
@@ -350,10 +354,6 @@
     </script>
 </head>
 <body>
-    <div id="loading-screen">
-        <div class="spinner"></div>
-        <p>Loading, please wait...</p>
-    </div>
     <header>
         <span class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></span>
         <div class="sidebar">
@@ -462,4 +462,4 @@
             </div>
         </footer>
     </body>
-        </html>
+                                                                                                      </html>
