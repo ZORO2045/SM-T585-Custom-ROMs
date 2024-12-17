@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Flash Guide</title>
+    <title>Full Flash Guide - EN</title>
     <link rel="icon" type="image/png" href="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/flash.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -28,16 +28,17 @@
             background: linear-gradient(to bottom right, #000, #1b004d);
             color: #fff;
             padding: 20px;
+            position: relative;
         }
         header img {
-            max-width: 150px; 
-            margin-bottom: 20px; 
+            max-width: 150px;
+            margin-bottom: 20px;
             opacity: 0;
             transition: opacity 1s ease;
         }
         header h1 {
-            font-size: 3.5rem; 
-            margin-bottom: 10px; 
+            font-size: 3.5rem;
+            margin-bottom: 10px;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
             opacity: 0;
             transition: opacity 1s ease;
@@ -45,37 +46,61 @@
         .fade-in {
             opacity: 1;
         }
+       .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px; 
+            background-color: #1b004d; 
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+        }
+        .language-switcher:hover {
+           background-color: #2e0079;
+           color: #81d4fa;
+        }
+        .language-switcher i {
+            margin-left: 5px;
+            font-size: 1.5rem;
+        }
         .roms-section {
             padding: 50px 20px;
             background-color: #000;
             border-radius: 15px;
             margin: 20px auto;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-            max-width: 800px; 
+            max-width: 800px;
         }
         .roms-section h2 {
             font-size: 2.5rem;
             margin-bottom: 30px;
             color: transparent;
-background: linear-gradient(to right, #00BFFF, #8A2BE2);
--webkit-background-clip: text;
-background-clip: text;
+            background: linear-gradient(to right, #00BFFF, #8A2BE2);
+            -webkit-background-clip: text;
+            background-clip: text;
             align-items: center;
             text-align: center;
         }
         .rom-cards {
             display: flex;
-            flex-direction: column; 
-            align-items: center; 
+            flex-direction: column;
+            align-items: center;
             gap: 30px;
         }
         .rom-card {
             background-color: #121212;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-            width: 350px; 
-            padding: 30px; 
-            text-align: center; 
+            width: 350px;
+            padding: 30px;
+            text-align: center;
             margin-top: 0.25px;
             margin-bottom: 0.25px;
         }
@@ -90,12 +115,12 @@ background-clip: text;
         .rom-card h3 {
             color: #fff;
             margin-bottom: 15px;
-            font-size: 1.8rem; 
+            font-size: 1.8rem;
         }
         .rom-card p {
             color: #9e9e9e;
             margin-bottom: 20px;
-            font-size: 1.1rem; 
+            font-size: 1.1rem;
         }
         .rom-card ul {
             list-style-type: none;
@@ -104,13 +129,13 @@ background-clip: text;
         }
         .rom-card ul li {
             margin-bottom: 10px;
-            font-size: 1.1rem; 
+            font-size: 1.1rem;
         }
         .rom-card a {
-            padding: 12px 25px; 
+            padding: 12px 25px;
             background-color: #1b004d;
             color: #fff;
-            border-radius: 5px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             display: inline-block;
@@ -151,9 +176,9 @@ background-clip: text;
         }
         .method1, .method2 {
             color: transparent;
-background: linear-gradient(to right, #00BFFF, #ffbfff);
--webkit-background-clip: text;
-background-clip: text;
+            background: linear-gradient(to right, #00BFFF, #ffbfff);
+            -webkit-background-clip: text;
+            background-clip: text;
             font-size: 1.2rem;
             font-weight: bold;
             text-align: center;
@@ -177,6 +202,14 @@ background-clip: text;
             header h1 {
                 font-size: 2.5rem;
             }
+             .language-switcher {
+             top: 10px;
+             right: 10px;
+             font-size: 1rem;
+        }
+        .language-switcher i {
+            font-size: 1.2rem;
+        }
             .roms-section h2 {
                 font-size: 2rem;
             }
@@ -208,6 +241,10 @@ background-clip: text;
 <body>
 
 <header>
+    <a href="arabic_page.html" class="language-switcher">
+        <span>العربية </span>
+        <i class="fas fa-globe"></i>
+    </a>
     <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/flash.png" alt="Flash Logo">
     <h1>Full Flash Guide</h1>
 </header>
@@ -310,4 +347,4 @@ background-clip: text;
 </footer>
 
 </body>
-</html>
+        </html>
