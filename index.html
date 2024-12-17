@@ -18,74 +18,8 @@
             color: #e0e0e0;
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-        }
-        #loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom right, #4b0082, #00bfff));
-            backdrop-filter: blur(20px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-        .main {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 80px;
-            height: 80px;
-            animation: anim 4s linear infinite;
-        }
-        .box span {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(45deg, #5e4b8c, rgb(128, 0, 128), rgb(200, 162, 200));
-            border-radius: 50%;
-        }
-        .box span:nth-child(1) {
-            animation: spn1 1s linear infinite;
-        }
-        @keyframes spn1 {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(80px); }
-        }
-        .box span:nth-child(2) {
-            animation: spn2 1s linear infinite;
-        }
-        @keyframes spn2 {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(-80px); }
-        }
-        .box span:nth-child(3) {
-            animation: spn3 1s linear infinite;
-        }
-        @keyframes spn3 {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(80px); }
-        }
-        .box span:nth-child(4) {
-            animation: spn4 1s linear infinite;
-        }
-        @keyframes spn4 {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-80px); }
-        }
-        @keyframes anim {
-            0% { transform: rotate(0deg); }
-            50% { transform: rotate(180deg); }
-            100% { transform: rotate(360deg); }
-        }
+            overflow-x: hidden;
+            transition: background-color 0.3s ease;
         header {
             position: relative;
             display: flex;
@@ -122,6 +56,36 @@
         header a:hover {
             background-color: #2e0079;
             transform: scale(1.05);
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+          @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
         .sidebar {
             position: absolute;
@@ -388,16 +352,6 @@
     </script>
 </head>
 <body>
-    <div id="loading-screen">
-        <div class="main">
-            <div class="box">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </div>
     <header>
         <span class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></span>
         <div class="sidebar">
@@ -494,4 +448,4 @@
     </div>
 </footer>
 </body>
-    </html>
+                </html>
