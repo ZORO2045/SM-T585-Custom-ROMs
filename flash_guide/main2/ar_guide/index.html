@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Flash Guide - AR</title>
+     <link rel="icon" type="image/png" href="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/flash.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(to bottom right, #e8d6f1, #e8d6f1);
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            text-align: right;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 70vh;
+            background: linear-gradient(to bottom right, #ffffff, #d6ccf5);
+            text-align: center;
+            color: #333333;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative;
+        }
+        header h1, header p, header a {
+            user-select: none;
+        }
+        header img {
+            max-width: 150px; 
+            margin-bottom: 20px; 
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        header h1 {
+            font-size: 3rem; 
+            margin-bottom: 10px; 
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .fade-in {
+            opacity: 1;
+        }
+        .ltr-text {
+           direction: ltr;
+           unicode-bidi: embed;
+       }
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background: linear-gradient(to bottom right, #ffffff, #d6ccf5);
+            border-radius: 5px;
+            color: #333;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        .language-switcher:hover {
+           background-color: #b3e5fc;
+           color: #5e3b9a;;
+        }
+        .language-switcher i {
+            margin-right: 5px;
+            font-size: 1.5rem;
+        }
+        .roms-section {
+            padding: 50px 20px;
+            background-color: none;
+             border-radius: 15px;
+            margin: 20px auto;
+             max-width: 800px;
+        }
+        .roms-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: transparent;
+            color: #5e3b9a;
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-align: center;
+        }
+        .rom-cards {
+            display: flex;
+            flex-direction: column;
+             align-items: center;
+            gap: 30px;
+        }
+        .rom-card {
+            background: linear-gradient(to bottom right, #f0e3f8, #f0e3f8);
+            border-radius: 15px;
+             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 350px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 0.25px;
+            margin-bottom: 0.25px;
+        }
+         .rom-card img {
+            max-width: 100px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+             filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+        }
+        .rom-card h3 {
+            color: #000;
+             margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        .rom-card p {
+            color: #555;
+             margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .rom-card ul {
+            list-style-type: none;
+            padding-left: 0;
+             color: #333;
+        }
+        .rom-card ul li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .rom-card a {
+            padding: 12px 25px;
+            background-color: #3a1f6d;
+            color: #fff;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .rom-card a:hover {
+            background-color: #5e3b9a;
+        }
+         .download-options {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
+        }
+        .download-options.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .download-options a {
+            display: block;
+            margin: 10px 0;
+            background-color: #1b004d;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .download-options a:hover {
+            background-color: #5e3b9a;
+        }
+          .note {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ffcc00;
+            background-color: rgba(255,204,0,0.1);
+            padding: 10px;
+             border-radius: 10px;
+        }
+         .method1, .method2 {
+             color: transparent;
+            background: linear-gradient(to right, #007ACC, #CC77CC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+             margin-bottom: 20px;
+        }
+        footer {
+            padding: 20px;
+            background-color: #3a1f6d;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 10px;
+             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+             display: flex;
+             justify-content: center;
+        }
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.5rem;
+             display: flex;
+            align-items: center;
+        }
+         footer a:hover {
+             text-decoration: none;
+        }
+        footer a::before {
+            content: '\2190';
+            margin-right: 5px;
+             display: inline-block;
+             font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+             header h1 {
+                font-size: 2.5rem;
+            }
+            .language-switcher {
+             top: 10px;
+             left: 10px;
+             font-size: 1rem;
+        }
+         .language-switcher i {
+            font-size: 1.2rem;
+        }
+            .roms-section h2 {
+                font-size: 2rem;
+            }
+            .rom-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <script>
+        function toggleDownloadOptions(event) {
+            const options = event.currentTarget.nextElementSibling;
+            const allOptions = document.querySelectorAll('.download-options');
+            allOptions.forEach(option => {
+                if (option !== options) {
+                    option.classList.remove('show');
+                }
+            });
+            options.classList.toggle('show');
+        }
+        window.onload = function() {
+            const logo = document.querySelector('header img');
+            const title = document.querySelector('header h1');
+            logo.classList.add('fade-in');
+            title.classList.add('fade-in');
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/main2/index.html" class="language-switcher">
+        <span class="ltr-text">English</span>
+        <i class="fas fa-globe"></i>
+    </a>
+    <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/flash.png" alt="Flash Logo">
+    <h1>دليل التفليش الكامل</h1>
+</header>
+<section id="roms" class="roms-section">
+    <h2>إزاي تفلش ريكفري معدل وروم معدل مع ماجيسك على تاب A 10.1</h2>
+    <div class="rom-cards">
+        <div class="rom-card">
+            <h3><span style="color: transparent; background: linear-gradient(to right, #007ACC, #5A189A); -webkit-background-clip: text; background-clip: text;"><b>تعليمات مهمة قبل ما تبدأ</b></span></h3>
+             <p class="note">تأكد إن جهازك مشحون كويس واعمل نسخة احتياطية من أي داتا مهمة قبل ما تفلش.</p>
+            <p>كل الملفات وروابط التحميل اللي هنذكرها هتكون متاحة تحت في قسم "خيارات التحميل".</p>
+            <p class="note">بص على قسم 'مواضيع ذات صلة' في القايمة الجانبية في الصفحة الرئيسية، هتلاقي حلول لكل المشاكل اللي ممكن تقابلك.</p>
+           <p>اتبع الخطوات دي عشان تفلش ريكفري معدل، روم معدل وماجيسك على جهازك تاب A 10.1 (SM-T585):</p>
+             </div>
+              <div class="rom-card">
+            <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/settings.png" alt="Settings Logo">
+            <ul>
+             <h3><span style="color: transparent; background: linear-gradient(to right, #FF69B4, #FF4500); -webkit-background-clip: text; background-clip: text;"><b>تجهيز التاب قبل ما نبدأ</b></span></h3>
+                <li><strong>الخطوة 1:</strong> فعل خيارات المطور عن طريق إنك تروح للإعدادات وبعدين "حول الجهاز" وتدوس على "رقم الإصدار" 7 مرات لحد ما الخيار يتفعل.</li>
+                <li><strong>الخطوة 2:</strong> ارجع لقائمة الإعدادات واختار "خيارات المطور".</li>
+                <li><strong>الخطوة 3:</strong> فعل <span class="ltr-text">"USB debugging"</span> و <span class="ltr-text">"OEM unlocking"</span>.</li>
+                <p class="note">لو ما فتحتش البوت لودر (الخطوة 3) قبل ما تعمل أي تعديلات على جهازك، هيظهرلك الرسالة دي لما تعيد تشغيل الجهاز بعد التفليش:<h4><span style="color: transparent; background: linear-gradient(to right, red, red); -webkit-background-clip: text; background-clip: text;"><i class="ltr-text">Custom binary blocked by FRP lock.</i></span></h4></p>
+                <p><h4><span style="color: transparent; background: linear-gradient(to right, green, green); -webkit-background-clip: text; background-clip: text;"><b>لو ما اتبعتش الخطوات اللي فاتت وظهرتلك الرسالة دي، هتحتاج تفلش السوفت وير الأصلي للجهاز، وهتلاقي رابط شرح ليه تحت. لو واجهتك أي مشاكل، تقدر تنضم لجروب التليجرام بتاعنا عشان نساعدك.</b></span></h4></p>
+                <li><strong>الخطوة 4:</strong> اطفي الجهاز، وبعدين دوس على زرار الهوم وزرار الباور وزرار خفض الصوت في نفس الوقت عشان تدخل وضع الداونلود.</li>
+            </ul>
+                </div>
+                 <div class="rom-card">
+                <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/odin.png" alt="Odin Logo">
+                <ul>
+                <h3><span style="color: transparent; background: linear-gradient(to right, #007ACC, #CC77CC); -webkit-background-clip: text; background-clip: text;"><b>تجهيز برنامج أودين</b></span></h3>
+                <li><strong>الخطوة 1:</strong> ثبت تعريفات USB الخاصة بسامسونج على الكمبيوتر.</li>
+                <li><strong>الخطوة 2:</strong> نزل وشغل برنامج أودين على الكمبيوتر.</li>
+                <li><strong>الخطوة 3:</strong> وصل التاب بالكمبيوتر باستخدام وصلة USB.</li>
+                <p class="note">تأكد إن برنامج أودين شاف الجهاز (هتلاقي رسالة بتقول <span class="ltr-text">"added!!!"</span>).</p>
+                 <p class="note">لو الجهاز مش ظاهر علي أودين، تأكد من وصلة الـ USB وأنك ثبت تعريفات تعريفات الـ USB على الكمبيوتر بشكل صحيح.</p>
+                <li><strong>الخطوة 4:</strong> في برنامج أودين، دوس على زرار AP عشان تختار ملف <span class="ltr-text">'TWRP file.tar'</span> اللي نزلته على الكمبيوتر.</li>
+                <li><strong>الخطوة 5:</strong> روح لـ <span class="ltr-text">"Options"</span> وشيل علامة الصح من مربع <span class="ltr-text">"Auto Reboot"</span>.</li>
+                <a href="#" onclick="toggleDownloadOptions(event); return false;">خيارات التحميل</a>
+            <div class="download-options">
+                <a href="https://developer.samsung.com/android-usb-driver">تعريفات USB</a>
+                <a href="https://odindownload.com/mobile/">أودين</a>
+                <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/main2/index.html">ريكفري TWRP</a>
+            </div>
+        </div>
+                <div class="rom-card">
+                 <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/twrp.png" alt="TWRP Logo">
+                <ul>
+                 <h3><span style="color: transparent; background: linear-gradient(to right, #007ACC, #CC77CC); -webkit-background-clip: text; background-clip: text;"><b>تثبيت ريكفري معدل</b></span></h3>
+                <li><strong>الخطوة 1:</strong> دوس <span class="ltr-text">"Start"</span> في برنامج أودين عشان تبدأ عملية التفليش.</li>
+                <p class="note">هتظهرلك علامة خضرا بتقول <span style="background: linear-gradient(to right, green, green); -webkit-background-clip: text; color: transparent;"><i class="ltr-text">PASS!</i></span> لما العملية تخلص.</p>
+                <li><strong>الخطوة 2:</strong> دوس على زرار الباور شوية عشان تطفي الجهاز.</li>
+         
+          <h4 class="method2">وأول ما يطفي دوس علي طول  على زرار رفع الصوت وزرار الهوم وزرار الباور في نفس الوقت لحد ما يظهر شعار سامسونج على الشاشة.</h4>
+         <p class="note">ملحوظة: ريكفري TWRP بيسألك إذا كنت عايز تستخدمه في وضع 'القراءة فقط'. وضع 'القراءة فقط' معناه إنه هيفضل موجود على جهازك من غير ما يعمل أي تغييرات لحد ما تعمل إعادة تشغيل. ببساطة، اسحب السهم عشان تسمح بالتعديلات.</p>
+              </div>
+              <div class="rom-card">
+              <img src="https://i.ibb.co/kgdTbnq/CITYPNG-COM-Settings-Repair-Maintenance-Red-Icon-HD-PNG-1500x1500.png" alt="In TWRP Recovery Mode">
+                <ul>
+                <h3><span style="color: transparent; background: linear-gradient(to right, #ff4500, #ffcc00); -webkit-background-clip: text; background-clip: text;"><b>في وضع الريكفري المعدل</b></span></h3>
+                <li><strong>الخطوة 1:</strong> اختار <span class="ltr-text">'Wipe'</span> وبعدين <span class="ltr-text">'Format data'</span> وأكد بـ <span class="ltr-text">'yes'</span>.</li>
+                <li><strong>الخطوة 2:</strong> ارجع للـ TWRP home، اختار <span class="ltr-text">'Reboot'</span> وبعدين <span class="ltr-text">'Recovery'</span>.</li>
+                 <p class="note">لو مش عايز تثبت روم معدل وعايز تفضل على الروم الأصلي، ممكن توقف عند الخطوة دي وتختار <span class="ltr-text">"Reboot"</span> وبعدين <span class="ltr-text">"System"</span>. أو ممكن تكمل لـ قسم "تثبيت ماجيسك" لو عايز تعمل روت لجهازك.</p>
+              </div>
+              <div class="rom-card">
+               <img src="https://i.ibb.co/vhv4Yw2/pngwing-com.png" alt="Custom ROM Logo">
+                <ul>
+               <h3><span style="color: transparent; background: linear-gradient(to right, #FF6347, #FFD700, #32CD32); -webkit-background-clip: text; background-clip: text;"><b>تثبيت الروم المعدل</b></span></h3>
+                 <li><strong>الخطوة 1:</strong> كرر عملية <span class="ltr-text">'Wipe'</span> بس المرة دي اختار <span class="ltr-text">'Advanced Wipe'</span> وبعدين اختار كل الخيارات (ما عدا <span class="ltr-text">SD Card</span> و <span class="ltr-text">USB OTG</span>).</li>
+                  <li><strong>الخطوة 2:</strong> ارجع للصفحة الرئيسية الخاصة بـ <span class="ltr-text">'TWRP'</span> وبعد كده اختار <span class="ltr-text">'Install'</span> واختار مكان التخزين (اللي حطيت علية ملف الروم المعدل بتاعك سوأ حطيتة علي <span class="ltr-text">SD Card</span> أو <span class="ltr-text">USB OTG</span>).</li>
+                 <li><strong>الخطوة 3:</strong> اختار ملف الـ zip الخاص بالروم المعدل بتاعك.</li>
+                 <li><strong>الخطوة 4:</strong> دوس على <span class="ltr-text">'Add More Zips'</span> واختار ملف <span class="ltr-text">GApps</span> اللي جاي مع الروم لو كان بيحتاجه.</li>
+                 <li><strong>الخطوة 5:</strong> اسحب السهم عشان تأكد التفليش واستنى لحد ما عملية التفليش تخلص، وبعدين دوس <span class="ltr-text">'reboot system'</span>.</li>
+                  <p class="note">ملحوظة: في قسم رومات أندرويد 10، هتلاقي نسخة معدلة من واجهة <span class="ltr-text">One UI 2.0</span>، ومعاها ملف اسمه <span class="ltr-text">'create vendor'</span>. لازم تفلش الملف ده، وبعدين تعمل إعادة تشغيل للريكفري، وبعد كده تفلش البورت.</p>
+                   <p>لو فلشت ملف <strong><span class="ltr-text">'Create Vendor'</span></strong> وظهرلك الخطأ ده:<h4><span style="color: transparent; background: linear-gradient(to right, red, red); -webkit-background-clip: text; background-clip: text;"><i class="ltr-text">Updater process ended with ERROR: 127</i></span></h4></p><p>يا ريت تستخدم <strong>ريكفري <span class="ltr-text">OrangeFox</span></strong> اللي فيه ميزة <strong><span class="ltr-text">Vendor Support</span></strong>، وده برضو موجود مع الروم.</p>
+                <p class="note">ملحوظة: لو ثبت روم معدل على جهازك وعايز تغير لروم معدل تاني، لازم تعمل خطوة <span class="ltr-text">Advanced Wipe</span> تاني (الخطوة 1) الأول، وبعدين تفلش الروم اللي عايز تغير ليه.</p>
+                 <p class="note">ملحوظة: لو ثبت أي روم معدل على جهازك وعايز ترجع لنسخة <span class="ltr-text">One UI 1</span> المعدلة الموجودة في قسم رومات أندرويد 9، لازم تفلش السوفت وير الأصلي للجهاز الأول وبعدين تكرر الخطوات اللي فاتت تاني.</p>
+                 <p class="note">ملحوظة: "Dirty Flash" معناه إنك تفلش نسخة جديدة من الروم بتاعك فوق النسخة اللي عندك من غير ما تستخدم خيار <span class="ltr-text">"Wipe Data/Advanced Wipe/Factory Reset"</span> في الريكفري. وحتى لو كنت ناوي تعمل <span class="ltr-text">'Dirty Flash'</span>، لازم تمسح <span class="ltr-text">cache</span> وdalvik cache.</p>
+                <a href="#" onclick="toggleDownloadOptions(event); return false;">خيارات التحميل</a>
+            <div class="download-options">
+                 <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/index.html#roms">رومات معدلة</a>
+                <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_firmware/main2/index.html">تفليش السوفت وير الأصلي</a>
+            </div>
+                </div>
+             <div class="rom-card">
+              <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/magisk.png" alt="Magisk Logo">
+                <ul>
+                <h3><span style="color: transparent; background: linear-gradient(to right, #00CED1, #32CD32); -webkit-background-clip: text; background-clip: text;"><b>تثبيت ماجيسك</b></span></h3>
+                 <li><strong>الخطوة 1:</strong> نزل تطبيق ماجيسك <span class="ltr-text">apk</span></li>
+                <li><strong>الخطوة 2:</strong> غير اسم الامتداد من <span class="ltr-text">.apk</span> لـ <span class="ltr-text">.zip</span></li>
+                <li><strong>الخطوة 3:</strong> فلش ملف الـ <span class="ltr-text">zip</span> من الريكفري زي الروم بالظبط</li>
+                <li><strong>الخطوة 4:</strong> استنى لحد ما عملية التفليش تخلص، وبعدين دوس <span class="ltr-text">'reboot system'</span>.</li>
+                <li><strong>الخطوة 5:</strong> بعد ما الجهاز يعمل إعادة تشغيل، ثبت تطبيق ماجيسك على جهازك.</li>
+                <p class="note">ملحوظة: في نسخة <span class="ltr-text">One UI 1.0</span> المعدلة، لازم تفلش <span class="ltr-text">Magisk Prepare</span> قبل ما تفلش ماجيسك.</p>
+                <a href="#" onclick="toggleDownloadOptions(event); return false;">خيارات التحميل</a>
+            <div class="download-options">
+                <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/root/main2/index.html">ماجيسك</a>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+     <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/index.html">الرجوع للصفحة الرئيسية</a>
+</footer>
+
+</body>
+  </html>
