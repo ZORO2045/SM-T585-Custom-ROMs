@@ -21,6 +21,8 @@
             color: #333333;
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
+             overflow-x: hidden;
+            transition: background-color 0.3s ease;
         }
         header {
             position: relative;
@@ -93,9 +95,10 @@
             }
         }
         .sidebar {
-            position: absolute;
+             position: absolute;
             top: 0;
-            left: -260px; 
+            left: 0; 
+            transform: translateX(-100%);
             width: 260px; 
             height: 100%;
             background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.8), rgba(232, 214, 241, 0.8)); 
@@ -103,10 +106,18 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: left 0.3s ease;
+             transition: transform 0.3s ease; 
             z-index: 999;
             overflow-y: auto;
+            visibility: hidden;
+             opacity: 0;
+              will-change: transform;
         }
+         .sidebar.open {
+             transform: translateX(0); 
+              visibility: visible;
+             opacity: 1;
+         }
         .sidebar h2 {
             margin-bottom: 20px;
             color: #333333;
@@ -129,7 +140,7 @@
         .sidebar a i {
             margin-right: 10px;
         }
-        .toggle-btn {
+         .toggle-btn {
             position: absolute;
             top: 20px;
             left: 20px;
@@ -252,7 +263,7 @@
         .donation-button.chat:hover {
             background-color: #388e3c;
         }
-        footer {
+         footer {
     padding: 20px;
     background: linear-gradient(to bottom right, #d6ccf5, #d6ccf5);
     text-align: center;
@@ -293,64 +304,52 @@
             });
         }
 
-        function toggleSidebar() {
+         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             const toggleBtn = document.querySelector('.toggle-btn i');
+             sidebar.classList.toggle('open');
 
-            if (sidebar.style.left === '0px') {
-                sidebar.style.left = '-260px'; 
-                sidebar.style.visibility = 'hidden'; 
-                sidebar.style.opacity = '0'; 
-                toggleBtn.classList.remove('fa-times');
-                toggleBtn.classList.add('fa-bars');
-            } else {
-                sidebar.style.left = '0px'; 
-                sidebar.style.visibility = 'visible'; 
-                sidebar.style.opacity = '1'; 
+             if (sidebar.classList.contains('open')) {
                 toggleBtn.classList.remove('fa-bars');
                 toggleBtn.classList.add('fa-times');
+            } else {
+                toggleBtn.classList.remove('fa-times');
+                toggleBtn.classList.add('fa-bars');
             }
         }
 
         function closeSidebar(event) {
             const sidebar = document.querySelector('.sidebar');
             const toggleBtn = document.querySelector('.toggle-btn');
-
-            if (sidebar.style.left === '0px' && 
-                !sidebar.contains(event.target) && 
+            
+            if (sidebar.classList.contains('open') &&
+                !sidebar.contains(event.target) &&
                 !toggleBtn.contains(event.target)) {
-                sidebar.style.left = '-260px'; 
-                sidebar.style.visibility = 'hidden'; 
-                sidebar.style.opacity = '0'; 
+                sidebar.classList.remove('open');
                 toggleBtn.querySelector('i').classList.remove('fa-times');
                 toggleBtn.querySelector('i').classList.add('fa-bars');
             }
         }
-
+        
         function handleScroll() {
-            const sidebar = document.querySelector('.sidebar');
-
-            if (sidebar.style.left === '0px') {
-                sidebar.style.left = '-260px'; 
-                sidebar.style.visibility = 'hidden'; 
-                sidebar.style.opacity = '0'; 
-                const toggleBtn = document.querySelector('.toggle-btn i');
-                toggleBtn.classList.remove('fa-times');
-                toggleBtn.classList.add('fa-bars');
-            }
-        }
-
-        window.addEventListener('load', function() {
-            const sidebar = document.querySelector('.sidebar');
+             const sidebar = document.querySelector('.sidebar');
             const toggleBtn = document.querySelector('.toggle-btn i');
 
-            sidebar.style.left = '-260px';
-            sidebar.style.visibility = 'hidden';
-            sidebar.style.opacity = '0';
+             if (sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+                  toggleBtn.classList.remove('fa-times');
+                 toggleBtn.classList.add('fa-bars');
+            }
+        }
+        window.addEventListener('load', function() {
+            const sidebar = document.querySelector('.sidebar');
+           
+        });
+        document.addEventListener('scroll', function() {
+            handleScroll();
         });
 
         document.addEventListener('click', closeSidebar);
-        window.addEventListener('scroll', handleScroll);
     </script>
 </head>
 <body>
@@ -358,26 +357,27 @@
         <span class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></span>
         <div class="sidebar">
             <h2>Related Topics</h2>
-              <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/"><i class="fas fa-moon"></i> Dark Mode</a>
+             <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/"><i class="fas fa-moon"></i> Dark Mode</a>
             <a href="https://developer.samsung.com/android-usb-driver"><i class="fas fa-plug"></i> USB Drivers</a>
             <a href="https://odindownload.com/mobile/"><i class="fas fa-download"></i> Odin3</a>
             <a href="https://samfw.com/firmware/SM-T585/EGY/"><i class="fas fa-file-alt"></i> Firmware</a>
-            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/main2/index.html"><i class="fas fa-tools"></i> TWRP</a>
+             <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/main2/index.html"><i class="fas fa-tools"></i> TWRP</a>
             <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/custom_recovery/main2/index.html"><i class="fas fa-hdd"></i> Custom Recoveries</a>
             <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/main2/twrp-storage-mount-fix/index.html"><i class="fas fa-exclamation-triangle"></i> TWRP Storage Mount Fix</a>
-            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/main2/index.html"><i class="fas fa-book"></i> Full Flash Guide</a>
             <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_firmware/main2/index.html"><i class="fas fa-sync"></i> Flash Firmware</a>
             <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/fix_partitions/main2/index.html"><i class="fas fa-cogs"></i> Fix Partitions</a>
             <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/disable_encryption/main2/index.html"><i class="fas fa-unlock"></i> Disable Encryption</a>
-            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/gapps/main2/index.html"><i class="fab fa-google"></i> GApps Packages</a>
+             <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/gapps/main2/index.html"><i class="fab fa-google"></i> GApps Packages</a>
             <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/root/main2/index.html"><i class="fas fa-key"></i> Magisk & Apatch</a>
+            <a href="javascript:void(0)" onclick="smoothScroll('.donations-section')">
+    <i class="fas fa-hand-holding-heart"></i> Support</a>   
             <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/about/main2/index.html"><i class="fas fa-info-circle"></i> About us</a>
         </div>
         <h1>Custom ROMs for Samsung Galaxy Tab A 10.1 2016</h1>
         <p>Unlock amazing performance with custom ROMs for your device! 🚀</p>
         <div>
             <a onclick="smoothScroll('#roms')">Let’s go!</a>
-            <a onclick="smoothScroll('.donations-section')" style="margin-left: 15px;">Support</a>
+            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/main2/index.html" style="margin-left: 15px;">Full Guide</a>
         </div>
     </header>
 
@@ -462,4 +462,4 @@
             </div>
         </footer>
     </body>
-                                                                                                      </html>
+    </html>
