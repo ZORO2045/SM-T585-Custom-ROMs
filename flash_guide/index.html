@@ -295,6 +295,29 @@
              display: inline-block;
              font-size: 1.5rem;
         }
+      .floating-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #2e0079;
+        color: #fff;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        text-decoration: none;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+        transition: background-color 0.3s ease;
+         z-index: 1000;
+    }
+
+    .floating-button:hover {
+        background-color: #2e0079;
+    }
+
       h3 {
          margin-bottom: 20px; 
       }
@@ -342,7 +365,9 @@
     </script>
 </head>
 <body>
-
+     <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/" class="floating-button">
+        <i class="fas fa-home"></i>
+    </a>
 <header>
     <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/ar_guide/index.html" class="language-switcher">
          <span class="bidi-isolate">العربية</span>
@@ -485,4 +510,4 @@
 </footer>
 
 </body>
-        </html>
+    </html>
