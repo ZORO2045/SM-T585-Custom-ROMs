@@ -17,7 +17,8 @@
             background: linear-gradient(to bottom right, #e8d6f1, #e8d6f1);
             color: #333;
             font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
+            line-height: 1.9;
+            text-align: left;
         }
         header {
             display: flex;
@@ -49,6 +50,10 @@
         .fade-in {
             opacity: 1;
         }
+        .ltr-text {
+           direction: ltr;
+           unicode-bidi: embed;
+       }
         .language-switcher {
             position: absolute;
             top: 20px;
@@ -177,13 +182,37 @@
             margin-top: 20px;
             font-weight: bold;
             color: #ffcc00;
-            background-color: rgba(255,204,0,0.1);
+            background-color: rgba(255,69,58,0.1);
+            padding: 10px;
+             border-radius: 10px;
+        }
+        .note2 {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ffcc00;
+            background-color: rgba(0,112,243,0.1);
+            padding: 10px;
+             border-radius: 10px;
+        }
+         .note3 {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ffcc00;
+             background-color: rgba(64,224,208,0.1);
+            padding: 10px;
+             border-radius: 10px;
+        }
+          .note4 {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ffcc00;
+            background-color: rgba(138,43,226,0.1);
             padding: 10px;
              border-radius: 10px;
         }
          .method1, .method2 {
              color: transparent;
-            background: linear-gradient(to right, #007ACC, #CC77CC);
+            background: linear-gradient(to right, #ff6a00, #d500f9);
             -webkit-background-clip: text;
             background-clip: text;
             font-size: 1.2rem;
@@ -192,6 +221,29 @@
             margin-top: 20px;
              margin-bottom: 20px;
         }
+        .method3 {
+    color: transparent;
+    background: linear-gradient(to right, #007ACC, #CC77CC);
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.method4 {
+    color: transparent;
+    background: linear-gradient(to right, #ff6a00, #d500f9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
         footer {
             padding: 20px;
             background-color: #3a1f6d;
@@ -218,6 +270,35 @@
              display: inline-block;
              font-size: 1.5rem;
         }
+        .floating-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: linear-gradient(to bottom right, #ffffff, #d6ccf5);
+        color: #5e3b9a;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        text-decoration: none;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+        transition: background-color 0.3s ease;
+         z-index: 1000;
+    }
+
+    .floating-button:hover {
+        background-color: #2e0079;
+    }
+
+      h3 {
+         margin-bottom: 20px; 
+      }
+      h4 {
+         margin-bottom: 20px; 
+      }
 
         @media (max-width: 768px) {
              header h1 {
@@ -260,104 +341,140 @@
     </script>
 </head>
 <body>
-
+     <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/index.html" class="floating-button">
+        <i class="fas fa-home"></i>
+    </a>
 <header>
-     <a href="ar_guide/index.html" class="language-switcher">
-        <span>العربية </span>
+    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/main2/ar_guide/index.html" class="language-switcher">
+         <span class="bidi-isolate">العربية</span>
         <i class="fas fa-globe"></i>
     </a>
     <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/flash.png" alt="Flash Logo">
     <h1>Full Flash Guide</h1>
 </header>
 <section id="roms" class="roms-section">
-    <h2>How to Flash TWRP and Custom ROM with Magisk on Galaxy Tab A 10.1</h2>
+    <h2>How to Flash a Custom Recovery, Custom ROM and Magisk on Tab A 10.1</h2>
     <div class="rom-cards">
         <div class="rom-card">
-            <h3><span style="color: transparent; background: linear-gradient(to right, #007ACC, #5A189A); -webkit-background-clip: text; background-clip: text;"><i>Instructions Before Starting</i></span></h3>
-            <p class="note">Ensure your device is charged and back up any important data before flashing.</p>
-            <p>All the files and download links mentioned will be available below in the "Download Options" section.</p>
-            <p class="note">Browse the 'Related Topics' section in the sidebar on the homepage; you will find solutions to all the problems you may encounter.</p>
-            <p>Follow these steps to flash TWRP, Custom ROM and Magisk on your Galaxy Tab A 10.1 (SM-T585):</p>
-            </div>
-            <div class="rom-card">
+            <h3><span style="color: transparent; background: linear-gradient(to right, #007ACC, #5A189A); -webkit-background-clip: text; background-clip: text;"><b>Important Instructions Before You Start</b></span></h3>
+             <p class="note">Ensure your device is adequately charged and back up any important data before flashing.</p>
+             <p>All files and download links mentioned will be available below in the "Download Options" section.</p>
+             <p class="note3">Check the 'Related Topics' section in the sidebar on the homepage for solutions to common issues.</p>
+           <p>Follow these steps to flash a custom recovery, custom ROM, and Magisk on your Tab A 10.1 (SM-T585):</p>
+             </div>
+              <div class="rom-card">
             <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/settings.png" alt="Settings Logo">
             <ul>
-            <h3><span style="color: transparent; background: linear-gradient(to right, #FF69B4, #FF4500); -webkit-background-clip: text; background-clip: text;"><i>Device Preparation Before Starting</i></span></h3>
-                <li><strong>Step 1:</strong> Enable Developer Options by going to Settings then "About device" and tapping on "Build number" 7 times until the option is activated.</li>
-                <li><strong>Step 2:</strong> Go back to the Settings menu and select "Developer options".</li>
-                <li><strong>Step 3:</strong> Enable "USB Debugging" and "OEM Unlocking".</li>
-                <p class="note">If you do not unlock the bootloader (step 3) before making any modifications to your device, you will see the message when you restart the device after the flashing process:<h4><span style="color: transparent; background: linear-gradient(to right, red, red); -webkit-background-clip: text; background-clip: text;"><i>Custom binary blocked by FRP lock.</i></span></h4></p>
-                <p><h4><span style="color: transparent; background: linear-gradient(to right, green, green); -webkit-background-clip: text; background-clip: text;"><b>If you haven't followed the previous steps and this message appears, you will need to flash the stock firmware, for which you can find a tutorial link below. If you encounter any issues, you can join our Telegram group for assistance.</b></span></h4></p>
-                <li><strong>Step 4:</strong> Power down the device, then hold the Home, Power, and Volume Down buttons to enter Download mode.</li>
+             <h3><span style="color: transparent; background: linear-gradient(to right, #ff6a00, #d500f9); -webkit-background-clip: text; background-clip: text;"><b>Preparing Your Tab</b></span></h3>
+                <li><strong>Step 1:</strong> Enable Developer Options by going to Settings, then "About Device," and tapping "Build Number" 7 times until activated.</li>
+                <li><strong>Step 2:</strong> Return to the Settings menu and select "Developer Options."</li>
+                <li><strong>Step 3:</strong> Enable <span class="ltr-text">"USB debugging"</span> and <span class="ltr-text">"OEM unlocking"</span>.</li>
+                <p class="note2">If you don't unlock the bootloader (step 3) before making any changes to your device, you will get this message when you restart after flashing: <h4><span style="color: transparent; background: linear-gradient(to right, red, red); -webkit-background-clip: text; background-clip: text;"><i class="ltr-text">Custom binary blocked by FRP lock.</i></span></h4></p>
+                <p><h4><span style="color: transparent; background: linear-gradient(to right, green, green); -webkit-background-clip: text; background-clip: text;"><b>If you haven't followed the previous steps and you get this message, you need to flash the stock firmware, and you'll find a link to an explanation below. If you face any problems, you can join our Telegram group for assistance.</b></span></h4></p>
+                <li><strong>Step 4:</strong> Power off your device, then press and hold the Home button, Power button, and Volume Down button simultaneously to enter Download Mode.</li>
+            </ul>
                 </div>
-                <div class="rom-card">
+                 <div class="rom-card">
                 <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/odin.png" alt="Odin Logo">
                 <ul>
-               <h3><span style="color: transparent; background: linear-gradient(to right, #007ACC, #CC77CC); -webkit-background-clip: text; background-clip: text;"><i>Setting Up Odin</i></span></h3>
-                <li><strong>Step 1:</strong> install Samsung USB drivers on .your PC.</li>
-                <li><strong>Step 2:</strong> Download and launch the Odin application on your PC.</li>
-                <li><strong>Step 3:</strong> Hook up the Samsung Galaxy Tab A to the PC using a USB cable.</li>
-                <p class="note">Make sure the device is detected by Odin (you should see a message saying "added!!!").</p>
-                <p class="note">If the device isn't being recognised, double-check the USB connection and consider installing usb drivers on your PC.</p>
-                <li><strong>Step 4:</strong> In Odin, click the AP button to find the 'TWRP file.tar' that you downloaded on your PC.</li>
-                <li><strong>Step 5:</strong> Go to "Options" and uncheck the "Auto Reboot" box.</li>
-                <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+                <h3><span style="color: transparent; background: linear-gradient(to right, #007ACC, #CC77CC); -webkit-background-clip: text; background-clip: text;"><b>Preparing Odin</b></span></h3>
+                <li><strong>Step 1:</strong> Install Samsung USB drivers on your computer <span style="background: linear-gradient(to right, red, red); -webkit-background-clip: text; color: transparent;">[ You Must Install This ]</span>.</li>
+                <li><strong>Step 2:</strong> Download and run Odin on your computer.</li>
+                <li><strong>Step 3:</strong> Connect your Tab to your computer using a USB cable.</li>
+                <p class="note4">Make sure Odin recognizes your device (you'll see an <span class="ltr-text">"added!!!"</span> message).</p>
+                 <p class="note3">If Odin doesn’t recognize your device, make sure your USB cable is working and that the USB drivers are properly installed on your computer.</p>
+                <li><strong>Step 4:</strong> In Odin, click on the AP button to select the <span class="ltr-text">'TWRP file.tar'</span> that you downloaded to your computer.</li>
+                <li><strong>Step 5:</strong> Go to <span class="ltr-text">"Options"</span> and uncheck the <span class="ltr-text">"Auto Reboot"</span> box.</li>
+                  <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
             <div class="download-options">
                 <a href="https://developer.samsung.com/android-usb-driver">USB Drivers</a>
-                <a href="https://odindownload.com/mobile/">Odin3</a>
-                <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/main2/index.html">TWRP Recovery</a>
+                <a href="https://odindownload.com/mobile/">Odin</a>
+                 <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/main2/index.html">TWRP Recovery</a>
             </div>
         </div>
                 <div class="rom-card">
-                <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/twrp.png" alt="TWRP Logo">
+                 <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/twrp.png" alt="TWRP Logo">
                 <ul>
-               <h3><span style="color: transparent; background: linear-gradient(to right, #007ACC, #CC77CC); -webkit-background-clip: text; background-clip: text;"><i>Flashing TWRP</i></span></h3>
-                <li><strong>Step 1:</strong> Click "Start" in Odin to begin the flashing process.</li>
-                <p class="note">A green box saying <span style="background: linear-gradient(to right, green, green); -webkit-background-clip: text; color: transparent;">PASS!</span> will appear when done.</p>
-                <li><strong>Step 2:</strong> Hold down the Power button for a brief moment to turn off the device.</li>    
-          
-            <h4 class="method2">Immediately press and hold the Volume Up, Home, and Power buttons simultaneously until the Samsung logo appears on the screen.</h4>
-            <p class="note">Note: TWRP Recovery asks if you'd like to use it in 'Read Only' mode. 'Read Only' mode means it will remain on your device without making changes until you reboot. Simply swipe the arrow to allow modifications.</p>
-            </div>
-            <div class="rom-card">
-            <img src="https://i.ibb.co/kgdTbnq/CITYPNG-COM-Settings-Repair-Maintenance-Red-Icon-HD-PNG-1500x1500.png" alt="In TWRP Recovery Mode">
-            <ul>
-            <h3><span style="color: transparent; background: linear-gradient(to right, #ff4500, #ffcc00); -webkit-background-clip: text; background-clip: text;"><i>In TWRP Recovery Mode</i></span></h3>
-            <li><strong>Step 1:</strong> Select 'Wipe', then 'Format data', and confirm with 'yes'.</li>
-            <li><strong>Step 2:</strong> Go back to TWRP home, select 'Reboot', then 'Recovery'.</li>
-            <p class="note">If you don't want to install a custom ROM and prefer to stay on the stock ROM, you can stop at this step and choose "Reboot," then "System." Alternatively, you can proceed to the "Flashing Magisk" section if you want to root your device.</p>
-            </div>
-            <div class="rom-card">
-            <img src="https://i.ibb.co/vhv4Yw2/pngwing-com.png" alt="Custom ROM Logo">
-            <ul>
-            <h3><span style="color: transparent; background: linear-gradient(to right, #FF6347, #FFD700, #32CD32); -webkit-background-clip: text; background-clip: text;"><i>Flashing the Custom ROM</i></span></h3>
-            <li><strong>Step 1:</strong> Repeat the 'Wipe' process, but this time select 'Advanced Wipe', then select all options (except SD Card and USB OTG).</li>
-            <li><strong>Step 2:</strong> Select Storage (if your custom ROM is on SD Card or USB OTG).</li>
-            <li><strong>Step 3:</strong>  Select the zip file of your custom ROM.</li>
-            <li><strong>Step 4:</strong> Click on 'Add More Zips' and select the GApps file included with the ROM if it requires it.</li>
-            <li><strong>Step 5:</strong> Swipe the arrow to confirm the flash and wait until the flashing process is complete, then press 'reboot system'.</li>
-             <p class="note">Note: In the Android 10 ROMs section, you will find a port for One UI 2.0, along with a file named 'create vendor.' You need to flash this file, then perform a reboot to recovery, and finally flash the port.</p>
-             <p>If you flashed the <strong>'Create Vendor'</strong> file and encountered the following error:<h4><span style="color: transparent; background: linear-gradient(to right, red, red); -webkit-background-clip: text; background-clip: text;"><i>Updater process ended with ERROR: 127</i></span></h4></p><p>Please use <strong>OrangeFox Recovery</strong> with the <strong>Vendor Support</strong> feature, which is also included with the ROM.</p>
-            <p class="note">Note: If you install a custom ROM on your device and wish to switch to another custom ROM, you must perform the Advanced Wipe step again (Step 1) first, and then flash the ROM you wish to switch to.</p>
-            <p class="note">Note: If you install any custom ROM on your device and later wish to flash the One UI 1 port available in the Android 9 ROMs section, you must first flash the stock firmware of the device and then repeat the previous steps again.</p>
-            <p class="note">Note: A "dirty flash" refers to the process of flashing a new version of your ROM over the top of the one you have, without using the "Wipe Data/Advanced Wipe/Factory Reset" option in recovery. Even if you intend to dirty flash the update, you should always wipe cache and dalvik cache.</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+                 <h3><span style="color: transparent; background: linear-gradient(to right, #007ACC, #CC77CC); -webkit-background-clip: text; background-clip: text;"><b>Flashing Custom Recovery</b></span></h3>
+                <li><strong>Step 1:</strong> Click <span class="ltr-text">"Start"</span> in Odin to begin the flashing process.</li>
+                 <p class="note2">You'll get a green <span style="background: linear-gradient(to right, green, green); -webkit-background-clip: text; color: transparent;"><i class="ltr-text">PASS!</i></span> message when the process is finished.</p>
+                <li><strong>Step 2:</strong> Simultaneously press and hold the Volume Down button, Home button, and Power button to turn off the device.</li>
+                
+          <h4 class="method2">As soon as it turns off, immediately press and hold the Volume Up button, Home button, and Power button until the Samsung logo appears on the screen.</h4>
+           <p class="note3">Note: TWRP recovery asks if you want to use it in 'Read-Only Mode.' 'Read-Only Mode' means it will remain on your device without making any changes until you reboot. Simply swipe to allow modifications.</p>
+              </div>
+              <div class="rom-card">
+              <img src="https://i.ibb.co/kgdTbnq/CITYPNG-COM-Settings-Repair-Maintenance-Red-Icon-HD-PNG-1500x1500.png" alt="In TWRP Recovery Mode">
+                <ul>
+                <h3><span style="color: transparent; background: linear-gradient(to right, #ff4500, #ffcc00); -webkit-background-clip: text; background-clip: text;"><b>In TWRP Recovery Mode</b></span></h3>
+                <li><strong>Step 1:</strong> Select <span class="ltr-text">'Wipe'</span>, then <span class="ltr-text">'Format data'</span>, and confirm with <span class="ltr-text">'yes'</span>.</li>
+                <li><strong>Step 2:</strong> Return to the TWRP home, select <span class="ltr-text">'Reboot'</span>, then <span class="ltr-text">'Recovery'</span>.</li>
+                   <p class="note2">If you do not want to install a custom ROM and want to stay on the stock ROM, you can stop at this step and select <span class="ltr-text">"Reboot"</span> and then <span class="ltr-text">"System"</span>. Or, you can proceed to the "Install Magisk" section if you want to root your device.</p>
+              </div>
+              
+             <div class="rom-card">
+               <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/questions.png" alt=" Questions Logo">
+                <ul>
+                 <h3><span style="color: transparent; background: linear-gradient(to right, #ff6a00, #d500f9); -webkit-background-clip: text; background-clip: text;"><b>Terminology You Might Encounter</b></span></h3>
+               <h4 class="method3">Types of ROMs:</h4>
+               <h4 class="method4">Vanilla - Gapps - MicroG</h4>
+               <p class="note"><strong>Vanilla:</strong> A ROM without Google services and applications. You can, of course, add Google services, and the file will be attached to the ROM in the download links.</p>
+<p class="note2"><strong>Gapps:</strong> A ROM that includes basic Google services and applications like the Play Store and Gmail.</p>
+<p class="note4"><strong>MicroG:</strong> A replacement for Google services with a focus on privacy and open-source alternatives, like the EOS ROMs. If you cannot do without Google services, I do not recommend these ROMs.</p>
+
+<h4 class="method3"><strong>The difference between:</strong></h4>
+<h4 class="method4">Custom ROM - Port - GSI</h4>
+<p class="note"><strong>Custom ROM:</strong> A custom ROM developed by independent developers to work on specific devices or groups of devices, usually adding features or modifications to the official system.</p>
+<p class="note2"><strong>Port:</strong> A ROM that has been manually modified to work on a different device than it was intended for, usually requiring modifications to work well on the new device.</p>
+<p class="note4"><strong>GSI:</strong> A generic and open-source ROM, designed to work on a wide range of devices that support <span class="ltr-text">Project Treble</span>. The ROM is modified and customized to work on different devices, allowing users to experience the latest version of Android without waiting for official updates from manufacturers. <span class="ltr-text">GSI</span> is not supported on the tablet, but this note is just for your information.</p>
+               </div>
+              <div class="rom-card">
+               <img src="https://i.ibb.co/vhv4Yw2/pngwing-com.png" alt="Custom ROM Logo">
+                <ul>
+               <h3><span style="color: transparent; background: linear-gradient(to right, #FBB700, #32CD32); -webkit-background-clip: text; background-clip: text;"><b>Flashing Custom ROM</b></span></h3>
+                <li><strong>Step 1:</strong> Repeat the <span class="ltr-text">'Wipe'</span> process, but this time select <span class="ltr-text">'Advanced Wipe'</span> and check all options (except <span class="ltr-text">SD Card</span> and <span class="ltr-text">USB OTG</span>).</li>
+                    <li>
+  <strong>Step 2:</strong> Go back to the 
+  <span class="ltr-text">'TWRP'</span> 
+  homepage and select 
+  <span class="ltr-text">'Install'</span>, 
+  then select the storage location where you put the ROM file (whether you put the file on an 
+  <span class="ltr-text">SD Card</span>, 
+  <span class="ltr-text">USB OTG</span>, or 
+  <span class="ltr-text">Internal Storage</span>). 
+  You can easily transfer the ROM file and Google services file from your 
+  <span class="ltr-text">PC</span> 
+  to your Tab using a 
+  <span class="ltr-text">USB</span> 
+  cable.
+</li>
+                <li><strong>Step 3:</strong> Select the ZIP file of your custom ROM.</li>
+                <li><strong>Step 4:</strong> Click on <span class="ltr-text">'Add More Zips'</span> and select the <span class="ltr-text">GApps</span> file that comes with the ROM if it requires it.</li>
+                <li><strong>Step 5:</strong> Swipe to confirm the flashing and wait for the process to complete, then click <span class="ltr-text">'reboot system'</span>.</li>
+                 <p class="note3">Note: In the Android 10 ROMs section, you will find a modified version of the <span class="ltr-text">One UI 2.0</span> interface, along with a file called <span class="ltr-text">'create vendor'</span>. You must flash this file, then reboot into recovery, and then flash the port.</p>
+                   <p>If you flash the <strong><span class="ltr-text">'Create Vendor'</span></strong> file and get this error: <h4><span style="color: transparent; background: linear-gradient(to right, red, red); -webkit-background-clip: text; background-clip: text;"><i class="ltr-text">Updater process ended with ERROR: 127</i></span></h4></p>
+                 <h4 class="method2">I recommend using <strong><span class="ltr-text">OrangeFox</span> recovery</strong> which has the <strong><span class="ltr-text">Vendor Support</span></strong> feature, and it is also available with the ROM.</h4>
+                
+                <p class="note">Note: If you have installed a custom ROM on your device and want to change to another custom ROM, you must first repeat the <span class="ltr-text">Advanced Wipe</span> step (Step 1), then flash the ROM you want to change to.</p>
+                 <p class="note2">Note: If you have installed any custom ROM on your device and want to revert to the modified <span class="ltr-text">One UI 1</span> version in the Android 9 ROM section, you must first flash the stock firmware and then repeat the previous steps.</p>
+                <p class="note4">Note: "Dirty Flash" means flashing a new version of your ROM over the version you already have without using the <span class="ltr-text">"Wipe Data/Advanced Wipe/Factory Reset"</span> option in the recovery. Even if you intend to do a <span class="ltr-text">'Dirty Flash'</span>, you must wipe the <span class="ltr-text">cache</span> and dalvik cache.</p>
+                   <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
             <div class="download-options">
-                <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/index.html#roms">Cuatom ROMs</a>
+                 <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/index.html#roms">Custom ROMs</a>
                 <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_firmware/main2/index.html">Flash Stock Firmware</a>
             </div>
-        </div>
-            <div class="rom-card">
-            <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/magisk.png" alt="Magisk Logo">
-            <ul>
-            <h3><span style="color: transparent; background: linear-gradient(to right, #00CED1, #32CD32); -webkit-background-clip: text; background-clip: text;"><i>Flashing Magisk</i></span></h3>
-            <li><strong>Step 1:</strong> Download magisk apk</li>
-            <li><strong>Step 2:</strong> Rename extension from .apk to .zip</li>
-            <li><strong>Step 3:</strong> Flash zip file from TWRP like ROM</li>
-            <li><strong>Step 4:</strong> Wait until the flashing process is complete, then press 'reboot system'.</li>
-            <li><strong>Step 5:</strong> After rebooting the system, install the Magisk application on your device.</li>
-              <p class="note">Note: In One UI 1.0 Port, you need to flash Magisk Prepare before flashing Magisk.</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+                </div>
+             <div class="rom-card">
+              <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/magisk.png" alt="Magisk Logo">
+                <ul>
+                <h3><span style="color: transparent; background: linear-gradient(to right, #00CED1, #32CD32); -webkit-background-clip: text; background-clip: text;"><b>Flashing Magisk</b></span></h3>
+               <li><strong>Step 1:</strong> Download the Magisk <span class="ltr-text">apk</span>.</li>
+               <li><strong>Step 2:</strong> Change the extension name from <span class="ltr-text">.apk</span> to <span class="ltr-text">.zip</span>.</li>
+               <li><strong>Step 3:</strong> Flash the <span class="ltr-text">zip</span> file from recovery, just like the ROM.</li>
+               <li><strong>Step 4:</strong> Wait until the flashing process is finished, and then click <span class="ltr-text">'reboot system'</span>.</li>
+                <li><strong>Step 5:</strong> After the device restarts, install the Magisk application on your device.</li>
+                 <p class="note3">Note: In the modified <span class="ltr-text">One UI 1.0</span> version, you must flash <span class="ltr-text">Magisk Prepare</span> before you flash Magisk.</p>
+                 <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
             <div class="download-options">
                 <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/root/main2/index.html">Magisk</a>
             </div>
@@ -365,8 +482,8 @@
     </div>
 </section>
 <footer>
-    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/index.html">Back to Home</a>
+     <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/index.html">Back to Home</a>
 </footer>
 
 </body>
-    </html>
+                                                                                                                     </html>
