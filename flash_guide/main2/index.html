@@ -79,6 +79,59 @@
             margin-left: 5px;
             font-size: 1.5rem;
         }
+        .settings-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #2e0079;
+            color: #fff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            text-decoration: none;
+             box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            cursor: pointer;
+            }
+          .settings-button:hover {
+            background-color: #2e0079;
+         }
+        .settings-menu {
+             position: fixed;
+            bottom: 90px;
+             right: 20px;
+             display: none;
+              flex-direction: column;
+              align-items: flex-end;
+              gap: 10px;
+              z-index: 1001;
+            }
+            .settings-menu.show {
+                display: flex;
+        }
+         .settings-menu a {
+            background-color: #2e0079;
+            color: #fff;
+             text-decoration: none;
+             padding: 15px 15px;
+             border-radius: 50%;
+             width: 50px;
+             height: 50px;
+             display: flex;
+              align-items: center;
+              justify-content: center;
+             font-size: 1.5rem;
+              box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+             transition: background-color 0.3s ease;
+         }
+            .settings-menu a:hover {
+            background-color: #2e0079;
+        }
         .roms-section {
             padding: 50px 20px;
             background-color: none;
@@ -264,41 +317,31 @@
          footer a:hover {
              text-decoration: none;
         }
-        footer a::before {
-            content: '\2190';
-            margin-right: 5px;
-             display: inline-block;
+      .settings-button {
+            bottom: 10px;
+             right: 10px;
+           width: 50px;
+           height: 50px;
              font-size: 1.5rem;
         }
-        .floating-button {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: linear-gradient(to bottom right, #ffffff, #d6ccf5);
-        color: #5e3b9a;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        text-decoration: none;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-        transition: background-color 0.3s ease;
-         z-index: 1000;
-    }
-
-    .floating-button:hover {
-        background-color: #2e0079;
-    }
-
-      h3 {
+        .settings-menu {
+             bottom: 70px;
+              right: 10px;
+        }
+        .settings-menu a {
+            width: 40px;
+             height: 40px;
+              font-size: 1.2rem;
+        }
+        h3 {
          margin-bottom: 20px; 
       }
-      h4 {
+       h4 {
          margin-bottom: 20px; 
       }
+            .roms-section h2 {
+                font-size: 2rem;
+            }
 
         @media (max-width: 768px) {
              header h1 {
@@ -332,6 +375,35 @@
             });
             options.classList.toggle('show');
         }
+         function toggleSettingsMenu(event) {
+  const settingsMenu = document.querySelector('.settings-menu');
+  const settingsButton = document.querySelector('.settings-button');
+  const cogIcon = settingsButton.querySelector('.fa-cog');
+  const timesIcon = settingsButton.querySelector('.fa-times');
+
+  settingsMenu.classList.toggle('show');
+
+  if (settingsMenu.classList.contains('show')) {
+    cogIcon.style.display = 'none';
+    timesIcon.style.display = 'flex';
+  } else {
+    cogIcon.style.display = 'flex';
+    timesIcon.style.display = 'none';
+  }
+
+  event.stopPropagation();
+}
+document.addEventListener('click', function(event) {
+const settingsMenu = document.querySelector('.settings-menu');
+const settingsButton = document.querySelector('.settings-button');
+if (!settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
+settingsMenu.classList.remove('show');
+    const cogIcon = settingsButton.querySelector('.fa-cog');
+    const timesIcon = settingsButton.querySelector('.fa-times');
+    cogIcon.style.display = 'flex';
+    timesIcon.style.display = 'none';
+}
+});
         window.onload = function() {
             const logo = document.querySelector('header img');
             const title = document.querySelector('header h1');
@@ -341,9 +413,18 @@
     </script>
 </head>
 <body>
-     <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/index.html" class="floating-button">
-        <i class="fas fa-home"></i>
+     <a href="#" class="settings-button" onclick="toggleSettingsMenu(event); return false;">
+        <i class="fas fa-cog"></i>
+        <i class="fas fa-times" style="display:none;"></i>
     </a>
+   <div class="settings-menu">
+        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/index.html">
+             <i class="fas fa-moon"></i>
+        </a>
+       <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/index.html">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
 <header>
     <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/main2/ar_guide/index.html" class="language-switcher">
          <span class="bidi-isolate">العربية</span>
@@ -486,4 +567,4 @@
 </footer>
 
 </body>
-                                                                                                                     </html>
+    </html>
