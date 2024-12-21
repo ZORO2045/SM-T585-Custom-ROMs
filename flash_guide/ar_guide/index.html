@@ -7,366 +7,434 @@
      <link rel="icon" type="image/png" href="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/flash.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-       * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background-color: #000;
-            color: #e0e0e0;
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.9;
-            text-align: right;
-        }
-        header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 70vh;
-            background: linear-gradient(to bottom right, #000, #1b004d);
-            color: #fff;
-            padding: 20px;
-            position: relative;
-        }
-        header h1, header p, header a {
-             user-select: none;
-        }
-        header img {
-            max-width: 150px;
-            margin-bottom: 20px;
-            opacity: 0;
-            transition: opacity 1s ease;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
-        }
-        header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            transition: opacity 1s ease;
-            font-family: 'Arial', sans-serif;
-            letter-spacing: 1px;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
-        }
-        .fade-in {
-            opacity: 1;
-        }
-         .ltr-text {
-           direction: ltr;
-           unicode-bidi: embed;
-       }
-       .bidi-isolate {
-          unicode-bidi: isolate;
-          display: inline-block;
-       }
-        .language-switcher {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            display: flex;
-            align-items: center;
-            padding: 10px 15px;
-            background-color: rgba(27, 0, 77, 0.7);
-            border-radius: 5px;
-            color: #fff;
-            font-size: 1.2rem;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
-        }
-        .language-switcher:hover {
-           background-color: #2e0079;
-           color: #81d4fa;
-        }
-        .language-switcher i {
-            margin-right: 5px;
-            font-size: 1.5rem;
-        }
-         .roms-section {
-            padding: 50px 20px;
-            background-color: #000;
-            border-radius: 15px;
-            margin: 20px auto;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-            max-width: 800px;
-        }
-        .roms-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: transparent;
-            background: linear-gradient(to right, #00BFFF, #8A2BE2);
-            -webkit-background-clip: text;
-            background-clip: text;
-            align-items: center;
-            text-align: center;
-        }
-        .rom-cards {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-        }
-        .rom-card {
-            background-color: #121212;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-            width: 350px;
-            padding: 30px;
-            text-align: center;
-            margin-top: 0.25px;
-            margin-bottom: 0.25px;
-        }
-         .rom-card img {
-            max-width: 100px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-           filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
-        }
-         .rom-card h3 {
-            color: #fff;
-            margin-bottom: 15px;
-            font-size: 1.8rem;
-             text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-        .rom-card p {
-            color: #9e9e9e;
-             margin-bottom: 25px; 
-            font-size: 1.2rem;
-             text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-        .rom-card ul {
-            list-style-type: none;
-            padding-left: 0;
-            color: #e0e0e0;
-             margin-bottom: 25px; 
-        }
-        .rom-card ul li {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            padding-bottom: 10px; 
-             text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-        .rom-card a {
-            padding: 12px 25px;
-            background-color: #1b004d;
-            color: #fff;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-        }
-         .rom-card a:hover {
-            background-color: #2e0079;
-        }
-         .download-options {
-            display: none;
-            margin-top: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            transform: translateY(20px);
-             border-radius: 10px;
-        }
-        .download-options.show {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-         .download-options a {
-            display: block;
-            margin: 10px 0;
-            background-color: #1b004d;
-            padding: 10px 20px;
-            border-radius: 5px;
-            color: #fff;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-        }
-            .download-options a:hover {
-            background-color: #2e0079;
-        }
-        .note {
-            margin-top: 20px;
-            font-weight: bold;
-            color: #ffcc00;
-            background-color: rgba(255,69,58,0.1); 
-            padding: 10px;
-             border-radius: 10px;
-              text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-        .note2 {
-            margin-top: 20px;
-            font-weight: bold;
-            color: #ffcc00;
-            background-color: rgba(0,112,243,0.1); 
-            padding: 10px;
-             border-radius: 10px;
-              text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-        .note3 {
-            margin-top: 20px;
-            font-weight: bold;
-            color: #ffcc00;
-            background-color: rgba(64,224,208,0.1);
-            padding: 10px;
-             border-radius: 10px;
-              text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-        .note4 {
-            margin-top: 20px;
-            font-weight: bold;
-            color: #ffcc00;
-            background-color: rgba(138,43,226,0.1);
-            padding: 10px;
-             border-radius: 10px;
-              text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-          .method1, .method2 {
-             color: transparent;
-            background: linear-gradient(to right, #00BFFF, #ffbfff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 20px;
-             text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-        .method3 {
-    color: transparent;
-    background: linear-gradient(to right, #00BFFF, #ffbfff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
+body {
+background-color: #000;
+color: #e0e0e0;
+font-family: 'Roboto', sans-serif;
+line-height: 1.9;
+text-align: right;
+}
+header {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 70vh;
+background: linear-gradient(to bottom right, #000, #1b004d);
+color: #fff;
+padding: 20px;
+position: relative;
+}
+header h1, header p, header a {
+user-select: none;
+}
+header img {
+max-width: 150px;
+margin-bottom: 20px;
+opacity: 0;
+transition: opacity 1s ease;
+filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+}
+header h1 {
+font-size: 3.5rem;
+margin-bottom: 10px;
+text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+opacity: 0;
+transition: opacity 1s ease;
+font-family: 'Arial', sans-serif;
+letter-spacing: 1px;
+filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
+}
+.fade-in {
+opacity: 1;
+}
+.ltr-text {
+direction: ltr;
+unicode-bidi: embed;
+}
+.bidi-isolate {
+unicode-bidi: isolate;
+display: inline-block;
+}
+.language-switcher {
+position: absolute;
+top: 20px;
+left: 20px;
+display: flex;
+align-items: center;
+padding: 10px 15px;
+background-color: rgba(27, 0, 77, 0.7);
+border-radius: 5px;
+color: #fff;
+font-size: 1.2rem;
+cursor: pointer;
+text-decoration: none;
+transition: background-color 0.3s ease, color 0.3s ease;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+backdrop-filter: blur(5px);
+}
+.language-switcher:hover {
+background-color: #2e0079;
+color: #81d4fa;
+}
+.language-switcher i {
+margin-right: 5px;
+font-size: 1.5rem;
+}
+.settings-button {
+position: fixed;
+bottom: 20px;
+left: 20px;
+background-color: #2e0079;
+color: #fff;
+border-radius: 50%;
+width: 60px;
+height: 60px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 2rem;
+text-decoration: none;
+box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+transition: background-color 0.3s ease;
+z-index: 1000;
+cursor: pointer;
+}
+.settings-button:hover {
+background-color: #2e0079;
+}
+.settings-menu {
+position: fixed;
+bottom: 90px;
+right: 20px;
+display: none;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+z-index: 1001;
+}
+.settings-menu.show {
+display: flex;
+}
+.settings-menu a {
+background-color: #2e0079;
+color: #fff;
+text-decoration: none;
+padding: 15px 15px;
+border-radius: 50%;
+width: 50px;
+height: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.5rem;
+box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+transition: background-color 0.3s ease;
+}
+.settings-menu a:hover {
+background-color: #2e0079;
+}
+.roms-section {
+padding: 50px 20px;
+background-color: #000;
+border-radius: 15px;
+margin: 20px auto;
+box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+max-width: 800px;
+}
+.roms-section h2 {
+font-size: 2.5rem;
+margin-bottom: 30px;
+color: transparent;
+background: linear-gradient(to right, #00BFFF, #8A2BE2);
+-webkit-background-clip: text;
+background-clip: text;
+align-items: center;
+text-align: center;
+}
+.rom-cards {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 30px;
+}
+.rom-card {
+background-color: #121212;
+border-radius: 15px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+width: 350px;
+padding: 30px;
+text-align: center;
+margin-top: 0.25px;
+margin-bottom: 0.25px;
+}
+.rom-card img {
+max-width: 100px;
+margin-top: 10px;
+margin-bottom: 10px;
+display: block;
+margin-left: auto;
+margin-right: auto;
+filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
+}
+.rom-card h3 {
+color: #fff;
+margin-bottom: 15px;
+font-size: 1.8rem;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.rom-card p {
+color: #9e9e9e;
+margin-bottom: 25px;
+font-size: 1.2rem;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.rom-card ul {
+list-style-type: none;
+padding-left: 0;
+color: #e0e0e0;
+margin-bottom: 25px;
+}
+.rom-card ul li {
+margin-bottom: 10px;
+font-size: 1.1rem;
+padding-bottom: 10px;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.rom-card a {
+padding: 12px 25px;
+background-color: #1b004d;
+color: #fff;
+border-radius: 50px;
+text-decoration: none;
+font-weight: 700;
+display: inline-block;
+transition: background-color 0.3s ease;
+box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+.rom-card a:hover {
+background-color: #2e0079;
+}
+.download-options {
+display: none;
+margin-top: 20px;
+opacity: 0;
+transition: opacity 0.3s ease, transform 0.3s ease;
+transform: translateY(20px);
+border-radius: 10px;
+}
+.download-options.show {
+display: block;
+opacity: 1;
+transform: translateY(0);
+}
+.download-options a {
+display: block;
+margin: 10px 0;
+background-color: #1b004d;
+padding: 10px 20px;
+border-radius: 5px;
+color: #fff;
+text-decoration: none;
+transition: background-color 0.3s ease;
+box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+.download-options a:hover {
+background-color: #2e0079;
+}
+.note {
+margin-top: 20px;
+font-weight: bold;
+color: #ffcc00;
+background-color: rgba(255,69,58,0.1);
+padding: 10px;
+border-radius: 10px;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.note2 {
+margin-top: 20px;
+font-weight: bold;
+color: #ffcc00;
+background-color: rgba(0,112,243,0.1);
+padding: 10px;
+border-radius: 10px;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.note3 {
+margin-top: 20px;
+font-weight: bold;
+color: #ffcc00;
+background-color: rgba(64,224,208,0.1);
+padding: 10px;
+border-radius: 10px;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.note4 {
+margin-top: 20px;
+font-weight: bold;
+color: #ffcc00;
+background-color: rgba(138,43,226,0.1);
+padding: 10px;
+border-radius: 10px;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.method1, .method2 {
+color: transparent;
+background: linear-gradient(to right, #00BFFF, #ffbfff);
+-webkit-background-clip: text;
+background-clip: text;
+font-size: 1.2rem;
+font-weight: bold;
+text-align: center;
+margin-top: 20px;
+margin-bottom: 20px;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.method3 {
+color: transparent;
+background: linear-gradient(to right, #00BFFF, #ffbfff);
+-webkit-background-clip: text;
+background-clip: text;
+font-size: 1.2rem;
+font-weight: bold;
+text-align: center;
+margin-top: 20px;
+margin-bottom: 10px;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
 
 .method4 {
-    color: transparent;
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
-    -webkit-background-clip: text;
-    background-clip: text;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+color: transparent;
+background: linear-gradient(to right, #ff7e5f, #feb47b);
+-webkit-background-clip: text;
+background-clip: text;
+font-size: 1.2rem;
+font-weight: bold;
+text-align: center;
+margin-top: 10px;
+margin-bottom: 15px;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
-         footer {
-            padding: 20px;
-            background-color: #1b004d;
-            text-align: center;
-            margin-top: 50px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-            display: flex;
-             justify-content: center;
-            }
-         footer a {
-            color: #81d4fa;
-            text-decoration: none;
-            font-size: 1.5rem;
-             display: flex;
-            align-items: center;
-             text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-         footer a:hover {
-            text-decoration: none;
-        }
-        footer a::before {
-            content: '\2192';
-            margin-right: 5px;
-             display: inline-block;
-             font-size: 1.5rem;
-        }
-        .floating-button {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: #2e0079;
-        color: #fff;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        text-decoration: none;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-        transition: background-color 0.3s ease;
-         z-index: 1000;
-    }
+footer {
+padding: 20px;
+background-color: #1b004d;
+text-align: center;
+margin-top: 50px;
+border-radius: 10px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+display: flex;
+justify-content: center;
+}
+footer a {
+color: #81d4fa;
+text-decoration: none;
+font-size: 1.5rem;
+display: flex;
+align-items: center;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+footer a:hover {
+text-decoration: none;
+}
+h3 {
+margin-bottom: 20px;
+}
+h4 {
+margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+header h1 {
+font-size: 2.5rem;
+}
+.language-switcher {
+top: 10px;
+left: 10px;
+font-size: 1rem;
+}
+.language-switcher i {
+font-size: 1.2rem;
+}
+.settings-button {
+bottom: 10px;
+right: 10px;
+width: 50px;
+height: 50px;
+font-size: 1.5rem;
+}
+.settings-menu {
+bottom: 70px;
+right: 10px;
+}
+.settings-menu a {
+width: 40px;
+height: 40px;
+font-size: 1.2rem;
+}
+.roms-section h2 {
+font-size: 2rem;
+}
+.rom-cards {
+flex-direction: column;
+align-items: center;
+}
+}
+</style>
+<script>
+function toggleDownloadOptions(event) {
+const options = event.currentTarget.nextElementSibling;
+const allOptions = document.querySelectorAll('.download-options');
+allOptions.forEach(option => {
+if (option !== options) {
+option.classList.remove('show');
+}
+});
+options.classList.toggle('show');
+}
+function toggleSettingsMenu(event) {
+  const settingsMenu = document.querySelector('.settings-menu');
+  const settingsButton = document.querySelector('.settings-button');
+  const cogIcon = settingsButton.querySelector('.fa-cog');
+  const timesIcon = settingsButton.querySelector('.fa-times');
 
-    .floating-button:hover {
-        background-color: #2e0079;
-    }
-      h3 {
-         margin-bottom: 20px; 
-      }
-       h4 {
-         margin-bottom: 20px; 
-      }
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-            .language-switcher {
-              top: 10px;
-              left: 10px;
-              font-size: 1rem;
-        }
-        .language-switcher i {
-            font-size: 1.2rem;
-        }
-            .roms-section h2 {
-                font-size: 2rem;
-            }
-            .rom-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
-    <script>
-        function toggleDownloadOptions(event) {
-            const options = event.currentTarget.nextElementSibling;
-            const allOptions = document.querySelectorAll('.download-options');
-            allOptions.forEach(option => {
-                if (option !== options) {
-                    option.classList.remove('show');
-                }
-            });
-            options.classList.toggle('show');
-        }
-        window.onload = function() {
-            const logo = document.querySelector('header img');
-            const title = document.querySelector('header h1');
-            logo.classList.add('fade-in');
-            title.classList.add('fade-in');
-        }
-    </script>
+  settingsMenu.classList.toggle('show');
+
+  if (settingsMenu.classList.contains('show')) {
+    cogIcon.style.display = 'none';
+    timesIcon.style.display = 'flex';
+  } else {
+    cogIcon.style.display = 'flex';
+    timesIcon.style.display = 'none';
+  }
+
+  event.stopPropagation();
+}
+document.addEventListener('click', function(event) {
+const settingsMenu = document.querySelector('.settings-menu');
+const settingsButton = document.querySelector('.settings-button');
+if (!settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
+settingsMenu.classList.remove('show');
+    const cogIcon = settingsButton.querySelector('.fa-cog');
+    const timesIcon = settingsButton.querySelector('.fa-times');
+    cogIcon.style.display = 'flex';
+    timesIcon.style.display = 'none';
+}
+});
+window.onload = function() {
+const logo = document.querySelector('header img');
+const title = document.querySelector('header h1');
+logo.classList.add('fade-in');
+title.classList.add('fade-in');
+}
+</script>
 </head>
 <body>
-     <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/" class="floating-button">
-        <i class="fas fa-home"></i>
-    </a>
 <header>
      <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/index.html" class="language-switcher">
         <span class="ltr-text">English</span>
@@ -375,6 +443,18 @@
     <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/flash.png" alt="Flash Logo">
     <h1>دليل التفليش الكامل</h1>
 </header>
+<a href="#" class="settings-button" onclick="toggleSettingsMenu(event); return false;">
+        <i class="fas fa-cog"></i>
+        <i class="fas fa-times" style="display:none;"></i>
+    </a>
+   <div class="settings-menu">
+        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/main2/ar_guide/index.html">
+             <i class="fas fa-sun"></i>
+        </a>
+       <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/">
+            <i class="fas fa-home"></i>
+        </a>
+        </div>
 <section id="roms" class="roms-section">
     <h2>إزاي تفلش ريكفري معدل وروم معدل مع ماجيسك على تاب A 10.1</h2>
     <div class="rom-cards">
@@ -508,4 +588,4 @@
 </footer>
 
 </body>
-         </html>
+    </html>
