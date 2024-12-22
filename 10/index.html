@@ -29,6 +29,8 @@
             text-align: center;
             color: #ffffff;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+        header h1, header p, header a {
             user-select: none;
         }
         header img {
@@ -63,11 +65,63 @@
         header a:hover {
             background-color: #2e0079;
         }
+        .settings-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #2e0079;
+            color: #fff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            text-decoration: none;
+             box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            cursor: pointer;
+            }
+          .settings-button:hover {
+            background-color: #2e0079;
+         }
+        .settings-menu {
+             position: fixed;
+            bottom: 90px;
+             right: 20px;
+             display: none;
+              flex-direction: column;
+              align-items: flex-end;
+              gap: 10px;
+              z-index: 1001;
+            }
+            .settings-menu.show {
+                display: flex;
+        }
+         .settings-menu a {
+            background-color: #2e0079;
+            color: #fff;
+             text-decoration: none;
+             padding: 15px 15px;
+             border-radius: 50%;
+             width: 50px;
+             height: 50px;
+             display: flex;
+              align-items: center;
+              justify-content: center;
+             font-size: 1.5rem;
+              box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+             transition: background-color 0.3s ease;
+         }
+            .settings-menu a:hover {
+            background-color: #2e0079;
+        }
         .roms-section {
             padding: 50px 20px;
             background-color: #000000;
             text-align: center;
-            user-select: none;
         }
         .roms-section h2 {
             font-size: 2.5rem;
@@ -89,7 +143,12 @@
             padding: 20px;
             position: relative;
             overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             user-select: none;
+        }
+        .rom-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
         }
                 .rom-card img {
             max-width: 100px;
@@ -176,6 +235,22 @@
             text-decoration: none;
             font-size: 1.5rem;
         }
+        .settings-button {
+            bottom: 10px;
+             right: 10px;
+           width: 50px;
+           height: 50px;
+             font-size: 1.5rem;
+        }
+        .settings-menu {
+             bottom: 70px;
+              right: 10px;
+        }
+        .settings-menu a {
+            width: 40px;
+             height: 40px;
+              font-size: 1.2rem;
+        }
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2.5rem;
@@ -200,6 +275,35 @@
             });
             options.classList.toggle('show');
         }
+         function toggleSettingsMenu(event) {
+  const settingsMenu = document.querySelector('.settings-menu');
+  const settingsButton = document.querySelector('.settings-button');
+  const cogIcon = settingsButton.querySelector('.fa-cog');
+  const timesIcon = settingsButton.querySelector('.fa-times');
+
+  settingsMenu.classList.toggle('show');
+
+  if (settingsMenu.classList.contains('show')) {
+    cogIcon.style.display = 'none';
+    timesIcon.style.display = 'flex';
+  } else {
+    cogIcon.style.display = 'flex';
+    timesIcon.style.display = 'none';
+  }
+
+  event.stopPropagation();
+}
+document.addEventListener('click', function(event) {
+const settingsMenu = document.querySelector('.settings-menu');
+const settingsButton = document.querySelector('.settings-button');
+if (!settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
+settingsMenu.classList.remove('show');
+    const cogIcon = settingsButton.querySelector('.fa-cog');
+    const timesIcon = settingsButton.querySelector('.fa-times');
+    cogIcon.style.display = 'flex';
+    timesIcon.style.display = 'none';
+}
+});
         window.onload = function() {
             const logo = document.querySelector('header img');
             const title = document.querySelector('header h1');
@@ -214,6 +318,18 @@
     <img src="https://i.ibb.co/1dMKbh1/10.png" alt="Android Logo">
     <h1>Android 10 Q ROMs</h1>
 </header>
+    <a href="#" class="settings-button" onclick="toggleSettingsMenu(event); return false;">
+        <i class="fas fa-cog"></i>
+        <i class="fas fa-times" style="display:none;"></i>
+    </a>
+   <div class="settings-menu">
+        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/10/main2/">
+             <i class="fas fa-sun"></i>
+        </a>
+       <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
 <section id="roms" class="roms-section">
     <h2>Available ROMs</h2>
     <div class="rom-cards">
