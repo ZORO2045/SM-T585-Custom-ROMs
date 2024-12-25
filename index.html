@@ -8,9 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        :root {
+         :root {
             --primary-color: #8b81fa;
-        }  
+            --secondary-color: #4a148c;
+            --hover-color: rgba(255, 255, 255, 0.07);
+        }
         * {
             margin: 0;
             padding: 0;
@@ -23,7 +25,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             transition: background-color 0.3s ease;
-        }    
+        }
         header {
             position: relative;
             display: flex;
@@ -74,7 +76,6 @@
                 transform: translateY(0);
             }
         }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -85,7 +86,6 @@
                 transform: translateY(0);
             }
         }
-
           @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -99,60 +99,115 @@
             top: 0;
             left: 0;
             transform: translateX(-100%);
-            width: 260px; 
+            width: 300px;
             height: 100%;
-            background: rgba(10, 10, 30, 0.9);
+            background: linear-gradient(to bottom right, rgba(0, 0, 5, 0.9), rgba(0, 0, 20, 0.85), rgba(10, 10, 50, 0.8));
             backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-            transition: transform 0.3s ease;
+            padding: 35px;
+            border-radius: 15px;
+            transition: transform 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
             z-index: 999;
             overflow-y: auto;
             visibility: hidden;
-             opacity: 0;
+            opacity: 0;
         }
-         .sidebar.open {
-             transform: translateX(0); 
-              visibility: visible;
-             opacity: 1;
-         }
-        .sidebar h2 {
+        .sidebar.open {
+            transform: translateX(0);
+            visibility: visible;
+            opacity: 1;
+        }
+       .sidebar h2 {
             margin-bottom: 20px;
             color: #ffffff;
+            font-size: 1.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
             user-select: none;
+            position: relative;
+            padding-bottom: 15px;
         }
-        .sidebar a {
+        .sidebar h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #ff5f6d, #ffc371, #48c6ef, #6a11cb, #ff7eb3);
+              z-index: 1;
+        }
+         .sidebar a {
             display: flex;
             align-items: center;
             color: #e0e0e0;
             text-decoration: none;
-            padding: 10px 0;
-            transition: color 0.3s ease;
-            border-radius: 5px;
-            background: transparent; 
+            padding: 14px 0;
+            transition: color 0.3s ease, transform 0.3s ease;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            background: transparent;
+           position: relative;
+            overflow: hidden;
         }
-        .sidebar a:hover {
-            background-color: rgba(255, 255, 255, 0.1); 
-            color: #ffffff;
-        }
+       .sidebar a:hover {
+    color: #ffffff;
+     background-color: var(--hover-color);
+}
         .sidebar a i {
-            margin-right: 10px;
+            margin-right: 20px;
+            font-size: 1.3rem;
+            width: 25px;
+            text-align: center;
+              transition: transform 0.3s ease;
         }
+    
+         .sidebar a:hover i {
+        transform: scale(1.1);
+    }
+          .sidebar a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+         .sidebar a:hover::before {
+            transform: scaleX(1);
+        }
+        .sidebar a:nth-child(2) i { color: #fdd835; }
+        .sidebar a:nth-child(3) i { color: #00bcd4; }
+        .sidebar a:nth-child(4) i { color: #4caf50; }
+        .sidebar a:nth-child(5) i { color: #ff9800; }
+        .sidebar a:nth-child(6) i { color: #ff5722; }
+        .sidebar a:nth-child(7) i { color: #9c27b0; }
+        .sidebar a:nth-child(8) i { color: #03a9f4; }
+        .sidebar a:nth-child(9) i { color: #e91e63; }
+        .sidebar a:nth-child(10) i { color: #673ab7; }
+        .sidebar a:nth-child(11) i { color: #8bc34a; }
+        .sidebar a:nth-child(12) i { color: #f44336; }
+        .sidebar a:nth-child(13) i { color: #3f51b5; }
+        .sidebar a:nth-child(14) i { color: #ffc107; }
+        .sidebar a:nth-child(15) i { color: #009688; }
+
         .toggle-btn {
             position: absolute;
             top: 20px;
             left: 20px;
             font-size: 24px;
-            color: var(--text-white);
+             color: #fff;
             cursor: pointer;
             z-index: 1000;
             transition: color 0.3s ease;
         }
         .toggle-btn:hover {
-             color: var(--primary-color);
+            color: var(--primary-color);
         }
-        .roms-section {
+         .roms-section {
             padding: 50px 20px;
             text-align: center;
         }
@@ -227,7 +282,7 @@
         }
         .donation-button {
             text-decoration: none;
-            color: #ffffff; 
+            color: #ffffff;
             padding: 12px 25px;
             border-radius: 25px;
             margin: 10px 0;
@@ -298,66 +353,63 @@
         }
     </style>
     <script>
-        function smoothScroll(target) {
+    function smoothScroll(target) {
             document.querySelector(target).scrollIntoView({
                 behavior: 'smooth'
             });
         }
+         function disableBodyScroll() {
+            document.body.style.overflow = 'hidden';
+        }
 
+        function enableBodyScroll() {
+            document.body.style.overflow = '';
+        }
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             const toggleBtn = document.querySelector('.toggle-btn i');
-             sidebar.classList.toggle('open');
-
+            sidebar.classList.toggle('open');
              if (sidebar.classList.contains('open')) {
                 toggleBtn.classList.remove('fa-bars');
                 toggleBtn.classList.add('fa-times');
+                disableBodyScroll();
             } else {
                 toggleBtn.classList.remove('fa-times');
                 toggleBtn.classList.add('fa-bars');
+                enableBodyScroll();
             }
         }
-
         function closeSidebar(event) {
             const sidebar = document.querySelector('.sidebar');
             const toggleBtn = document.querySelector('.toggle-btn');
-            
             if (sidebar.classList.contains('open') &&
                 !sidebar.contains(event.target) &&
                 !toggleBtn.contains(event.target)) {
                 sidebar.classList.remove('open');
                 toggleBtn.querySelector('i').classList.remove('fa-times');
                 toggleBtn.querySelector('i').classList.add('fa-bars');
+                 enableBodyScroll();
             }
         }
-        
         function handleScroll() {
              const sidebar = document.querySelector('.sidebar');
             const toggleBtn = document.querySelector('.toggle-btn i');
-
              if (sidebar.classList.contains('open')) {
                 sidebar.classList.remove('open');
                   toggleBtn.classList.remove('fa-times');
                  toggleBtn.classList.add('fa-bars');
+                enableBodyScroll();
             }
         }
-
-
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const sidebar = document.querySelector('.sidebar');
-           
-           
             const loadingScreen = document.getElementById('loading-screen');
             loadingScreen.style.opacity = '0';
             setTimeout(() => {
                 loadingScreen.style.display = 'none';
             }, 500);
         });
-
-        document.addEventListener('click', closeSidebar);
-        document.addEventListener('scroll', function() {
-            handleScroll();
-        });
+        document.addEventListener('click', closeSidebar);     
     </script>
 </head>
 <body>
@@ -365,20 +417,20 @@
         <span class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></span>
         <div class="sidebar">
             <h2>Related Topics</h2>
-              <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/index.html"><i class="fas fa-sun"></i> Light Mode</a>
+            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/main2/index.html"><i class="fas fa-sun"></i> Light Mode</a>
             <a href="https://developer.samsung.com/android-usb-driver"><i class="fas fa-plug"></i> USB Drivers</a>
             <a href="https://odindownload.com/mobile/"><i class="fas fa-download"></i> Odin3</a>
             <a href="https://samfw.com/firmware/SM-T585/EGY/"><i class="fas fa-file-alt"></i> Firmware</a>
             <a href="twrp/index.html"><i class="fas fa-tools"></i> TWRP</a>
             <a href="custom_recovery/index.html"><i class="fas fa-hdd"></i> Custom Recoveries</a>
-            <a href="twrp/twrp-storage-mount-fix/index.html"><i class="fas fa-exclamation-triangle"></i> TWRP Storage Mount Fix</a>
+            <a href="twrp/twrp-storage-mount-fix/index.html"><i class="fas fa-exclamation-triangle"></i> Storage Mount Fix</a>
             <a href="flash_firmware/index.html"><i class="fas fa-sync"></i> Flash Firmware</a>
             <a href="fix_partitions/index.html"><i class="fas fa-cogs"></i> Fix Partitions</a>
             <a href="disable_encryption/index.html"><i class="fas fa-unlock"></i> Disable Encryption</a>
             <a href="gapps/index.html"><i class="fab fa-google"></i> GApps Packages</a>
-<a href="root/index.html"><i class="fas fa-key"></i> Magisk & Apatch</a>
-<a href="javascript:void(0)" onclick="smoothScroll('.donations-section')">
-    <i class="fas fa-hand-holding-heart"></i> Support</a>
+            <a href="root/index.html"><i class="fas fa-key"></i> Magisk & Apatch</a>
+            <a href="javascript:void(0)" onclick="smoothScroll('.donations-section')">
+                <i class="fas fa-hand-holding-heart"></i> Support</a>
             <a href="about/index.html"><i class="fas fa-info-circle"></i> About us</a>
         </div>
         <h1>Custom ROMs for Samsung Galaxy Tab A 10.1 2016</h1>
@@ -388,7 +440,6 @@
             <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/index.html" style="margin-left: 15px;">Full Guide</a>
         </div>
     </header>
-
     <section id="roms" class="roms-section">
         <h2>Android Versions</h2>
         <div class="rom-cards">
@@ -428,34 +479,32 @@
                 <button onclick="window.location.href='14/index.html'" style="font-size: 18px;">View Available ROMs</button>
             </div>
         </div>
-   
-<section class="donations-section">
-<section class="donations-section">
-    <h2>Support the ROM Development</h2>
-    <p>You can support by sending donations via Vodafone Cash.</p>
-    <p style="font-size: 18px; margin: 10px 0;">
-        <i class="fas fa-money-bill-wave"></i> Vodafone Cash: <strong>01095673573</strong>
-    </p>
-    <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center;">
-        <a href="https://t.me/gtaxllte" class="donation-button telegram">
-            <i class="fab fa-telegram"></i> Telegram Channel
-        </a>
-        <a href="https://t.me/smt585chat" class="donation-button chat">
-            <i class="fas fa-comments"></i> Chat Group
-        </a>
-        <a href="https://youtube.com/@seifel-deinhossam6690?feature=shared" class="donation-button youtube">
-            <i class="fab fa-youtube"></i> YouTube Channel
-        </a>
-    </div>
-</section>
-
-<footer>
-    <p>Developed by <a href="https://zoro2045.github.io/">ፚ Ꭷ Ꮢ Ꭷ ❥</a></p>
-    <div class="social-icons">
-        <a href="https://twitter.com/DEV_ZORO2045" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://t.me/ZORO2045" target="_blank"><i class="fab fa-telegram"></i></a>
-        <a href="https://github.com/ZORO2045" target="_blank"><i class="fab fa-github"></i></a>
-    </div>
-</footer>
+        <section class="donations-section">
+            <section class="donations-section">
+                <h2>Support the ROM Development</h2>
+                <p>You can support by sending donations via Vodafone Cash.</p>
+                <p style="font-size: 18px; margin: 10px 0;">
+                    <i class="fas fa-money-bill-wave"></i> Vodafone Cash: <strong>01095673573</strong>
+                </p>
+                <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center;">
+                    <a href="https://t.me/gtaxllte" class="donation-button telegram">
+                        <i class="fab fa-telegram"></i> Telegram Channel
+                    </a>
+                    <a href="https://t.me/smt585chat" class="donation-button chat">
+                        <i class="fas fa-comments"></i> Chat Group
+                    </a>
+                    <a href="https://youtube.com/@seifel-deinhossam6690?feature=shared" class="donation-button youtube">
+                        <i class="fab fa-youtube"></i> YouTube Channel
+                    </a>
+                </div>
+            </section>
+            <footer>
+                <p>Developed by <a href="https://zoro2045.github.io/">ፚ Ꭷ Ꮢ Ꭷ ❥</a></p>
+                <div class="social-icons">
+                    <a href="https://twitter.com/DEV_ZORO2045" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://t.me/ZORO2045" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="https://github.com/ZORO2045" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </footer>
 </body>
-                                                                                          </html>
+    </html>
