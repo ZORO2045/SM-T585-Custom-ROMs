@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samsung Galaxy Tab A 10.1 ROMs</title>
-    <link rel="icon" type="image/png" href="images/logo.jpg">
+    <link rel="icon" type="image/png" href="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/logo.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary-color: #5e3b9a;
-        }    
+            --primary-color: #4a148c;
+            --secondary-color: #8b81fa;
+            --hover-color: rgba(0, 0, 0, 0.07);
+        }
         * {
             margin: 0;
             padding: 0;
@@ -21,8 +23,10 @@
             color: #333333;
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-             overflow-x: hidden;
-            transition: background-color 0.3s ease;
+            overflow-x: hidden;
+            transition: background-color 0.2s ease;
+        }        .body-no-scroll {
+            overflow-y: hidden;
         }
         header {
             position: relative;
@@ -56,7 +60,7 @@
             border-radius: 25px;
             text-decoration: none;
             font-weight: 700;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: transform 0.2s ease;
             margin: 0 5px;
             animation: fadeIn 1s ease forwards;
         }
@@ -94,61 +98,117 @@
                 opacity: 1;
             }
         }
-        .sidebar {
-             position: absolute;
+         .sidebar {
+            position: fixed;
             top: 0;
-            left: 0; 
+            left: 0;
             transform: translateX(-100%);
-            width: 260px; 
+            width: 300px;
             height: 100%;
             background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.8), rgba(232, 214, 241, 0.8)); 
-            backdrop-filter: blur(15px);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-             transition: transform 0.3s ease; 
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 15px;
+           transition: transform 0.25s ease;
             z-index: 999;
             overflow-y: auto;
             visibility: hidden;
-             opacity: 0;
-              will-change: transform;
+            opacity: 0;
+            scrollbar-color: #D8BFD8 rgba(0, 0, 0, 0.1);
+            scrollbar-width: thin;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
-         .sidebar.open {
-             transform: translateX(0); 
-              visibility: visible;
-             opacity: 1;
-         }
-        .sidebar h2 {
+        .sidebar.open {
+            transform: translateX(0);
+            visibility: visible;
+            opacity: 1;
+        }
+          .sidebar h2 {
             margin-bottom: 20px;
-            color: #333333;
+            color: #333;
+            font-size: 1.8rem;
+             text-transform: uppercase;
+            letter-spacing: 1.5px;
             user-select: none;
+            position: relative;
+             padding-bottom: 15px;
         }
-        .sidebar a {
+        .sidebar h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #ff5f6d, #ffc371, #48c6ef, #6a11cb, #ff7eb3);
+              z-index: 1;
+        }
+         .sidebar a {
             display: flex;
             align-items: center;
-            color: #333333;
+            color: #555;
             text-decoration: none;
-            padding: 10px 0;
-            transition: color 0.3s ease;
-            border-radius: 5px;
-            background: transparent; 
+            padding: 14px 0;
+             transition: color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            background: transparent;
+           position: relative;
+            overflow: hidden;
         }
         .sidebar a:hover {
-            background-color: rgba(0, 0, 0, 0.1); 
-            color: #000000;
+            color: #111;
+            background-color: var(--hover-color);
         }
         .sidebar a i {
-            margin-right: 10px;
+            margin-right: 20px;
+            font-size: 1.3rem;
+            width: 25px;
+            text-align: center;
+              transition: transform 0.2s ease;
         }
-         .toggle-btn {
+      .sidebar a:hover i {
+        transform: scale(1.1);
+    }
+        .sidebar a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.2s ease;
+        }
+         .sidebar a:hover::before {
+            transform: scaleX(1);
+        }
+         .sidebar a:nth-child(2) i { color: #fdd835; }
+        .sidebar a:nth-child(3) i { color: #00bcd4; }
+        .sidebar a:nth-child(4) i { color: #4caf50; }
+        .sidebar a:nth-child(5) i { color: #ff9800; }
+        .sidebar a:nth-child(6) i { color: #ff5722; }
+        .sidebar a:nth-child(7) i { color: #9c27b0; }
+        .sidebar a:nth-child(8) i { color: #03a9f4; }
+        .sidebar a:nth-child(9) i { color: #e91e63; }
+        .sidebar a:nth-child(10) i { color: #673ab7; }
+        .sidebar a:nth-child(11) i { color: #8bc34a; }
+        .sidebar a:nth-child(12) i { color: #f44336; }
+        .sidebar a:nth-child(13) i { color: #3f51b5; }
+        .sidebar a:nth-child(14) i { color: #ffc107; }
+        .sidebar a:nth-child(15) i { color: #009688; }
+    
+          .toggle-btn {
             position: absolute;
             top: 20px;
             left: 20px;
             font-size: 24px;
-            color: var(--text-white);
+            color: #333;
             cursor: pointer;
             z-index: 1000;
-            transition: color 0.3s ease;
+            transition: color 0.2s ease;
         }
         .toggle-btn:hover {
              color: var(--primary-color);
@@ -218,13 +278,13 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
         .donations-section {
-    background: linear-gradient(to bottom right, #f0e3f8, #f0e3f8); 
-    padding: 50px 20px;
-    text-align: center;
-    margin-top: 50px;
-    border-radius: 15px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
+            background: linear-gradient(to bottom right, #f0e3f8, #f0e3f8);
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
         .donation-button {
             text-decoration: none;
             color: #ffffff; 
@@ -264,13 +324,13 @@
             background-color: #388e3c;
         }
          footer {
-    padding: 20px;
-    background: linear-gradient(to bottom right, #d6ccf5, #d6ccf5);
-    text-align: center;
-    margin-top: 50px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-}
+            padding: 20px;
+            background: linear-gradient(to bottom right, #d6ccf5, #d6ccf5);
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
         footer a {
             color: #000000;
             text-decoration: none;
@@ -297,59 +357,93 @@
             }
         }
     </style>
-    <script>
-        function smoothScroll(target) {
+<script>
+         function smoothScroll(target) {
             document.querySelector(target).scrollIntoView({
                 behavior: 'smooth'
             });
         }
+        let animationFrame = null;
+        let isSidebarOpen = false;
 
          function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             const toggleBtn = document.querySelector('.toggle-btn i');
-             sidebar.classList.toggle('open');
+            const body = document.querySelector('body');
 
-             if (sidebar.classList.contains('open')) {
+            if (animationFrame) {
+                 cancelAnimationFrame(animationFrame);
+            }
+             const startTransform = isSidebarOpen ? 0 : -100;
+            const endTransform = isSidebarOpen ? -100 : 0;
+
+            let startTime = null;
+             const animate = (time) => {
+                if (!startTime) startTime = time;
+                 const progress = Math.min((time - startTime) / 50, 1); 
+                 const transformValue = startTransform + (endTransform - startTransform) * progress;
+                 sidebar.style.transform = `translateX(${transformValue}%)`;
+
+                if (progress < 1) {
+                 animationFrame = requestAnimationFrame(animate);
+                }
+                else {
+                   sidebar.style.visibility = endTransform === 0 ? "visible" : "hidden";
+                    sidebar.style.opacity = endTransform === 0 ? 1 : 0;
+                     animationFrame = null;
+                }
+            };
+
+           if (!isSidebarOpen) {
+                sidebar.style.visibility = "visible";
+                 sidebar.style.opacity = 1;
+            }
+
+
+            animationFrame = requestAnimationFrame(animate);
+
+            isSidebarOpen = !isSidebarOpen;
+
+
+             if (isSidebarOpen) {
                 toggleBtn.classList.remove('fa-bars');
                 toggleBtn.classList.add('fa-times');
+                body.classList.add('body-no-scroll');
+
             } else {
                 toggleBtn.classList.remove('fa-times');
                 toggleBtn.classList.add('fa-bars');
+                 body.classList.remove('body-no-scroll');
+
             }
         }
-
         function closeSidebar(event) {
-            const sidebar = document.querySelector('.sidebar');
-            const toggleBtn = document.querySelector('.toggle-btn');
-            
-            if (sidebar.classList.contains('open') &&
-                !sidebar.contains(event.target) &&
-                !toggleBtn.contains(event.target)) {
-                sidebar.classList.remove('open');
-                toggleBtn.querySelector('i').classList.remove('fa-times');
-                toggleBtn.querySelector('i').classList.add('fa-bars');
-            }
-        }
-        
-        function handleScroll() {
              const sidebar = document.querySelector('.sidebar');
-            const toggleBtn = document.querySelector('.toggle-btn i');
+            const toggleBtn = document.querySelector('.toggle-btn');
 
-             if (sidebar.classList.contains('open')) {
-                sidebar.classList.remove('open');
-                  toggleBtn.classList.remove('fa-times');
-                 toggleBtn.classList.add('fa-bars');
+             if (isSidebarOpen &&
+                 !sidebar.contains(event.target) &&
+                 !toggleBtn.contains(event.target)) {
+                   toggleSidebar();
             }
-        }
-        window.addEventListener('load', function() {
+         }
+
+        function handleScroll() {
+              if (isSidebarOpen) {
+                 toggleSidebar();
+            }
+          }
+        window.addEventListener('load', function () {
             const sidebar = document.querySelector('.sidebar');
-           
-        });
-        document.addEventListener('scroll', function() {
-            handleScroll();
+            const loadingScreen = document.getElementById('loading-screen');
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
         });
 
-        document.addEventListener('click', closeSidebar);
+         document.addEventListener('click', closeSidebar);
+        document.addEventListener('scroll', handleScroll);
     </script>
 </head>
 <body>
@@ -363,7 +457,7 @@
             <a href="https://samfw.com/firmware/SM-T585/EGY/"><i class="fas fa-file-alt"></i> Firmware</a>
              <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/main2/index.html"><i class="fas fa-tools"></i> TWRP</a>
             <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/custom_recovery/main2/index.html"><i class="fas fa-hdd"></i> Custom Recoveries</a>
-            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/main2/twrp-storage-mount-fix/index.html"><i class="fas fa-exclamation-triangle"></i> TWRP Storage Mount Fix</a>
+            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/main2/twrp-storage-mount-fix/index.html"><i class="fas fa-exclamation-triangle"></i> Storage Mount Fix</a>
             <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_firmware/main2/index.html"><i class="fas fa-sync"></i> Flash Firmware</a>
             <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/fix_partitions/main2/index.html"><i class="fas fa-cogs"></i> Fix Partitions</a>
             <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/disable_encryption/main2/index.html"><i class="fas fa-unlock"></i> Disable Encryption</a>
