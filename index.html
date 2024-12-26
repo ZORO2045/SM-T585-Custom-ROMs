@@ -26,6 +26,9 @@
             overflow-x: hidden;
             transition: background-color 0.3s ease;
         }
+        .body-no-scroll {
+            overflow-y: hidden;
+        }
         header {
             position: relative;
             display: flex;
@@ -95,7 +98,7 @@
             }
         }
         .sidebar {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             transform: translateX(-100%);
@@ -105,26 +108,28 @@
             backdrop-filter: blur(10px);
             padding: 35px;
             border-radius: 15px;
-            transition: transform 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
+           transition: transform 0.25s ease;
             z-index: 999;
             overflow-y: auto;
             visibility: hidden;
             opacity: 0;
+            scrollbar-color: #D8BFD8 rgba(0, 0, 0, 0.1);
+            scrollbar-width: thin;
         }
         .sidebar.open {
             transform: translateX(0);
             visibility: visible;
             opacity: 1;
         }
-       .sidebar h2 {
+          .sidebar h2 {
             margin-bottom: 20px;
             color: #ffffff;
-            font-size: 1.9rem;
-            text-transform: uppercase;
+            font-size: 1.8rem;
+             text-transform: uppercase;
             letter-spacing: 1.5px;
             user-select: none;
             position: relative;
-            padding-bottom: 15px;
+             padding-bottom: 15px;
         }
         .sidebar h2::after {
             content: '';
@@ -142,29 +147,28 @@
             color: #e0e0e0;
             text-decoration: none;
             padding: 14px 0;
-            transition: color 0.3s ease, transform 0.3s ease;
+             transition: color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
             border-radius: 10px;
             margin-bottom: 10px;
             background: transparent;
            position: relative;
             overflow: hidden;
         }
-       .sidebar a:hover {
-    color: #ffffff;
-     background-color: var(--hover-color);
-}
+        .sidebar a:hover {
+            color: #ffffff;
+            background-color: var(--hover-color);
+        }
         .sidebar a i {
             margin-right: 20px;
             font-size: 1.3rem;
             width: 25px;
             text-align: center;
-              transition: transform 0.3s ease;
+              transition: transform 0.2s ease;
         }
-    
-         .sidebar a:hover i {
+      .sidebar a:hover i {
         transform: scale(1.1);
     }
-          .sidebar a::before {
+        .sidebar a::before {
             content: '';
             position: absolute;
             left: 0;
@@ -174,12 +178,12 @@
             background-color: var(--primary-color);
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform 0.3s ease;
+            transition: transform 0.2s ease;
         }
          .sidebar a:hover::before {
             transform: scaleX(1);
         }
-        .sidebar a:nth-child(2) i { color: #fdd835; }
+         .sidebar a:nth-child(2) i { color: #fdd835; }
         .sidebar a:nth-child(3) i { color: #00bcd4; }
         .sidebar a:nth-child(4) i { color: #4caf50; }
         .sidebar a:nth-child(5) i { color: #ff9800; }
@@ -193,19 +197,19 @@
         .sidebar a:nth-child(13) i { color: #3f51b5; }
         .sidebar a:nth-child(14) i { color: #ffc107; }
         .sidebar a:nth-child(15) i { color: #009688; }
-
-        .toggle-btn {
+    
+          .toggle-btn {
             position: absolute;
             top: 20px;
             left: 20px;
             font-size: 24px;
-             color: #fff;
+            color: #fff;
             cursor: pointer;
             z-index: 1000;
-            transition: color 0.3s ease;
+            transition: color 0.2s ease;
         }
         .toggle-btn:hover {
-            color: var(--primary-color);
+             color: var(--primary-color);
         }
          .roms-section {
             padding: 50px 20px;
@@ -353,54 +357,81 @@
         }
     </style>
     <script>
-    function smoothScroll(target) {
+         function smoothScroll(target) {
             document.querySelector(target).scrollIntoView({
                 behavior: 'smooth'
             });
         }
-         function disableBodyScroll() {
-            document.body.style.overflow = 'hidden';
-        }
+        let animationFrame = null;
+        let isSidebarOpen = false;
 
-        function enableBodyScroll() {
-            document.body.style.overflow = '';
-        }
-        function toggleSidebar() {
+         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             const toggleBtn = document.querySelector('.toggle-btn i');
-            sidebar.classList.toggle('open');
-             if (sidebar.classList.contains('open')) {
+            const body = document.querySelector('body');
+
+            if (animationFrame) {
+                 cancelAnimationFrame(animationFrame);
+            }
+             const startTransform = isSidebarOpen ? 0 : -100;
+            const endTransform = isSidebarOpen ? -100 : 0;
+
+            let startTime = null;
+             const animate = (time) => {
+                if (!startTime) startTime = time;
+                 const progress = Math.min((time - startTime) / 50, 1); 
+                 const transformValue = startTransform + (endTransform - startTransform) * progress;
+                 sidebar.style.transform = `translateX(${transformValue}%)`;
+
+                if (progress < 1) {
+                 animationFrame = requestAnimationFrame(animate);
+                }
+                else {
+                   sidebar.style.visibility = endTransform === 0 ? "visible" : "hidden";
+                    sidebar.style.opacity = endTransform === 0 ? 1 : 0;
+                     animationFrame = null;
+                }
+            };
+
+           if (!isSidebarOpen) {
+                sidebar.style.visibility = "visible";
+                 sidebar.style.opacity = 1;
+            }
+
+
+            animationFrame = requestAnimationFrame(animate);
+
+            isSidebarOpen = !isSidebarOpen;
+
+
+             if (isSidebarOpen) {
                 toggleBtn.classList.remove('fa-bars');
                 toggleBtn.classList.add('fa-times');
-                disableBodyScroll();
+                body.classList.add('body-no-scroll');
+
             } else {
                 toggleBtn.classList.remove('fa-times');
                 toggleBtn.classList.add('fa-bars');
-                enableBodyScroll();
+                 body.classList.remove('body-no-scroll');
+
             }
         }
         function closeSidebar(event) {
-            const sidebar = document.querySelector('.sidebar');
-            const toggleBtn = document.querySelector('.toggle-btn');
-            if (sidebar.classList.contains('open') &&
-                !sidebar.contains(event.target) &&
-                !toggleBtn.contains(event.target)) {
-                sidebar.classList.remove('open');
-                toggleBtn.querySelector('i').classList.remove('fa-times');
-                toggleBtn.querySelector('i').classList.add('fa-bars');
-                 enableBodyScroll();
-            }
-        }
-        function handleScroll() {
              const sidebar = document.querySelector('.sidebar');
-            const toggleBtn = document.querySelector('.toggle-btn i');
-             if (sidebar.classList.contains('open')) {
-                sidebar.classList.remove('open');
-                  toggleBtn.classList.remove('fa-times');
-                 toggleBtn.classList.add('fa-bars');
-                enableBodyScroll();
+            const toggleBtn = document.querySelector('.toggle-btn');
+
+             if (isSidebarOpen &&
+                 !sidebar.contains(event.target) &&
+                 !toggleBtn.contains(event.target)) {
+                   toggleSidebar();
             }
-        }
+         }
+
+        function handleScroll() {
+              if (isSidebarOpen) {
+                 toggleSidebar();
+            }
+          }
         window.addEventListener('load', function () {
             const sidebar = document.querySelector('.sidebar');
             const loadingScreen = document.getElementById('loading-screen');
@@ -409,7 +440,9 @@
                 loadingScreen.style.display = 'none';
             }, 500);
         });
-        document.addEventListener('click', closeSidebar);     
+
+         document.addEventListener('click', closeSidebar);
+        document.addEventListener('scroll', handleScroll);
     </script>
 </head>
 <body>
