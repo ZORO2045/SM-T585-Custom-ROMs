@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samsung Galaxy Tab A 10.1 ROMs</title>
+    <title>SM-T585 Custom ROMs - Gtaxllte</title>
     <link rel="icon" type="image/png" href="images/logo.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"
+        integrity="sha512-jq8sZI0I9Og0nnZ+CfJRnUzNSDKxr/5Bvha5bn7AHzTnRyxUfpUArMzfH++mwE/hb2efOo1gCAgI+1RMzf8F7g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
-         :root {
+        :root {
             --primary-color: #8b81fa;
             --secondary-color: #4a148c;
             --hover-color: rgba(255, 255, 255, 0.07);
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             background-color: #000000;
             color: #e0e0e0;
@@ -26,9 +32,11 @@
             overflow-x: hidden;
             transition: background-color 0.3s ease;
         }
+
         .body-no-scroll {
             overflow-y: hidden;
         }
+
         header {
             position: relative;
             display: flex;
@@ -36,24 +44,43 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background: linear-gradient(to bottom right, #000000, #1b004d);
+            background: transparent;
+             background: linear-gradient(to bottom right, #000000, #1b004d);
             text-align: center;
             color: #ffffff;
+            overflow: hidden;
         }
-        header h1, header p, header a {
+
+        header .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+           pointer-events: none;
+        }
+
+
+        header h1,
+        header p,
+        header a {
             user-select: none;
         }
+
         header h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
             text-shadow: 3px 3px 20px rgba(0, 0, 0, 0.6);
             animation: fadeInDown 1s ease forwards;
         }
+
         header p {
             font-size: 1.5rem;
             margin-bottom: 40px;
             animation: fadeIn 1s ease forwards;
         }
+
         header a {
             padding: 15px 30px;
             background-color: #1b004d;
@@ -65,38 +92,46 @@
             margin: 0 5px;
             animation: fadeIn 1s ease forwards;
         }
+
         header a:hover {
             background-color: #2e0079;
             transform: scale(1.05);
         }
+
         @keyframes fadeInDown {
             from {
                 opacity: 0;
                 transform: translateY(-30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-          @keyframes fadeIn {
+
+        @keyframes fadeIn {
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
         }
+
         .sidebar {
             position: fixed;
             top: 0;
@@ -104,11 +139,11 @@
             transform: translateX(-100%);
             width: 300px;
             height: 100%;
-            background: linear-gradient(to bottom right, rgba(0, 0, 5, 0.9), rgba(0, 0, 20, 0.85), rgba(10, 10, 50, 0.8));
+             background: linear-gradient(to bottom right, rgba(0, 0, 5, 0.9), rgba(0, 0, 20, 0.85), rgba(10, 10, 50, 0.8));
             backdrop-filter: blur(10px);
             padding: 35px;
             border-radius: 15px;
-           transition: transform 0.25s ease;
+            transition: transform 0.25s ease;
             z-index: 999;
             overflow-y: auto;
             visibility: hidden;
@@ -116,21 +151,24 @@
             scrollbar-color: #D8BFD8 rgba(0, 0, 0, 0.1);
             scrollbar-width: thin;
         }
+
         .sidebar.open {
             transform: translateX(0);
             visibility: visible;
             opacity: 1;
         }
-          .sidebar h2 {
+
+        .sidebar h2 {
             margin-bottom: 20px;
             color: #ffffff;
             font-size: 1.8rem;
-             text-transform: uppercase;
+            text-transform: uppercase;
             letter-spacing: 1.5px;
             user-select: none;
             position: relative;
-             padding-bottom: 15px;
+            padding-bottom: 15px;
         }
+
         .sidebar h2::after {
             content: '';
             position: absolute;
@@ -139,35 +177,40 @@
             width: 100%;
             height: 2px;
             background: linear-gradient(to right, #ff5f6d, #ffc371, #48c6ef, #6a11cb, #ff7eb3);
-              z-index: 1;
+            z-index: 1;
         }
-         .sidebar a {
+
+        .sidebar a {
             display: flex;
             align-items: center;
             color: #e0e0e0;
             text-decoration: none;
             padding: 14px 0;
-             transition: color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+            transition: color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
             border-radius: 10px;
             margin-bottom: 10px;
             background: transparent;
-           position: relative;
+            position: relative;
             overflow: hidden;
         }
+
         .sidebar a:hover {
             color: #ffffff;
             background-color: var(--hover-color);
         }
+
         .sidebar a i {
             margin-right: 20px;
             font-size: 1.3rem;
             width: 25px;
             text-align: center;
-              transition: transform 0.2s ease;
+            transition: transform 0.2s ease;
         }
-      .sidebar a:hover i {
-        transform: scale(1.1);
-    }
+
+        .sidebar a:hover i {
+            transform: scale(1.1);
+        }
+
         .sidebar a::before {
             content: '';
             position: absolute;
@@ -180,25 +223,68 @@
             transform-origin: left;
             transition: transform 0.2s ease;
         }
-         .sidebar a:hover::before {
+
+        .sidebar a:hover::before {
             transform: scaleX(1);
         }
-         .sidebar a:nth-child(2) i { color: #fdd835; }
-        .sidebar a:nth-child(3) i { color: #00bcd4; }
-        .sidebar a:nth-child(4) i { color: #4caf50; }
-        .sidebar a:nth-child(5) i { color: #ff9800; }
-        .sidebar a:nth-child(6) i { color: #ff5722; }
-        .sidebar a:nth-child(7) i { color: #9c27b0; }
-        .sidebar a:nth-child(8) i { color: #03a9f4; }
-        .sidebar a:nth-child(9) i { color: #e91e63; }
-        .sidebar a:nth-child(10) i { color: #673ab7; }
-        .sidebar a:nth-child(11) i { color: #8bc34a; }
-        .sidebar a:nth-child(12) i { color: #f44336; }
-        .sidebar a:nth-child(13) i { color: #3f51b5; }
-        .sidebar a:nth-child(14) i { color: #ffc107; }
-        .sidebar a:nth-child(15) i { color: #009688; }
-    
-          .toggle-btn {
+
+        .sidebar a:nth-child(2) i {
+            color: #fdd835;
+        }
+
+        .sidebar a:nth-child(3) i {
+            color: #00bcd4;
+        }
+
+        .sidebar a:nth-child(4) i {
+            color: #4caf50;
+        }
+
+        .sidebar a:nth-child(5) i {
+            color: #ff9800;
+        }
+
+        .sidebar a:nth-child(6) i {
+            color: #ff5722;
+        }
+
+        .sidebar a:nth-child(7) i {
+            color: #9c27b0;
+        }
+
+        .sidebar a:nth-child(8) i {
+            color: #03a9f4;
+        }
+
+        .sidebar a:nth-child(9) i {
+            color: #e91e63;
+        }
+
+        .sidebar a:nth-child(10) i {
+            color: #673ab7;
+        }
+
+        .sidebar a:nth-child(11) i {
+            color: #8bc34a;
+        }
+
+        .sidebar a:nth-child(12) i {
+            color: #f44336;
+        }
+
+        .sidebar a:nth-child(13) i {
+            color: #3f51b5;
+        }
+
+        .sidebar a:nth-child(14) i {
+            color: #ffc107;
+        }
+
+        .sidebar a:nth-child(15) i {
+            color: #009688;
+        }
+
+        .toggle-btn {
             position: absolute;
             top: 20px;
             left: 20px;
@@ -208,25 +294,30 @@
             z-index: 1000;
             transition: color 0.2s ease;
         }
+
         .toggle-btn:hover {
-             color: var(--primary-color);
+            color: var(--primary-color);
         }
-         .roms-section {
+
+        .roms-section {
             padding: 50px 20px;
             text-align: center;
         }
+
         .roms-section h2 {
             font-size: 2.5rem;
             margin-bottom: 30px;
             color: #8b81fa;
             user-select: none;
         }
+
         .rom-cards {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
         }
+
         .android-card {
             background-color: #121212;
             border-radius: 15px;
@@ -239,20 +330,24 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             user-select: none;
         }
+
         .android-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
         }
+
         .android-card img {
             width: 100px;
             margin-bottom: 15px;
         }
+
         .android-card h3 {
             color: #ffffff;
             font-size: 1.5rem;
             margin-bottom: 10px;
             user-select: none;
         }
+
         .android-card button {
             padding: 10px 20px;
             background-color: #1b004d;
@@ -263,10 +358,12 @@
             transition: background-color 0.3s ease, transform 0.3s ease;
             border: none;
         }
+
         .android-card button:hover {
             background-color: #2e0079;
             transform: scale(1.05);
         }
+
         .donations-section {
             background-color: #1c1c3a;
             padding: 50px 20px;
@@ -275,15 +372,18 @@
             border-radius: 15px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
         }
+
         .donations-section h2 {
             font-size: 2rem;
             margin-bottom: 20px;
             color: #ffffff;
         }
+
         .donations-section p {
             font-size: 1.2rem;
             color: #e0e0e0;
         }
+
         .donation-button {
             text-decoration: none;
             color: #ffffff;
@@ -297,31 +397,40 @@
             transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
+
         .donation-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
+
         .donation-button i {
             margin-right: 8px;
         }
+
         .donation-button.youtube {
             background-color: #ff0000;
         }
+
         .donation-button.youtube:hover {
             background-color: #cc0000;
         }
+
         .donation-button.telegram {
             background-color: #0088cc;
         }
+
         .donation-button.telegram:hover {
             background-color: #006699;
         }
+
         .donation-button.chat {
             background-color: #4caf50;
         }
+
         .donation-button.chat:hover {
             background-color: #388e3c;
         }
+
         footer {
             padding: 20px;
             background-color: #000000;
@@ -330,26 +439,32 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
         }
+
         footer a {
             color: #81d4fa;
             text-decoration: none;
             font-size: 1rem;
         }
+
         .social-icons {
             margin-top: 10px;
         }
+
         .social-icons a {
             color: #81d4fa;
             margin: 0 10px;
             font-size: 1.5rem;
         }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2.5rem;
             }
+
             header p {
                 font-size: 1.2rem;
             }
+
             .rom-cards {
                 flex-direction: column;
                 align-items: center;
@@ -357,7 +472,7 @@
         }
     </style>
     <script>
-         function smoothScroll(target) {
+        function smoothScroll(target) {
             document.querySelector(target).scrollIntoView({
                 behavior: 'smooth'
             });
@@ -365,37 +480,37 @@
         let animationFrame = null;
         let isSidebarOpen = false;
 
-         function toggleSidebar() {
+        function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             const toggleBtn = document.querySelector('.toggle-btn i');
             const body = document.querySelector('body');
 
             if (animationFrame) {
-                 cancelAnimationFrame(animationFrame);
+                cancelAnimationFrame(animationFrame);
             }
-             const startTransform = isSidebarOpen ? 0 : -100;
+            const startTransform = isSidebarOpen ? 0 : -100;
             const endTransform = isSidebarOpen ? -100 : 0;
 
             let startTime = null;
-             const animate = (time) => {
+            const animate = (time) => {
                 if (!startTime) startTime = time;
-                 const progress = Math.min((time - startTime) / 50, 1); 
-                 const transformValue = startTransform + (endTransform - startTransform) * progress;
-                 sidebar.style.transform = `translateX(${transformValue}%)`;
+                const progress = Math.min((time - startTime) / 50, 1);
+                const transformValue = startTransform + (endTransform - startTransform) * progress;
+                sidebar.style.transform = `translateX(${transformValue}%)`;
 
                 if (progress < 1) {
-                 animationFrame = requestAnimationFrame(animate);
+                    animationFrame = requestAnimationFrame(animate);
                 }
                 else {
-                   sidebar.style.visibility = endTransform === 0 ? "visible" : "hidden";
+                    sidebar.style.visibility = endTransform === 0 ? "visible" : "hidden";
                     sidebar.style.opacity = endTransform === 0 ? 1 : 0;
-                     animationFrame = null;
+                    animationFrame = null;
                 }
             };
 
-           if (!isSidebarOpen) {
+            if (!isSidebarOpen) {
                 sidebar.style.visibility = "visible";
-                 sidebar.style.opacity = 1;
+                sidebar.style.opacity = 1;
             }
 
 
@@ -404,7 +519,7 @@
             isSidebarOpen = !isSidebarOpen;
 
 
-             if (isSidebarOpen) {
+            if (isSidebarOpen) {
                 toggleBtn.classList.remove('fa-bars');
                 toggleBtn.classList.add('fa-times');
                 body.classList.add('body-no-scroll');
@@ -412,41 +527,55 @@
             } else {
                 toggleBtn.classList.remove('fa-times');
                 toggleBtn.classList.add('fa-bars');
-                 body.classList.remove('body-no-scroll');
+                body.classList.remove('body-no-scroll');
 
             }
         }
         function closeSidebar(event) {
-             const sidebar = document.querySelector('.sidebar');
+            const sidebar = document.querySelector('.sidebar');
             const toggleBtn = document.querySelector('.toggle-btn');
 
-             if (isSidebarOpen &&
-                 !sidebar.contains(event.target) &&
-                 !toggleBtn.contains(event.target)) {
-                   toggleSidebar();
+            if (isSidebarOpen &&
+                !sidebar.contains(event.target) &&
+                !toggleBtn.contains(event.target)) {
+                toggleSidebar();
             }
-         }
+        }
 
         function handleScroll() {
-              if (isSidebarOpen) {
-                 toggleSidebar();
+            if (isSidebarOpen) {
+                toggleSidebar();
             }
-          }
+        }
+
         window.addEventListener('load', function () {
-            const sidebar = document.querySelector('.sidebar');
-            const loadingScreen = document.getElementById('loading-screen');
-            loadingScreen.style.opacity = '0';
-            setTimeout(() => {
-                loadingScreen.style.display = 'none';
-            }, 500);
+            
+            Particles.init({
+                selector: "header .background",
+                color: ["#FF0099", "#00FFFF"],
+                connectParticles: true,
+                responsive: [
+                    {
+                        breakpoint: 765,
+                        options: {
+                            color: ["#FFF", "#FF0099", "#00FFFF"],
+                            maxParticles: 75,
+                            connectParticles: false,
+                        },
+                    },
+                ],
+            });
         });
 
-         document.addEventListener('click', closeSidebar);
+
+        document.addEventListener('click', closeSidebar);
         document.addEventListener('scroll', handleScroll);
     </script>
 </head>
+
 <body>
     <header>
+        <canvas class="background"></canvas>
         <span class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></span>
         <div class="sidebar">
             <h2>Related Topics</h2>
@@ -469,8 +598,9 @@
         <h1>Custom ROMs for Samsung Galaxy Tab A 10.1 2016</h1>
         <p>Unlock amazing performance with custom ROMs for your device! 🚀</p>
         <div>
-            <a onclick="smoothScroll('#roms')">Let’s go!</a>
-            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/index.html" style="margin-left: 15px;">Full Guide</a>
+            <a href="javascript:void(0);" onclick="smoothScroll('#roms')">Let’s go!</a>
+            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/index.html"
+                style="margin-left: 15px;">Full Guide</a>
         </div>
     </header>
     <section id="roms" class="roms-section">
@@ -506,7 +636,7 @@
                 <h3>Android 13 T</h3>
                 <button onclick="window.location.href='13/index.html'" style="font-size: 18px;">View Available ROMs</button>
             </div>
-            <div class="android-card">
+             <div class="android-card">
                 <img src="images/14.png" alt="Android 14">
                 <h3>Android 14 U</h3>
                 <button onclick="window.location.href='14/index.html'" style="font-size: 18px;">View Available ROMs</button>
@@ -540,4 +670,5 @@
                 </div>
             </footer>
 </body>
+
     </html>
