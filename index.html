@@ -438,12 +438,21 @@
             margin-top: 50px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            user-select: none;
         }
 
         footer a {
             color: #81d4fa;
             text-decoration: none;
             font-size: 1rem;
+        }
+        
+        .footer__copy {
+            display: block;
+            color: #81d4fa;
+            margin-top: 2.5rem;
+            text-align: center;
+            user-select: none;
         }
 
         .social-icons {
@@ -559,7 +568,7 @@
                         breakpoint: 765,
                         options: {
                             color: ["#FFF", "#FF0099", "#00FFFF"],
-                            maxParticles: 75,
+                            maxParticles: 90,
                             connectParticles: false,
                         },
                     },
@@ -669,6 +678,9 @@
                     <a href="https://github.com/ZORO2045" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
             </footer>
+            <span class="footer__copy">
+            &copy; 2024 All rights reserved.
+         </span>
 </body>
 
     </html>
