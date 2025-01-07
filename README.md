@@ -10,8 +10,6 @@
 
 Welcome! This repository is your central resource for customizing your **Samsung Galaxy Tab A 10.1 (SM-T585) (gtaxllte)**. Here, you'll find curated collections of custom ROMs, detailed guides, and a supportive community to enhance your device experience. Our goal is to help you unlock the full potential of your tablet through the exciting world of custom ROMs.
 
-> "The only way to do great work is to love what you do." - Steve Jobs
-
 ## 🛠️ What's Inside?
 
 This repository is designed to offer comprehensive resources for your device:
