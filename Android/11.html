@@ -1,1 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android 11 (R) ROMs</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/C9J2Mh1/11.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6a5acd;
+            --secondary-color: #3f306b;
+            --primary: #6c5ce7;
+            --secondary: #3498db;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --hover-color: rgba(255, 255, 255, 0.07);
+            --dark: #0f172a;
+            --light: #ffffff;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --card-gradient: #1F1635;
+            --button-gradient-color-1: #4a148c;
+            --button-gradient-color-2: #2c3e50;
+            --button-hover-gradient-1: #8e44ad;
+            --button-hover-gradient-2: #34495e;
+            --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            --card-box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            --transition: all 0.3s ease-in-out;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: default;
+        }
+        body {
+            background-color: #000;
+            color: #000;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            
+        }
+        body.popup-open {
+           overflow: hidden;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 70vh;
+            background: linear-gradient(to bottom right, #1e134e, #3f306b);
+            text-align: center;
+            color: #ffffff;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: -200px;
+            left: -50px;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), transparent);
+            border-radius: 50%;
+            z-index: 1;
+            pointer-events: none;
+            animation: floating 10s linear infinite;
+        }
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+        }
+        header h1, header p, header a {
+            user-select: none;
+            z-index: 2;
+        }
+        header img {
+            max-width: 150px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transition: opacity 1s ease;
+            z-index: 2;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 1s ease;
+            text-align: center;
+            z-index: 2;
+        }
+        .fade-in {
+            opacity: 1;
+        }
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            z-index: 2;
+        }
+        header a {
+            padding: 15px 30px;
+            background-color: #1b004d;
+            color: #ffffff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease-in-out;
+            z-index: 2;
+        }
+        header a:hover {
+            background: linear-gradient(to right, var(--button-hover-gradient-1), var(--button-hover-gradient-2));
+        }
+        .settings-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #2e0079;
+            color: #fff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            transition: background-color 0.3s ease-in-out;
+            z-index: 1000;
+            cursor: pointer;
+        }
+        .settings-button:hover {
+            background-color: #2e0079;
+        }
+        .settings-menu {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            display: none;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            z-index: 1001;
+        }
+        .settings-menu.show {
+            display: flex;
+        }
+        .settings-menu a {
+            background-color: #2e0079;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 15px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            transition: background-color 0.3s ease-in-out;
+        }
+        .settings-menu a:hover {
+            background-color: #2e0079;
+        }
+        .roms-section {
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #0b081c, #1a0933, #0e0e2c);
+            text-align: center;
+        }
+        .roms-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #6a5acd;
+            user-select: none;
+        }
+        .rom-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .rom-card {
+            background: var(--card-gradient);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            width: 340px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            user-select: none;
+        }
+        .rom-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        .rom-card img {
+            width: 300px;
+            height: 150px;
+            margin-bottom: 10px;
+            display: block;
+            border-radius: 10px;
+            object-fit: cover;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #6a5acd;
+        }
+        .rom-card h3 {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            user-select: none;
+        }
+        .rom-card p {
+            color: #9e9e9e;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .rom-card .by-line {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        .rom-card .by-line span {
+            cursor: pointer;
+            text-decoration: none;
+            color: #6a5acd;
+        }
+        .rom-card a {
+            padding: 10px 20px;
+            background: linear-gradient(to right, var(--button-gradient-color-1), var(--button-gradient-color-2));
+            color: #ffffff;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 2px solid #6a5acd;
+        }
+        .rom-card a:hover {
+            background: linear-gradient(to right, var(--button-hover-gradient-1), var(--button-hover-gradient-2));
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.5);
+        }
+        .download-options {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+            transform: translateY(20px);
+        }
+        .download-options.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .download-options a {
+            display: block;
+            margin: 10px 0;
+            background-color: #1b004d;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .download-options a:hover {
+            background-color: #2e0079;
+        }
+        .donations-section {
+            background-color: #1c1c3a;
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+        }
+        .donations-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        .donations-section p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+        }
+        footer {
+            padding: 20px;
+            background: linear-gradient(to bottom, #0b081c, #1a0933);
+            text-align: center;
+        }
+        footer a {
+            color: #6a5acd;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1.2rem;
+            }
+            .rom-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        .popup-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .popup-backdrop.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .popup-backdrop {
+           backdrop-filter: blur(8px);
+        }
+        .popup-content {
+            background-color: var(--dark);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .popup-backdrop.show .popup-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .popup-content h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+        .popup-content p {
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .popup-close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #4a148c;
+            color: #ffffff;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            transition: background-color 0.3s ease;
+        }
+        .popup-close-button:hover {
+            background-color: #8e44ad;
+        }
+    </style>
+    <script>
+        function toggleDownloadOptions(event) {
+            const options = event.currentTarget.nextElementSibling;
+            const allOptions = document.querySelectorAll('.download-options');
+            allOptions.forEach(option => {
+                if (option !== options) {
+                    option.classList.remove('show');
+                }
+            });
+            options.classList.toggle('show');
+        }
+        function toggleSettingsMenu(event) {
+            const settingsMenu = document.querySelector('.settings-menu');
+            const settingsButton = document.querySelector('.settings-button');
+            const cogIcon = settingsButton.querySelector('.fa-cog');
+            const timesIcon = settingsButton.querySelector('.fa-times');
+            settingsMenu.classList.toggle('show');
+            if (settingsMenu.classList.contains('show')) {
+                cogIcon.style.display = 'none';
+                timesIcon.style.display = 'flex';
+            } else {
+                cogIcon.style.display = 'flex';
+                timesIcon.style.display = 'none';
+            }
+            event.stopPropagation();
+        }
+        document.addEventListener('click', function(event) {
+            const settingsMenu = document.querySelector('.settings-menu');
+            const settingsButton = document.querySelector('.settings-button');
+            if (!settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
+                settingsMenu.classList.remove('show');
+                const cogIcon = settingsButton.querySelector('.fa-cog');
+                const timesIcon = settingsButton.querySelector('.fa-times');
+                cogIcon.style.display = 'flex';
+                timesIcon.style.display = 'none';
+            }
+        });
+        function openTelegram(event, url) {
+            window.open(url, '_blank');
+            event.preventDefault();
+        }
+        window.onload = function() {
+            const logo = document.querySelector('header img');
+            const title = document.querySelector('header h1');
+            logo.classList.add('fade-in');
+            title.classList.add('fade-in');
+        }
+        function scrollToTop(event) {
+            event.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        function openNotes(event, title, content) {
+            event.preventDefault();
 
+            const popupBackdrop = document.createElement('div');
+            popupBackdrop.classList.add('popup-backdrop');
+            const popupContent = document.createElement('div');
+            popupContent.classList.add('popup-content');
+
+            const titleElement = document.createElement('h3');
+            titleElement.textContent = title;
+            popupContent.appendChild(titleElement);
+
+            const contentElement = document.createElement('p');
+            contentElement.textContent = content;
+            popupContent.appendChild(contentElement);
+
+            const closeButton = document.createElement('button');
+            closeButton.classList.add('popup-close-button');
+            closeButton.innerHTML = '<i class="fas fa-times"></i>';
+            closeButton.onclick = function() {
+                closePopup(popupBackdrop);
+            };
+            popupContent.appendChild(closeButton);
+
+            popupBackdrop.appendChild(popupContent);
+            document.body.appendChild(popupBackdrop);
+
+
+            document.body.classList.add('popup-open');
+            setTimeout(() => {
+                popupBackdrop.classList.add('show');
+            }, 10);
+
+            popupBackdrop.addEventListener('click', function(event) {
+                if (event.target === popupBackdrop) {
+                    closePopup(popupBackdrop);
+                }
+            });
+        }
+        function closePopup(popupBackdrop) {
+            popupBackdrop.classList.remove('show');
+            document.body.classList.remove('popup-open');
+            setTimeout(() => {
+                document.body.removeChild(popupBackdrop);
+            }, 300);
+        }
+    </script>
+</head>
+<body>
+<header>
+    <img src="https://i.ibb.co/C9J2Mh1/11.png" alt="Android Logo">
+    <h1>Android 11 (R) ROMs</h1>
+</header>
+<a href="#" class="settings-button" onclick="toggleSettingsMenu(event); return false;">
+    <i class="fas fa-cog"></i>
+    <i class="fas fa-times" style="display:none;"></i>
+</a>
+<div class="settings-menu">
+    <a href="#" onclick="scrollToTop(event)">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <a href="../index.html">
+        <i class="fas fa-home"></i>
+    </a>
+</div>
+<section id="roms" class="roms-section">
+    <h2>Available ROMs</h2>
+    <div class="rom-cards">
+    <div class="rom-card">
+                  <img src="https://i.ibb.co/ShFPTzR/264cb8f9372841c9ba7f4c746978e655.png" alt="Arrow Logo">
+            <h3>Arrow OS</h3>
+            <p>Android 11 - Size: 634 mb - ARM64 - Vanilla - Rev05 - Rev07</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://pixeldrain.com/u/7HeAn8mz">Download | SM-T585</a>
+                <a href="https://pixeldrain.com/u/83w2hJcV">Download | SM-T580</a>
+                <a href="https://www.pling.com/dl?file_id=1733657621&file_type=application/zip&file_name=BiTGApps-arm64-11.0.0-v4.5-CORE.zip&file_size=63684989&has_torrent=0&project_id=2020746&link_type=download&is_external=true&external_link=https://github.com/BiTGApps/release/releases/download/v4.5-release/BiTGApps-arm64-11.0.0-v4.5-CORE.zip">Download GApps</a>
+                <a href="https://t.me/gtaxllte_screenshots/44">Screenshots</a>
+            </div>
+        </div>
+        <div class="rom-card">
+                  <img src="https://i.ibb.co/Zp8nfQcd/output-onlinepngtools-1.png" alt="Crdroid Logo">
+            <h3>crDroid</h3>
+            <p>Android 11 - Size: 691 mb - ARM64 - Vanilla - Rev05 - Rev07</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://drive.google.com/file/d/18F-B0hySRUx5GjCtSTXgSCkR1gQA_9Lx/view">Download | SM-T585</a>
+                <a href="https://drive.google.com/file/d/1FsFzFx_C3LAK1pdL32mH7r-wX-CjXhHG/view?usp=sharing">Download | SM-T580</a>
+                <a href="https://drive.google.com/file/d/1ARGFsFlfuiYDLueljaRdY_KNUqtEDJYR/view?usp=sharing">Download | SM-P580</a>
+                <a href="https://www.pling.com/dl?file_id=1733657621&file_type=application/zip&file_name=BiTGApps-arm64-11.0.0-v4.5-CORE.zip&file_size=63684989&has_torrent=0&project_id=2020746&link_type=download&is_external=true&external_link=https://github.com/BiTGApps/release/releases/download/v4.5-release/BiTGApps-arm64-11.0.0-v4.5-CORE.zip">Download GApps</a>
+                <a href="https://youtu.be/WK-Oiuh12J4?feature=shared">View Video</a>
+            </div>
+        </div> 
+        <div class="rom-card">
+                  <img src="https://i.ibb.co/3YWBDgd1/08cd23751d9b4c3ba58ba989a6b51295.png" alt="DotOS Logo">
+            <h3>DotOS 5.2.1</h3>
+            <p>Android 11 - Size: 581 mb - ARM64 - Vanilla - Rev05 - Rev07</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://pixeldrain.com/u/V9hJ2aon">Download | SM-T585</a>
+                <a href="https://pixeldrain.com/u/8GUu5i4r">Download | SM-T580</a>
+                <a href="https://www.pling.com/dl?file_id=1733657621&file_type=application/zip&file_name=BiTGApps-arm64-11.0.0-v4.5-CORE.zip&file_size=63684989&has_torrent=0&project_id=2020746&link_type=download&is_external=true&external_link=https://github.com/BiTGApps/release/releases/download/v4.5-release/BiTGApps-arm64-11.0.0-v4.5-CORE.zip">Download GApps</a>
+                <a href="https://t.me/gtaxllte/3571?single">Screenshots</a>
+            </div>
+        </div> 
+    <div class="rom-card">
+          <img src="https://i.ibb.co/nML1JRx1/output-onlinepngtools-3.png" alt="LineageOS Logo">
+            <h3>LineageOS 18.1</h3>
+            <p>Android 11 - Size: 567 mb - ARM64 - NO LTE - Vanilla - Rev05</p>
+            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+            <div class="download-options">
+                <a href="https://onedrive.live.com/?id=AA907DDC49F3E3EF!161994&resid=AA907DDC49F3E3EF!161994&authkey=!ACN9xkhssdHvle8&cid=aa907ddc49f3e3ef">Download ROM</a>
+                <a href="https://www.pling.com/dl?file_id=1733657621&file_type=application/zip&file_name=BiTGApps-arm64-11.0.0-v4.5-CORE.zip&file_size=63684989&has_torrent=0&project_id=2020746&link_type=download&is_external=true&external_link=https://github.com/BiTGApps/release/releases/download/v4.5-release/BiTGApps-arm64-11.0.0-v4.5-CORE.zip">Download GApps</a>
+                <a href="https://youtu.be/QYD_2KdsB8A?feature=shared">View Video</a>
+            </div>
+        </div>                  
+</section>
+<footer>
+    <a>© ZORO All rights reserved.</a>
+</footer>
+</body>
+  </html>
