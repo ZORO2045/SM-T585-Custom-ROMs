@@ -1,4 +1,4 @@
-## Samsung Galaxy Tab A 10.1 🚀
+## Samsung Galaxy Tab A 10.1
 
 [![GitHub Stars](https://img.shields.io/github/stars/ZORO2045/SM-T585-Custom-ROMs?style=social)](https://github.com/ZORO2045/SM-T585-Custom-ROMs/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/ZORO2045/SM-T585-Custom-ROMs?style=social)](https://github.com/ZORO2045/SM-T585-Custom-ROMs/network/members)
