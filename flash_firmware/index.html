@@ -8,16 +8,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #6a5acd;
+            --secondary-color: #3f306b;
+            --header-gradient-start: #1e134e;
+            --header-gradient-end: #3f306b;
+            --section-gradient-1: #0b081c;
+            --section-gradient-2: #1a0933;
+            --section-gradient-3: #0e0e2c;
+            --card-gradient: #1F1635;
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --button-gradient-color-1: #4a148c;
+            --button-gradient-color-2: #2c3e50;
+            --button-hover-gradient-1: #8e44ad;
+            --button-hover-gradient-2: #34495e;
+            --light: #ffffff;
+            --text-content: #e0e0e0;
+            --text-muted: #9e9e9e;
+            --note-bg: #252525;
+            --note-text: #d0d0d0;
+            --note-border: var(--primary-color);
+            --card-box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            --card-hover-box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            --button-hover-shadow-color: rgba(108, 92, 231, 0.5);
+            --transition-fast: all 0.3s ease-in-out;
+            --transition-card: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --settings-button-bg: #2e0079;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        html {
+             scroll-behavior: smooth;
+        }
         body {
             background-color: #000;
-            color: #e0e0e0;
+            color: var(--light);
             font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
+            direction: ltr;
+            transition: direction 0.3s ease;
         }
         header {
             display: flex;
@@ -25,94 +58,259 @@
             align-items: center;
             justify-content: center;
             height: 70vh;
-            background: linear-gradient(to bottom right, #000, #1b004d);
+            background: linear-gradient(to bottom right, #1e134e, #3f306b);
             text-align: center;
-            color: #fff;
+            color: #ffffff;
             padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: -200px;
+            left: -50px;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), transparent);
+            border-radius: 50%;
+            z-index: 1;
+            pointer-events: none;
+            animation: floating 10s linear infinite;
+        }
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+        }
+        header h1, header p, header a {
+            user-select: none;
+            z-index: 2;
         }
         header img {
-            max-width: 150px; 
-            margin-bottom: 20px; 
+            max-width: 150px;
+            margin-bottom: 20px;
             opacity: 0;
             transition: opacity 1s ease;
+            z-index: 2;
         }
         header h1 {
-            font-size: 3rem; 
-            margin-bottom: 10px; 
+            font-size: 3rem;
+            margin-bottom: 10px;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
             opacity: 0;
             transition: opacity 1s ease;
+            text-align: center;
+            z-index: 2;
         }
         .fade-in {
             opacity: 1;
         }
-        .roms-section {
-            padding: 50px 20px;
-            background-color: #000000;
-            text-align: center;
-            border-radius: 15px;
-            margin: 20px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-        }
-        .roms-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: #8b81fa;
-        }
-        .rom-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .rom-card {
-            background-color: #121212;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-            width: 300px;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-            text-align: center; 
-        }
-        .rom-card h3 {
-            color: #fff;
-            margin-bottom: 15px;
+        header p {
             font-size: 1.5rem;
-        }
-        .rom-card p {
-            color: #9e9e9e;
             margin-bottom: 20px;
-            font-size: 1rem;
+            text-align: center;
+            z-index: 2;
         }
-        .rom-card ul {
-            list-style-type: none;
-            padding-left: 0;
-            text-align: center; 
-            color: #e0e0e0;
-        }
-        .rom-card ul li {
-            margin-bottom: 10px;
-        }
-        .rom-card a {
-            padding: 10px 20px;
+        header a {
+            padding: 15px 30px;
             background-color: #1b004d;
-            color: #fff;
+            color: #ffffff;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 700;
-            display: inline-block;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease-in-out;
+            z-index: 2;
         }
-        .rom-card a:hover {
+        header a:hover {
+            background: linear-gradient(to right, var(--button-hover-gradient-1), var(--button-hover-gradient-2));
+        }
+        .fade-in {
+            opacity: 1;
+        }
+
+        .settings-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--settings-button-bg);
+            color: var(--light);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            transition: background-color var(--transition-fast);
+            z-index: 1000;
+            cursor: pointer;
+        }
+        .settings-button:hover {
             background-color: #2e0079;
         }
+        .settings-menu {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            z-index: 1001;
+        }
+        .settings-menu.show {
+            display: flex;
+        }
+        .settings-menu a {
+            background-color: var(--settings-button-bg);
+            color: var(--light);
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            transition: background-color var(--transition-fast), transform 0.2s ease;
+            cursor: pointer;
+        }
+        .settings-menu a:hover {
+            background-color: #2e0079;
+        }
+        .settings-button i {
+             line-height: 1;
+        }
+
+        .content-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--section-gradient-1), var(--section-gradient-2), var(--section-gradient-3));
+            text-align: center;
+        }
+        .content-section h2 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            user-select: none;
+        }
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        .card {
+            background: var(--card-gradient);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            box-shadow: var(--card-box-shadow);
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+            transition: var(--transition-card);
+            user-select: none;
+        }
+        .card h3 {
+            color: var(--light);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        .card h4 {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 5px;
+            text-align: left;
+        }
+
+        .card p {
+             color: var(--text-content);
+             margin-bottom: 15px;
+             font-size: 1.1rem;
+             text-align: left;
+        }
+        .card ul {
+            list-style-type: none;
+            padding-left: 0;
+            padding-right: 0;
+            text-align: left;
+        }
+         .card ul li {
+             color: var(--text-content);
+             margin-bottom: 12px;
+             font-size: 1.1rem;
+             position: relative;
+             padding-left: 25px;
+         }
+        .card ul li::before {
+            content: "\f105";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            top: 3px;
+            transition: left 0.3s ease, right 0.3s ease;
+        }
+         .card ul li strong {
+             color: var(--light);
+             font-weight: 700;
+         }
+
+        .download-section-wrapper {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .button-link, .lang-toggle-button {
+            padding: 12px 25px;
+            background: linear-gradient(to right, var(--button-gradient-color-1), var(--button-gradient-color-2));
+            color: var(--light);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: var(--transition-fast), transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 2px solid var(--primary-color);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .button-link:hover, .lang-toggle-button:hover {
+            background: linear-gradient(to right, var(--button-hover-gradient-1), var(--button-hover-gradient-2));
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px var(--button-hover-shadow-color);
+        }
+
+        .lang-toggle-button {
+             margin-bottom: 30px;
+             padding: 10px 20px;
+        }
+
         .download-options {
             display: none;
             margin-top: 20px;
             opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
             transform: translateY(20px);
+            border-top: 1px solid var(--glass-border);
+            padding-top: 20px;
         }
         .download-options.show {
             display: block;
@@ -121,69 +319,225 @@
         }
         .download-options a {
             display: block;
-            margin: 10px 0;
-            background-color: #1b004d;
+            margin: 10px auto;
             padding: 10px 20px;
+            max-width: 300px;
+            background: linear-gradient(to right, var(--button-gradient-color-1), var(--button-gradient-color-2));
+            color: var(--light);
             border-radius: 5px;
-            color: #fff;
             text-decoration: none;
-            transition: background-color 0.3s ease;
+            font-weight: 700;
+            transition: var(--transition-fast), transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 2px solid var(--primary-color);
+            font-size: 1rem;
+            text-align: center;
+            cursor: pointer;
         }
         .download-options a:hover {
-            background-color: #2e0079;
+            background: linear-gradient(to right, var(--button-hover-gradient-1), var(--button-hover-gradient-2));
+            transform: scale(1.05);
+           box-shadow: 0 10px 30px var(--button-hover-shadow-color);
         }
+
         .note {
-            margin-top: 20px;
+            margin-top: 0;
+            margin-bottom: 20px;
             font-weight: bold;
-            color: #ffcc00;
+            color: var(--note-text);
+            font-size: 1.1rem;
+            padding: 15px;
+            background-color: var(--note-bg);
+            border-left: 4px solid var(--note-border);
+            border-radius: 5px;
+            text-align: left;
         }
-        .method1, .method2 {
-            color: #ff8c00;
-            font-weight: bold;
-            margin-top: 20px;
+         .note strong, .note em {
+             color: var(--light);
+         }
+
+        .lang-ar { display: none; }
+        body.show-ar .lang-en { display: none; }
+        body.show-ar .lang-ar { display: block; }
+        body.show-ar { direction: rtl; }
+        body.show-ar .content-section { text-align: center; }
+        body.show-ar .card { text-align: right; }
+        body.show-ar .card h4 { text-align: right; }
+        body.show-ar .card p { text-align: right; }
+        body.show-ar .card ul { text-align: right; }
+        body.show-ar .download-section-wrapper { text-align: center; }
+
+        body.show-ar .card ul li {
+             padding-left: 0;
+             padding-right: 25px;
+         }
+         body.show-ar .card ul li::before {
+             left: auto;
+             right: 0;
+             content: "\f104";
+         }
+        body.show-ar .note {
+             border-left: none;
+             border-right: 4px solid var(--note-border);
+             text-align: right;
         }
+         body.show-ar .note .lang-ar,
+        body.show-ar .note strong .lang-ar,
+        body.show-ar .note em .lang-ar { display: inline; }
+        body.show-ar .note .lang-en,
+        body.show-ar .note strong .lang-en,
+        body.show-ar .note em .lang-en { display: none; }
+        .note .lang-en,
+        .note strong .lang-en,
+        .note em .lang-en { display: inline; }
+        .note .lang-ar,
+        .note strong .lang-ar,
+        .note em .lang-ar { display: none; }
+        body.show-ar li .lang-ar,
+        body.show-ar li strong .lang-ar { display: inline; }
+        body.show-ar li .lang-en,
+        body.show-ar li strong .lang-en { display: none; }
+        li .lang-en,
+        li strong .lang-en { display: inline; }
+        li .lang-ar,
+        li strong .lang-ar { display: none; }
+
+
         footer {
             padding: 20px;
-            background-color: #1b004d;
+            background: linear-gradient(to bottom, #0b081c, #1a0933);
             text-align: center;
-            margin-top: 50px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
         }
         footer a {
-            color: #81d4fa;
+            color: #6a5acd;
             text-decoration: none;
-            font-size: 1.5rem;
+            font-size: 0.9rem;
         }
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-            .roms-section h2 {
-                font-size: 2rem;
-            }
-            .rom-cards {
-                flex-direction: column;
-                align-items: center;
-            }
+            header h1 { font-size: 3rem; }
+            .content-section h2 { font-size: 2.5rem; }
+            .card { padding: 20px; }
+            .card h3 { font-size: 1.6rem; }
+            .card p, .card ul li { font-size: 1.05rem; }
+             .settings-button { bottom: 15px; right: 15px; width: 45px; height: 45px; font-size: 1.3rem;}
+             .settings-menu { bottom: 70px; right: 15px; gap: 12px; }
+             .settings-menu a { width: 45px; height: 45px; font-size: 1.1rem; }
         }
+         @media (max-width: 480px) {
+            header h1 { font-size: 2.5rem; }
+            .content-section h2 { font-size: 2.2rem; }
+            .download-options a { max-width: 90%; }
+             .settings-button { bottom: 10px; right: 10px; }
+             .settings-menu { bottom: 65px; right: 10px; }
+         }
     </style>
     <script>
         function toggleDownloadOptions(event) {
-            const options = event.currentTarget.nextElementSibling;
+            event.stopPropagation();
+            const button = event.currentTarget;
+            const wrapper = button.closest('.download-section-wrapper');
+            const options = wrapper.querySelector('.download-options');
             const allOptions = document.querySelectorAll('.download-options');
-            allOptions.forEach(option => {
-                if (option !== options) {
-                    option.classList.remove('show');
+
+            allOptions.forEach(opt => {
+                if (opt !== options && opt.classList.contains('show')) {
+                    opt.classList.remove('show');
                 }
             });
+
             options.classList.toggle('show');
         }
+
+        function toggleLanguage() {
+            const body = document.body;
+            const button = document.getElementById('langToggleButton');
+            const isArabic = body.classList.toggle('show-ar');
+
+            if (isArabic) {
+                button.textContent = "Switch to English";
+                localStorage.setItem('preferredLanguage', 'ar');
+                document.documentElement.lang = 'ar';
+            } else {
+                button.textContent = "التبديل إلى العربية";
+                localStorage.setItem('preferredLanguage', 'en');
+                document.documentElement.lang = 'en';
+            }
+        }
+
+        function toggleSettingsMenu(event) {
+            const settingsMenu = document.querySelector('.settings-menu');
+            const settingsButton = document.querySelector('.settings-button');
+            const cogIcon = settingsButton.querySelector('.fa-cog');
+            const timesIcon = settingsButton.querySelector('.fa-times');
+            settingsMenu.classList.toggle('show');
+            if (settingsMenu.classList.contains('show')) {
+                cogIcon.style.display = 'none';
+                timesIcon.style.display = 'flex';
+            } else {
+                cogIcon.style.display = 'flex';
+                timesIcon.style.display = 'none';
+            }
+            event.stopPropagation();
+        }
+
+        document.addEventListener('click', function(event) {
+            const settingsMenu = document.querySelector('.settings-menu');
+            const settingsButton = document.querySelector('.settings-button');
+            if (settingsMenu && settingsButton && settingsMenu.classList.contains('show') && !settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
+                settingsMenu.classList.remove('show');
+                const cogIcon = settingsButton.querySelector('.fa-cog');
+                const timesIcon = settingsButton.querySelector('.fa-times');
+                if (cogIcon) cogIcon.style.display = 'flex';
+                if (timesIcon) timesIcon.style.display = 'none';
+            }
+        });
+
+        function scrollToTop(event) {
+            event.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            const settingsMenu = document.querySelector('.settings-menu');
+            const settingsButton = document.querySelector('.settings-button');
+             if (settingsMenu && settingsButton && settingsMenu.classList.contains('show')) {
+                 const cogIcon = settingsButton.querySelector('.fa-cog');
+                 const timesIcon = settingsButton.querySelector('.fa-times');
+                 settingsMenu.classList.remove('show');
+                 if (cogIcon) cogIcon.style.display = 'flex';
+                 if (timesIcon) timesIcon.style.display = 'none';
+             }
+        }
+
         window.onload = function() {
             const logo = document.querySelector('header img');
             const title = document.querySelector('header h1');
-            logo.classList.add('fade-in');
-            title.classList.add('fade-in');
+            setTimeout(() => {
+                if(logo) logo.classList.add('fade-in');
+                if(title) title.classList.add('fade-in');
+            }, 100);
+
+            const savedLang = localStorage.getItem('preferredLanguage');
+            const button = document.getElementById('langToggleButton');
+            const body = document.body;
+            const htmlEl = document.documentElement;
+
+            if (savedLang === 'ar') {
+                body.classList.add('show-ar');
+                if(button) button.textContent = "Switch to English";
+                htmlEl.lang = 'ar';
+            } else {
+                body.classList.remove('show-ar');
+                if(button) button.textContent = "التبديل إلى العربية";
+                htmlEl.lang = 'en';
+            }
+
+             const settingsButton = document.querySelector('.settings-button');
+             if (settingsButton) {
+                 const cogIcon = settingsButton.querySelector('.fa-cog');
+                 const timesIcon = settingsButton.querySelector('.fa-times');
+                 if (cogIcon) cogIcon.style.display = 'flex';
+                 if (timesIcon) timesIcon.style.display = 'none';
+             }
         }
     </script>
 </head>
@@ -191,60 +545,127 @@
 
 <header>
     <img src="https://i.ibb.co/BC0J6pS/4961639.png" alt="Flash Firmware logo">
-    <h1>Flash Firmware</h1>
+    <h1><span class="lang-en">Flash Firmware</span><span class="lang-ar">تفليش الفيرموير</span></h1>
 </header>
-<section id="roms" class="roms-section">
-    <h2>Flash Firmware on Samsung Galaxy Tab A 10.1</h2>
-    <div class="rom-cards">
-        <div class="rom-card">
-            <h3>Flash Firmware Instructions</h3>
-            <p class="note">Note: Ensure your device is charged and back up any important data before flashing.</p>
-            <p>Follow these steps to flash the firmware on your Galaxy Tab A 10.1 (SM-T585):</p>
-            <h4 class="method1">Method 1:</h4>
-            <ul>
-                <li><strong>Step 1:</strong> Extract Odin Tool 3.14.4.</li>
-                <li><strong>Step 2:</strong> Extract the firmware files you downloaded.</li>
-                <li><strong>Step 3:</strong> Turn off your device and enter Download Mode.</li>
-                <li><strong>Step 4:</strong> Hold Home + Power + Volume Down buttons.</li>
-                <li><strong>Step 5:</strong> When the warning appears, press Volume Up.</li>
-                <li><strong>Step 6:</strong> Your device should be recognized by Odin.</li>
-                <li><strong>Step 7:</strong> Add the firmware file to the AP/PDA slot or the four Samsung firmware files (AP, BL, CP, CSC) to their respective slots.</li>
-                <li><strong>Step 8:</strong> Click Start to begin the flashing process.</li>
-                <li><strong>Step 9:</strong> A green box saying PASS! will appear when done.</li>
-                <li><strong>Step 10:</strong> Your device will reboot; the first boot may take 5-10 minutes.</li>
-            </ul>
-            <h4 class="method2">Method 2:</h4>
-            <ul>
-                <li>If you don't have a PC, use the Eros tool.</li>
-                <li>Check the Eros guide for instructions.</li>
-                <li>You'll need another phone and an OTG cable.</li>
-            </ul>
-            <h4>Using Eros Tool:</h4>
-            <p>Follow these steps:</p>
-            <ul>
-                <li><strong>Step 1:</strong> Enter Download Mode on your device.</li>
-                <li><strong>Step 2:</strong> Open the Eros application on your phone.</li>
-                <li><strong>Step 3:</strong> Connect your tablet to the phone using an OTG cable.</li>
-                <li>Your device should be recognized in the Eros app.</li>
-                <li><strong>Step 4:</strong> Download and extract the firmware files on your phone.</li>
-                <li>You will need files: AP, BL, CP, and CSC.</li>
-                <li><strong>Step 5:</strong> In the Eros tool, click "Add File" and select the files in the correct order.</li>
-                <li><strong>Step 6:</strong> Click "Start" and wait for the flashing process to complete.</li>
-                <li>Once finished, your device will reboot normally.</li>
-            </ul>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
-            <div class="download-options">
-                <a href="https://developer.samsung.com/android-usb-driver">USB Drivers</a>
-                <a href="https://odindownload.com/mobile/">Odin3</a>
-                <a href="https://samfw.com/firmware/SM-T585/EGY/">Firmware</a>
-                <a href="https://t.me/ErosMobileTool">Eros Tool</a>
-                <a href="https://t.me/ErosMobileTool/10">Eros Guide</a>    
+
+<a href="#" class="settings-button" onclick="toggleSettingsMenu(event); return false;" title="Settings">
+    <i class="fas fa-cog"></i>
+    <i class="fas fa-times" style="display:none;"></i>
+</a>
+
+<div class="settings-menu">
+    <a href="#" onclick="scrollToTop(event); return false;" title="Scroll to Top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <a href="../index.html" title="Go Home">
+        <i class="fas fa-home"></i>
+    </a>
+</div>
+
+<section id="flash" class="content-section">
+    <h2><span class="lang-en">Flash Firmware on Samsung Galaxy Tab A 10.1</span><span class="lang-ar">تفليش الفيرموير على سامسونج جالاكسي تاب A 10.1</span></h2>
+
+    <button id="langToggleButton" class="lang-toggle-button" onclick="toggleLanguage()">التبديل إلى العربية</button>
+
+    <div class="cards-container">
+        <div class="card">
+            <div class="lang-en">
+                <h3>Flash Firmware Instructions</h3>
+                <p class="note">Note: Ensure your device is charged and back up any important data before flashing.</p>
+                <p>Follow these steps to flash the firmware on your Galaxy Tab A 10.1 (SM-T585):</p>
+
+                <h4>Method 1 (Using Odin):</h4>
+                <ul>
+                    <li><strong>Step 1:</strong> Download and extract Odin Tool 3.14.4.</li>
+                    <li><strong>Step 2:</strong> Download and extract the firmware files.</li>
+                    <li><strong>Step 3:</strong> Turn off your device. Enter Download Mode by holding <strong>Home + Power + Volume Down</strong> buttons together.</li>
+                    <li><strong>Step 4:</strong> When the warning screen appears, press <strong>Volume Up</strong> to continue.</li>
+                    <li><strong>Step 5:</strong> Open Odin and connect your device via USB. It should show as 'Added!'</li>
+                    <li><strong>Step 6:</strong> Add the firmware files (AP, BL, CP, CSC) to their respective slots in Odin. Use CSC (not HOME_CSC) if you want a clean flash.</li>
+                    <li><strong>Step 7:</strong> Ensure 'Auto Reboot' and 'F. Reset Time' are checked in Odin's options. Do NOT check 'Re-Partition'.</li>
+                    <li><strong>Step 8:</strong> Click <strong>Start</strong> to begin flashing.</li>
+                    <li><strong>Step 9:</strong> Wait for the process to complete. A green 'PASS!' message will appear in Odin.</li>
+                    <li><strong>Step 10:</strong> Your device will reboot automatically. The first boot might take 5-10 minutes.</li>
+                </ul>
+
+                <h4>Method 2 (Using Eros Tool - No PC):</h4>
+                 <p>This method requires another Android phone and an OTG adapter.</p>
+                <ul>
+                    <li><strong>Step 1:</strong> Install the Eros Tool application on the second phone.</li>
+                    <li><strong>Step 2:</strong> Download and extract the firmware files (AP, BL, CP, CSC) onto the second phone.</li>
+                     <li><strong>Step 3:</strong> Put your Galaxy Tab A 10.1 into Download Mode (as described in Method 1, Step 3 & 4).</li>
+                     <li><strong>Step 4:</strong> Open the Eros Tool app on the second phone.</li>
+                     <li><strong>Step 5:</strong> Connect the Galaxy Tab A (in Download Mode) to the second phone using the OTG adapter and USB cable.</li>
+                     <li><strong>Step 6:</strong> The Eros Tool should recognize the connected device.</li>
+                     <li><strong>Step 7:</strong> In the Eros Tool, navigate and select the extracted firmware files (AP, BL, CP, CSC) for their corresponding slots.</li>
+                     <li><strong>Step 8:</strong> Click <strong>Start</strong> within the Eros Tool.</li>
+                     <li><strong>Step 9:</strong> Wait for the flashing process to finish.</li>
+                     <li><strong>Step 10:</strong> Once completed, your Galaxy Tab A 10.1 will reboot.</li>
+                </ul>
+
+                <div class="download-section-wrapper">
+                    <a href="#" class="button-link" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
+                    <div class="download-options">
+                        <a href="https://developer.samsung.com/android-usb-driver" target="_blank" rel="noopener noreferrer">Samsung USB Drivers</a>
+                        <a href="https://odindownload.com/mobile/" target="_blank" rel="noopener noreferrer">Odin3 Tool</a>
+                        <a href="https://samfw.com/firmware/SM-T585/EGY/" target="_blank" rel="noopener noreferrer">Firmware (SamFW)</a>
+                        <a href="https://t.me/ErosMobileTool" target="_blank" rel="noopener noreferrer">Eros Tool (Telegram)</a>
+                        <a href="https://t.me/ErosMobileTool/10" target="_blank" rel="noopener noreferrer">Eros Guide (Telegram)</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-ar">
+                <h3>تعليمات تفليش الفيرموير</h3>
+                <p class="note">ملاحظة: تأكد من أن جهازك مشحون وقم بعمل نسخة احتياطية لأي بيانات مهمة قبل التفليش.</p>
+                <p>اتبع هذه الخطوات لتفليش الفيرموير على جهاز Galaxy Tab A 10.1 (SM-T585):</p>
+
+                <h4>الطريقة الأولى (باستخدام Odin):</h4>
+                <ul>
+                    <li><strong>الخطوة 1:</strong> قم بتحميل وفك ضغط أداة Odin Tool 3.14.4.</li>
+                    <li><strong>الخطوة 2:</strong> قم بتحميل وفك ضغط ملفات الفيرموير.</li>
+                    <li><strong>الخطوة 3:</strong> أطفئ جهازك. ادخل إلى وضع التحميل (Download Mode) بالضغط مع الاستمرار على أزرار <strong>الهوم + التشغيل + خفض الصوت</strong> معًا.</li>
+                    <li><strong>الخطوة 4:</strong> عندما تظهر شاشة التحذير، اضغط على زر <strong>رفع الصوت</strong> للمتابعة.</li>
+                    <li><strong>الخطوة 5:</strong> افتح برنامج Odin وقم بتوصيل جهازك عبر USB. يجب أن يظهر كـ 'Added!'.</li>
+                    <li><strong>الخطوة 6:</strong> أضف ملفات الفيرموير (AP, BL, CP, CSC) إلى الخانات المخصصة لها في Odin. استخدم ملف CSC (وليس HOME_CSC) إذا كنت تريد تفليشًا نظيفًا.</li>
+                    <li><strong>الخطوة 7:</strong> تأكد من تحديد خياري 'Auto Reboot' و 'F. Reset Time' في خيارات Odin. لا تقم بتحديد خيار 'Re-Partition'.</li>
+                    <li><strong>الخطوة 8:</strong> انقر على <strong>Start</strong> لبدء عملية التفليش.</li>
+                    <li><strong>الخطوة 9:</strong> انتظر حتى تكتمل العملية. ستظهر رسالة 'PASS!' باللون الأخضر في Odin.</li>
+                    <li><strong>الخطوة 10:</strong> سيقوم جهازك بإعادة التشغيل تلقائيًا. قد يستغرق الإقلاع الأول من 5 إلى 10 دقائق.</li>
+                </ul>
+
+                <h4>الطريقة الثانية (باستخدام Eros Tool - بدون كمبيوتر):</h4>
+                 <p>تتطلب هذه الطريقة هاتف أندرويد آخر ومحول OTG.</p>
+                <ul>
+                    <li><strong>الخطوة 1:</strong> قم بتثبيت تطبيق Eros Tool على الهاتف الثاني.</li>
+                    <li><strong>الخطوة 2:</strong> قم بتحميل وفك ضغط ملفات الفيرموير (AP, BL, CP, CSC) على الهاتف الثاني.</li>
+                     <li><strong>الخطوة 3:</strong> أدخل جهاز Galaxy Tab A 10.1 في وضع التحميل (كما هو موضح في الخطوة 3 و 4 من الطريقة الأولى).</li>
+                     <li><strong>الخطوة 4:</strong> افتح تطبيق Eros Tool على الهاتف الثاني.</li>
+                     <li><strong>الخطوة 5:</strong> قم بتوصيل جهاز Galaxy Tab A (في وضع التحميل) بالهاتف الثاني باستخدام محول OTG وكابل USB.</li>
+                     <li><strong>الخطوة 6:</strong> يجب أن يتعرف تطبيق Eros Tool على الجهاز المتصل.</li>
+                     <li><strong>الخطوة 7:</strong> في أداة Eros Tool، استعرض وحدد ملفات الفيرموير المستخرجة (AP, BL, CP, CSC) للخانات المقابلة لها.</li>
+                     <li><strong>الخطوة 8:</strong> انقر على <strong>Start</strong> داخل أداة Eros Tool.</li>
+                     <li><strong>الخطوة 9:</strong> انتظر حتى تنتهي عملية التفليش.</li>
+                     <li><strong>الخطوة 10:</strong> بمجرد الانتهاء، سيقوم جهاز Galaxy Tab A 10.1 بإعادة التشغيل.</li>
+                </ul>
+
+                <div class="download-section-wrapper">
+                    <a href="#" class="button-link" onclick="toggleDownloadOptions(event); return false;">خيارات التحميل</a>
+                    <div class="download-options">
+                        <a href="https://developer.samsung.com/android-usb-driver" target="_blank" rel="noopener noreferrer">تعريفات USB سامسونج</a>
+                        <a href="https://odindownload.com/mobile/" target="_blank" rel="noopener noreferrer">أداة Odin3</a>
+                        <a href="https://samfw.com/firmware/SM-T585/EGY/" target="_blank" rel="noopener noreferrer">الفيرموير (SamFW)</a>
+                        <a href="https://t.me/ErosMobileTool" target="_blank" rel="noopener noreferrer">أداة Eros (تليجرام)</a>
+                        <a href="https://t.me/ErosMobileTool/10" target="_blank" rel="noopener noreferrer">دليل Eros (تليجرام)</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
 <footer>
-    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/">Back to Home ></a>
+    <a>© ZORO All rights reserved.</a>
 </footer>
 
 </body>
