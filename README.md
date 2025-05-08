@@ -44,6 +44,8 @@ Join our active and supportive community on Telegram!
 
 Your support helps us develop content and provide more assistance for the Galaxy Tab A 10.1. Every donation or contribution goes a long way in improving the resources available, allowing us to offer more helpful information and support to users. Thank you for your continued support!
 
+[![Binance](https://img.shields.io/badge/Binance-%23F0B90B.svg?style=for-the-badge&logo=binance&logoColor=white&labelColor=black&color=%23F0B90B&label=Donate%20BNB)](https://pay.binance.com/en?merchantId=738956783)
+
 ## Disclaimer
 
 Please note that I am not a developer of the custom ROMs provided here. I am a curator, and all the resources are gathered from reputable communities. Make sure to backup your data before installing a new ROM and proceed at your own risk. I am not responsible for any damage that may occur to your device.
