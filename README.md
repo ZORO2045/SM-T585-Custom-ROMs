@@ -46,9 +46,11 @@ Your support helps us develop content and provide more assistance for the Galaxy
 
 [![Binance](https://img.shields.io/badge/Binance-%23F0B90B.svg?style=for-the-badge&logo=binance&logoColor=white&labelColor=black&color=%23F0B90B&label=Donate%20BNB)](https://pay.binance.com/en?merchantId=738956783)
 
-## Disclaimer
+## ⚠️ Disclaimer
 
-Please note that I am not a developer of the custom ROMs provided here. I am a curator, and all the resources are gathered from reputable communities. Make sure to backup your data before installing a new ROM and proceed at your own risk. I am not responsible for any damage that may occur to your device.
+Please note:
+1. I am not the original developer of most custom ROMs provided here - I act as a curator, gathering resources from reputable communities like XDA.
+2. **However**, I **have** developed my own port called **[OneUI Legacy](https://zoro2045.github.io/SM-T585-Custom-ROMs/Android/12.html)** (based on OneUI 4.1 - Android 12).
 
 ## ❤️ Special Thanks
 
