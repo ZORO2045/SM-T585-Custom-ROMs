@@ -56,7 +56,7 @@ Please note:
 
 I'd like to extend my deepest gratitude to all the developers who have contributed their time and expertise to create amazing custom ROMs for the Galaxy Tab A 10.1 on platforms like XDA and other communities. Your work is invaluable!
 
-## Contact
+## 💬 Contact
 
 If you have any questions or need help, please create an issue on the GitHub repository or join us on our Telegram group.
 
