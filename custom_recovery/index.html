@@ -3,21 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Recovery</title>
+    <title>Custom Recoveries – SM-T58X</title>
     <link rel="icon" type="image/png" href="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/recoveries.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #6a5acd;
+            --secondary-color: #3f306b;
+            --primary: #6c5ce7;
+            --secondary: #3498db;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --hover-color: rgba(255, 255, 255, 0.07);
+            --dark: #0f172a;
+            --light: #ffffff;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --card-gradient: #1F1635;
+            --button-gradient-color-1: #4a148c;
+            --button-gradient-color-2: #2c3e50;
+            --button-hover-gradient-1: #8e44ad;
+            --button-hover-gradient-2: #34495e;
+            --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            --card-box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            --transition: all 0.3s ease-in-out;
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: default;
         }
         body {
-            background-color: #000000;
-            color: #e0e0e0;
+            background-color: #000;
+            color: #000;
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
+            
+        }
+        body.popup-open {
+           overflow: hidden;
         }
         header {
             display: flex;
@@ -25,26 +50,53 @@
             align-items: center;
             justify-content: center;
             height: 70vh;
-            background: linear-gradient(to bottom right, #000000, #1b004d);
+            background: linear-gradient(to bottom right, #1e134e, #3f306b);
             text-align: center;
             color: #ffffff;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: -200px;
+            left: -50px;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), transparent);
+            border-radius: 50%;
+            z-index: 1;
+            pointer-events: none;
+            animation: floating 10s linear infinite;
+        }
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(20px);
+            }
         }
         header h1, header p, header a {
             user-select: none;
+            z-index: 2;
         }
         header img {
-            max-width: 150px; 
-            margin-bottom: 20px; 
+            max-width: 150px;
+            margin-bottom: 20px;
             opacity: 0;
             transition: opacity 1s ease;
+            z-index: 2;
         }
         header h1 {
-            font-size: 3rem; 
-            margin-bottom: 10px; 
+            font-size: 3rem;
+            margin-bottom: 10px;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
             opacity: 0;
             transition: opacity 1s ease;
+            text-align: center;
+            z-index: 2;
         }
         .fade-in {
             opacity: 1;
@@ -52,6 +104,8 @@
         header p {
             font-size: 1.5rem;
             margin-bottom: 20px;
+            text-align: center;
+            z-index: 2;
         }
         header a {
             padding: 15px 30px;
@@ -60,73 +114,74 @@
             border-radius: 5px;
             text-decoration: none;
             font-weight: 700;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease-in-out;
+            z-index: 2;
         }
         header a:hover {
-            background-color: #2e0079;
+            background: linear-gradient(to right, var(--button-hover-gradient-1), var(--button-hover-gradient-2));
         }
         .settings-button {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 10px;
+            right: 10px;
             background-color: #2e0079;
             color: #fff;
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.5rem;
             text-decoration: none;
-             box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            transition: background-color 0.3s ease-in-out;
             z-index: 1000;
             cursor: pointer;
-            }
-          .settings-button:hover {
-            background-color: #2e0079;
-         }
-        .settings-menu {
-             position: fixed;
-            bottom: 90px;
-             right: 20px;
-             display: none;
-              flex-direction: column;
-              align-items: flex-end;
-              gap: 10px;
-              z-index: 1001;
-            }
-            .settings-menu.show {
-                display: flex;
         }
-         .settings-menu a {
+        .settings-button:hover {
+            background-color: #2e0079;
+        }
+        .settings-menu {
+            position: fixed;
+            bottom: 70px;
+            right: 10px;
+            display: none;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            z-index: 1001;
+        }
+        .settings-menu.show {
+            display: flex;
+        }
+        .settings-menu a {
             background-color: #2e0079;
             color: #fff;
-             text-decoration: none;
-             padding: 15px 15px;
-             border-radius: 50%;
-             width: 50px;
-             height: 50px;
-             display: flex;
-              align-items: center;
-              justify-content: center;
-             font-size: 1.5rem;
-              box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-             transition: background-color 0.3s ease;
-         }
-            .settings-menu a:hover {
+            text-decoration: none;
+            padding: 15px 15px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            transition: background-color 0.3s ease-in-out;
+        }
+        .settings-menu a:hover {
             background-color: #2e0079;
         }
         .roms-section {
             padding: 50px 20px;
-            background-color: #000000;
+            background: linear-gradient(135deg, #0b081c, #1a0933, #0e0e2c);
             text-align: center;
         }
         .roms-section h2 {
             font-size: 2.5rem;
             margin-bottom: 30px;
-            color: #8b81fa;
+            color: #6a5acd;
             user-select: none;
         }
         .rom-cards {
@@ -136,21 +191,22 @@
             gap: 20px;
         }
         .rom-card {
-            background-color: #121212;
+            background: var(--card-gradient);
+            border: 1px solid var(--glass-border);
             border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
-            width: 300px;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            width: 340px;
             padding: 20px;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
             user-select: none;
         }
         .rom-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
-                .rom-card img {
+        .rom-card img {
             max-width: 100px;
             margin-bottom: 10px;
             display: block;
@@ -159,32 +215,46 @@
         }
         .rom-card h3 {
             color: #ffffff;
-            margin-bottom: 15px;
             font-size: 1.5rem;
+            margin-bottom: 10px;
+            user-select: none;
         }
         .rom-card p {
             color: #9e9e9e;
             margin-bottom: 20px;
             font-size: 1rem;
+            text-align: center;
+        }
+        .rom-card .by-line {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        .rom-card .by-line span {
+            cursor: pointer;
+            text-decoration: none;
+            color: #6a5acd;
         }
         .rom-card a {
             padding: 10px 20px;
-            background-color: #1b004d;
+            background: linear-gradient(to right, var(--button-gradient-color-1), var(--button-gradient-color-2));
             color: #ffffff;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             display: inline-block;
-            transition: background-color 0.3s ease;
+            transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 2px solid #6a5acd;
         }
         .rom-card a:hover {
-            background-color: #2e0079;
+            background: linear-gradient(to right, var(--button-hover-gradient-1), var(--button-hover-gradient-2));
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.5);
         }
         .download-options {
             display: none;
             margin-top: 20px;
             opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
             transform: translateY(20px);
         }
         .download-options.show {
@@ -200,7 +270,7 @@
             border-radius: 5px;
             color: #ffffff;
             text-decoration: none;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease-in-out;
         }
         .download-options a:hover {
             background-color: #2e0079;
@@ -224,32 +294,13 @@
         }
         footer {
             padding: 20px;
-            background-color: #1b004d;
+            background: linear-gradient(to bottom, #0b081c, #1a0933);
             text-align: center;
-            margin-top: 50px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
         }
         footer a {
-            color: #81d4fa;
+            color: #6a5acd;
             text-decoration: none;
-            font-size: 1.5rem;
-        }
-        .settings-button {
-            bottom: 10px;
-             right: 10px;
-           width: 50px;
-           height: 50px;
-             font-size: 1.5rem;
-        }
-        .settings-menu {
-             bottom: 70px;
-              right: 10px;
-        }
-        .settings-menu a {
-            width: 40px;
-             height: 40px;
-              font-size: 1.2rem;
+            font-size: 0.9rem;
         }
         @media (max-width: 768px) {
             header h1 {
@@ -263,6 +314,75 @@
                 align-items: center;
             }
         }
+        .popup-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .popup-backdrop.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .popup-backdrop {
+           backdrop-filter: blur(8px);
+        }
+        .popup-content {
+            background-color: var(--dark);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .popup-backdrop.show .popup-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .popup-content h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+        .popup-content p {
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .popup-close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #4a148c;
+            color: #ffffff;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            transition: background-color 0.3s ease;
+        }
+        .popup-close-button:hover {
+            background-color: #8e44ad;
+        }
     </style>
     <script>
         function toggleDownloadOptions(event) {
@@ -275,68 +395,121 @@
             });
             options.classList.toggle('show');
         }
-         function toggleSettingsMenu(event) {
-  const settingsMenu = document.querySelector('.settings-menu');
-  const settingsButton = document.querySelector('.settings-button');
-  const cogIcon = settingsButton.querySelector('.fa-cog');
-  const timesIcon = settingsButton.querySelector('.fa-times');
-
-  settingsMenu.classList.toggle('show');
-
-  if (settingsMenu.classList.contains('show')) {
-    cogIcon.style.display = 'none';
-    timesIcon.style.display = 'flex';
-  } else {
-    cogIcon.style.display = 'flex';
-    timesIcon.style.display = 'none';
-  }
-
-  event.stopPropagation();
-}
-document.addEventListener('click', function(event) {
-const settingsMenu = document.querySelector('.settings-menu');
-const settingsButton = document.querySelector('.settings-button');
-if (!settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
-settingsMenu.classList.remove('show');
-    const cogIcon = settingsButton.querySelector('.fa-cog');
-    const timesIcon = settingsButton.querySelector('.fa-times');
-    cogIcon.style.display = 'flex';
-    timesIcon.style.display = 'none';
-}
-});
+        function toggleSettingsMenu(event) {
+            const settingsMenu = document.querySelector('.settings-menu');
+            const settingsButton = document.querySelector('.settings-button');
+            const cogIcon = settingsButton.querySelector('.fa-cog');
+            const timesIcon = settingsButton.querySelector('.fa-times');
+            settingsMenu.classList.toggle('show');
+            if (settingsMenu.classList.contains('show')) {
+                cogIcon.style.display = 'none';
+                timesIcon.style.display = 'flex';
+            } else {
+                cogIcon.style.display = 'flex';
+                timesIcon.style.display = 'none';
+            }
+            event.stopPropagation();
+        }
+        document.addEventListener('click', function(event) {
+            const settingsMenu = document.querySelector('.settings-menu');
+            const settingsButton = document.querySelector('.settings-button');
+            if (!settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
+                settingsMenu.classList.remove('show');
+                const cogIcon = settingsButton.querySelector('.fa-cog');
+                const timesIcon = settingsButton.querySelector('.fa-times');
+                cogIcon.style.display = 'flex';
+                timesIcon.style.display = 'none';
+            }
+        });
+        function openTelegram(event, url) {
+            window.open(url, '_blank');
+            event.preventDefault();
+        }
         window.onload = function() {
             const logo = document.querySelector('header img');
             const title = document.querySelector('header h1');
             logo.classList.add('fade-in');
             title.classList.add('fade-in');
         }
+        function scrollToTop(event) {
+            event.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        function openNotes(event, title, content) {
+            event.preventDefault();
+
+            const popupBackdrop = document.createElement('div');
+            popupBackdrop.classList.add('popup-backdrop');
+            const popupContent = document.createElement('div');
+            popupContent.classList.add('popup-content');
+
+            const titleElement = document.createElement('h3');
+            titleElement.textContent = title;
+            popupContent.appendChild(titleElement);
+
+            const contentElement = document.createElement('p');
+            contentElement.textContent = content;
+            popupContent.appendChild(contentElement);
+
+            const closeButton = document.createElement('button');
+            closeButton.classList.add('popup-close-button');
+            closeButton.innerHTML = '<i class="fas fa-times"></i>';
+            closeButton.onclick = function() {
+                closePopup(popupBackdrop);
+            };
+            popupContent.appendChild(closeButton);
+
+            popupBackdrop.appendChild(popupContent);
+            document.body.appendChild(popupBackdrop);
+
+
+            document.body.classList.add('popup-open');
+            setTimeout(() => {
+                popupBackdrop.classList.add('show');
+            }, 10);
+
+            popupBackdrop.addEventListener('click', function(event) {
+                if (event.target === popupBackdrop) {
+                    closePopup(popupBackdrop);
+                }
+            });
+        }
+        function closePopup(popupBackdrop) {
+            popupBackdrop.classList.remove('show');
+            document.body.classList.remove('popup-open');
+            setTimeout(() => {
+                document.body.removeChild(popupBackdrop);
+            }, 300);
+        }
     </script>
 </head>
 <body>
-
 <header>
     <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/recoveries.png">
     <h1>Custom Recoveries</h1>
 </header>
 <a href="#" class="settings-button" onclick="toggleSettingsMenu(event); return false;">
-        <i class="fas fa-cog"></i>
-        <i class="fas fa-times" style="display:none;"></i>
+    <i class="fas fa-cog"></i>
+    <i class="fas fa-times" style="display:none;"></i>
+</a>
+<div class="settings-menu">
+    <a href="#" onclick="scrollToTop(event)">
+        <i class="fas fa-arrow-up"></i>
     </a>
-   <div class="settings-menu">
-        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/custom_recovery/main2/index.html">
-             <i class="fas fa-sun"></i>
-        </a>
-       <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/">
-            <i class="fas fa-home"></i>
-        </a>
-    </div>  
+    <a href="../index.html">
+        <i class="fas fa-home"></i>
+    </a>
+</div>
 <section id="roms" class="roms-section">
     <h2>Available Recoveries</h2>
     <div class="rom-cards">
                     <div class="rom-card">
             <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/twrp.png" alt="TWRP Logo">
             <h3>TWRP</h3>
-            <p>TWRP 3.7.0_9.0 - Samsung Tab A 10.1 (2016) SM-T585 | UNOFFICIAL</p>
+            <p>TWRP 3.7.0_9.0 - Samsung Tab A 10.1 (2016) SM-T58X | UNOFFICIAL</p>
             <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
             <div class="download-options">
                 <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/index.html">Download TWRP</a>
@@ -345,11 +518,13 @@ settingsMenu.classList.remove('show');
         <div class="rom-card">
             <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/ofox.png" alt="OrangeFox Logo">
             <h3>OrangeFox</h3>
-            <p>OrangeFox 9.0 - Samsung Tab A 10.1 (2016) SM-T585 | UNOFFICIAL</p>
+            <p>OrangeFox 9.0 - Samsung Tab A 10.1 (2016) SM-T58X | UNOFFICIAL</p>
             <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
             <div class="download-options">
-                <a href="https://drive.google.com/file/d/1gukBc5ID8Dmk9Rm76EjVP29D1U-mQQSi/view?usp=drivesdk">Flashable ZIP</a>
-                <a href="https://drive.google.com/file/d/15ux5mmyon38SJeTHCsiDpsaXFOboQNr2/view?usp=drivesdk">Image File</a>
+                <a href="https://drive.google.com/file/d/1gukBc5ID8Dmk9Rm76EjVP29D1U-mQQSi/view?usp=drivesdk">Flashable ZIP | SM-T585</a>
+                <a href="https://drive.google.com/file/d/15ux5mmyon38SJeTHCsiDpsaXFOboQNr2/view?usp=drivesdk">Image File | SM-T585</a>
+                <a href="https://drive.google.com/file/d/1CjyetVRpaBAjaGuGijhL3raBWVIQStTj/view">Flashable ZIP | SM-T580</a>
+                <a href="https://drive.google.com/file/d/1HmOt_-bmx7CCmubFT86EMDvEjgm6E45U/view">Image File | SM-T580</a>
                 <a href="https://xdaforums.com/t/recovery-unofficial-the-orangefox-recovery-project-samsung-galaxy-tab-a-10-1-2016-sm-t585-sm-t580-sm-p585-sm-p580-r11-1.4655917/">XDA Thread</a>
                 <a href="https://t.me/gtaxllte/2344?single">Screenshots</a>
             </div>
@@ -357,11 +532,12 @@ settingsMenu.classList.remove('show');
         <div class="rom-card">
             <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/pbrp.png" alt="PitchBlack Logo">
             <h3>PitchBlack</h3>
-            <p>PBRP 4.0 - Samsung Tab A 10.1 (2016) SM-T585 | UNOFFICIAL</p>
+            <p>PBRP 4.0 - Samsung Tab A 10.1 (2016) SM-T58X | UNOFFICIAL</p>
             <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
             <div class="download-options">
-                <a href="https://drive.google.com/file/d/1to1ZWDpsVcj-R5YcCYTd36t_VFsI_Gtp/view">Download Recovery</a>
-                <a href="https://drive.google.com/file/d/1Oz6K_u8ucYUpjnfFy6OgInHMab80wpIX/view">Download Tools</a>
+                <a href="https://drive.google.com/file/d/1to1ZWDpsVcj-R5YcCYTd36t_VFsI_Gtp/view">Download | SM-T585</a>
+                <a href="https://drive.google.com/file/d/1P3NnedymKLD7tlKqiy_hm5lfWSeRdFX_/view?usp=sharing">Download | SM-T580</a>
+                <a href="https://drive.google.com/file/d/1Oz6K_u8ucYUpjnfFy6OgInHMab80wpIX/view">Download PBRP Tools</a>
                 <a href="https://xdaforums.com/t/recovery-unofficial-pitch-black-recovery-project-samsung-galaxy-tab-a-10-1-2016-sm-t585-sm-t580-sm-p585-sm-p580-v4-0.4653329/">XDA Thread</a>
                 <a href="https://t.me/gtaxllte/2314?single">Screenshots</a> 
             </div>
@@ -369,19 +545,21 @@ settingsMenu.classList.remove('show');
                 <div class="rom-card">
             <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/skyhawk.png" alt="SkyHawk Logo">
             <h3>SkyHawk</h3>
-            <p>SHRP 3.1.0_9.0 - Samsung Tab A 10.1 (2016) SM-T585 | UNOFFICIAL</p>
+            <p>SHRP 3.1.0_9.0 - Samsung Tab A 10.1 (2016) SM-T58X | UNOFFICIAL</p>
             <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
             <div class="download-options">
-                <a href="https://drive.google.com/file/d/1Usdx5BC9-caDU8gZNpMEbI5p_H2MVyVS/view?usp=sharing">Download Recovery</a>
+                <a href="https://drive.google.com/file/d/1Usdx5BC9-caDU8gZNpMEbI5p_H2MVyVS/view?usp=sharing">Download | SM-T585</a>
                 <a href="https://drive.google.com/file/d/1e6DmG2L0fjrlh-TqdrYpbqrN5l0qeD0y/view?usp=sharing">Download Add-ons</a>
+                <a href="https://drive.google.com/file/d/18uO7qSi6tPfV8OUcBQjQE2_rJd7jd22_/view">Download | SM-T580</a>
+                <a href="https://drive.google.com/file/d/16V5acep3N5KDO0wgVXxCQvxXnzI2D2Og/view">Download Add-ons</a>
                 <a href="https://xdaforums.com/t/recovery-unoffical-skyhawk-recovery-project-v3-1-0-samsung-galaxy-tab-a-10-1-2016.4646792/">XDA Thread</a>
                 <a href="https://t.me/gtaxllte/2191?single">Screenshots</a>
             </div>
         </div>
     </div>
-</section>        
+</section>
 <footer>
-    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/">Back to Home ></a>
+    <a>© ZORO All rights reserved.</a>
 </footer>
 </body>
     </html>
