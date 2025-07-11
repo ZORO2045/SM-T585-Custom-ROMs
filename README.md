@@ -4,8 +4,6 @@
 [![GitHub Forks](https://img.shields.io/github/forks/ZORO2045/SM-T585-Custom-ROMs?style=social)](https://github.com/ZORO2045/SM-T585-Custom-ROMs/network/members)
 [![GitHub Issues](https://img.shields.io/github/issues/ZORO2045/SM-T585-Custom-ROMs)](https://github.com/ZORO2045/SM-T585-Custom-ROMs/issues)
 
-**Repository Views** ![Views](https://profile-counter.glitch.me/SM-T585-Custom-ROMs/count.svg) 
-
 ## Overview ✨
 
 Welcome! This repository is your central resource for customizing your **Samsung Galaxy Tab A 10.1 (SM-T585 - SM-T580) (gtaxllte - gtaxlwifi)**. Here, you'll find curated collections of custom ROMs, detailed guides, and a supportive community to enhance your device experience. Our goal is to help you unlock the full potential of your tablet through the exciting world of custom ROMs.
