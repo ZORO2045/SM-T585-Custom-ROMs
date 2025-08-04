@@ -8,16 +8,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #6a5acd;
+            --secondary-color: #3f306b;
+            --header-gradient-start: #1e134e;
+            --header-gradient-end: #3f306b;
+            --section-gradient-1: #0b081c;
+            --section-gradient-2: #1a0933;
+            --section-gradient-3: #0e0e2c;
+            --card-gradient: #1F1635;
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --button-gradient-color-1: #4a148c;
+            --button-gradient-color-2: #2c3e50;
+            --button-hover-gradient-1: #8e44ad;
+            --button-hover-gradient-2: #34495e;
+            --light: #ffffff;
+            --text-content: #e0e0e0;
+            --text-muted: #9e9e9e;
+            --note-bg: rgba(106, 90, 205, 0.15);
+            --note-text: #d0d0d0;
+            --note-border: var(--primary-color);
+            --card-box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            --card-hover-box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            --button-hover-shadow-color: rgba(108, 92, 231, 0.5);
+            --transition-fast: all 0.3s ease-in-out;
+            --transition-card: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --settings-button-bg: #2e0079;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        html {
+             scroll-behavior: smooth;
+        }
         body {
             background-color: #000;
-            color: #e0e0e0;
+            color: var(--light);
             font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
+            direction: ltr;
+            transition: direction 0.3s ease;
         }
         header {
             display: flex;
@@ -25,120 +58,384 @@
             align-items: center;
             justify-content: center;
             height: 70vh;
-            background: linear-gradient(to bottom right, #000, #1b004d);
+            background: linear-gradient(to bottom right, #1e134e, #3f306b);
             text-align: center;
-            color: #fff;
+            color: #ffffff;
             padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: -200px;
+            left: -50px;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), transparent);
+            border-radius: 50%;
+            z-index: 1;
+            pointer-events: none;
+            animation: floating 10s linear infinite;
+        }
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+        }
+        header h1, header p, header a {
+            user-select: none;
+            z-index: 2;
         }
         header img {
-            max-width: 150px; 
-            margin-bottom: 20px; 
+            max-width: 150px;
+            margin-bottom: 20px;
             opacity: 0;
             transition: opacity 1s ease;
+            z-index: 2;
         }
         header h1 {
-            font-size: 3rem; 
-            margin-bottom: 10px; 
+            font-size: 3rem;
+            margin-bottom: 10px;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
             opacity: 0;
             transition: opacity 1s ease;
+            text-align: center;
+            z-index: 2;
         }
         .fade-in {
             opacity: 1;
         }
-        .roms-section {
-            padding: 50px 20px;
-            background-color: #000000;
-            text-align: center;
-            border-radius: 15px;
-            margin: 20px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-        }
-        .roms-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: #8b81fa;
-        }
-        .rom-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .rom-card {
-            background-color: #121212;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-            width: 300px;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-            text-align: center; 
-        }
-        .rom-card h3 {
-            color: #fff;
-            margin-bottom: 15px;
+        header p {
             font-size: 1.5rem;
-        }
-        .rom-card p {
-            color: #9e9e9e;
             margin-bottom: 20px;
-            font-size: 1rem;
-        }
-        .rom-card ul {
-            list-style-type: none;
-            padding-left: 0;
             text-align: center;
-            color: #e0e0e0;
+            z-index: 2;
         }
-        .rom-card ul li {
-            margin-bottom: 10px;
-        }
-        .rom-card a {
-            padding: 10px 20px;
+        header a {
+            padding: 15px 30px;
             background-color: #1b004d;
-            color: #fff;
+            color: #ffffff;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 700;
-            display: inline-block;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease-in-out;
+            z-index: 2;
         }
-        .rom-card a:hover {
+        header a:hover {
+            background: linear-gradient(to right, var(--button-hover-gradient-1), var(--button-hover-gradient-2));
+        }
+        .settings-button {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: #2e0079;
+            color: #fff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            transition: background-color 0.3s ease-in-out;
+            z-index: 1000;
+            cursor: pointer;
+        }
+        .settings-button:hover {
             background-color: #2e0079;
         }
+        .settings-menu {
+            position: fixed;
+            bottom: 70px;
+            right: 10px;
+            display: none;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            z-index: 1001;
+        }
+        .settings-menu.show {
+            display: flex;
+        }
+        .settings-menu a {
+            background-color: #2e0079;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 15px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            transition: background-color 0.3s ease-in-out;
+        }
+        .settings-menu a:hover {
+            background-color: #2e0079;
+        }
+
+        .content-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--section-gradient-1), var(--section-gradient-2), var(--section-gradient-3));
+            text-align: center;
+        }
+        .content-section h2 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            user-select: none;
+        }
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        .card {
+            background: var(--card-gradient);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            box-shadow: var(--card-box-shadow);
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+            transition: var(--transition-card);
+            user-select: none;
+        }
+        .card h3 {
+            color: var(--light);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 10px;
+        }
+        .card p,
+        .card ul li {
+             color: var(--text-content);
+             margin-bottom: 15px;
+             font-size: 1.15rem;
+        }
+        .card ul {
+            list-style-type: none;
+            padding-left: 0;
+            padding-right: 0;
+        }
+         .card ul li {
+             position: relative;
+             padding-left: 25px;
+         }
+        .card ul li::before {
+            content: "\f105";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        .card strong {
+             color: var(--light);
+             font-weight: 700;
+        }
+
+        .download-section-wrapper {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .button-link, .lang-toggle-button {
+            padding: 12px 25px;
+            background: linear-gradient(to right, var(--button-gradient-color-1), var(--button-gradient-color-2));
+            color: var(--light);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: var(--transition-fast), transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 2px solid var(--primary-color);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .button-link:hover, .lang-toggle-button:hover {
+            background: linear-gradient(to right, var(--button-hover-gradient-1), var(--button-hover-gradient-2));
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px var(--button-hover-shadow-color);
+        }
+
+        .lang-toggle-button {
+             margin-bottom: 30px;
+             padding: 10px 20px;
+             border: 2px solid var(--primary-color);
+        }
+
+        .note {
+            margin-top: 25px;
+            font-weight: bold;
+            color: var(--note-text);
+            font-size: 1.1rem;
+            padding: 15px;
+            background-color: var(--note-bg);
+            border-left: 4px solid var(--note-border);
+            border-radius: 5px;
+        }
+         .note strong, .note em {
+             color: var(--light);
+         }
+
+        .lang-ar { display: none; }
+        body.show-ar .lang-en { display: none; }
+        body.show-ar .lang-ar { display: block; }
+        body.show-ar { direction: rtl; }
+        body.show-ar .content-section { text-align: center; }
+        body.show-ar .card { text-align: right; }
+        body.show-ar .download-section-wrapper { text-align: center; }
+        body.show-ar .card ul { padding-left: 0; padding-right: 0; }
+        body.show-ar .card ul li { padding-left: 0; padding-right: 25px; }
+        body.show-ar .card ul li::before { left: auto; right: 0; content: "\f104"; }
+        body.show-ar .note { border-left: none; border-right: 4px solid var(--note-border); }
+        body.show-ar .note .lang-ar,
+        body.show-ar .note strong .lang-ar,
+        body.show-ar .note em .lang-ar { display: inline; }
+        body.show-ar .note .lang-en,
+        body.show-ar .note strong .lang-en,
+        body.show-ar .note em .lang-en { display: none; }
+        .note .lang-en,
+        .note strong .lang-en,
+        .note em .lang-en { display: inline; }
+        .note .lang-ar,
+        .note strong .lang-ar,
+        .note em .lang-ar { display: none; }
+
         footer {
             padding: 20px;
-            background-color: #1b004d;
+            background: linear-gradient(to bottom, #0b081c, #1a0933);
             text-align: center;
-            margin-top: 50px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
         }
         footer a {
-            color: #81d4fa;
+            color: #6a5acd;
             text-decoration: none;
-            font-size: 1.5rem;
+            font-size: 0.9rem;
         }
+
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-            .roms-section h2 {
-                font-size: 2rem;
-            }
-            .rom-cards {
-                flex-direction: column;
-                align-items: center;
-            }
+            header h1 { font-size: 3rem; }
+            header p { font-size: 1.5rem; }
+            .content-section h2 { font-size: 2.5rem; }
+            .card { padding: 20px; }
+            .card h3 { font-size: 1.6rem; }
+            .card p, .card ul li { font-size: 1.05rem; }
+            .note { font-size: 1rem; }
+             .settings-button { bottom: 15px; right: 15px; width: 45px; height: 45px; font-size: 1.3rem;}
+             .settings-menu { bottom: 70px; right: 15px; gap: 12px; }
+             .settings-menu a { width: 45px; height: 45px; font-size: 1.1rem; }
         }
+         @media (max-width: 480px) {
+            header h1 { font-size: 2.5rem; }
+            header p { font-size: 1.3rem; }
+            .content-section h2 { font-size: 2.2rem; }
+             .settings-button { bottom: 10px; right: 10px; }
+             .settings-menu { bottom: 65px; right: 10px; }
+         }
     </style>
     <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const button = document.getElementById('langToggleButton');
+            const isArabic = body.classList.toggle('show-ar');
+
+            if (isArabic) {
+                button.textContent = "Switch to English";
+                localStorage.setItem('preferredLanguage', 'ar');
+                document.documentElement.lang = 'ar';
+            } else {
+                button.textContent = "التبديل إلى العربية";
+                localStorage.setItem('preferredLanguage', 'en');
+                document.documentElement.lang = 'en';
+            }
+        }
+
+        function toggleSettingsMenu(event) {
+            const settingsMenu = document.querySelector('.settings-menu');
+            const settingsButton = document.querySelector('.settings-button');
+            const cogIcon = settingsButton.querySelector('.fa-cog');
+            const timesIcon = settingsButton.querySelector('.fa-times');
+            settingsMenu.classList.toggle('show');
+            if (settingsMenu.classList.contains('show')) {
+                cogIcon.style.display = 'none';
+                timesIcon.style.display = 'flex';
+            } else {
+                cogIcon.style.display = 'flex';
+                timesIcon.style.display = 'none';
+            }
+            event.stopPropagation();
+        }
+
+        document.addEventListener('click', function(event) {
+            const settingsMenu = document.querySelector('.settings-menu');
+            const settingsButton = document.querySelector('.settings-button');
+            if (settingsMenu.classList.contains('show') && !settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
+                settingsMenu.classList.remove('show');
+                const cogIcon = settingsButton.querySelector('.fa-cog');
+                const timesIcon = settingsButton.querySelector('.fa-times');
+                cogIcon.style.display = 'flex';
+                timesIcon.style.display = 'none';
+            }
+        });
+
+        function scrollToTop(event) {
+            event.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            const settingsMenu = document.querySelector('.settings-menu');
+             if (settingsMenu.classList.contains('show')) {
+                 const settingsButton = document.querySelector('.settings-button');
+                 const cogIcon = settingsButton.querySelector('.fa-cog');
+                 const timesIcon = settingsButton.querySelector('.fa-times');
+                 settingsMenu.classList.remove('show');
+                 cogIcon.style.display = 'flex';
+                 timesIcon.style.display = 'none';
+             }
+        }
+
         window.onload = function() {
             const logo = document.querySelector('header img');
             const title = document.querySelector('header h1');
-            logo.classList.add('fade-in');
-            title.classList.add('fade-in');
+            setTimeout(() => {
+                if(logo) logo.classList.add('fade-in');
+                if(title) title.classList.add('fade-in');
+            }, 100);
+
+            const savedLang = localStorage.getItem('preferredLanguage');
+            const button = document.getElementById('langToggleButton');
+            if (savedLang === 'ar') {
+                document.body.classList.add('show-ar');
+                if(button) button.textContent = "Switch to English";
+                document.documentElement.lang = 'ar';
+            } else {
+                if(button) button.textContent = "التبديل إلى العربية";
+                 document.documentElement.lang = 'en';
+            }
+
+             const settingsButton = document.querySelector('.settings-button');
+             if (settingsButton) {
+                 const cogIcon = settingsButton.querySelector('.fa-cog');
+                 const timesIcon = settingsButton.querySelector('.fa-times');
+                 cogIcon.style.display = 'flex';
+                 timesIcon.style.display = 'none';
+             }
         }
     </script>
 </head>
@@ -146,32 +443,75 @@
 
 <header>
     <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/twrp.png" alt="TWRP Logo">
-    <h1>TWRP Storage Mount Fix</h1>
+    <h1><span class="lang-en">TWRP Storage Mount Fix</span><span class="lang-ar">إصلاح مشكلة الذاكرة الداخلية في TWRP</span></h1>
 </header>
-<section id="roms" class="roms-section">
-    <h2>TWRP: Unable to Mount Storage - Internal Storage (0MB)</h2>
-    <div class="rom-cards">
-        <div class="rom-card">
-            <h3>Fix Instructions</h3>
-            <p class="note">Warning: This process will wipe/format your Data partition and reset your device data.</p>
-            <p>To resolve the storage mounting issue, follow these steps:</p>
-            <ul>
-                <li><strong>Step 1:</strong> Reboot into TWRP Recovery mode.</li>
-                <li><strong>Step 2:</strong> Navigate to <em>Wipe</em>.</li>
-                <li><strong>Step 3:</strong> Select <em>Advanced Wipe</em>.</li>
-                <li><strong>Step 4:</strong> Choose <em>Data</em> and go to <em>Repair or Change File System</em>.</li>
-                <li><strong>Step 5:</strong> Click on <em>Repair File System</em>.</li>
-                <p class="note"> (If not fix, go to step number 6)</p>
-                <li><strong>Step 6:</strong> Select <em>Change File System</em>.</li>
-                <li><strong>Step 7:</strong> Choose <em>Ext2</em> and swipe to confirm.</li>
-                <li><strong>Step 8:</strong> Change back to <em>Ext4</em> and swipe to confirm.</li>
-            </ul>
-            <p>After following these steps, the storage mounting issue should be resolved. If you encounter further problems, please seek additional assistance.</p>
+
+<a href="#" class="settings-button" onclick="toggleSettingsMenu(event); return false;" title="Settings">
+    <i class="fas fa-cog"></i>
+    <i class="fas fa-times" style="display:none;"></i>
+</a>
+
+<div class="settings-menu">
+    <a href="#" onclick="scrollToTop(event); return false;" title="Scroll to Top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <a href="../index.html" title="Go Home">
+        <i class="fas fa-home"></i>
+    </a>
+</div>
+
+<section id="guide" class="content-section">
+    <h2><span class="lang-en">TWRP: Unable to Mount Storage - Internal Storage (0MB)</span><span class="lang-ar">TWRP: عدم القدرة على قراءة الذاكرة الداخلية - التخزين الداخلي (0MB)</span></h2>
+
+    <button id="langToggleButton" class="lang-toggle-button" onclick="toggleLanguage()">التبديل إلى العربية</button>
+
+    <div class="cards-container">
+        <div class="card">
+            <div class="lang-en">
+                <h3>Fix Instructions</h3>
+                <p class="note">
+                    <strong>Warning:</strong> This process will wipe/format your Data partition and reset your device data.
+                </p>
+                <p>To resolve the storage mounting issue, follow these steps:</p>
+                <ul>
+                    <li><strong>Step 1:</strong> Reboot into TWRP Recovery mode.</li>
+                    <li><strong>Step 2:</strong> Navigate to <em>Wipe</em>.</li>
+                    <li><strong>Step 3:</strong> Select <em>Advanced Wipe</em>.</li>
+                    <li><strong>Step 4:</strong> Choose <em>Data</em> and go to <em>Repair or Change File System</em>.</li>
+                    <li><strong>Step 5:</strong> Click on <em>Repair File System</em>.</li>
+                    <p class="note">(If not fixed, go to step number 6)</p>
+                    <li><strong>Step 6:</strong> Select <em>Change File System</em>.</li>
+                    <li><strong>Step 7:</strong> Choose <em>Ext2</em> and swipe to confirm.</li>
+                    <li><strong>Step 8:</strong> Change back to <em>Ext4</em> and swipe to confirm.</li>
+                </ul>
+                <p>After following these steps, the storage mounting issue should be resolved. If you encounter further problems, please seek additional assistance.</p>
+            </div>
+
+            <div class="lang-ar">
+                <h3>تعليمات الإصلاح</h3>
+                <p class="note">
+                    <strong>تحذير:</strong> هذه العملية ستمسح/تهيئ قسم البيانات الخاص بك وستعيد ضبط بيانات جهازك.
+                </p>
+                <p>لحل مشكلة عدم قراءة الذاكرة الداخلية، اتبع هذه الخطوات:</p>
+                <ul>
+                    <li><strong>الخطوة 1:</strong> أعد تشغيل الجهاز إلى وضع الريكڤري TWRP.</li>
+                    <li><strong>الخطوة 2:</strong> انتقل إلى <em>مسح (Wipe)</em>.</li>
+                    <li><strong>الخطوة 3:</strong> اختر <em>مسح متقدم (Advanced Wipe)</em>.</li>
+                    <li><strong>الخطوة 4:</strong> حدد <em>البيانات (Data)</em> وانتقل إلى <em>إصلاح أو تغيير نظام الملفات (Repair or Change File System)</em>.</li>
+                    <li><strong>الخطوة 5:</strong> اضغط على <em>إصلاح نظام الملفات (Repair File System)</em>.</li>
+                    <p class="note">(إذا لم يتم الإصلاح، انتقل إلى الخطوة رقم 6)</p>
+                    <li><strong>الخطوة 6:</strong> اختر <em>تغيير نظام الملفات (Change File System)</em>.</li>
+                    <li><strong>الخطوة 7:</strong> اختر <em>Ext2</em> وقم بالسحب لتأكيد.</li>
+                    <li><strong>الخطوة 8:</strong> غير مرة أخرى إلى <em>Ext4</em> وقم بالسحب لتأكيد.</li>
+                </ul>
+                <p>بعد اتباع هذه الخطوات، يجب أن يتم حل مشكلة قراءة الذاكرة الداخلية. إذا واجهت المزيد من المشاكل، يرجى طلب المساعدة الإضافية.</p>
+            </div>
         </div>
     </div>
 </section>
+
 <footer>
-    <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/">Back to Home ></a>
+    <a>© ZORO All rights reserved.</a>
 </footer>
 
 </body>
