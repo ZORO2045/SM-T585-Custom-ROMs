@@ -476,10 +476,13 @@
                 </button>
                 <div class="download-options">
                     <a href="https://drive.google.com/file/d/1EDIZPh5SOa36nUErAvFBREzRAhZCtHGa/view" target="_blank">
-                        <i class="fas fa-download"></i> Download ROM
+                        <i class="fas fa-download"></i> Download | SM-T585
                     </a>
                     <a href="https://github.com/BiTGApps/release/releases/download/v4.5-release/BiTGApps-arm64-8.1.0-v4.5-CORE.zip" target="_blank">
                         <i class="fab fa-google"></i> Download GApps
+                    </a>
+                    <a href="https://xdaforums.com/t/rom-sm-t585-unofficial-lineageos-15-1-64bit-version.3815398/" target="_blank">
+                        <i class="fas fa-link"></i> View on XDA
                     </a>
                 </div>
             </div>
@@ -489,7 +492,7 @@
                 <h3>RR OS</h3>
                 <div class="rom-meta">
                     <span>Android 8</span>
-                    <span>377 MB</span>
+                    <span>337 MB</span>
                     <span>ARM</span>
                     <span>Vanilla</span>
                     <span>Rev05</span>
@@ -500,10 +503,16 @@
                 </button>
                 <div class="download-options">
                     <a href="https://androidfilehost.com/?fid=11410963190603910293" target="_blank">
-                        <i class="fas fa-download"></i> Download ROM
+                        <i class="fas fa-download"></i> Download | SM-T585
+                    </a>                
+                    <a href="https://androidfilehost.com/?fid=11410963190603910274" target="_blank">
+                        <i class="fas fa-download"></i> Download | SM-T580
                     </a>
                     <a href="https://github.com/BiTGApps/release/releases/download/v4.5-release/BiTGApps-arm-8.1.0-v4.5-CORE.zip" target="_blank">
                         <i class="fab fa-google"></i> Download GApps
+                    </a>
+                    <a href="https://xdaforums.com/t/rom-sm-t580-sm-t585-unofficial-rr-o-v6-2-1-20181210-discontinued.3755034/page-23" target="_blank">
+                        <i class="fas fa-link"></i> View on XDA
                     </a>
                     <a href="https://youtu.be/zrsI52LtF2U?feature=shared" target="_blank">
                         <i class="fab fa-youtube"></i> View Video
@@ -526,7 +535,10 @@
                 </button>
                 <div class="download-options">
                     <a href="https://www.mediafire.com/file/tn1l8lr4h571pl5/SUPER_ONE_UI-8.0-20221003-OFFICIAL-gtaxllte.zip/file" target="_blank">
-                        <i class="fas fa-download"></i> Download ROM
+                        <i class="fas fa-download"></i> Download | SM-T585
+                    </a>
+                    <a href="https://xdaforums.com/t/rom-sm-t585-8-1-0-super-one-ui-8-0-2022-10-03.4469615/" target="_blank">
+                        <i class="fas fa-link"></i> View on XDA
                     </a>
                     <a href="https://youtu.be/K4qZyOSyYWY?feature=shared" target="_blank">
                         <i class="fab fa-youtube"></i> View Video
@@ -541,7 +553,6 @@
     </footer>
 
     <script>
-        // Toggle download options
         function toggleDownloadOptions(button) {
             const card = button.closest('.rom-card');
             const options = card.querySelector('.download-options');
@@ -556,7 +567,6 @@
             options.classList.toggle('show');
         }
 
-        // Toggle settings menu
         function toggleSettingsMenu(event) {
             const settingsMenu = document.querySelector('.settings-menu');
             const settingsButton = document.querySelector('.settings-button');
@@ -574,7 +584,6 @@
             event.stopPropagation();
         }
 
-        // Close settings menu when clicking outside
         document.addEventListener('click', function(event) {
             const settingsMenu = document.querySelector('.settings-menu');
             const settingsButton = document.querySelector('.settings-button');
@@ -588,7 +597,6 @@
                 if (timesIcon) timesIcon.style.display = 'none';
             }
             
-            // Close download options when clicking outside
             const downloadOptions = document.querySelectorAll('.download-options');
             downloadOptions.forEach(options => {
                 if (!options.contains(event.target) && !event.target.closest('.btn')) {
@@ -618,7 +626,6 @@
     if (timesIcon) timesIcon.style.display = 'none';
 }
 
-        // Show popup function
         function showPopup(title, content) {
             const popupBackdrop = document.createElement('div');
             popupBackdrop.classList.add('popup-backdrop');
@@ -657,7 +664,6 @@
             });
         }
 
-        // Close popup function
         function closePopup(popup) {
             popup.classList.remove('show');
             setTimeout(() => {
@@ -666,7 +672,6 @@
             }, 300);
         }
 
-        // Initialize on load
         window.addEventListener('load', function() {
             const logo = document.querySelector('header img');
             const title = document.querySelector('header h1');
@@ -678,4 +683,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
