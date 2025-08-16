@@ -3,85 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Android 8 (O) ROMs</title>
+    <title>Android 8 (O) ROMs | Samsung Galaxy Tab A 10.1</title>
     <link rel="icon" type="image/png" href="https://i.ibb.co/1r3HW3v/8.png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #6a5acd;
-            --secondary-color: #3f306b;
-            --primary: #6c5ce7;
-            --secondary: #3498db;
+            --primary: #6C4DF6;
+            --primary-dark: #4D36D1;
+            --secondary: #FF7D59;
+            --dark: #12141D;
+            --darker: #0A0B10;
+            --light: #F5F7FF;
+            --gray: #2D303D;
             --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-            --hover-color: rgba(255, 255, 255, 0.07);
-            --dark: #0f172a;
-            --light: #ffffff;
-            --glass: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --card-gradient: #1F1635;
-            --button-gradient-color-1: #4a148c;
-            --button-gradient-color-2: #2c3e50;
-            --button-hover-gradient-1: #8e44ad;
-            --button-hover-gradient-2: #34495e;
-            --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            --card-box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-            --transition: all 0.3s ease-in-out;
+            --card-bg: rgba(30, 31, 41, 0.8);
+            --glass-border: #4A4A54;
+            --success: #28A745;
+            --warning: #FFC107;
+            --danger: #DC3545;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: default;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #000;
-            color: #000;
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            
+            background-color: var(--darker);
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;            
         }
-        body.popup-open {
-           overflow: hidden;
-        }
-        header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 70vh;
-            background: linear-gradient(to bottom right, #1e134e, #3f306b);
-            text-align: center;
-            color: #ffffff;
-            padding: 20px;
-            position: relative;
+
+        .no-scroll {
             overflow: hidden;
         }
-        header::before {
-            content: "";
-            position: absolute;
-            top: -200px;
-            left: -50px;
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), transparent);
-            border-radius: 50%;
-            z-index: 1;
-            pointer-events: none;
-            animation: floating 10s linear infinite;
+
+        header {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(108, 77, 246, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255, 125, 89, 0.15) 0%, transparent 30%);
+            overflow: hidden;
         }
+
         @keyframes floating {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(20px);
-            }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
         }
-        header h1, header p, header a {
+
+        header img, header h1 {
             user-select: none;
             z-index: 2;
         }
+
         header img {
             max-width: 150px;
             margin-bottom: 20px;
@@ -89,43 +80,28 @@
             transition: opacity 1s ease;
             z-index: 2;
         }
+
         header h1 {
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             margin-bottom: 10px;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             opacity: 0;
             transition: opacity 1s ease;
-            text-align: center;
-            z-index: 2;
         }
+
         .fade-in {
             opacity: 1;
         }
-        header p {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            text-align: center;
-            z-index: 2;
-        }
-        header a {
-            padding: 15px 30px;
-            background-color: #1b004d;
-            color: #ffffff;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: background-color 0.3s ease-in-out;
-            z-index: 2;
-        }
-        header a:hover {
-            background: linear-gradient(to right, var(--button-hover-gradient-1), var(--button-hover-gradient-2));
-        }
+
         .settings-button {
             position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background-color: #2e0079;
-            color: #fff;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gradient);
+            color: var(--light);
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -133,277 +109,460 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            text-decoration: none;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-            transition: background-color 0.3s ease-in-out;
+            transition: var(--transition);
             z-index: 1000;
             cursor: pointer;
+            border: 1px solid var(--glass-border);
         }
+
         .settings-button:hover {
-            background-color: #2e0079;
+            background-color: var(--primary);
+            transform: scale(1.1);
         }
+
         .settings-menu {
             position: fixed;
-            bottom: 70px;
-            right: 10px;
+            bottom: 80px;
+            right: 20px;
             display: none;
             flex-direction: column;
-            align-items: flex-end;
-            gap: 10px;
+            align-items: center;
+            gap: 15px;
             z-index: 1001;
         }
+
         .settings-menu.show {
             display: flex;
         }
+
         .settings-menu a {
-            background-color: #2e0079;
-            color: #fff;
+            background-color: var(--primary-dark);
+            color: var(--light);
             text-decoration: none;
-            padding: 15px 15px;
+            padding: 15px;
             border-radius: 50%;
             width: 50px;
             height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-            transition: background-color 0.3s ease-in-out;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
         }
+
         .settings-menu a:hover {
-            background-color: #2e0079;
+            background-color: var(--primary);
+            transform: translateY(-5px);
         }
-        .roms-section {
-            padding: 50px 20px;
-            background: linear-gradient(135deg, #0b081c, #1a0933, #0e0e2c);
+
+        .section {
+            padding: 5rem 20px;
             text-align: center;
-        }
-        .roms-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: #6a5acd;
             user-select: none;
         }
-        .rom-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
+
+        .rom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .rom-card {
-            background: var(--card-gradient);
+            background: var(--card-bg);
             border: 1px solid var(--glass-border);
             border-radius: 15px;
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            width: 340px;
-            padding: 20px;
-            position: relative;
+            padding: 1.5rem;
+            transition: var(--transition);
             overflow: hidden;
-            text-align: center;
             user-select: none;
         }
+
         .rom-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(108, 77, 246, 0.5);
         }
+
         .rom-card img {
             width: 300px;
             height: 150px;
-            margin-bottom: 10px;
-            display: block;
-            border-radius: 10px;
             object-fit: cover;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #6a5acd;
+        }
+
+        .rom-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .rom-card .rom-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+
+        .rom-card .rom-meta span {
+            background: #2B234D;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--light);
+            border: 1px solid var(--glass-border);
+            transition: background 0.3s ease;
+        }
+        
+        .rom-card .rom-meta span.warning {
+            background: rgba(255, 107, 53, 0.2);
+            color: var(--warning);
+        }
+
+        .rom-card .rom-meta span.success {
+            background: rgba(40, 167, 69, 0.2);
+            color: var(--success);
+        }
+        
+        .rom-card .rom-meta span:hover {
+            border: 1.5px solid #6a5acd;
+        }
+        
+        .btn {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid #6a5acd;
-        }
-        .rom-card h3 {
-            color: #ffffff;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            user-select: none;
-        }
-        .rom-card p {
-            color: #9e9e9e;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            text-align: center;
-        }
-        .rom-card .by-line {
-            margin-bottom: 15px;
-            font-size: 1rem;
-        }
-        .rom-card .by-line span {
-            cursor: pointer;
-            text-decoration: none;
-            color: #6a5acd;
-        }
-        .rom-card a {
-            padding: 10px 20px;
-            background: linear-gradient(to right, var(--button-gradient-color-1), var(--button-gradient-color-2));
-            color: #ffffff;
+            padding: 0.8rem 1.8rem;
+            background: var(--gradient);
+            color: var(--light);
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
-            display: inline-block;
-            transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            border: 2px solid #6a5acd;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(108, 77, 246, 0.4);
         }
-        .rom-card a:hover {
-            background: linear-gradient(to right, var(--button-hover-gradient-1), var(--button-hover-gradient-2));
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.5);
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 77, 246, 0.5);
         }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
         .download-options {
             display: none;
-            margin-top: 20px;
-            opacity: 0;
-            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-            transform: translateY(20px);
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 1.5rem;
+            animation: fadeIn 0.4s ease-in-out;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .download-options.show {
             display: block;
-            opacity: 1;
-            transform: translateY(0);
         }
+
         .download-options a {
             display: block;
-            margin: 10px 0;
-            background-color: #1b004d;
-            padding: 10px 20px;
-            border-radius: 5px;
-            color: #ffffff;
+            margin: 0.8rem auto;
+            padding: 0.8rem;
+            background: rgba(108, 77, 246, 0.2);
+            color: var(--light);
+            border-radius: 8px;
             text-decoration: none;
-            transition: background-color 0.3s ease-in-out;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+            max-width: 250px;
+            text-align: center;
         }
+
         .download-options a:hover {
-            background-color: #2e0079;
+            background: rgba(108, 77, 246, 0.4);
+            transform: translateY(-3px);
         }
-        .donations-section {
-            background-color: #1c1c3a;
-            padding: 50px 20px;
-            text-align: center;
-            margin-top: 50px;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
-        }
-        .donations-section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-        .donations-section p {
-            font-size: 1.2rem;
-            color: #e0e0e0;
-        }
+
         footer {
-            padding: 20px;
-            background: linear-gradient(to bottom, #0b081c, #1a0933);
+            padding: 2rem;
             text-align: center;
+            background: var(--dark);
+            border-top: 1px solid var(--glass-border);
+            user-select: none;
         }
+
         footer a {
-            color: #6a5acd;
+            color: var(--primary);
             text-decoration: none;
-            font-size: 0.9rem;
         }
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-            header p {
-                font-size: 1.2rem;
-            }
-            .rom-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
+
         .popup-backdrop {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 10001;
             opacity: 0;
-            transition: opacity 0.3s ease;
             pointer-events: none;
+            transition: opacity 0.3s ease;
         }
+
         .popup-backdrop.show {
             opacity: 1;
             pointer-events: auto;
         }
-        .popup-backdrop {
-           backdrop-filter: blur(8px);
-        }
+
         .popup-content {
-            background-color: var(--dark);
+            background: var(--card-bg);
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            text-align: center;
-            width: 80%;
-            max-width: 600px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
             position: relative;
-            transform: translateY(-20px);
+            transform: translateY(20px);
             opacity: 0;
             transition: transform 0.3s ease, opacity 0.3s ease;
+            border: 1px solid var(--glass-border);
         }
+
         .popup-backdrop.show .popup-content {
             transform: translateY(0);
             opacity: 1;
         }
+
         .popup-content h3 {
-            color: #ffffff;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
         }
+
         .popup-content p {
-            color: #e0e0e0;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
-        .popup-close-button {
+
+        .popup-close {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #4a148c;
-            color: #ffffff;
-            border: none;
-            padding: 8px 10px;
+            top: 1rem;
+            right: 1rem;
+            width: 30px;
+            height: 30px;
+            background: rgba(108, 77, 246, 0.3);
             border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 30px;
-            height: 30px;
-            transition: background-color 0.3s ease;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
         }
-        .popup-close-button:hover {
-            background-color: #8e44ad;
+
+        .popup-close:hover {
+            background: rgba(108, 77, 246, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3rem 20px;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            .rom-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .settings-button {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            
+            .settings-menu {
+                bottom: 70px;
+                right: 15px;
+            }
+            
+            .settings-menu a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .popup-content {
+                padding: 1.5rem;
+            }
         }
     </style>
+</head>
+<body>
+    <header>
+        <img src="https://i.ibb.co/1r3HW3v/8.png" alt="Android 8 Logo">
+        <h1>Android 8 (O) ROMs</h1>
+    </header>
+
+    <button class="settings-button" onclick="toggleSettingsMenu(event); return false;" title="Settings">
+        <i class="fas fa-question-circle"></i>
+        <i class="fas fa-times" style="display:none;"></i>
+    </button>
+
+    <div class="settings-menu">
+        <a href="#" onclick="scrollToTop(event); return false;" title="Scroll to Top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+        <a href="https://t.me/ZORO2045" title="Contact Support">
+            <i class="fas fa-headset"></i>
+        </a>
+        <a href="../flash_guide/index.html" title="Installation Guide">
+    <i class="fas fa-book"></i>
+        </a>
+        <a href="../index.html" title="Go Home">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
+
+    <section class="section">
+        <h2>Available ROMs</h2>
+        <div class="rom-grid">
+            <div class="rom-card">
+                <img src="https://i.ibb.co/nML1JRx1/output-onlinepngtools-3.png" alt="LineageOS Logo">
+                <h3>LineageOS 15.1</h3>
+                <div class="rom-meta">
+                    <span>Android 8</span>
+                    <span>441 MB</span>
+                    <span>ARM64</span>
+                    <span>Vanilla</span>
+                    <span>Rev05</span>
+                    <span class="warning">Unofficial</span>
+                </div>
+                <button class="btn" onclick="toggleDownloadOptions(this);">
+                    <i class="fas fa-download"></i> Download Options
+                </button>
+                <div class="download-options">
+                    <a href="https://drive.google.com/file/d/1EDIZPh5SOa36nUErAvFBREzRAhZCtHGa/view" target="_blank">
+                        <i class="fas fa-download"></i> Download ROM
+                    </a>
+                    <a href="https://github.com/BiTGApps/release/releases/download/v4.5-release/BiTGApps-arm64-8.1.0-v4.5-CORE.zip" target="_blank">
+                        <i class="fab fa-google"></i> Download GApps
+                    </a>
+                </div>
+            </div>
+
+            <div class="rom-card">
+                <img src="https://i.ibb.co/KptRRYDB/images-3.jpg" alt="RR Logo">
+                <h3>RR OS</h3>
+                <div class="rom-meta">
+                    <span>Android 8</span>
+                    <span>377 MB</span>
+                    <span>ARM</span>
+                    <span>Vanilla</span>
+                    <span>Rev05</span>
+                    <span class="warning">Unofficial</span>
+                </div>
+                <button class="btn" onclick="toggleDownloadOptions(this);">
+                    <i class="fas fa-download"></i> Download Options
+                </button>
+                <div class="download-options">
+                    <a href="https://androidfilehost.com/?fid=11410963190603910293" target="_blank">
+                        <i class="fas fa-download"></i> Download ROM
+                    </a>
+                    <a href="https://github.com/BiTGApps/release/releases/download/v4.5-release/BiTGApps-arm-8.1.0-v4.5-CORE.zip" target="_blank">
+                        <i class="fab fa-google"></i> Download GApps
+                    </a>
+                    <a href="https://youtu.be/zrsI52LtF2U?feature=shared" target="_blank">
+                        <i class="fab fa-youtube"></i> View Video
+                    </a>
+                </div>
+            </div>
+
+            <div class="rom-card">
+                <img src="https://i.ibb.co/MDbQxFRZ/Picsart-25-02-21-17-26-45-692.jpg" alt="Super OneUI Logo">
+                <h3>Super OneUI</h3>
+                <div class="rom-meta">
+                    <span>Android 8</span>
+                    <span>1.16 GB</span>
+                    <span>ARM</span>
+                    <span>Rev05</span>
+                    <span class="success">Stock-Based (Enhanced)</span>
+                </div>
+                <button class="btn" onclick="toggleDownloadOptions(this);">
+                    <i class="fas fa-download"></i> Download Options
+                </button>
+                <div class="download-options">
+                    <a href="https://www.mediafire.com/file/tn1l8lr4h571pl5/SUPER_ONE_UI-8.0-20221003-OFFICIAL-gtaxllte.zip/file" target="_blank">
+                        <i class="fas fa-download"></i> Download ROM
+                    </a>
+                    <a href="https://youtu.be/K4qZyOSyYWY?feature=shared" target="_blank">
+                        <i class="fab fa-youtube"></i> View Video
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <a>© ZORO All rights reserved.</a>
+    </footer>
+
     <script>
-        function toggleDownloadOptions(event) {
-            const options = event.currentTarget.nextElementSibling;
+        // Toggle download options
+        function toggleDownloadOptions(button) {
+            const card = button.closest('.rom-card');
+            const options = card.querySelector('.download-options');
             const allOptions = document.querySelectorAll('.download-options');
+            
             allOptions.forEach(option => {
                 if (option !== options) {
                     option.classList.remove('show');
                 }
             });
+            
             options.classList.toggle('show');
         }
+
+        // Toggle settings menu
         function toggleSettingsMenu(event) {
             const settingsMenu = document.querySelector('.settings-menu');
             const settingsButton = document.querySelector('.settings-button');
-            const cogIcon = settingsButton.querySelector('.fa-cog');
+            const cogIcon = settingsButton.querySelector('.fa-question-circle');
             const timesIcon = settingsButton.querySelector('.fa-times');
+            
             settingsMenu.classList.toggle('show');
             if (settingsMenu.classList.contains('show')) {
                 cogIcon.style.display = 'none';
@@ -414,136 +573,109 @@
             }
             event.stopPropagation();
         }
+
+        // Close settings menu when clicking outside
         document.addEventListener('click', function(event) {
             const settingsMenu = document.querySelector('.settings-menu');
             const settingsButton = document.querySelector('.settings-button');
-            if (!settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
+            
+            if (settingsMenu && settingsButton && settingsMenu.classList.contains('show') && 
+                !settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
                 settingsMenu.classList.remove('show');
-                const cogIcon = settingsButton.querySelector('.fa-cog');
+                const cogIcon = settingsButton.querySelector('.fa-question-circle');
                 const timesIcon = settingsButton.querySelector('.fa-times');
-                cogIcon.style.display = 'flex';
-                timesIcon.style.display = 'none';
+                if (cogIcon) cogIcon.style.display = 'flex';
+                if (timesIcon) timesIcon.style.display = 'none';
             }
-        });
-        function openTelegram(event, url) {
-            window.open(url, '_blank');
-            event.preventDefault();
-        }
-        window.onload = function() {
-            const logo = document.querySelector('header img');
-            const title = document.querySelector('header h1');
-            logo.classList.add('fade-in');
-            title.classList.add('fade-in');
-        }
-        function scrollToTop(event) {
-            event.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+            
+            // Close download options when clicking outside
+            const downloadOptions = document.querySelectorAll('.download-options');
+            downloadOptions.forEach(options => {
+                if (!options.contains(event.target) && !event.target.closest('.btn')) {
+                    options.classList.remove('show');
+                }
             });
-        }
-        function openNotes(event, title, content) {
-            event.preventDefault();
+        });
 
+        // Scroll to top function
+        function scrollToTop(event) {
+    event.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
+    const settingsMenu = document.querySelector('.settings-menu');
+    const settingsButton = document.querySelector('.settings-button');
+    const cogIcon = settingsButton.querySelector('.fa-question-circle');
+    const timesIcon = settingsButton.querySelector('.fa-times');
+
+    if (settingsMenu) {
+        settingsMenu.classList.remove('show');
+    }
+
+    if (cogIcon) cogIcon.style.display = 'flex';
+    if (timesIcon) timesIcon.style.display = 'none';
+}
+
+        // Show popup function
+        function showPopup(title, content) {
             const popupBackdrop = document.createElement('div');
             popupBackdrop.classList.add('popup-backdrop');
+            
             const popupContent = document.createElement('div');
             popupContent.classList.add('popup-content');
-
-            const titleElement = document.createElement('h3');
-            titleElement.textContent = title;
-            popupContent.appendChild(titleElement);
-
-            const contentElement = document.createElement('p');
-            contentElement.textContent = content;
-            popupContent.appendChild(contentElement);
-
-            const closeButton = document.createElement('button');
-            closeButton.classList.add('popup-close-button');
-            closeButton.innerHTML = '<i class="fas fa-times"></i>';
-            closeButton.onclick = function() {
+            
+            const popupTitle = document.createElement('h3');
+            popupTitle.textContent = title;
+            popupContent.appendChild(popupTitle);
+            
+            const popupText = document.createElement('p');
+            popupText.textContent = content;
+            popupContent.appendChild(popupText);
+            
+            const popupClose = document.createElement('div');
+            popupClose.classList.add('popup-close');
+            popupClose.innerHTML = '<i class="fas fa-times"></i>';
+            popupClose.onclick = function() {
                 closePopup(popupBackdrop);
             };
-            popupContent.appendChild(closeButton);
-
+            popupContent.appendChild(popupClose);
+            
             popupBackdrop.appendChild(popupContent);
             document.body.appendChild(popupBackdrop);
-
-
-            document.body.classList.add('popup-open');
+            document.body.classList.add('no-scroll');
+            
             setTimeout(() => {
                 popupBackdrop.classList.add('show');
             }, 10);
-
-            popupBackdrop.addEventListener('click', function(event) {
-                if (event.target === popupBackdrop) {
+            
+            popupBackdrop.addEventListener('click', function(e) {
+                if (e.target === popupBackdrop) {
                     closePopup(popupBackdrop);
                 }
             });
         }
-        function closePopup(popupBackdrop) {
-            popupBackdrop.classList.remove('show');
-            document.body.classList.remove('popup-open');
+
+        // Close popup function
+        function closePopup(popup) {
+            popup.classList.remove('show');
             setTimeout(() => {
-                document.body.removeChild(popupBackdrop);
+                document.body.removeChild(popup);
+                document.body.classList.remove('no-scroll');
             }, 300);
         }
+
+        // Initialize on load
+        window.addEventListener('load', function() {
+            const logo = document.querySelector('header img');
+            const title = document.querySelector('header h1');
+            
+            setTimeout(() => {
+                if (logo) logo.classList.add('fade-in');
+                if (title) title.classList.add('fade-in');
+            }, 100);
+        });
     </script>
-</head>
-<body>
-<header>
-    <img src="https://i.ibb.co/1r3HW3v/8.png" alt="Android Logo">
-    <h1>Android 8 (O) ROMs</h1>
-</header>
-<a href="#" class="settings-button" onclick="toggleSettingsMenu(event); return false;">
-    <i class="fas fa-cog"></i>
-    <i class="fas fa-times" style="display:none;"></i>
-</a>
-<div class="settings-menu">
-    <a href="#" onclick="scrollToTop(event)">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-    <a href="../index.html">
-        <i class="fas fa-home"></i>
-    </a>
-</div>
-<section id="roms" class="roms-section">
-    <h2>Available ROMs</h2>
-    <div class="rom-cards">
-    <div class="rom-card">
-          <img src="https://i.ibb.co/nML1JRx1/output-onlinepngtools-3.png" alt="LineageOS Logo">
-            <h3>LineageOS 15.1</h3>
-            <p>Android 8 - Size: 441 mb - ARM64 - Vanilla - Rev05</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
-            <div class="download-options">
-                <a href="https://drive.google.com/file/d/1EDIZPh5SOa36nUErAvFBREzRAhZCtHGa/view">Download ROM</a>
-                <a href="https://www.pling.com/dl?file_id=1733658071&file_type=application/zip&file_name=BiTGApps-arm64-8.1.0-v4.5-CORE.zip&file_size=67693583&has_torrent=0&project_id=2020746&link_type=download&is_external=true&external_link=https://github.com/BiTGApps/release/releases/download/v4.5-release/BiTGApps-arm64-8.1.0-v4.5-CORE.zip">Download GApps</a>
-            </div>
-        </div>
-        <div class="rom-card">
-          <img src="https://i.ibb.co/KptRRYDB/images-3.jpg" alt="RR Logo">
-            <h3>RR OS</h3>
-            <p>Android 8 - Size: 377 mb - ARM - Vanilla - Rev05</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
-            <div class="download-options">
-                <a href="https://androidfilehost.com/?fid=11410963190603910293">Download ROM</a>
-                <a href="https://www.pling.com/dl?file_id=1733658088&file_type=application/zip&file_name=BiTGApps-arm-8.1.0-v4.5-CORE.zip&file_size=63597935&has_torrent=0&project_id=2230239&link_type=download&is_external=true&external_link=https://github.com/BiTGApps/release/releases/download/v4.5-release/BiTGApps-arm-8.1.0-v4.5-CORE.zip">Download GApps</a>
-                <a href="https://youtu.be/zrsI52LtF2U?feature=shared">View Video</a>
-            </div>
-        </div>
-        <div class="rom-card">
-          <img src="https://i.ibb.co/MDbQxFRZ/Picsart-25-02-21-17-26-45-692.jpg" alt="Super Oneui Logo">
-            <h3>Super OneUI</h3>
-            <p>Android 8 - Size: 1.16 GB - ARM - Gapps - Rev05</p>
-            <a href="#" onclick="toggleDownloadOptions(event); return false;">Download Options</a>
-            <div class="download-options">
-                <a href="https://www.mediafire.com/file/tn1l8lr4h571pl5/SUPER_ONE_UI-8.0-20221003-OFFICIAL-gtaxllte.zip/file">Download ROM</a>
-                <a href="https://youtu.be/K4qZyOSyYWY?feature=shared">View Video</a>
-            </div>
-        </div>                              
-</section>
-<footer>
-    <a>© ZORO All rights reserved.</a>
-</footer>
 </body>
-  </html>
+    </html>
