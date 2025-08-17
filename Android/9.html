@@ -330,6 +330,7 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s ease;
+            user-select: none;
         }
 
         .popup-backdrop.show {
@@ -685,6 +686,11 @@
                     <a href="https://www.mediafire.com/file/va3ochtj4nv2kkz/magisk_prepare.zip/file" target="_blank">
                         <i class="fas fa-download"></i> Magisk Prepare
                     </a>
+                    <a href="javascript:void(0)" onclick="showPopup('📌 <span style=&quot;font-size:18px; color:#ff9800;&quot;>Important Notes</span>', 
+'<p>• <span style=&quot;color:#2196f3;&quot;>For the OneUI 1.0 port</span>, a bootloop may occur when flashing with <b>TWRP 3.7.0</b>. The solution is to flash the port using <b>TWRP 3.5.1</b> and make sure to remove the vendor partition (if present) by flashing the <a href=&quot;../fix_partitions/index.html/pitfile.pit&quot; target=&quot;_blank&quot; style=&quot;color:#f44336; font-weight:bold;&quot;>PIT file</a>. After that, the ROM will boot normally.</p><p>• <span style=&quot;color:#4caf50;&quot;>For Magisk</span>, the &quot;Magisk Prepare&quot; file must be flashed before starting to flash root.</p>'
+);">
+    <i class="fas fa-info-circle"></i> Important Notes
+                    </a>
                     <a href="https://xdaforums.com/t/rom-port-sm-t585-one-ui-1-0-port-from-sm-a600n-24-09-2022.4445475/page-3" target="_blank">
                         <i class="fas fa-link"></i> View on XDA
                     </a>
@@ -797,133 +803,133 @@
     </footer>
 
     <script>
-        function toggleDownloadOptions(button) {
-            const card = button.closest('.rom-card');
-            const options = card.querySelector('.download-options');
-            const allOptions = document.querySelectorAll('.download-options');
-            
-            allOptions.forEach(option => {
-                if (option !== options) {
-                    option.classList.remove('show');
-                }
-            });
-            
-            options.classList.toggle('show');
-        }
-
-        function toggleSettingsMenu(event) {
-            const settingsMenu = document.querySelector('.settings-menu');
-            const settingsButton = document.querySelector('.settings-button');
-            const cogIcon = settingsButton.querySelector('.fa-question-circle');
-            const timesIcon = settingsButton.querySelector('.fa-times');
-            
-            settingsMenu.classList.toggle('show');
-            if (settingsMenu.classList.contains('show')) {
-                cogIcon.style.display = 'none';
-                timesIcon.style.display = 'flex';
-            } else {
-                cogIcon.style.display = 'flex';
-                timesIcon.style.display = 'none';
+    function toggleDownloadOptions(button) {
+        const card = button.closest('.rom-card');
+        const options = card.querySelector('.download-options');
+        const allOptions = document.querySelectorAll('.download-options');
+        
+        allOptions.forEach(option => {
+            if (option !== options) {
+                option.classList.remove('show');
             }
-            event.stopPropagation();
-        }
-
-        document.addEventListener('click', function(event) {
-            const settingsMenu = document.querySelector('.settings-menu');
-            const settingsButton = document.querySelector('.settings-button');
-            
-            if (settingsMenu && settingsButton && settingsMenu.classList.contains('show') && 
-                !settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
-                settingsMenu.classList.remove('show');
-                const cogIcon = settingsButton.querySelector('.fa-question-circle');
-                const timesIcon = settingsButton.querySelector('.fa-times');
-                if (cogIcon) cogIcon.style.display = 'flex';
-                if (timesIcon) timesIcon.style.display = 'none';
-            }
-            
-            const downloadOptions = document.querySelectorAll('.download-options');
-            downloadOptions.forEach(options => {
-                if (!options.contains(event.target) && !event.target.closest('.btn')) {
-                    options.classList.remove('show');
-                }
-            });
         });
+        
+        options.classList.toggle('show');
+    }
 
-        function scrollToTop(event) {
-    event.preventDefault();
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    function toggleSettingsMenu(event) {
+        const settingsMenu = document.querySelector('.settings-menu');
+        const settingsButton = document.querySelector('.settings-button');
+        const cogIcon = settingsButton.querySelector('.fa-cog');
+        const timesIcon = settingsButton.querySelector('.fa-times');
+        
+        settingsMenu.classList.toggle('show');
+        if (settingsMenu.classList.contains('show')) {
+            cogIcon.style.display = 'none';
+            timesIcon.style.display = 'flex';
+        } else {
+            cogIcon.style.display = 'flex';
+            timesIcon.style.display = 'none';
+        }
+        event.stopPropagation();
+    }
+
+    document.addEventListener('click', function(event) {
+        const settingsMenu = document.querySelector('.settings-menu');
+        const settingsButton = document.querySelector('.settings-button');
+        
+        if (settingsMenu && settingsButton && settingsMenu.classList.contains('show') && 
+            !settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
+            settingsMenu.classList.remove('show');
+            const cogIcon = settingsButton.querySelector('.fa-cog');
+            const timesIcon = settingsButton.querySelector('.fa-times');
+            if (cogIcon) cogIcon.style.display = 'flex';
+            if (timesIcon) timesIcon.style.display = 'none';
+        }
+        
+        const downloadOptions = document.querySelectorAll('.download-options');
+        downloadOptions.forEach(options => {
+            if (!options.contains(event.target) && !event.target.closest('.btn')) {
+                options.classList.remove('show');
+            }
+        });
     });
 
-    const settingsMenu = document.querySelector('.settings-menu');
-    const settingsButton = document.querySelector('.settings-button');
-    const cogIcon = settingsButton.querySelector('.fa-question-circle');
-    const timesIcon = settingsButton.querySelector('.fa-times');
-
-    if (settingsMenu) {
-        settingsMenu.classList.remove('show');
-    }
-
-    if (cogIcon) cogIcon.style.display = 'flex';
-    if (timesIcon) timesIcon.style.display = 'none';
-    }
-
-        function showPopup(title, content) {
-            const popupBackdrop = document.createElement('div');
-            popupBackdrop.classList.add('popup-backdrop');
-            
-            const popupContent = document.createElement('div');
-            popupContent.classList.add('popup-content');
-            
-            const popupTitle = document.createElement('h3');
-            popupTitle.textContent = title;
-            popupContent.appendChild(popupTitle);
-            
-            const popupText = document.createElement('p');
-            popupText.textContent = content;
-            popupContent.appendChild(popupText);
-            
-            const popupClose = document.createElement('div');
-            popupClose.classList.add('popup-close');
-            popupClose.innerHTML = '<i class="fas fa-times"></i>';
-            popupClose.onclick = function() {
-                closePopup(popupBackdrop);
-            };
-            popupContent.appendChild(popupClose);
-            
-            popupBackdrop.appendChild(popupContent);
-            document.body.appendChild(popupBackdrop);
-            document.body.classList.add('no-scroll');
-            
-            setTimeout(() => {
-                popupBackdrop.classList.add('show');
-            }, 10);
-            
-            popupBackdrop.addEventListener('click', function(e) {
-                if (e.target === popupBackdrop) {
-                    closePopup(popupBackdrop);
-                }
-            });
-        }
-
-        function closePopup(popup) {
-            popup.classList.remove('show');
-            setTimeout(() => {
-                document.body.removeChild(popup);
-                document.body.classList.remove('no-scroll');
-            }, 300);
-        }
-
-        window.addEventListener('load', function() {
-            const logo = document.querySelector('header img');
-            const title = document.querySelector('header h1');
-            
-            setTimeout(() => {
-                if (logo) logo.classList.add('fade-in');
-                if (title) title.classList.add('fade-in');
-            }, 100);
+    function scrollToTop(event) {
+        event.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
-    </script>
+
+        const settingsMenu = document.querySelector('.settings-menu');
+        const settingsButton = document.querySelector('.settings-button');
+        const cogIcon = settingsButton.querySelector('.fa-cog');
+        const timesIcon = settingsButton.querySelector('.fa-times');
+
+        if (settingsMenu) {
+            settingsMenu.classList.remove('show');
+        }
+
+        if (cogIcon) cogIcon.style.display = 'flex';
+        if (timesIcon) timesIcon.style.display = 'none';
+    }
+
+    function showPopup(title, content) {
+        const popupBackdrop = document.createElement('div');
+        popupBackdrop.classList.add('popup-backdrop');
+        
+        const popupContent = document.createElement('div');
+        popupContent.classList.add('popup-content');
+        
+        const popupTitle = document.createElement('h3');
+        popupTitle.innerHTML = title;
+        popupContent.appendChild(popupTitle);
+        
+        const popupText = document.createElement('div');
+        popupText.innerHTML = content;
+        popupContent.appendChild(popupText);
+        
+        const popupClose = document.createElement('div');
+        popupClose.classList.add('popup-close');
+        popupClose.innerHTML = '<i class="fas fa-times"></i>';
+        popupClose.onclick = function() {
+            closePopup(popupBackdrop);
+        };
+        popupContent.appendChild(popupClose);
+        
+        popupBackdrop.appendChild(popupContent);
+        document.body.appendChild(popupBackdrop);
+        document.body.classList.add('no-scroll');
+        
+        setTimeout(() => {
+            popupBackdrop.classList.add('show');
+        }, 10);
+        
+        popupBackdrop.addEventListener('click', function(e) {
+            if (e.target === popupBackdrop) {
+                closePopup(popupBackdrop);
+            }
+        });
+    }
+
+    function closePopup(popup) {
+        popup.classList.remove('show');
+        setTimeout(() => {
+            document.body.removeChild(popup);
+            document.body.classList.remove('no-scroll');
+        }, 300);
+    }
+
+    window.addEventListener('load', function() {
+        const logo = document.querySelector('header img');
+        const title = document.querySelector('header h1');
+        
+        setTimeout(() => {
+            if (logo) logo.classList.add('fade-in');
+            if (title) title.classList.add('fade-in');
+        }, 100);
+    });
+</script>
 </body>
     </html>
