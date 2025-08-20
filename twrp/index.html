@@ -383,6 +383,67 @@
         .popup-close-button:hover {
             background-color: #8e44ad;
         }
+
+        .rom-card {
+    width: 100%;
+    max-width: 340px;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 992px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    header p {
+        font-size: 1rem;
+    }
+    .rom-card h3 {
+        font-size: 1.2rem;
+    }
+    .rom-card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        height: auto;
+        padding: 40px 15px;
+    }
+    header img {
+        max-width: 100px;
+    }
+    header h1 {
+        font-size: 1.8rem;
+    }
+    header p {
+        font-size: 1rem;
+    }
+    .rom-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .rom-card {
+        width: 90%;
+        max-width: 100%;
+        padding: 15px;
+    }
+    .rom-card h3 {
+        font-size: 1.2rem;
+    }
+    .rom-card p {
+        font-size: 0.9rem;
+    }
+    .rom-card a {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+        }
     </style>
     <script>
         function toggleDownloadOptions(event) {
