@@ -310,10 +310,11 @@
             background: var(--dark);
             border-top: 1px solid var(--glass-border);
             user-select: none;
+            color: #ccc;
         }
 
         footer a {
-            color: var(--primary);
+            color: #A79AFF;
             text-decoration: none;
         }
 
@@ -503,8 +504,8 @@
                     <a href="https://xdaforums.com/t/rom-sm-t580-unofficial-64-bit-crdroidandroid-13-0-v9-4.4190313/" target="_blank">
                         <i class="fas fa-link"></i> View on XDA
                     </a>
-                    <a href="https://youtu.be/WBybsdTPqp4?feature=shared" target="_blank">
-                        <i class="fab fa-youtube"></i> Watch Demo
+                    <a href="javascript:void(0)" onclick="showVideoPopup('https://www.youtube.com/embed/WBybsdTPqp4');">
+    <i class="fab fa-youtube" style="color:#FF0000;"></i> Watch Demo
                     </a>
                 </div>
             </div>
@@ -565,9 +566,8 @@
                     </a>
                     <a href="https://xdaforums.com/t/lineageos-19-1-for-sm-t580-gtaxlwifi-sm-t585-gtaxllte-sm-p580-gtanotexlwifi-and-sm-p585-gtanotexllte.4432957/" target="_blank">
                         <i class="fas fa-link"></i> View on XDA
-                    </a>
-                    <a href="https://youtu.be/tEB2Ht9iKko?feature=shared" target="_blank">
-                        <i class="fab fa-youtube"></i> Watch Demo
+                    <a href="javascript:void(0)" onclick="showVideoPopup('https://www.youtube.com/embed/tEB2Ht9iKko');">
+    <i class="fab fa-youtube" style="color:#FF0000;"></i> Watch Demo
                     </a>
                 </div>
             </div>
@@ -635,7 +635,7 @@
     </section>
 
     <footer>
-        <a>© ZORO All rights reserved.</a>
+    © <a href="https://zoro2045.github.io/" target="_blank">ZORO</a> All rights reserved.
     </footer>
 
     <script>
@@ -656,7 +656,7 @@
     function toggleSettingsMenu(event) {
         const settingsMenu = document.querySelector('.settings-menu');
         const settingsButton = document.querySelector('.settings-button');
-        const cogIcon = settingsButton.querySelector('.fa-cog');
+        const cogIcon = settingsButton.querySelector('.fa-question-circle');
         const timesIcon = settingsButton.querySelector('.fa-times');
         
         settingsMenu.classList.toggle('show');
@@ -677,18 +677,23 @@
         if (settingsMenu && settingsButton && settingsMenu.classList.contains('show') && 
             !settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
             settingsMenu.classList.remove('show');
-            const cogIcon = settingsButton.querySelector('.fa-cog');
+            const cogIcon = settingsButton.querySelector('.fa-question-circle');
             const timesIcon = settingsButton.querySelector('.fa-times');
             if (cogIcon) cogIcon.style.display = 'flex';
             if (timesIcon) timesIcon.style.display = 'none';
         }
         
         const downloadOptions = document.querySelectorAll('.download-options');
-        downloadOptions.forEach(options => {
-            if (!options.contains(event.target) && !event.target.closest('.btn')) {
-                options.classList.remove('show');
-            }
-        });
+        const popups = document.querySelectorAll('.popup-backdrop');
+        const isClickOnPopup = Array.from(popups).some(popup => popup.contains(event.target));
+        
+        if (!isClickOnPopup) {
+            downloadOptions.forEach(options => {
+                if (!options.contains(event.target) && !event.target.closest('.btn')) {
+                    options.classList.remove('show');
+                }
+            });
+        }
     });
 
     function scrollToTop(event) {
@@ -700,7 +705,7 @@
 
         const settingsMenu = document.querySelector('.settings-menu');
         const settingsButton = document.querySelector('.settings-button');
-        const cogIcon = settingsButton.querySelector('.fa-cog');
+        const cogIcon = settingsButton.querySelector('.fa-question-circle');
         const timesIcon = settingsButton.querySelector('.fa-times');
 
         if (settingsMenu) {
@@ -729,7 +734,8 @@
         const popupClose = document.createElement('div');
         popupClose.classList.add('popup-close');
         popupClose.innerHTML = '<i class="fas fa-times"></i>';
-        popupClose.onclick = function() {
+        popupClose.onclick = function(e) {
+            e.stopPropagation();
             closePopup(popupBackdrop);
         };
         popupContent.appendChild(popupClose);
@@ -737,6 +743,10 @@
         popupBackdrop.appendChild(popupContent);
         document.body.appendChild(popupBackdrop);
         document.body.classList.add('no-scroll');
+        
+        popupContent.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
         
         setTimeout(() => {
             popupBackdrop.classList.add('show');
@@ -767,7 +777,8 @@
         const popupClose = document.createElement('div');
         popupClose.classList.add('popup-close');
         popupClose.innerHTML = '<i class="fas fa-times"></i>';
-        popupClose.onclick = function() {
+        popupClose.onclick = function(e) {
+            e.stopPropagation();
             closePopup(popupBackdrop);
         };
         popupContent.appendChild(popupClose);
@@ -775,6 +786,10 @@
         popupBackdrop.appendChild(popupContent);
         document.body.appendChild(popupBackdrop);
         document.body.classList.add('no-scroll');
+        
+        popupContent.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
         
         setTimeout(() => {
             popupBackdrop.classList.add('show');
@@ -790,7 +805,9 @@
     function closePopup(popup) {
         popup.classList.remove('show');
         setTimeout(() => {
-            document.body.removeChild(popup);
+            if (document.body.contains(popup)) {
+                document.body.removeChild(popup);
+            }
             document.body.classList.remove('no-scroll');
         }, 300);
     }
@@ -806,4 +823,4 @@
     });
 </script>
 </body>
-                                                     </html>
+    </html>
