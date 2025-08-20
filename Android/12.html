@@ -432,18 +432,109 @@
                 padding: 1.5rem;
             }
         }
-            .video-popup {
-                width: 80%;
-                max-width: 800px;
-                aspect-ratio: 16/9;
-                padding: 0;
-           }
+        
+        .video-popup {
+            width: 80%;
+            max-width: 800px;
+            aspect-ratio: 16/9;
+            padding: 0;
+        }
            
-           .video-popup iframe {
-                width: 100%;
-                height: 100%;
-                border-radius: 10px;
-           }
+        .video-popup iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        
+        /* Gallery Popup Styles */
+        .gallery-popup {
+            width: 90%;
+            max-width: 600px;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .gallery-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+            z-index: 10;
+        }      
+        
+        .gallery-nav.prev {
+            left: 5px;
+        }
+        
+        .gallery-nav.next {
+            right: 5px;
+        }
+        
+        .gallery-counter {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: var(--light);
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin: 0 auto;
+            width: fit-content;
+        }
+        
+        .gallery-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+            z-index: 10;
+        }
+        
+        .gallery-close:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -534,9 +625,16 @@
                     <a href="https://xdaforums.com/t/rom-unofficial-12-s-unofficial-e-os-s-lineageos-19-1-based-for-sm-t580-gtaxlwifi-sm-t585-gtaxllte-sm-p580-gtanotexlwifi-and-sm-p585.4696117/" target="_blank">
                         <i class="fas fa-link"></i> View on XDA
                     </a>
-                    <a href="https://t.me/gtaxllte/2229?single" target="_blank">
-                        <i class="fas fa-image"></i> Screenshots
-                    </a>
+                    <a href="javascript:void(0)" onclick="showGalleryPopup([
+    '../images/screenshots/e12/1.jpg',
+    '../images/screenshots/e12/2.jpg',
+    '../images/screenshots/e12/3.jpg',
+    '../images/screenshots/e12/4.jpg',
+    '../images/screenshots/e12/5.jpg',
+    '../images/screenshots/e12/6.jpg'
+]);">
+    <i class="fas fa-images" style="color:#6C63FF;"></i> View Screenshots
+</a>
                 </div>
             </div>
 
@@ -626,9 +724,16 @@
                     <a href="https://t.me/Oneui_Legacy/5" target="_blank">
                         <i class="fas fa-exclamation-circle"></i> Important Notes
                     </a>
-                    <a href="https://t.me/gtaxllte_screenshots/90" target="_blank">
-                        <i class="fas fa-image"></i> Screenshots
-                    </a>
+                    <a href="javascript:void(0)" onclick="showGalleryPopup([
+    '../images/screenshots/legacy/1.jpg',
+    '../images/screenshots/legacy/2.jpg',
+    '../images/screenshots/legacy/3.jpg',
+    '../images/screenshots/legacy/4.jpg',
+    '../images/screenshots/legacy/5.jpg',
+    '../images/screenshots/legacy/6.jpg'
+]);">
+    <i class="fas fa-images" style="color:#6C63FF;"></i> View Screenshots
+</a>
                 </div>
             </div>
         </div>
@@ -802,6 +907,99 @@
         });
     }
 
+    function showGalleryPopup(imageUrls) {
+        const popupBackdrop = document.createElement('div');
+        popupBackdrop.classList.add('popup-backdrop');
+        
+        const popupContent = document.createElement('div');
+        popupContent.classList.add('popup-content', 'gallery-popup');
+        
+        const galleryContainer = document.createElement('div');
+        galleryContainer.classList.add('gallery-container');
+        
+        const galleryImage = document.createElement('img');
+        galleryImage.classList.add('gallery-image');
+        galleryImage.src = imageUrls[0];
+        galleryImage.alt = "Screenshot";
+        galleryContainer.appendChild(galleryImage);
+        
+        const prevButton = document.createElement('div');
+        prevButton.classList.add('gallery-nav', 'prev');
+        prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        galleryContainer.appendChild(prevButton);
+        
+        const nextButton = document.createElement('div');
+        nextButton.classList.add('gallery-nav', 'next');
+        nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        galleryContainer.appendChild(nextButton);
+        
+        const galleryClose = document.createElement('div');
+        galleryClose.classList.add('gallery-close');
+        galleryClose.innerHTML = '<i class="fas fa-times"></i>';
+        galleryContainer.appendChild(galleryClose);
+        
+        const galleryCounter = document.createElement('div');
+        galleryCounter.classList.add('gallery-counter');
+        galleryCounter.innerHTML = `1/${imageUrls.length}`;
+        galleryContainer.appendChild(galleryCounter);
+        
+        popupContent.appendChild(galleryContainer);
+        popupBackdrop.appendChild(popupContent);
+        document.body.appendChild(popupBackdrop);
+        document.body.classList.add('no-scroll');
+        
+        let currentIndex = 0;
+        
+        function updateGallery() {
+            galleryImage.src = imageUrls[currentIndex];
+            galleryCounter.innerHTML = `${currentIndex + 1}/${imageUrls.length}`;
+        }
+        
+        prevButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            currentIndex = (currentIndex - 1 + imageUrls.length) % imageUrls.length;
+            updateGallery();
+        });
+        
+        nextButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % imageUrls.length;
+            updateGallery();
+        });
+        
+        galleryClose.addEventListener('click', function(e) {
+            e.stopPropagation();
+            closePopup(popupBackdrop);
+        });
+        
+        galleryContainer.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        
+        setTimeout(() => {
+            popupBackdrop.classList.add('show');
+        }, 10);
+
+        popupBackdrop.addEventListener('click', function(e) {
+            if (e.target === popupBackdrop) {
+                closePopup(popupBackdrop);
+            }
+        });
+        
+        document.addEventListener('keydown', function handleKeyPress(e) {
+            if (e.key === 'ArrowLeft') {
+                currentIndex = (currentIndex - 1 + imageUrls.length) % imageUrls.length;
+                updateGallery();
+            } else if (e.key === 'ArrowRight') {
+                currentIndex = (currentIndex + 1) % imageUrls.length;
+                updateGallery();
+            } else if (e.key === 'Escape') {
+                closePopup(popupBackdrop);
+                document.removeEventListener('keydown', handleKeyPress);
+            }
+        });
+    }
+
     function closePopup(popup) {
         popup.classList.remove('show');
         setTimeout(() => {
@@ -821,6 +1019,6 @@
             if (title) title.classList.add('fade-in');
         }, 100);
     });
-</script>
+    </script>
 </body>
     </html>
