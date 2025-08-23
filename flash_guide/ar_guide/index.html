@@ -3,589 +3,1324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Flash Guide - AR</title>
-     <link rel="icon" type="image/png" href="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/flash.png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-body {
-background-color: #000;
-color: #e0e0e0;
-font-family: 'Roboto', sans-serif;
-line-height: 1.9;
-text-align: right;
-}
-header {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-height: 70vh;
-background: linear-gradient(to bottom right, #000, #1b004d);
-color: #fff;
-padding: 20px;
-position: relative;
-}
-header h1, header p, header a {
-user-select: none;
-}
-header img {
-max-width: 150px;
-margin-bottom: 20px;
-opacity: 0;
-transition: opacity 1s ease;
-filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
-}
-header h1 {
-font-size: 3.5rem;
-margin-bottom: 10px;
-text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-opacity: 0;
-transition: opacity 1s ease;
-font-family: 'Arial', sans-serif;
-letter-spacing: 1px;
-filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
-}
-.fade-in {
-opacity: 1;
-}
-.ltr-text {
-direction: ltr;
-unicode-bidi: embed;
-}
-.bidi-isolate {
-unicode-bidi: isolate;
-display: inline-block;
-}
-.language-switcher {
-position: absolute;
-top: 20px;
-left: 20px;
-display: flex;
-align-items: center;
-padding: 10px 15px;
-background-color: rgba(27, 0, 77, 0.7);
-border-radius: 5px;
-color: #fff;
-font-size: 1.2rem;
-cursor: pointer;
-text-decoration: none;
-transition: background-color 0.3s ease, color 0.3s ease;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-backdrop-filter: blur(5px);
-}
-.language-switcher:hover {
-background-color: #2e0079;
-color: #81d4fa;
-}
-.language-switcher i {
-margin-right: 5px;
-font-size: 1.5rem;
-}
-.settings-button {
-position: fixed;
-bottom: 20px;
-left: 20px;
-background-color: #2e0079;
-color: #fff;
-border-radius: 50%;
-width: 60px;
-height: 60px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 2rem;
-text-decoration: none;
-box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-transition: background-color 0.3s ease;
-z-index: 1000;
-cursor: pointer;
-}
-.settings-button:hover {
-background-color: #2e0079;
-}
-.settings-menu {
-position: fixed;
-bottom: 90px;
-right: 20px;
-display: none;
-flex-direction: column;
-align-items: flex-start;
-gap: 10px;
-z-index: 1001;
-}
-.settings-menu.show {
-display: flex;
-}
-.settings-menu a {
-background-color: #2e0079;
-color: #fff;
-text-decoration: none;
-padding: 15px 15px;
-border-radius: 50%;
-width: 50px;
-height: 50px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 1.5rem;
-box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-transition: background-color 0.3s ease;
-}
-.settings-menu a:hover {
-background-color: #2e0079;
-}
-.roms-section {
-padding: 50px 20px;
-background-color: #000;
-border-radius: 15px;
-margin: 20px auto;
-box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-max-width: 800px;
-}
-.roms-section h2 {
-font-size: 2.5rem;
-margin-bottom: 30px;
-color: transparent;
-background: linear-gradient(to right, #00BFFF, #8A2BE2);
--webkit-background-clip: text;
-background-clip: text;
-align-items: center;
-text-align: center;
-}
-.rom-cards {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 30px;
-}
-.rom-card {
-background-color: #121212;
-border-radius: 15px;
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-width: 350px;
-padding: 30px;
-text-align: center;
-margin-top: 0.25px;
-margin-bottom: 0.25px;
-}
-.rom-card img {
-max-width: 100px;
-margin-top: 10px;
-margin-bottom: 10px;
-display: block;
-margin-left: auto;
-margin-right: auto;
-filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
-}
-.rom-card h3 {
-color: #fff;
-margin-bottom: 15px;
-font-size: 1.8rem;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-.rom-card p {
-color: #9e9e9e;
-margin-bottom: 25px;
-font-size: 1.2rem;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-.rom-card ul {
-list-style-type: none;
-padding-left: 0;
-color: #e0e0e0;
-margin-bottom: 25px;
-}
-.rom-card ul li {
-margin-bottom: 10px;
-font-size: 1.1rem;
-padding-bottom: 10px;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-.rom-card a {
-padding: 12px 25px;
-background-color: #1b004d;
-color: #fff;
-border-radius: 50px;
-text-decoration: none;
-font-weight: 700;
-display: inline-block;
-transition: background-color 0.3s ease;
-box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-}
-.rom-card a:hover {
-background-color: #2e0079;
-}
-.download-options {
-display: none;
-margin-top: 20px;
-opacity: 0;
-transition: opacity 0.3s ease, transform 0.3s ease;
-transform: translateY(20px);
-border-radius: 10px;
-}
-.download-options.show {
-display: block;
-opacity: 1;
-transform: translateY(0);
-}
-.download-options a {
-display: block;
-margin: 10px 0;
-background-color: #1b004d;
-padding: 10px 20px;
-border-radius: 5px;
-color: #fff;
-text-decoration: none;
-transition: background-color 0.3s ease;
-box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-}
-.download-options a:hover {
-background-color: #2e0079;
-}
-.note {
-margin-top: 20px;
-font-weight: bold;
-color: #ffcc00;
-background-color: rgba(255,69,58,0.1);
-padding: 10px;
-border-radius: 10px;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-.note2 {
-margin-top: 20px;
-font-weight: bold;
-color: #ffcc00;
-background-color: rgba(0,112,243,0.1);
-padding: 10px;
-border-radius: 10px;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-.note3 {
-margin-top: 20px;
-font-weight: bold;
-color: #ffcc00;
-background-color: rgba(64,224,208,0.1);
-padding: 10px;
-border-radius: 10px;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-.note4 {
-margin-top: 20px;
-font-weight: bold;
-color: #ffcc00;
-background-color: rgba(138,43,226,0.1);
-padding: 10px;
-border-radius: 10px;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-.method1, .method2 {
-color: transparent;
-background: linear-gradient(to right, #00BFFF, #ffbfff);
--webkit-background-clip: text;
-background-clip: text;
-font-size: 1.2rem;
-font-weight: bold;
-text-align: center;
-margin-top: 20px;
-margin-bottom: 20px;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-.method3 {
-color: transparent;
-background: linear-gradient(to right, #00BFFF, #ffbfff);
--webkit-background-clip: text;
-background-clip: text;
-font-size: 1.2rem;
-font-weight: bold;
-text-align: center;
-margin-top: 20px;
-margin-bottom: 10px;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    <title>الدليل الشامل لتفليش Samsung Galaxy Tab A 10.1 - إصداري LTE (SM-T585) و Wi-Fi (SM-T580) | فتح البوتلودر، تثبيت TWRP، تركيب الرومات</title>
+    <meta name="description" content="دليل تفصيلي لتفليش Samsung Galaxy Tab A 10.1 بإصداريه: LTE (SM-T585) و Wi-Fi (SM-T580). شرح كامل لفتح البوتلودر، تثبيت ريكفري TWRP، تركيب الرومات المعدلة، والحصول على صلاحيات الروت باستخدام Magisk أو APatch">
+    <link rel="icon" type="image/png" href="../images/flash.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #0F0F13;
+            --bg-surface: #1A1A24;
+            --primary-color: #6C4DF6;
+            --secondary-color: #4DB6FF;
+            --text-primary: #F5F5FF;
+            --text-secondary: #B8B8D6;
+            --text-tertiary: #7A7A9A;
+            --border-color: rgba(255,255,255,0.08);
+            --warning-color: #FF5E5E;
+            --note-color: #FFB74D;
+            --info-color: #4DB6FF;
+            --success-color: #66FF99;
+            --border-radius: 16px;
+            --sidebar-width: 300px;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.2);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --primary: #6C4DF6;
+            --primary-dark: #4D36D1;
+            --secondary: #FF7D59;
+            --dark: #12141D;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) var(--dark);
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            display: flex;
+            line-height: 1.7;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(108, 77, 246, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255, 125, 89, 0.15) 0%, transparent 30%);  
+            border-left: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            padding: 30px;
+            overflow-y: auto;
+            z-index: 100;
+            user-select: none;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .sidebar-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 50px;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .sidebar-header span {
+            font-size: 0.9rem;
+            color: #D8D8EC;
+            font-weight: 600;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar-nav li a {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3); 
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05); 
+        }
+
+        .sidebar-nav li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .sidebar-nav li a i {
+            margin-left: 12px;
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+            color: var(--text-tertiary);
+            transition: var(--transition);
+        }
+
+        .sidebar-nav li a:hover {
+            background-color: rgba(108, 77, 246, 0.08);
+            border: 2px solid #6a5acd;
+            color: var(--text-primary);
+        }
+
+        .sidebar-nav li a:hover i {
+            color: var(--text-primary);
+        }
+
+        .sidebar-nav li a.active {
+            background-color: rgba(108, 77, 246, 0.15);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sidebar-nav li a.active i {
+            color: var(--primary-color);
+        }
+
+        .sidebar-nav li a.active::before {
+            opacity: 1;
+        }
+
+        .main-content {
+            margin-right: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
+            padding: 50px;
+        }
+
+        .guide-section {
+            padding-top: 50px;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            max-width: 900px;
+            margin-left: auto;
+        }
+
+        .guide-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .guide-section h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            color: var(--text-primary);
+            position: relative;
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            user-select: none;
+        }
+        
+        .guide-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            box-shadow: 0 8px 25px rgba(108, 77, 246, 0.5);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .guide-section h2 i {
+            margin-left: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.8rem;
+        }
+
+        .guide-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            position: relative;
+            padding-right: 15px;
+            border-right: 4px solid var(--primary-color);
+        }
+
+        .guide-section p, .guide-section ul, .guide-section ol {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .guide-section ul, .guide-section ol {
+            padding-right: 25px;
+        }
+
+        .guide-section li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-right: 5px;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #272A2E;          
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: #2ECC71;
+            font-weight: 600;           
+            margin: 5px 0;
+            direction: ltr;
+            display: inline-block;
+            unicode-bidi: embed;
+            padding: 1px 5px;
+        }
+
+        .alert {
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: var(--border-radius);
+            background-color: var(--bg-surface);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border-right: 4px solid;
+        }
+
+        .alert::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background: currentColor;
+        }
+
+        .alert-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .alert-header i {
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+
+        .alert strong {
+             font-weight: 700;
+        }
+
+        .alert-warning { 
+            border-color: var(--warning-color);
+            color: var(--warning-color);
+        }
+        
+        .alert-note { 
+            border-color: var(--note-color);
+            color: var(--note-color);
+        }
+        
+        .alert-info { 
+            border-color: var(--info-color);
+            color: var(--info-color);
+        }
+
+        .alert-success {
+            border-color: var(--success-color);
+            color: var(--success-color);
+        }
+        
+        .download-group {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: var(--transition);
+            margin-top: 10px;
+            box-shadow: var(--shadow-sm);
+            border: none;
+            font-size: 0.95rem;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 77, 246, 0.5);
+            opacity: 0.9;
+        }
+        
+        .download-btn i {
+            margin-left: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .download-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .download-btn.secondary:hover {
+            background: rgba(108, 77, 246, 0.1);
+        }
+        
+.code-block {
+    display: block;
+    background-color: rgba(20, 20, 30, 0.8);
+    padding: 10px;
+    border-radius: 12px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    color: var(--success-color);
+    margin: 20px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: pre;
+    word-wrap: normal;
+    line-height: 1.6;
+    border: 1px solid rgba(108, 77, 246, 0.2);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+    direction: ltr;
+    text-align: left;
+    max-width: 100%;
 }
 
+.code-block::before {
+    content: 'LOG';
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    font-family: 'Cairo', sans-serif;
+    text-align: left;
+    direction: rtl;
+}
 
-.method4 {
-color: transparent;
-background: linear-gradient(to right, #ff7e5f, #feb47b);
--webkit-background-clip: text;
-background-clip: text;
-font-size: 1.2rem;
-font-weight: bold;
-text-align: center;
-margin-top: 10px;
-margin-bottom: 15px;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-footer {
-padding: 20px;
-background-color: #1b004d;
-text-align: center;
-margin-top: 50px;
-border-radius: 10px;
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-display: flex;
-justify-content: center;
-}
-footer a {
-color: #81d4fa;
-text-decoration: none;
-font-size: 1.5rem;
-display: flex;
-align-items: center;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-footer a:hover {
-text-decoration: none;
-}
-h3 {
-margin-bottom: 20px;
-}
-h4 {
-margin-bottom: 20px;
-}
 @media (max-width: 768px) {
-header h1 {
-font-size: 2.5rem;
+    .code-block {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
 }
-.language-switcher {
-top: 10px;
-left: 10px;
-font-size: 1rem;
+        
+@media (max-width: 1200px) {
+    :root {
+        --sidebar-width: 260px;
+    }
+    .main-content {
+        padding: 40px;
+    }
 }
-.language-switcher i {
-font-size: 1.2rem;
-}
-.settings-button {
-bottom: 10px;
-right: 10px;
-width: 50px;
-height: 50px;
-font-size: 1.5rem;
-}
-.settings-menu {
-bottom: 70px;
-right: 10px;
-}
-.settings-menu a {
-width: 40px;
-height: 40px;
-font-size: 1.2rem;
-}
-.roms-section h2 {
-font-size: 2rem;
-}
-.rom-cards {
-flex-direction: column;
-align-items: center;
-}
-}
-</style>
-<script>
-function toggleDownloadOptions(event) {
-const options = event.currentTarget.nextElementSibling;
-const allOptions = document.querySelectorAll('.download-options');
-allOptions.forEach(option => {
-if (option !== options) {
-option.classList.remove('show');
-}
-});
-options.classList.toggle('show');
-}
-function toggleSettingsMenu(event) {
-  const settingsMenu = document.querySelector('.settings-menu');
-  const settingsButton = document.querySelector('.settings-button');
-  const cogIcon = settingsButton.querySelector('.fa-cog');
-  const timesIcon = settingsButton.querySelector('.fa-times');
 
-  settingsMenu.classList.toggle('show');
+        @media (max-width: 1024px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                border-left: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 20px;
+            }
+            .main-content {
+                margin-right: 0;
+                width: 100%;
+                padding: 30px;
+            }
+            .sidebar-nav {
+                display: flex;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+            .sidebar-nav ul {
+                display: flex;
+            }
+            .sidebar-nav li {
+                margin-bottom: 0;
+                margin-left: 8px;
+            }
+            .sidebar-nav li a::before {
+                display: none;
+            }
+        }
 
-  if (settingsMenu.classList.contains('show')) {
-    cogIcon.style.display = 'none';
-    timesIcon.style.display = 'flex';
-  } else {
-    cogIcon.style.display = 'flex';
-    timesIcon.style.display = 'none';
-  }
+        @media (max-width: 768px) {
+            .main-content { 
+                padding: 25px;
+            }
+            .guide-section { 
+                padding-top: 30px;
+                margin-bottom: 40px;
+            }
+            .guide-section h2 { 
+                font-size: 1.7rem;
+                margin-bottom: 40px;
+                padding-top: 10px;
+                padding-bottom: 10px;     
+                padding-right: 10px;
+                background: 
+                radial-gradient(circle at 20% 30%, rgba(108, 77, 246, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255, 125, 89, 0.15) 0%, transparent 30%);
+            }
+            .guide-section h3 { 
+                font-size: 1.3rem;
+                margin-top: 30px;
+            }
+            .download-group {
+                flex-direction: column;
+            }
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
 
-  event.stopPropagation();
-}
-document.addEventListener('click', function(event) {
-const settingsMenu = document.querySelector('.settings-menu');
-const settingsButton = document.querySelector('.settings-button');
-if (!settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
-settingsMenu.classList.remove('show');
-    const cogIcon = settingsButton.querySelector('.fa-cog');
-    const timesIcon = settingsButton.querySelector('.fa-times');
-    cogIcon.style.display = 'flex';
-    timesIcon.style.display = 'none';
-}
-});
-window.onload = function() {
-const logo = document.querySelector('header img');
-const title = document.querySelector('header h1');
-logo.classList.add('fade-in');
-title.classList.add('fade-in');
-}
-</script>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(108, 77, 246, 0.5);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(108, 77, 246, 0.7);
+        }
+        
+        .language-switcher {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1001;
+            padding: 15px 25px;
+            margin-left: var(--sidebar-width);
+        }
+
+        .language-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: rgba(108, 77, 246, 0.25);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+            transition: var(--transition);
+            border: 1px solid var(--primary-color);
+            backdrop-filter: blur(4px);
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .language-btn:hover {
+            background: rgba(108, 77, 246, 0.4);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .language-btn i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        .main-content {
+            padding-top: 70px;
+        }
+
+        @media (max-width: 1024px) {
+            .language-switcher {
+                margin-right 0;               
+                padding: 10px 15px;
+            }
+            .main-content {
+                padding-top: 60px;
+            }
+        }
+        
+        footer {
+            padding: 2rem;
+            text-align: center;
+            background: var(--dark);
+            border-top: 1px solid var(--glass-border);
+            direction: ltr;
+            user-select: none;
+            color: #ccc;
+        }
+
+        footer a {
+            color: #A79AFF;
+            text-decoration: none;
+        }
+        
+        .settings-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gradient);
+            color: var(--light);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            z-index: 1000;
+            cursor: pointer;
+            border: 1px solid var(--glass-border);
+        }
+
+        .settings-button:hover {
+            background-color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .settings-menu {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            z-index: 1001;
+        }
+
+        .settings-menu.show {
+            display: flex;
+        }
+
+        .settings-menu a {
+            background-color: var(--primary-dark);
+            color: var(--light);
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+        }
+
+        .settings-menu a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .settings-button {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            
+            .settings-menu {
+                bottom: 70px;
+                right: 15px;
+            }
+            
+            .settings-menu a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<header>
-     <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/index.html" class="language-switcher">
-        <span class="ltr-text">English</span>
-        <i class="fas fa-globe"></i>
-    </a>
-    <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/flash.png" alt="Flash Logo">
-    <h1>دليل التفليش الكامل</h1>
-</header>
-<a href="#" class="settings-button" onclick="toggleSettingsMenu(event); return false;">
-        <i class="fas fa-cog"></i>
-        <i class="fas fa-times" style="display:none;"></i>
-    </a>
-   <div class="settings-menu">
-        <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/main2/ar_guide/index.html">
-             <i class="fas fa-sun"></i>
+
+<div class="language-switcher">
+        <a href="../flash_guide/en.html" class="language-btn">
+             English<i class="fas fa-globe"></i>
         </a>
-       <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/">
+    </div>
+    
+            <button class="settings-button" onclick="toggleSettingsMenu(event); return false;" title="Settings">
+        <i class="fas fa-question-circle"></i>
+        <i class="fas fa-times" style="display:none;"></i>
+    </button>        
+    <div class="settings-menu">
+        <a href="#" onclick="scrollToTop(event); return false;" title="Scroll to Top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+        <a href="https://t.me/ZORO2045" title="Contact Support">
+            <i class="fas fa-headset"></i>
+        </a>        
+        <a href="../index.html" title="Go Home">
             <i class="fas fa-home"></i>
         </a>
-        </div>
-<section id="roms" class="roms-section">
-    <h2>إزاي تفلش ريكفري معدل وروم معدل مع ماجيسك على تاب A 10.1</h2>
-    <div class="rom-cards">
-        <div class="rom-card">
-            <h3><span style="color: transparent; background: linear-gradient(to right, #00BFFF, #8A2BE2); -webkit-background-clip: text; background-clip: text;"><b>تعليمات مهمة قبل ما تبدأ</b></span></h3>
-             <p class="note">تأكد إن جهازك مشحون كويس واعمل نسخة احتياطية من أي داتا مهمة قبل ما تفلش.</p>
-            <p>كل الملفات وروابط التحميل اللي هنذكرها هتكون متاحة تحت في قسم "خيارات التحميل".</p>
-            <p class="note3">بص على قسم 'مواضيع ذات صلة' في القايمة الجانبية في الصفحة الرئيسية، هتلاقي حلول لكل المشاكل اللي ممكن تقابلك.</p>
-           <p>اتبع الخطوات دي عشان تفلش ريكفري معدل، روم معدل وماجيسك على جهازك تاب A 10.1 (SM-T585):</p>
-             </div>
-              <div class="rom-card">
-            <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/settings.png" alt="Settings Logo">
-            <ul>
-             <h3><span style="color: transparent; background: linear-gradient(to right, #FF69B4, #FF4500); -webkit-background-clip: text; background-clip: text;"><b>تجهيز التاب قبل ما نبدأ</b></span></h3>
-                <li><strong>الخطوة 1:</strong> فعل خيارات المطور عن طريق إنك تروح للإعدادات وبعدين "حول الجهاز" وتدوس على "رقم الإصدار" 7 مرات لحد ما الخيار يتفعل.</li>
-                <li><strong>الخطوة 2:</strong> ارجع لقائمة الإعدادات واختار "خيارات المطور".</li>
-                <li><strong>الخطوة 3:</strong> فعل <span class="ltr-text">"USB debugging"</span> و <span class="ltr-text">"OEM unlocking"</span>.</li>
-                <p class="note2">لو ما فتحتش البوت لودر (الخطوة 3) قبل ما تعمل أي تعديلات على جهازك، هيظهرلك الرسالة دي لما تعيد تشغيل الجهاز بعد التفليش:<h4><span style="color: transparent; background: linear-gradient(to right, red, red); -webkit-background-clip: text; background-clip: text;"><i class="ltr-text">Custom binary blocked by FRP lock.</i></span></h4></p>
-                <p><h4><span style="color: transparent; background: linear-gradient(to right, green, green); -webkit-background-clip: text; background-clip: text;"><b>لو ما اتبعتش الخطوات اللي فاتت وظهرتلك الرسالة دي، هتحتاج تفلش السوفت وير الأصلي للجهاز، وهتلاقي رابط شرح ليه تحت. لو واجهتك أي مشاكل، تقدر تنضم لجروب التليجرام بتاعنا عشان نساعدك.</b></span></h4></p>
-                <li><strong>الخطوة 4:</strong> اطفي الجهاز باور، وبعدين دوس على زرار الهوم وزرار الباور وزرار خفض الصوت في نفس الوقت عشان تدخل وضع الداونلود.</li>
-            </ul>
-                </div>
-                 <div class="rom-card">
-                <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/odin.png" alt="Odin Logo">
-                <ul>
-                <h3><span style="color: transparent; background: linear-gradient(to right, #00BFFF, #ffbfff); -webkit-background-clip: text; background-clip: text;"><b>تجهيز برنامج أودين</b></span></h3>
-                <li><strong>الخطوة 1:</strong> ثبت تعريفات USB الخاصة بسامسونج على الكمبيوتر <span style="background: linear-gradient(to right, red, red); -webkit-background-clip: text; color: transparent;">[ لازم تثبتها ]<i class="ltr-text"></i></span>.</li>
-                <li><strong>الخطوة 2:</strong> نزل وشغل برنامج أودين على الكمبيوتر.</li>
-                <li><strong>الخطوة 3:</strong> وصل التاب بالكمبيوتر باستخدام وصلة USB.</li>
-                <p class="note4">تأكد إن برنامج أودين شاف الجهاز (هتلاقي رسالة بتقول <span class="ltr-text">"added!!!"</span>).</p>
-                 <p class="note3">لو الجهاز مش ظاهر علي أودين، تأكد من وصلة الـ USB وأنك ثبت تعريفات الـ USB على الكمبيوتر بشكل صحيح.</p>
-                <li><strong>الخطوة 4:</strong> في برنامج أودين، دوس على زرار AP عشان تختار ملف <span class="ltr-text">"TWRP file.tar"</span> اللي نزلته على الكمبيوتر.</li>
-                <li><strong>الخطوة 5:</strong> روح لـ <span class="ltr-text">"Options"</span> وشيل علامة الصح من مربع <span class="ltr-text">"Auto Reboot"</span>.</li>
-                <a href="#" onclick="toggleDownloadOptions(event); return false;">خيارات التحميل</a>
-            <div class="download-options">
-                <a href="https://developer.samsung.com/android-usb-driver">تعريفات USB</a>
-                <a href="https://odindownload.com/mobile/">أودين</a>
-                <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/twrp/index.html">ريكفري TWRP</a>
-            </div>
-        </div>
-                <div class="rom-card">
-                 <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/twrp.png" alt="TWRP Logo">
-                <ul>
-                 <h3><span style="color: transparent; background: linear-gradient(to right, #00BFFF, #8A2BE2); -webkit-background-clip: text; background-clip: text;"><b>تفليش ريكفري معدل</b></span></h3>
-                <li><strong>الخطوة 1:</strong> دوس <span class="ltr-text">"Start"</span> في برنامج أودين عشان تبدأ عملية التفليش.</li>
-                <p class="note2">هتظهرلك علامة خضرا بتقول <span style="background: linear-gradient(to right, green, lightgreen); -webkit-background-clip: text; color: transparent;"><i class="ltr-text">PASS!</i></span> لما العملية تخلص.</p>
-                <li><strong>الخطوة 2:</strong> دوس على زرار خفض الصوت وزرار الهوم وزرار الباور في نفس الوقت مطول عشان تطفي الجهاز.</li>
-         
-          <h4 class="method2">وأول ما يطفي دوس علي طول  على زرار رفع الصوت وزرار الهوم وزرار الباور في نفس الوقت لحد ما يظهر شعار سامسونج على الشاشة.</h4>
-         <p class="note3">ملحوظة: ريكفري TWRP بيسألك إذا كنت عايز تستخدمه في وضع 'القراءة فقط'. وضع 'القراءة فقط' معناه إنه هيفضل موجود على جهازك من غير ما يعمل أي تغييرات لحد ما تعمل إعادة تشغيل. ببساطة، اسحب السهم عشان تسمح بالتعديلات.</p>
-              </div>
-              <div class="rom-card">
-              <img src="https://i.ibb.co/kgdTbnq/CITYPNG-COM-Settings-Repair-Maintenance-Red-Icon-HD-PNG-1500x1500.png" alt="In TWRP Recovery Mode">
-                <ul>
-                <h3><span style="color: transparent; background: linear-gradient(to right, #ff4500, #ffcc00); -webkit-background-clip: text; background-clip: text;"><b>في وضع الريكفري المعدل</b></span></h3>
-                <li><strong>الخطوة 1:</strong> اختار <span class="ltr-text">'Wipe'</span> وبعدين <span class="ltr-text">'Format data'</span> وأكد بـ <span class="ltr-text">'yes'</span>.</li>
-                <li><strong>الخطوة 2:</strong> ارجع للـ TWRP home، اختار <span class="ltr-text">'Reboot'</span> وبعدين <span class="ltr-text">'Recovery'</span>.</li>
-                 <p class="note2">لو مش عايز تثبت روم معدل وعايز تفضل على الروم الأصلي، ممكن توقف عند الخطوة دي وتختار <span class="ltr-text">"Reboot"</span> وبعدين <span class="ltr-text">"System"</span>. أو ممكن تكمل لـ قسم "تفليش ماجيسك" لو عايز تعمل روت لجهازك.</p>
-              </div>
-              
-             <div class="rom-card">
-               <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/questions.png" alt=" Questions Logo">
-                <ul>
-               <h3><span style="color: transparent; background: linear-gradient(to right, #ff6a00, #d500f9); -webkit-background-clip: text; background-clip: text;"><b>مصطلحات هتقابلك</b></span></h3>
-               <h4 class="method3">أنواع الرومات:</h4>
-               <h4 class="method4">Vanilla - Gapps - MicroG</h4>
-               <p class="note"><strong>Vanilla:</strong> روم خالي من خدمات وتطبيقات جوجل، طبعًا تقدر تضيف ليها خدمات جوجل عادي، وده طبعًا اختياري والملف هيكون مرفق مع الروم في روابط التحميل.</p>
-<p class="note2"><strong>Gapps:</strong> روم يحتوي على خدمات وتطبيقات جوجل الأساسية مثل Play Store و Gmail.</p>
-<p class="note4"><strong>MicroG:</strong> روم بديل لخدمات جوجل مع تركيز على الخصوصية والبدائل المفتوحة المصدر، مثل رومات EOS. وطبعًا لو مش هتقدر تستغني عن خدمات جوجل فمنصحكش بالرومات دي لأن مش هتناسبك.</p>
-
-<h4 class="method3"><strong>الفرق بين:</strong></h4>
-<h4 class="method4">Custom ROM - Port - GSI</h4>
-<p class="note"><strong>Custom ROM:</strong> هو روم مخصص بيتم تطويره من مطورين مستقلين علشان يشتغل على أجهزة معينة أو مجموعة أجهزة، وعادة بيضيف مميزات أو تعديلات عن النظام الرسمي.</p>
-<p class="note2"><strong>Port:</strong> هو بورت لروم تم تعديله يدويًا علشان يشتغل على جهاز تاني غير الجهاز اللي كان مخصص ليه، وغالبًا بيحتاج تعديلات علشان يشتغل كويس على الجهاز الجديد.</p>
-<p class="note4"><strong>GSI:</strong> هو روم عام ومفتوح المصدر، وبيتم تصميمه ليشتغل على مجموعة كبيرة من الأجهزة اللي بتدعم <span class="ltr-text">Project Treble</span>. الروم ده بيتم تعديله وتخصيصه علشان يعمل على الأجهزة المختلفة، وبيتيح للمستخدمين تجربة أحدث إصدار من أندرويد بدون الحاجة لانتظار تحديثات رسمية من الشركات المصنعة. <span class="ltr-text">GSI</span> مش مدعوم على التاب، لكن دي ملحوظة من باب العلم بالشئ مش أكتر.</p>
-               </div>
-              <div class="rom-card">
-               <img src="https://i.ibb.co/vhv4Yw2/pngwing-com.png" alt="Custom ROM Logo">
-                <ul>
-               <h3><span style="color: transparent; background: linear-gradient(to right, #FDE500, #ADFF2F); -webkit-background-clip: text; background-clip: text;"><b>تفليش الروم المعدل</b></span></h3>
-                 <li><strong>الخطوة 1:</strong> كرر عملية <span class="ltr-text">'Wipe'</span> بس المرة دي اختار <span class="ltr-text">'Advanced Wipe'</span> وبعدين اختار كل الخيارات (ما عدا <span class="ltr-text">SD Card</span> و <span class="ltr-text">USB OTG</span>).</li>
-                  <li>
-  <strong>الخطوة 2:</strong> ارجع للصفحة الرئيسية الخاصة بـ 
-  <span class="ltr-text">'TWRP'</span> 
-  وبعد كده اختار 
-  <span class="ltr-text">'Install'</span>، 
-  واختار مكان التخزين (اللي حطيت عليه ملف الروم المعدل بتاعك سواء حطيت الملف على 
-  <span class="ltr-text">SD Card</span>، أو 
-  <span class="ltr-text">USB OTG</span>، أو 
-  <span class="ltr-text">Internal Storage</span>). 
-  وطبعاً تقدر تنقل ملف الروم وملف خدمات جوجل من الـ 
-  <span class="ltr-text">PC</span> 
-  للتاب بسهولة باستخدام كابل الـ 
-  <span class="ltr-text">USB</span>.
-</li>
-                 <li><strong>الخطوة 3:</strong> اختار ملف الـ zip الخاص بالروم المعدل بتاعك.</li>
-                 <li><strong>الخطوة 4:</strong> دوس على <span class="ltr-text">'Add More Zips'</span> واختار ملف <span class="ltr-text">GApps</span> اللي جاي مع الروم لو كان بيحتاجه.</li>
-                 <li><strong>الخطوة 5:</strong> اسحب السهم عشان تأكد التفليش واستنى لحد ما عملية التفليش تخلص، وبعدين دوس <span class="ltr-text">'reboot system'</span>.</li>
-                  <p class="note3">ملحوظة: في قسم رومات أندرويد 10، هتلاقي نسخة معدلة من واجهة <span class="ltr-text">One UI 2.0</span>، ومعاها ملف اسمه <span class="ltr-text">'create vendor'</span>. لازم تفلش الملف ده، وبعدين تعمل إعادة تشغيل للريكفري، وبعد كده تفلش البورت.</p>
-                   <p>لو فلشت ملف <strong><span class="ltr-text">'Create Vendor'</span></strong> وظهرلك الخطأ ده:<h4><span style="color: transparent; background: linear-gradient(to right, red, red); -webkit-background-clip: text; background-clip: text;"><i class="ltr-text">Updater process ended with ERROR: 127</i></span></h4></p>
-                  <h4 class="method2">يا ريت تستخدم <strong>ريكفري <span class="ltr-text">OrangeFox</span></strong> اللي فيه ميزة <strong><span class="ltr-text">Vendor Support</span></strong>، وده برضو موجود مع الروم</h4> 
-                   
-                <p class="note">ملحوظة: لو ثبت روم معدل على جهازك وعايز تغير لروم معدل تاني، لازم تعمل خطوة <span class="ltr-text">Advanced Wipe</span> تاني (الخطوة 1) الأول، وبعدين تفلش الروم اللي عايز تغير ليه.</p>
-                 <p class="note2">ملحوظة: لو ثبت أي روم معدل على جهازك وعايز ترجع لنسخة <span class="ltr-text">One UI 1</span> المعدلة الموجودة في قسم رومات أندرويد 9، لازم تفلش السوفت وير الأصلي للجهاز الأول وبعدين تكرر الخطوات اللي فاتت تاني.</p>
-                 <p class="note4">ملحوظة: "Dirty Flash" معناه إنك تفلش نسخة جديدة من الروم بتاعك فوق النسخة اللي عندك من غير ما تستخدم خيار <span class="ltr-text">"Wipe Data/Advanced Wipe/Factory Reset"</span> في الريكفري. وحتى لو كنت ناوي تعمل <span class="ltr-text">'Dirty Flash'</span>، لازم تمسح <span class="ltr-text">cache</span> وdalvik cache.</p>
-                <a href="#" onclick="toggleDownloadOptions(event); return false;">خيارات التحميل</a>
-            <div class="download-options">
-                 <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/index.html#roms">رومات معدلة</a>
-                <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_firmware/index.html">تفليش السوفت وير الأصلي</a>
-            </div>
-                </div>
-             <div class="rom-card">
-              <img src="https://zoro2045.github.io/SM-T585-Custom-ROMs/images/magisk.png" alt="Magisk Logo">
-                <ul>
-                <h3><span style="color: transparent; background: linear-gradient(to right, #00CED1, #32CD32); -webkit-background-clip: text; background-clip: text;"><b>تفليش ماجيسك</b></span></h3>
-                 <li><strong>الخطوة 1:</strong> نزل تطبيق ماجيسك <span class="ltr-text">apk</span></li>
-                <li><strong>الخطوة 2:</strong> غير اسم الامتداد من <span class="ltr-text">.apk</span> لـ <span class="ltr-text">.zip</span></li>
-                <li><strong>الخطوة 3:</strong> فلش ملف الـ <span class="ltr-text">zip</span> من الريكفري زي الروم بالظبط</li>
-                <li><strong>الخطوة 4:</strong> استنى لحد ما عملية التفليش تخلص، وبعدين دوس <span class="ltr-text">'reboot system'</span>.</li>
-                <li><strong>الخطوة 5:</strong> بعد ما الجهاز يعمل إعادة تشغيل، ثبت تطبيق ماجيسك على جهازك.</li>
-                <p class="note3">ملحوظة: في نسخة <span class="ltr-text">One UI 1.0</span> المعدلة، لازم تفلش <span class="ltr-text">Magisk Prepare</span> قبل ما تفلش ماجيسك.</p>
-                <a href="#" onclick="toggleDownloadOptions(event); return false;">خيارات التحميل</a>
-            <div class="download-options">
-                <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/root/index.html">ماجيسك</a>
-            </div>
-        </div>
     </div>
-</section>
-<footer>
-     <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/">الرجوع للصفحة الرئيسية</a>
-</footer>
 
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h1>دليل التفليش</h1>
+            <span>باتباع هذه الخطوات ستتمكن من فتح البوتلودر & تفليش ريكفري معدل (TWRP) & تفليش روم معدل & الحصول على روت ماجيسك أو Apatch على Galaxy Tab A 10.1.</span>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="#preparation" class="active"><i class="fas fa-cogs"></i>إعداد التابلت</a></li>
+            <li><a href="#twrp-flashing-eros"><i class="fas fa-desktop"></i>تفليش TWRP</a></li>          
+            <li><a href="#terminology"><i class="fas fa-book"></i>مصطلحات هتقابلك</a></li>
+            <li><a href="#install-rom"><i class="fas fa-mobile-alt"></i>تفليش الروم</a></li>            
+            <li><a href="#install-magisk"><i class="fas fa-shield-alt"></i>تثبيت Magisk</a></li>
+            <li><a href="#apatch-method"><i class="fas fa-code-branch"></i>طريقة APatch</a></li>
+            <li><a href="#dev-note"><i class="fas fa-lightbulb"></i> كلمة المُطور</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+
+        <section id="preparation" class="guide-section visible">
+            <h2><i class="fas fa-cogs"></i>إعداد التابلت</h2>
+            <p>قبل البدء في عملية التفليش، تأكد من إعداد جهازك بشكل صحيح لتجنب أي مشاكل.</p>
+            
+            <div class="alert alert-success">
+                <div class="alert-header">
+                    <i class="fas fa-info-circle"></i>
+                    <span>ملحوظة هامة</span>
+                </div>
+                <p>أتأكد إن جهازك مشحون كويس واعمل نسخة احتياطية من أي داتا مهمة قبل ما تبدأ في تنفيذ الخطوات.</p>
+            </div>
+            
+            <div class="alert alert-note">
+    <div class="alert-header">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>تنبيه مهم لدفعة الثانوية 2020</span>
+    </div>
+    <p>• لو انت من دفعة الثانوية 2020 ركّز في الكلام ده قبل ما تبدأ تحمّل أي روم لازم تعرف تعريفات جهازك الأول.</p>  
+    <p>• وعلشان تعرف جهازك تعريفاته قديمة ولا جديدة، نزّل تطبيق <code>Device Info HW</code> (رابط التطبيق أسفل الملحوظة مباشرة).</p>
+    <p>❏  بص علي معلومات شاشة اللمس:</p>  
+    <p> ⭅ لو مكتوب <code>d_fts_touch</code> يبقى تعريفاتك جديدة.</p>  
+    <p> ⭅ لو مكتوب <code>fts_touch</code> يبقى تعريفاتك قديمة.</p>
+    <p>• إذا كانت تعريفات جهازك جديدة، تأكّد قبل تحميل أي روم من الموقع أن مكتوب عليها <code>Rev05/07</code>،  
+    وهذا يعني أنها تدعم كلًا من التعريفات القديمة والجديدة.</p>  
+    <p>• أما إذا كان مكتوب <code>Rev05</code> فقط، فهذا يعني أنها للتعريفات القديمة فقط.</p>  
+    <p>• ولتسهيل الأمر عليك، ارجع إلى الصفحة الرئيسية في الموقع، ومن القائمة الجانبية اختر <code>Rev07 ROMs Support</code> حيث ستجد جميع الرومات الداعمة للتعريفات الجديدة مجمعة في مكان واحد، وستجد لها أيضًا رابط بالأسفل.</p>
+            </div>
+            
+            <a href="https://play.google.com/store/apps/details?id=ru.andr7e.deviceinfohw" class="download-btn secondary" target="_blank">
+    <i class="fab fa-google-play"></i> تحميل Device Info HW
+            </a>           
+                        
+            <h3>1. تفعيل خيارات المطور</h3>
+            <ul>
+                <li>روح للإعدادات &gt; حول الجهاز &gt; وأضغط على رقم الإصدار 7 مرات لحد ما الخيار يتفعل.</li>
+                <li>ارجع للصفحة الرئيسية للإعدادات، هتلاقي خيارات المطور اتفعلت معاك.</li>
+            </ul>
+
+            <h3>2. تفعيل OEM unlocking و USB debugging "فتح البوتلودر"</h3>
+            <ul>
+                <li>في "خيارات المطور"، فعل الخيارات التالية:
+                    <ul>
+                        <li><code>OEM unlocking</code> (فتح قفل الشركة المصنعة)</li>
+                        <li><code>USB debugging</code> (تصحيح أخطاء USB)</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <div class="alert alert-warning">
+                <div class="alert-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>تنبيه هام جداً</span>
+                </div>
+                <p>لو مفتحتش البوتلودر (الخطوة 2)، هيظهرلك رسالة الخطأ دي: <strong><code>Custom binary blocked by FRP lock</code></strong> مع أول إعادة تشغيل للجهاز بعد التفليش، وعلشان تحل المشكلة دي هتحتاج تفلش السوفت وير الأصلي "Firmware" (وهتلاقي لينك الشرح وروابط التحميل بالأسفل).</p>
+            </div>
+            
+            <a href="../flash_firmware/index.html" class="download-btn secondary" target="_blank">
+                    <i class="fas fa-history"></i> تفليش السوفت الأصلي
+                </a>
+            </div>
+            
+            <h3>3. الدخول إلى وضع التحميل (Download Mode)</h3>
+            <ul>
+                <li>اطفي الجهاز باور، وبعدين أضغط مُطول على أزرار (<code>خفض الصوت + الهوم + الباور</code>) معًا، وعند ظهور الشاشة الخضراء هتضغط علي زر <code>رفع الصوت</code> للتأكيد.</li>
+            </ul>
+        </section>
+        
+        <section id="twrp-flashing-eros" class="guide-section">
+    <h2><i class="fas fa-mobile-alt"></i>تفليش TWRP (بدون كمبيوتر)</h2>
+    
+    <div class="alert alert-success">
+    <div class="alert-header">
+        <i class="fas fa-info-circle"></i>
+        <span>ملحوظة</span>
+    </div>
+    <p>
+        إذا كنت تفضل تفليش الريكفري عبر الكمبيوتر باستخدام برنامج <code>Odin</code>، فيمكنك الانتقال مباشرة إلى الجزء التالي من الشرح.
+    </p>
+</div>
+    
+    <div class="alert alert-info">
+        <div class="alert-header">
+            <i class="fas fa-info-circle"></i>
+            <span>ملحوظة</span>
+        </div>
+        <p>هتلاقي روابط تحميل تطبيق Eros وملف الريكفري أسفل الشرح مباشرة.</p>
+    </div>
+    
+    <h3>1. المتطلبات</h3>
+    <ul>
+        <li>هاتف أندرويد آخر مثبت عليه تطبيق <code>Eros</code>.</li>
+        <li>ملف الريكفري <code>twrp-3.7.0_9-0.tar</code> محمل على الهاتف.</li>
+        <li>وصلة الشاحن الخاصة بالتابلت.</li>
+        <li>وصلة <code>OTG</code> مناسبة لمنفذ هاتفك.</li>
+    </ul>
+    
+    <h3>2. توصيل التابلت</h3>
+    <ul>
+        <li>بعد أن قمنا بفك البوتلودر وادخال التابلت الي وضع الـ <code>Download Mode</code> (كما شرحنا بالجزء السابق).</li>
+        <li>افتح تطبيق <code>Eros</code> على هاتفك ووصل التابلت بالهاتف باستخدام وصلة OTG.</li>
+        <li>هتظهرلك رسالة من التطبيق يطلب منك إذن للوصول، اضغط على <code>OK</code>.</li>
+    </ul>
+    
+    <div class="alert alert-note">
+        <div class="alert-header">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>تنبيه</span>
+        </div>
+        <p>لو جهازك أندرويد 12 أو اعلي، وتطبيق <code>Eros</code> مش بيقرأ التابلت، ادخل على <code>الإعدادات</code> &gt; <code>Bluetooth & devices</code> &gt; وفعل خيار <code>OTG</code>.  
+        ممكن تلاقي نفس الخيار  في بعض إصدارات أندرويد الأقدم، وإذا لم تنجح عملية الأتصال جرب عمل <code>Restart</code> لوضع الـ <code>Download Mode</code> او قم بتجربة وصلة آخري.</p>
+    </div>
+    
+    <h3>3. اختيار ملف الريكفري</h3>
+    <ul>
+        <li>بعد نجاح عملية الإتصال، ستظهر رسالة <code>Connected Device</code>  بالأعلي.</li>
+        <li>اضغط على خانة <code>AP</code> واختر ملف <code>TWRP.tar</code> اللي حملته.</li>
+    </ul>
+    
+    <h3>4. إلغاء تفعيل "Auto Reboot"</h3>
+    <ul>
+        <li>من خلال ترس الإعدادات (⚙️ Options) ، تأكد من تعطيل خيار <code>Auto Reboot</code>.</li>
+    </ul>
+    
+    <h3>5. بدء عملية التفليش</h3>
+    <ul>
+        <li>ارجع للصفحة الرئيسية واضغط <code>Start</code>.</li>
+        <li>أنتظر حتي ينتهي من عملية التفليش بنجاح.</li>
+    </ul>
+    
+    <div class="alert alert-success">
+    <div class="alert-header">
+        <i class="fas fa-info-circle"></i>
+        <span>ملحوظة</span>
+    </div>
+    <p>
+        في حالة قمت بتفليش <code>TWRP</code> باستخدام تطبيق <code>Eros</code> ووصلت لهذه الخطوة، 
+        يمكنك الانتقال مباشرة إلى الجزء التالي من الشرح، والبدء من <code>الخطوة رقم 4</code>.
+    </p>
+</div>
+
+<div class="download-group">
+                <a href="../twrp/index.html" class="download-btn" target="_blank">
+                    <i class="fas fa-download"></i> تحميل ريكفري TWRP من هنا
+                </a> 
+                <a href="https://github.com/Gabriel2392/ErosFlashTool/releases" class="download-btn secondary" target="_blank">
+    <i class="fas fa-download"></i> تحميل تطبيق Eros من هنا
+                </a>
+</section>
+
+        <section id="twrp-flashing" class="guide-section">
+            <h2><i class="fas fa-desktop"></i>تفليش TWRP بالكمبيوتر</h2>
+            
+            <div class="alert alert-info">
+                <div class="alert-header">
+                    <i class="fas fa-info-circle"></i>
+                    <span>ملحوظة</span>
+                </div>
+                <p>هتلاقي جميع روابط الملفات والأدوات أسفل الشرح مباشرة.</p>
+            </div>
+            
+            <h3>1. تجهيز برنامج Odin</h3>
+            <ul>
+                <li>ثبت تعريفات USB على الكمبيوتر، وشغل برنامج <code>Odin</code> ووصل التاب. لازم تشوف رسالة <code>"added!!!"</code>.</li>
+                <li>أضغط على زرار <code>AP</code> واختار ملف <code>"twrp-3.7.0_9-0.tar"</code>.</li>
+            </ul>
+
+            <h3>2. إلغاء تفعيل "Auto Reboot"</h3>
+            <ul>
+                <li>في خانة <code>"Options"</code> في Odin، شيل علامة الصح من على <code>"Auto Reboot"</code>.</li>
+            </ul>
+            
+            <h3>3. بدء تفليش الريكفري</h3>
+            <ul>
+                <li>أضغط على <code>"Start"</code> وانتظر رسالة <code>"PASS!"</code> الخضراء.</li>
+            </ul>
+            
+            <div class="alert alert-note">
+                <div class="alert-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>تنبيه</span>
+                </div>
+                <p>الخطوة اللي جاية مهمة، ياريت تقراها كويس وتفهم المطلوب قبل ما تنفذها، علشان الريكفري يشتغل معاك من غير مشاكل.</p>
+            </div>
+            
+            <h3>4. الدخول إلى الريكفري</h3>
+            <ul>
+                <li>أضغط مُطول على أزرار (خفض الصوت + الهوم + الباور) معًا علشان تطفي الجهاز.</li>
+                <li>أول ما الشاشة تطفي، اضغط فورًا علي (رفع الصوت + الهوم + الباور) لحد ما يظهر شعار سامسونج علي الشاشة.</li>
+            </ul>
+            
+            <div class="alert alert-warning">
+                <div class="alert-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>تنبيه</span>
+                </div>
+                <p>• إذا أخطأت في الخطوة السابقة ودخل الجهاز إلى ريكفري الاستوك، فستحتاج إلى إعادة تفليش الريكفري وتنفيذ الخطوات مرة أخرى،.</p>
+                <p>• أما إذا  ظهر شعار TWRP فهذا يعني أنك نجحت في عملية التفليش.</p>
+            </div>
+            
+            <div class="alert alert-info">
+                <div class="alert-header">
+                    <i class="fas fa-info-circle"></i>
+                    <span>ملحوظة</span>
+                </div>
+                <p>عند تشغيل ريكفري TWRP لأول مرة، هيظهر لك سؤال إذا كنت عايز تستخدمه في وضع "القراءة فقط". علشان تسمح بإجراء التعديلات، اسحب السهم لتأكيد السماح بالتغييرات.</p>
+            </div>
+            
+            <h3>5. مسح البيانات (Format Data)</h3>
+            <ul>
+                <li>في TWRP، اختر <code>Wipe</code> &gt; <code>Format Data</code> وأكد بكتابة <code>yes</code> ثم أضغط على علامة <code>✔</code> وانتظر حتى تكتمل عملية محو البيانات.</li>
+            </ul>
+            
+            <h3>6. إعادة التشغيل للريكفري</h3>
+            <ul>
+                <li>ارجع للقائمة الرئيسية، واختر <code>Reboot</code> ثم <code>Recovery</code>.</li>
+            </ul>
+            
+            <div class="alert alert-success">
+    <div class="alert-header">
+        <i class="fas fa-lightbulb"></i>
+        <span>ملحوظة هامة</span>
+    </div>
+    <p>⭅ لحد هنا يكون خلص الجزء الأول من الشرح (فك البوتلودر + تفليش الريكڤري المعدل <code>TWRP</code>).</p>
+    <p>⭅ باقي الخطوات هتكون خاصة بتفليش الروم المعدل، وأيضًا شرح طريقة عمل الروت سواء باستخدام <code>Magisk</code> أو <code>APatch</code>.</p>
+    <p>⭅ لو مش ناوي تركب روم معدل وعايز تفضل على الروم الرسمي <code>Stock</code>، تقدر تنتقل مباشرة للجزء الخاص بالروت لمعرفة طريقة تثبيته.</p>
+    <p>⭅ وللخروج من وضع الريكڤري: ارجع للقائمة الرئيسية، واختر <code>Reboot</code> ثم <code>System</code>.</p>
+            </div>
+            
+            <div class="alert alert-warning">
+    <div class="alert-header">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>تنبيه مهم جداً</span>
+    </div>
+    <p>لو قررت توقف عند الخطوة دي وتفضل على الروم الأصلي من غير ما تركّب روم معدل، متقفلش خيارات المطوّر من الإعدادات. لأنك لو عملت كده، هيظهرلك رسالة الخطأ دي:
+    <strong><code>Custom binary blocked by FRP lock</code></strong> أول ما تعيد تشغيل الجهاز، وساعتها هتضطر تفلش السوفت وير الأصلي "Firmware" علشان تصلّح المشكلة.</p>
+            </div>
+
+            <div class="download-group">
+                <a href="https://developer.samsung.com/android-usb-driver" class="download-btn" target="_blank">
+                    <i class="fab fa-usb"></i> تعريفات USB
+                </a>
+                <a href="https://odindownload.com/mobile/" class="download-btn" target="_blank">
+                    <i class="fas fa-cogs"></i> برنامج أودين
+                </a>
+                <a href="../twrp/index.html" class="download-btn" target="_blank">
+                    <i class="fas fa-download"></i> ريكفري TWRP
+                </a>
+            </div>
+        </section>
+               
+        <section id="terminology" class="guide-section">
+            <h2><i class="fas fa-book"></i>مصطلحات هتقابلك</h2>
+            
+            <h3>أنواع الرومات</h3>
+            <div class="alert alert-info">
+                <div class="alert-header">
+                    <i class="fas fa-info-circle"></i>
+                    <span>أنواع الرومات حسب المصدر</span>
+                </div>
+                <p><strong>• Stock ROM:</strong> هي النسخة الرسمية اللي بتيجي مثبتة على الجهاز من الشركة. بتكون مستقرة وآمنة، لكن غالبًا أقل في المزايا والتخصيص.</p>
+                <p><strong>• Custom ROM:</strong> نظام معدل بيطوره مطورين مستقلين. بيكون فيه مميزات إضافية وتخصيصات مش موجودة في النسخة الرسمية، وأحيانًا أداء أفضل.</p>
+                <p><strong>• Ported ROM:</strong> روم من جهاز تاني (غالبًا من نفس الشركة أو معالج مشابه) تم تعديله علشان يشتغل على جهازك. بيدي مميزات جديدة لكن ممكن يكون فيه بعض المشاكل البسيطة.</p>
+                <p><strong>• GSI ROM:</strong> نظام عام تقدر تشغله على أجهزة كتير مدعومة من مشروع Treble. بيديك فرصة تجرب آخر إصدارات أندرويد حتى لو جهازك ما وصلوش تحديث رسمي.</p>
+            </div>
+                       
+            <div class="alert alert-note">
+                <div class="alert-header">
+                    <i class="fas fa-info-circle"></i>
+                    <span>أنواع الرومات من حيث خدمات جوجل</span>
+                </div>
+                <p><strong>• Vanilla ROM:</strong> روم أندرويد خام من غير أي خدمات أو تطبيقات جوجل. مناسب للناس اللي عايزين جهاز خفيف أو يضيفوا الخدمات اللي تعجبهم يدويًا.</p>
+                <p><strong>• GApps ROM:</strong> نفس الروم لكن مدمج معاه خدمات وتطبيقات جوجل الأساسية (Google Play، Gmail، YouTube... إلخ). مناسب للي عايز يلاقي كل خدمات جوجل جاهزة بعد التثبيت.</p>
+                <p><strong>• MicroG ROM:</strong> روم بيستخدم بديل مفتوح المصدر لخدمات جوجل اسمه microG. بيوفر مميزات قريبة من خدمات جوجل لكن باستهلاك بطارية وموارد أقل، وكمان بيديك خصوصية أعلى.</p>
+            </div>
+        </section>
+        
+        <section id="install-rom" class="guide-section">
+            <h2><i class="fas fa-mobile-alt"></i>تفليش الروم المعدل</h2>
+            
+            <div class="alert alert-success">
+    <div class="alert-header">
+        <i class="fas fa-info-circle"></i>
+        <span>بداية الجزء الثاني</span>
+    </div>
+    <p>
+        في الخطوة السابقة قمنا بعمل Format Data من خلال الريكفري المعدل TWRP، 
+        وتُعَد هذه الخطوة مهمة جدًا إذا كانت هذه هي المرة الأولى التي تقوم فيها بتفليش الريكفري.  
+        والآن لنكمل بقية الخطوات من أجل تفليش الروم المعدل.
+    </p>
+            </div>
+                          
+            <h3>1. المسح المتقدم (Advanced Wipe)</h3>
+            <ul>
+                <li>في TWRP، اختر <code>Wipe</code> &gt; <code>Advanced Wipe</code>، وعلم على كل الخيارات ما عدا <code>SD Card</code> و <code>USB OTG</code> و <code>Internal Storage</code>.</li>
+            </ul>
+            
+            <h3>2. تفليش الروم</h3>
+            <ul>
+                <li>انقل ملف الروم <code>ROM.zip</code> وملف <code>GApps.zip</code> (وهذا الملف اختياري حسب حاجتك إلى خدمات جوجل على الروم أم لا) من الكمبيوتر إلى التابلت.</li>
+<li>في TWRP، اخترر <code>Install</code>، وحدد ملف الروم <code>.zip</code>، وبعدها استخدم <code>Add more Zips</code> لإضافة ملف <code>GApps</code>، ثم اسحب السهم للتأكيد.</li>
+            </ul>
+            
+            <div class="alert alert-info">
+    <div class="alert-header">
+        <i class="fas fa-info-circle"></i>
+        <span>ملحوظة هامة</span>
+    </div>
+    <p>بعد بدء عملية التفليش، إذا ظهرت لك رسالة <code>failed</code> وظهر خطأ باللون الأحمر كالأتي:</p>
+    <code class="code-block">Zip file is corrupt!</code></p>
+    <p> فهذا يعني أن ملف الروم تالف. قد يكون السبب مشكلة أثناء التحميل أو أثناء نقل ملف الروم من الكمبيوتر إلى التابلت. كل ما عليك فعله هو إعادة نقل الملف وتجربة التفليش مرة أخرى. إذا ظهر الخطأ مجددًا، فهذا يعني أن المشكلة في الملف ويجب عليك تحميل ملف الروم مرة اخري.</p>
+            </div>
+                                              
+            <div class="download-group">
+                <a href="../index.html#roms" class="download-btn" target="_blank">
+                    <i class="fas fa-download"></i> تحميل الرومات المعدلة من هنا
+                </a> 
+                <a href="../Rev07/index.html" class="download-btn secondary" target="_blank">
+    <i class="fas fa-download"></i> رومات التعريفات الجديدة (Rev07)
+                </a>
+                
+                <div class="alert alert-note">
+        <div class="alert-header">
+            <i class="fas fa-info-circle"></i>
+            <span>ملحوظة هامة</span>
+        </div>
+        <p>
+            للمزيد من الشروحات والحلول للمشاكل التي قد تواجهك،<br>
+            يمكنك الاطلاع على <strong>القائمة الجانبية في الصفحة الرئيسية</strong> حيث تجد:
+        </p>
+        <ul>
+            <li>شروحات تفصيلية للإعدادات المتقدمة</li>
+            <li>حلول لأهم المشاكل الشائعة</li>
+            <li>العديد من الموارد والأدوات</li>
+        </ul>
+    </div>                            
+        </section>
+        
+        <section id="install-magisk" class="guide-section">
+            <h2><i class="fas fa-shield-alt"></i>عمل روت باستخدام Magisk</h2>
+            
+            <h3>1. تجهيز ملف Magisk</h3>
+            <ul>
+                <li>نزل تطبيق ماجيسك <code>.apk</code> وغير اسم الامتداد إلى <code>.zip</code>.</li>
+            </ul>
+            
+            <h3>2. التفليش من الريكفري</h3>
+            <ul>
+                <li>فلش ملف <code>Magisk.zip</code> من الريكفري بنفس طريقة تفليش الروم من خلال خيار <code>Install</code>.</li>
+            </ul>
+            
+            <div class="alert alert-success">
+    <div class="alert-header">
+        <i class="fas fa-info-circle"></i>
+        <span>تذكير</span>
+    </div>
+    <p>لدخول الريكفري المُعدل: قم بإيقاف تشغيل الجهاز تمامًا، 
+    ثم اضغط مطولًا على أزرار (<strong>الهوم + رفع الصوت + الباور</strong>) معًا 
+    حتى يظهر شعار سامسونج على الشاشة.</p>
+            </div>
+
+            <h3>3. إكمال التثبيت</h3>
+            <ul>
+                <li>بعد إعادة تشغيل الجهاز، ثبت تطبيق ماجيسك <code>.apk</code> لإدارة صلاحيات الروت.</li>
+            </ul>
+            <a href="../root/index.html" class="download-btn" target="_blank">
+                    <i class="fas fa-download"></i> تحميل Magisk
+                </a>
+        </section>
+        
+        <section id="apatch-method" class="guide-section">
+            <h2><i class="fas fa-code-branch"></i>طريقة بديلة: تثبيت الروت عبر APatch</h2>
+            
+            <div class="alert alert-warning">
+                <div class="alert-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>تنبيه</span>
+                </div>
+                
+                    <p>⭅ يدعم فقط معمارية <code>ARM64</code>.</p>
+            </div>
+
+            <h3>1. عمل الباتش من خلال التطبيق</h3>
+            <ul>
+                <li>قم بتنزيل أحدث إصدار من تطبيق <code>APatch</code> من GitHub (رابط التحميل موجود بالأسفل).</li>
+            </ul>
+
+            <h3>2. اختيار ملف البوت</h3>
+            <ul>
+                <li>أستخرج ملف الـ <code>boot.img</code> من ملف الروم الخاص بك، وأنقر علي على زر الباتش في الزاوية اليمنى العليا بالتطبيق، وانقر على <code>Select a boot image to patch</code>.</li>
+            </ul>
+            
+            <h3>3. تحديد ملف boot.img</h3>
+            <ul>
+                <li>اختر ملف <code>boot.img</code> الخاص بك (الذي قمت بأستخراجة قبل قليل).</li>
+            </ul>
+            
+            <div class="alert alert-info">
+    <div class="alert-header">
+        <i class="fas fa-info-circle"></i>
+        <span>ملحوظة</span>
+    </div>
+    <p><strong>مفتاح الروت (SuperKey)</strong> الذي ستقوم بإنشائه الآن مهم جدًا، 
+    لأنه المفتاح الذي سيمكنك من الحصول على صلاحيات الروت. 
+    تأكد من حفظه جيدًا لاستخدامه لاحقًا.</p>
+</div>
+
+            <h3>4. تعيين SuperKey</h3>
+            <ul>
+                <li>قم بتعيين <code>SuperKey</code> في بطاقة <code>"SuperKey"</code>. يجب أن يكون طوله 8-63 حرفًا ويشمل أرقامًا وحروفًا، ولكن بدون أحرف خاصة.</li>
+            </ul>
+
+            <div class="alert alert-warning">
+                <div class="alert-header">
+                    <i class="fas fa-key"></i>
+                    <span>تنبيه</span>
+                </div>
+                <p>يُمنع منعًا باتًا تعيين مفاتيح ضعيفة مثل <strong><code>12345678</code></strong>. تتطلب أحدث إصدارات APatch استخدام مفاتيح قوية.</p>
+            </div>
+
+            <h3>5. بدء عملية الباتش</h3>
+            <ul>
+                <li>انقر على <code>"Start"</code> (ابدأ) وانتظر لبضع ثواني حتي يكتمل عمل الباتش.</li>
+            </ul>
+            
+            <div class="alert alert-info">
+                <div class="alert-header">
+                    <i class="fas fa-info-circle"></i>
+                    <span>ملحوظة</span>
+                </div>
+                <p>بعد نجاح الباتش، سيتم عرض مسار <code>boot.img</code> المُعدّل. على سبيل المثال:</p>
+                <code class="code-block">/storage/emulated/0/Download/apatch_patched_11107_0.12.0_equt.img</code>
+            </div>
+
+            <h3>6. تفليش الملف الناتج</h3>
+            <ul>
+                <li>أخيرًا، فلّش ملف الـ <code>boot.img</code> المعدل (Patched) عن طريق الريكفري. من قائمة <code>Install</code>، اضغط على <code>Install Image</code>، حدّد الملف، ثم اختر تفليشه كقسم <code>boot</code>، وبعدها اسحب السهم للتأكيد.</li>
+            </ul>
+            
+            <div class="alert alert-success">
+    <div class="alert-header">
+        <i class="fas fa-info-circle"></i>
+        <span>تذكير</span>
+    </div>
+    <p>لدخول الريكفري المُعدل: قم بإيقاف تشغيل الجهاز تمامًا، 
+    ثم اضغط مطولًا على أزرار (<strong>الهوم + رفع الصوت + الباور</strong>) معًا 
+    حتى يظهر شعار سامسونج على الشاشة.</p>
+            </div>
+            
+            <h3>7. تفعيل صلاحيات الروت</h3>
+            <ul>
+                <li>بعد إعادة تشغيل الجهاز، افتح تطبيق <code>APatch</code> واضغط على <code>SuperKey</code>. أدخل المفتاح الذي أنشأته سابقًا أثناء عمل الباتش للحصول على صلاحيات الروت.</li>
+            </ul>
+            
+            <a href="../root/index.html" class="download-btn" target="_blank">
+                    <i class="fas fa-download"></i> تحميل APatch
+                </a>
+        </section>
+        
+        <section id="dev-note" class="guide-section">
+    <h2><i class="fas fa-lightbulb"></i> كلمة من المُطور</h2>
+
+    <div class="alert alert-info" style="background: linear-gradient(135deg, rgba(108, 77, 246, 0.1), rgba(77, 182, 255, 0.1));">
+        <div class="alert-header">
+            <i class="fas fa-hands-helping"></i>
+            <span>ختاماً</span>
+        </div>
+        <p style="text-align: center;">
+            أتمنى أن يكون هذا الشرح قد سهل عليكم الطريق ووفر عليكم الوقت والجهد.<br>
+            ولا تنسوا أخوكم في الله أحمد من صالح دعائكم، ونسألكم الدعاء بالرحمة والمغفرة لأمي الغالية،<br>
+            وبالنصر والفرج القريب لأهلنا في فلسطين.
+        </p>
+    </div>
+
+    <div style="text-align: center; margin: 30px 0; padding: 20px; border-radius: var(--border-radius); background: rgba(108, 77, 246, 0.05);">
+        <div style="display: inline-block; padding: 15px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); margin-bottom: 15px;">
+            <i class="fas fa-heart" style="font-size: 2rem; color: white;"></i>
+        </div>
+        <h1>هذا العمل صدقة جارية</h1>
+        <p style="color: var(--text-secondary);">
+            قدمته لوجه الله تعالى، فأدعوا لي أن يتقبله الله خالصًا ويجعل فيه النفع والخير للجميع.
+        </p>
+    </div>
+
+    <div class="alert alert-success">
+        <div class="alert-header">
+            <i class="fas fa-star"></i>
+            <span>الكلمة الطيبة</span>
+        </div>
+        <p style="text-align: center;">
+            الدعوة الصادقة والكلمة الطيبة هدية عظيمة، فلا تحرموني منها.
+        </p>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 1px solid var(--border-color);">
+        <p style="color: var(--text-tertiary);">
+            إذا وجدت هذا الدليل مفيداً، لا تنس مشاركته مع الآخرين<br>
+            لتعم الفائدة وتستمر دائرة العطاء
+        </p>
+        
+        <div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap;">
+            <a href="https://t.me/gtaxllte" class="download-btn secondary" style="padding: 10px 20px;">
+                <i class="fab fa-telegram"></i> قناة التليجرام
+            </a>
+            <a href="../index.html" class="download-btn secondary" style="padding: 10px 20px;">
+                <i class="fas fa-home"></i> العودة للصفحة الرئيسية
+            </a>
+        </div>      
+    </main>
+    <footer>
+    © <a href="https://zoro2045.github.io/" target="_blank">ZORO</a> All rights reserved.
+    </footer>
+    <script>
+   function toggleSettingsMenu(event) {
+            const settingsMenu = document.querySelector('.settings-menu');
+            const settingsButton = document.querySelector('.settings-button');
+            const cogIcon = settingsButton.querySelector('.fa-question-circle');
+            const timesIcon = settingsButton.querySelector('.fa-times');
+            
+            settingsMenu.classList.toggle('show');
+            if (settingsMenu.classList.contains('show')) {
+                cogIcon.style.display = 'none';
+                timesIcon.style.display = 'flex';
+            } else {
+                cogIcon.style.display = 'flex';
+                timesIcon.style.display = 'none';
+            }
+            event.stopPropagation();
+        }
+
+        document.addEventListener('click', function(event) {
+            const settingsMenu = document.querySelector('.settings-menu');
+            const settingsButton = document.querySelector('.settings-button');
+            
+            if (settingsMenu && settingsButton && settingsMenu.classList.contains('show') && 
+                !settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
+                settingsMenu.classList.remove('show');
+                const cogIcon = settingsButton.querySelector('.fa-question-circle');
+                const timesIcon = settingsButton.querySelector('.fa-times');
+                if (cogIcon) cogIcon.style.display = 'flex';
+                if (timesIcon) timesIcon.style.display = 'none';
+            }
+            
+            const downloadOptions = document.querySelectorAll('.download-options');
+            downloadOptions.forEach(options => {
+                if (!options.contains(event.target) && !event.target.closest('.btn')) {
+                    options.classList.remove('show');
+                }
+            });
+        });
+
+        function scrollToTop(event) {
+    event.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
+    const settingsMenu = document.querySelector('.settings-menu');
+    const settingsButton = document.querySelector('.settings-button');
+    const cogIcon = settingsButton.querySelector('.fa-question-circle');
+    const timesIcon = settingsButton.querySelector('.fa-times');
+
+    if (settingsMenu) {
+        settingsMenu.classList.remove('show');
+    }
+
+    if (cogIcon) cogIcon.style.display = 'flex';
+    if (timesIcon) timesIcon.style.display = 'none';
+}
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.guide-section');
+            const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            const scrollSpyObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-30% 0px -70% 0px' });
+
+            sections.forEach(section => {
+                scrollSpyObserver.observe(section);
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
 </body>
-    </html>
+</html>
