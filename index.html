@@ -76,6 +76,7 @@
             background-clip: text;
             color: transparent;
             line-height: 1.2;
+            animation: fadeIn 1s ease forwards;
         }
 
         .hero p {
@@ -85,6 +86,41 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .cta-buttons {
@@ -106,6 +142,7 @@
             border: none;
             cursor: pointer;
             white-space: nowrap;
+            animation: fadeIn 1s ease forwards;
         }
 
         .btn-primary {
@@ -801,7 +838,7 @@
                         <div class="donation-method">
                             <i class="fas fa-qrcode"></i>
   <h3>Binance Pay</h3>
-  <img src="https://i.ibb.co/1fmz4NYY/IMG-20250824-025857.png" alt="Binance Pay QR" style="width:200px; border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.5);">
+  <img src="images/donation.png" alt="Binance Pay QR" style="width:200px; border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.5);">
   <p>Scan the QR code to support via Binance Pay</p>
                         </div>
                     </div>
@@ -816,6 +853,9 @@
                         </a>
                         <a href="https://youtube.com/@seifel-deinhossam6690?feature=shared" class="social-link" target="_blank">
                             <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://t.me/OneUI_Legacy" class="social-link" target="_blank">
+                            <i class="fab fa-telegram"></i>
                         </a>
                     </div>
                 </div>
