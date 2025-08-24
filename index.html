@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samsung Galaxy Tab A 10.1 LTE/WIFI | Updates | Custom ROMs</title>
+    <title>Samsung Galaxy Tab A 10.1 LTE/WIFI (2016) | Custom ROMs & Development Hub</title>
+    <meta name="description" content="Comprehensive resource for Samsung Galaxy Tab A 10.1 (2016) (SM-T585) & (SM-T580) custom ROMs, recoveries, guides, and development tools">
     <link rel="icon" type="image/png" href="images/logo.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"
-        integrity="sha512-jq8sZI0I9Og0nnZ+CfJRnUzNSDKxr/5Bvha5bn7AHzTnRyxUfpUArMzfH++mwE/hb2efOo1gCAgI+1RMzf8F7g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #8b81fa;
-            --secondary-color: #4a148c;
-            --hover-color: rgba(255, 255, 255, 0.07);
+            --primary: #6C4DF6;
+            --primary-dark: #4D36D1;
+            --secondary: #FF7D59;
+            --dark: #12141D;
+            --darker: #0A0B10;
+            --light: #F5F7FF;
+            --gray: #2D303D;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --danger: #F44336;
+            --info: #2196F3;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --card-bg: rgba(30, 31, 41, 0.8);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --glass: rgba(18, 20, 29, 0.85);
+            --glass-border: #4A4A54;
         }
 
         * {
@@ -25,674 +35,885 @@
         }
 
         body {
-            background-color: #000000;
-            color: #e0e0e0;
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-            transition: background-color 0.3s ease;
+            background-color: var(--darker);
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;         
         }
 
-        .body-no-scroll {
-            overflow-y: hidden;
-        }
-
-        header {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background: transparent;
-             background: linear-gradient(to bottom right, #000000, #1b004d);
-            text-align: center;
-            color: #ffffff;
+        .no-scroll {
             overflow: hidden;
         }
 
-        header .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-           pointer-events: none;
-        }
-
-
-        header h1,
-        header p,
-        header a {
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
             user-select: none;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(108, 77, 246, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255, 125, 89, 0.15) 0%, transparent 30%);
         }
 
-        header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 20px rgba(0, 0, 0, 0.6);
-            animation: fadeInDown 1s ease forwards;
+        .hero-content {
+            max-width: 800px;
         }
 
-        header p {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            animation: fadeIn 1s ease forwards;
-        }
-
-        header a {
-            padding: 15px 30px;
-            background-color: #1b004d;
-            color: #ffffff;
-            border-radius: 25px;
-            text-decoration: none;
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            margin: 0 5px;
-            animation: fadeIn 1s ease forwards;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
         }
 
-        header a:hover {
-            background-color: #2e0079;
-            transform: scale(1.05);
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(108, 77, 246, 0.4);
+        }
 
-            to {
-                opacity: 1;
-            }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 77, 246, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        .nav-toggle {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1000;          
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .sidebar.open ~ .nav-toggle {
+            left: calc(300px + 1rem);
+        }
+
+        .nav-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-toggle i {
+            font-size: 1.5rem;
+            color: white;
         }
 
         .sidebar {
             position: fixed;
             top: 0;
             left: 0;
-            transform: translateX(-100%);
             width: 300px;
             height: 100%;
-             background: linear-gradient(to bottom right, rgba(0, 0, 5, 0.9), rgba(0, 0, 20, 0.85), rgba(10, 10, 50, 0.8));
-            backdrop-filter: blur(10px);
-            padding: 35px;
-            border-radius: 15px;
-            transition: transform 0.25s ease;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border-right: 1px solid var(--glass-border);
             z-index: 999;
-            overflow-y: auto;
-            visibility: hidden;
-            opacity: 0;
-            scrollbar-color: #D8BFD8 rgba(0, 0, 0, 0.1);
-            scrollbar-width: thin;
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            user-select: none;
         }
 
         .sidebar.open {
             transform: translateX(0);
-            visibility: visible;
-            opacity: 1;
         }
 
-        .sidebar h2 {
-            margin-bottom: 20px;
-            color: #ffffff;
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+        .sidebar-header {
+            padding: 0 1.5rem 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            margin-top: 1.5rem;
+            color: transparent;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 1rem;
+        }
+
+        .sidebar-nav::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar-nav::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-item:hover {
+            background: rgba(108, 77, 246, 0.2);
+            transform: translateX(5px);
+        }
+
+        .nav-item.active {
+            background: rgba(108, 77, 246, 0.3);
+            border-left: 3px solid var(--primary);
+        }
+
+        .nav-item i {
+            width: 24px;
+            text-align: center;
+            margin-right: 1rem;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        .sidebar-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 5rem 0;          
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
             user-select: none;
-            position: relative;
-            padding-bottom: 15px;
         }
 
-        .sidebar h2::after {
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        .rom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .rom-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border); 
+        }
+
+        .rom-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(108, 77, 246, 0.5);
+        }
+
+        .rom-card-header {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .rom-card-header img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        .rom-card-header h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .rom-card-body {
+            padding: 1.5rem;
+        }
+
+        .rom-card-body ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .rom-card-body li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .rom-card-body li i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+
+        .rom-card-footer {
+            padding: 0 1.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .support-section {
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 3rem;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support-section::before {
             content: '';
             position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, #ff5f6d, #ffc371, #48c6ef, #6a11cb, #ff7eb3);
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(108, 77, 246, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 70% 70%, rgba(255, 125, 89, 0.1) 0%, transparent 30%);
+            z-index: 0;
+            
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .support-content {
+            position: relative;
             z-index: 1;
         }
 
-        .sidebar a {
+        .support-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .support-section p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .donation-methods {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .donation-method {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            min-width: 200px;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+        }
+
+        .donation-method:hover {
+            background: rgba(108, 77, 246, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .donation-method i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .donation-method h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .donation-method p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            color: #e0e0e0;
-            text-decoration: none;
-            padding: 14px 0;
-            transition: color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            background: transparent;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: var(--primary);
+        }
+
+        footer {
+            background: var(--dark);
+            padding: 3rem 0 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: white;
             position: relative;
-            overflow: hidden;
+            padding-bottom: 0.5rem;
         }
 
-        .sidebar a:hover {
-            color: #ffffff;
-            background-color: var(--hover-color);
-        }
-
-        .sidebar a i {
-            margin-right: 20px;
-            font-size: 1.3rem;
-            width: 25px;
-            text-align: center;
-            transition: transform 0.2s ease;
-        }
-
-        .sidebar a:hover i {
-            transform: scale(1.1);
-        }
-
-        .sidebar a::before {
+        .footer-column h3::after {
             content: '';
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 100%;
+            width: 50px;
             height: 2px;
-            background-color: var(--primary-color);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.2s ease;
+            background: var(--gradient);
         }
 
-        .sidebar a:hover::before {
-            transform: scaleX(1);
+        .footer-column ul {
+            list-style: none;
         }
 
-        .sidebar a:nth-child(2) i {
-            color: #fdd835;
+        .footer-column li {
+            margin-bottom: 0.8rem;
         }
 
-        .sidebar a:nth-child(3) i {
-            color: #00bcd4;
-        }
-
-        .sidebar a:nth-child(4) i {
-            color: #4caf50;
-        }
-
-        .sidebar a:nth-child(5) i {
-            color: #ff9800;
-        }
-
-        .sidebar a:nth-child(6) i {
-            color: #ff5722;
-        }
-
-        .sidebar a:nth-child(7) i {
-            color: #9c27b0;
-        }
-
-        .sidebar a:nth-child(8) i {
-            color: #03a9f4;
-        }
-
-        .sidebar a:nth-child(9) i {
-            color: #e91e63;
-        }
-
-        .sidebar a:nth-child(10) i {
-            color: #673ab7;
-        }
-
-        .sidebar a:nth-child(11) i {
-            color: #8bc34a;
-        }
-
-        .sidebar a:nth-child(12) i {
-            color: #f44336;
-        }
-
-        .sidebar a:nth-child(13) i {
-            color: #3f51b5;
-        }
-
-        .sidebar a:nth-child(14) i {
-            color: #ffc107;
-        }
-        
-        .sidebar a:nth-child(15) i {
-            color: #fff;
-        }
-
-        .sidebar a:nth-child(16) i {
-            color: #009688;
-        }
-        
-        .sidebar a:nth-child(17) i {
-            color: #1976D2;
-        }
-
-        .toggle-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 24px;
-            color: #fff;
-            cursor: pointer;
-            z-index: 1000;
-            transition: color 0.2s ease;
-        }
-
-        .toggle-btn:hover {
-            color: var(--primary-color);
-        }
-
-        .roms-section {
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .roms-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: #8b81fa;
-            user-select: none;
-        }
-
-        .rom-cards {
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .android-card {
-            background-color: #121212;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
-            width: 300px;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            user-select: none;
-        }
-
-        .android-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
-        }
-
-        .android-card img {
-            width: 100px;
-            margin-bottom: 15px;
-        }
-
-        .android-card h3 {
-            color: #ffffff;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            user-select: none;
-        }
-
-        .android-card button {
-            padding: 10px 20px;
-            background-color: #1b004d;
-            color: #ffffff;
-            border-radius: 25px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            border: none;
-        }
-
-        .android-card button:hover {
-            background-color: #2e0079;
-            transform: scale(1.05);
-        }
-
-        .donations-section {
-            background-color: #1c1c3a;
-            padding: 50px 20px;
-            text-align: center;
-            margin-top: 50px;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
-        }
-
-        .donations-section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-
-        .donations-section p {
-            font-size: 1.2rem;
-            color: #e0e0e0;
-        }
-
-        .donation-button {
-            text-decoration: none;
-            color: #ffffff;
-            padding: 12px 25px;
-            border-radius: 25px;
-            margin: 10px 0;
-            font-size: 16px;
-            display: inline-flex;
-            justify-content: center;
             align-items: center;
-            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .donation-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        .footer-column a:hover {
+            color: white;
+            transform: translateX(5px);
         }
 
-        .donation-button i {
-            margin-right: 8px;
+        .footer-column a i {
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--primary);
         }
 
-        .donation-button.youtube {
-            background-color: #ff0000;
-        }
-
-        .donation-button.youtube:hover {
-            background-color: #cc0000;
-        }
-
-        .donation-button.telegram {
-            background-color: #0088cc;
-        }
-
-        .donation-button.telegram:hover {
-            background-color: #006699;
-        }
-
-        .donation-button.chat {
-            background-color: #4caf50;
-        }
-
-        .donation-button.chat:hover {
-            background-color: #388e3c;
-        }
-
-        footer {
-            padding: 20px;
-            background-color: #000000;
+        .footer-bottom {
             text-align: center;
-            margin-top: 50px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-            user-select: none;
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
         }
 
-        footer a {
-            color: #81d4fa;
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: var(--primary);
             text-decoration: none;
-            font-size: 1rem;
-        }
-        
-        .footer__copy {
-            display: block;
-            color: #81d4fa;
-            margin-top: 2.5rem;
-            text-align: center;
-            user-select: none;
-        }
-
-        .social-icons {
-            margin-top: 10px;
-        }
-
-        .social-icons a {
-            color: #81d4fa;
-            margin: 0 10px;
-            font-size: 1.5rem;
         }
 
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
+            .sidebar {
+                width: 280px;
             }
-
-            header p {
-                font-size: 1.2rem;
+            .sidebar.open ~ .nav-toggle {
+                left: calc(280px + 1rem);
             }
-
-            .rom-cards {
+            .section {
+                padding: 3rem 0;
+            }
+            .support-section {
+                padding: 2rem;
+            }
+            .donation-methods {
                 flex-direction: column;
-                align-items: center;
             }
+            .donation-method {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn {
+                width: 100%;
+            }
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
         }
     </style>
+</head>
+<body>
+    <div class="nav-toggle" id="navToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Development Hub</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="https://developer.samsung.com/android-usb-driver" class="nav-item">
+                <i class="fas fa-plug"></i> USB Drivers
+            </a>
+            <a href="https://odindownload.com/mobile/" class="nav-item">
+                <i class="fas fa-download"></i> Odin3
+            </a>
+            <a href="https://samfw.com/firmware/SM-T585/EGY/" class="nav-item">
+                <i class="fas fa-file-alt"></i> Firmware
+            </a>
+            <a href="https://github.com/Gabriel2392/ErosFlashTool/releases" class="nav-item">
+                <i class="fas fa-bolt"></i> Eros Flash Tool
+            </a>
+            <a href="twrp/index.html" class="nav-item">
+                <i class="fas fa-tools"></i> TWRP
+            </a>
+            <a href="custom_recovery/index.html" class="nav-item">
+                <i class="fas fa-hdd"></i> Custom Recoveries
+            </a>
+            <a href="Rev07/index.html" class="nav-item">
+                <i class="fab fa-android"></i> Rev07 ROMs Support
+            </a>
+            <a href="twrp/twrp-storage-mount-fix/index.html" class="nav-item">
+                <i class="fas fa-exclamation-triangle"></i> Storage Mount Fix
+            </a>
+            <a href="flash_firmware/index.html" class="nav-item">
+                <i class="fas fa-sync"></i> Flash Firmware
+            </a>
+            <a href="fix_partitions/index.html" class="nav-item">
+                <i class="fas fa-cogs"></i> Fix Partitions
+            </a>
+            <a href="disable_encryption/index.html" class="nav-item">
+                <i class="fas fa-unlock"></i> Disable Encryption
+            </a>
+            <a href="gapps/index.html" class="nav-item">
+                <i class="fab fa-google"></i> GApps Packages
+            </a>
+            <a href="root/index.html" class="nav-item">
+                <i class="fas fa-key"></i> Magisk & Apatch
+            </a>
+            <a href="https://github.com/termux/termux-app/releases" class="nav-item">
+                <i class="fas fa-terminal"></i> Termux
+            </a>
+            <a href="#support" class="nav-item">
+                <i class="fas fa-hand-holding-heart"></i> Support
+            </a>
+            <a href="about/index.html" class="nav-item">
+                <i class="fas fa-info-circle"></i> About
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <p>© 2024 Galaxy Tab A 10.1</p>
+        </div>
+    </aside>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Unlock Your Galaxy Tab A 10.1's Potential</h1>
+            <p>Discover custom ROMs, recoveries, and tools to breathe new life into your 2016 Samsung tablet</p>
+            <div class="cta-buttons">
+                <a href="#roms" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Explore ROMs
+                </a>
+                <a href="flash_guide/index.html" class="btn btn-secondary">
+                    <i class="fas fa-book"></i> Installation Guide
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="roms">
+        <div class="container">
+            <div class="section-header">
+                <h2>Custom Android ROMs</h2>
+                <p>Choose from a variety of custom ROMs to enhance your device's performance and features</p>
+            </div>
+            <div class="rom-grid">
+                <div class="rom-card floating">
+                    <div class="rom-card-header">
+                        <img src="images/8.png" alt="Android 8 Oreo">
+                        <h3>Android 8 Oreo</h3>
+                    </div>
+                    <div class="rom-card-body">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Good battery life</li>
+                            <li><i class="fas fa-check"></i> Wide compatibility</li>
+                            <li><i class="fas fa-check"></i> Stable performance</li>
+                        </ul>
+                    </div>
+                    <div class="rom-card-footer">
+                        <a href="Android/8.html" class="btn btn-primary">View ROMs</a>
+                    </div>
+                </div>
+                
+                <div class="rom-card floating" style="animation-delay: 0.2s;">
+                    <div class="rom-card-header">
+                        <img src="images/9.png" alt="Android 9 Pie">
+                        <h3>Android 9 Pie</h3>
+                    </div>
+                    <div class="rom-card-body">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Good battery life</li>
+                            <li><i class="fas fa-check"></i> Smooth and stable UI</li>
+                            <li><i class="fas fa-check"></i> Better memory management</li>
+                        </ul>
+                    </div>
+                    <div class="rom-card-footer">
+                        <a href="Android/9.html" class="btn btn-primary">View ROMs</a>
+                    </div>
+                </div>
+                
+                <div class="rom-card floating" style="animation-delay: 0.4s;">
+                    <div class="rom-card-header">
+                        <img src="images/10.png" alt="Android 10">
+                        <h3>Android 10</h3>
+                    </div>
+                    <div class="rom-card-body">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Dark theme</li>
+                            <li><i class="fas fa-check"></i> Gesture navigation</li>
+                            <li><i class="fas fa-check"></i> Faster app launches</li>
+                        </ul>
+                    </div>
+                    <div class="rom-card-footer">
+                        <a href="Android/10.html" class="btn btn-primary">View ROMs</a>
+                    </div>
+                </div>
+                
+                <div class="rom-card floating" style="animation-delay: 0.6s;">
+                    <div class="rom-card-header">
+                        <img src="images/11.png" alt="Android 11">
+                        <h3>Android 11</h3>
+                    </div>
+                    <div class="rom-card-body">
+                        <ul>
+                            <li><i class="fas fa-check"></i> ROM stability</li>
+                            <li><i class="fas fa-check"></i> Better performance</li>
+                            <li><i class="fas fa-check"></i> One-time permissions</li>
+                        </ul>
+                    </div>
+                    <div class="rom-card-footer">
+                        <a href="Android/11.html" class="btn btn-primary">View ROMs</a>
+                    </div>
+                </div>
+                
+                <div class="rom-card floating" style="animation-delay: 0.8s;">
+                    <div class="rom-card-header">
+                        <img src="images/12.png" alt="Android 12">
+                        <h3>Android 12</h3>
+                    </div>
+                    <div class="rom-card-body">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Material You</li>
+                            <li><i class="fas fa-check"></i> Privacy dashboard</li>
+                            <li><i class="fas fa-check"></i> Performance improvements</li>
+                        </ul>
+                    </div>
+                    <div class="rom-card-footer">
+                        <a href="Android/12.html" class="btn btn-primary">View ROMs</a>
+                    </div>
+                </div>
+                
+                <div class="rom-card floating" style="animation-delay: 1s;">
+                    <div class="rom-card-header">
+                        <img src="images/13.png" alt="Android 13">
+                        <h3>Android 13</h3>
+                    </div>
+                    <div class="rom-card-body">
+                        <ul>
+                        <li><i class="fas fa-check"></i> Enhanced privacy</li>
+                        <li><i class="fas fa-check"></i> Themed app icons</li>
+                        <li><i class="fas fa-check"></i> Stable base over 12L</li>    
+                        </ul>
+                    </div>
+                    <div class="rom-card-footer">
+                        <a href="Android/13.html" class="btn btn-primary">View ROMs</a>
+                    </div>
+                </div>
+                
+                <div class="rom-card floating" style="animation-delay: 1.2s;">
+                    <div class="rom-card-header">
+                        <img src="images/14.png" alt="Android 14">
+                        <h3>Android 14</h3>
+                    </div>
+                    <div class="rom-card-body">
+                        <ul>
+                        <li><i class="fas fa-check"></i> Improved security</li>
+                        <li><i class="fas fa-check"></i> Latest AOSP features</li>
+                            <li><i class="fas fa-check"></i> New customization options</li>
+                        </ul>
+                    </div>
+                    <div class="rom-card-footer">
+                        <a href="Android/14.html" class="btn btn-primary">View ROMs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="support">
+        <div class="container">
+            <div class="support-section">
+                <div class="support-content">
+                    <h2>Support the Development</h2>
+                    <p>Your contributions help keep the website updated, support the developer, and motivate us to create more ROMs and tools for the community</p>
+                    
+                    <div class="donation-methods">
+                        <div class="donation-method">
+                            <i class="fas fa-qrcode"></i>
+  <h3>Binance Pay</h3>
+  <img src="https://i.ibb.co/1fmz4NYY/IMG-20250824-025857.png" alt="Binance Pay QR" style="width:200px; border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.5);">
+  <p>Scan the QR code to support via Binance Pay</p>
+                        </div>
+                    </div>
+                    
+                    <p>Join our community for support and updates</p>
+                    <div class="social-links">
+                        <a href="https://t.me/gtaxllte" class="social-link" target="_blank">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="https://t.me/smt585chat" class="social-link" target="_blank">
+                            <i class="fas fa-comments"></i>
+                        </a>
+                        <a href="https://youtube.com/@seifel-deinhossam6690?feature=shared" class="social-link" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#roms"><i class="fas fa-chevron-right"></i> ROMs</a></li>
+                        <li><a href="#support"><i class="fas fa-chevron-right"></i> Support</a></li>
+                        <li><a href="about/index.html"><i class="fas fa-chevron-right"></i> About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="flash_guide/index.html"><i class="fas fa-chevron-right"></i> Installation Guide</a></li>
+                        <li><a href="twrp/index.html"><i class="fas fa-chevron-right"></i> TWRP</a></li>
+                        <li><a href="gapps/index.html"><i class="fas fa-chevron-right"></i> GApps</a></li>
+                        <li><a href="root/index.html"><i class="fas fa-chevron-right"></i> Root</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="https://odindownload.com/mobile/"><i class="fas fa-chevron-right"></i> Odin3</a></li>
+                        <li><a href="https://github.com/Gabriel2392/ErosFlashTool/releases"><i class="fas fa-chevron-right"></i> Eros Flash Tool</a></li>
+                        <li><a href="https://samfw.com/firmware/SM-T585/EGY/"><i class="fas fa-chevron-right"></i> Firmware</a></li>
+                        <li><a href="https://developer.samsung.com/android-usb-driver"><i class="fas fa-chevron-right"></i> USB Drivers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="https://t.me/ZORO2045"><i class="fas fa-chevron-right"></i> Telegram</a></li>
+                        <li><a href="https://twitter.com/DEV_ZORO2045"><i class="fas fa-chevron-right"></i> Twitter</a></li>
+                        <li><a href="https://github.com/ZORO2045"><i class="fas fa-chevron-right"></i> GitHub</a></li>
+                        <li><a href="mailto:your-email@example.com"><i class="fas fa-chevron-right"></i> Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 <a href="https://zoro2045.github.io/">ZORO2045</a>. All rights reserved.</p>
+                <p>Samsung Galaxy Tab A 10.1 (2016) Development Community</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        function smoothScroll(target) {
-            document.querySelector(target).scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-        let animationFrame = null;
-        let isSidebarOpen = false;
+        const navToggle = document.getElementById('navToggle');
+        const sidebar = document.getElementById('sidebar');
+        const body = document.body;
 
-        function toggleSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            const toggleBtn = document.querySelector('.toggle-btn i');
-            const body = document.querySelector('body');
-
-            if (animationFrame) {
-                cancelAnimationFrame(animationFrame);
-            }
-            const startTransform = isSidebarOpen ? 0 : -100;
-            const endTransform = isSidebarOpen ? -100 : 0;
-
-            let startTime = null;
-            const animate = (time) => {
-                if (!startTime) startTime = time;
-                const progress = Math.min((time - startTime) / 50, 1);
-                const transformValue = startTransform + (endTransform - startTransform) * progress;
-                sidebar.style.transform = `translateX(${transformValue}%)`;
-
-                if (progress < 1) {
-                    animationFrame = requestAnimationFrame(animate);
-                }
-                else {
-                    sidebar.style.visibility = endTransform === 0 ? "visible" : "hidden";
-                    sidebar.style.opacity = endTransform === 0 ? 1 : 0;
-                    animationFrame = null;
-                }
-            };
-
-            if (!isSidebarOpen) {
-                sidebar.style.visibility = "visible";
-                sidebar.style.opacity = 1;
-            }
-
-
-            animationFrame = requestAnimationFrame(animate);
-
-            isSidebarOpen = !isSidebarOpen;
-
-
-            if (isSidebarOpen) {
-                toggleBtn.classList.remove('fa-bars');
-                toggleBtn.classList.add('fa-times');
-                body.classList.add('body-no-scroll');
-
-            } else {
-                toggleBtn.classList.remove('fa-times');
-                toggleBtn.classList.add('fa-bars');
-                body.classList.remove('body-no-scroll');
-
-            }
-        }
-        function closeSidebar(event) {
-            const sidebar = document.querySelector('.sidebar');
-            const toggleBtn = document.querySelector('.toggle-btn');
-
-            if (isSidebarOpen &&
-                !sidebar.contains(event.target) &&
-                !toggleBtn.contains(event.target)) {
-                toggleSidebar();
-            }
-        }
-
-        function handleScroll() {
-            if (isSidebarOpen) {
-                toggleSidebar();
-            }
-        }
-
-        window.addEventListener('load', function () {
-            
-            Particles.init({
-                selector: "header .background",
-                color: ["#FF0099", "#00FFFF"],
-                connectParticles: true,
-                responsive: [
-                    {
-                        breakpoint: 765,
-                        options: {
-                            color: ["#FFF", "#FF0099", "#00FFFF"],
-                            maxParticles: 90,
-                            connectParticles: false,
-                        },
-                    },
-                ],
-            });
+        navToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            body.classList.toggle('no-scroll');
+            navToggle.querySelector('i').classList.toggle('fa-bars');
+            navToggle.querySelector('i').classList.toggle('fa-times');
         });
 
+        document.addEventListener('click', (e) => {
+            if (!sidebar.contains(e.target) && e.target !== navToggle && !navToggle.contains(e.target)) {
+                sidebar.classList.remove('open');
+                body.classList.remove('no-scroll');
+                navToggle.querySelector('i').classList.add('fa-bars');
+                navToggle.querySelector('i').classList.remove('fa-times');
+            }
+        });
 
-        document.addEventListener('click', closeSidebar);
-        document.addEventListener('scroll', handleScroll);
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    if (sidebar.classList.contains('open')) {
+                        sidebar.classList.remove('open');
+                        body.classList.remove('no-scroll');
+                        navToggle.querySelector('i').classList.add('fa-bars');
+                        navToggle.querySelector('i').classList.remove('fa-times');
+                    }
+                }
+            });
+        });
     </script>
-</head>
-
-<body>
-    <header>
-        <canvas class="background"></canvas>
-        <span class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></span>
-        <div class="sidebar">
-            <h2>Related Topics</h2>
-            <a href="https://developer.samsung.com/android-usb-driver"><i class="fas fa-plug"></i> USB Drivers</a>
-            <a href="https://odindownload.com/mobile/"><i class="fas fa-download"></i> Odin3</a>
-            <a href="https://samfw.com/firmware/SM-T585/EGY/"><i class="fas fa-file-alt"></i> Firmware</a>
-            <a href="https://github.com/Gabriel2392/ErosFlashTool/releases"><i class="fas fa-bolt"></i> Eros Flash Tool</a>
-            <a href="twrp/index.html"><i class="fas fa-tools"></i> TWRP</a>
-            <a href="custom_recovery/index.html"><i class="fas fa-hdd"></i> Custom Recoveries</a>
-            <a href="Rev07/index.html"><i class="fab fa-android"></i> Rev07 ROMs Support</a>
-            <a href="twrp/twrp-storage-mount-fix/index.html"><i class="fas fa-exclamation-triangle"></i> Storage Mount Fix</a>
-            <a href="flash_firmware/index.html"><i class="fas fa-sync"></i> Flash Firmware</a>
-            <a href="fix_partitions/index.html"><i class="fas fa-cogs"></i> Fix Partitions</a>
-            <a href="disable_encryption/index.html"><i class="fas fa-unlock"></i> Disable Encryption</a>
-            <a href="gapps/index.html"><i class="fab fa-google"></i> GApps Packages</a>
-            <a href="root/index.html"><i class="fas fa-key"></i> Magisk & Apatch</a>
-            <a href="https://github.com/termux/termux-app/releases" class="termux-btn">
-  <i class="fas fa-terminal"></i> Termux
-            </a>
-            <a href="javascript:void(0)" onclick="smoothScroll('.donations-section')">
-                <i class="fas fa-hand-holding-heart"></i> Support</a>
-            <a href="about/index.html"><i class="fas fa-info-circle"></i> About us</a>
-        </div>
-        <h1>Custom ROMs for Samsung Galaxy Tab A 10.1 2016</h1>
-        <p>Unlock amazing performance with custom ROMs for your device! 🚀</p>
-        <div>
-            <a href="javascript:void(0);" onclick="smoothScroll('#roms')">Let’s go!</a>
-            <a href="https://zoro2045.github.io/SM-T585-Custom-ROMs/flash_guide/index.html"
-                style="margin-left: 15px;">Full Guide</a>
-        </div>
-    </header>
-    <section id="roms" class="roms-section">
-        <h2>Android Versions</h2>
-        <div class="rom-cards">
-            <div class="android-card">
-                <img src="images/8.png" alt="Android 8">
-                <h3>Android 8 O</h3>
-                <button onclick="window.location.href='Android/8.html'" style="font-size: 18px;">View Available ROMs</button>
-            </div>
-            <div class="android-card">
-                <img src="images/9.png" alt="Android 9">
-                <h3>Android 9 P</h3>
-                <button onclick="window.location.href='Android/9.html'" style="font-size: 18px;">View Available ROMs</button>
-            </div>
-            <div class="android-card">
-                <img src="images/10.png" alt="Android 10">
-                <h3>Android 10 Q</h3>
-                <button onclick="window.location.href='Android/10.html'" style="font-size: 18px;">View Available ROMs</button>
-            </div>
-            <div class="android-card">
-                <img src="images/11.png" alt="Android 11">
-                <h3>Android 11 R</h3>
-                <button onclick="window.location.href='Android/11.html'" style="font-size: 18px;">View Available ROMs</button>
-            </div>
-            <div class="android-card">
-                <img src="images/12.png" alt="Android 12">
-                <h3>Android 12 S</h3>
-                <button onclick="window.location.href='Android/12.html'" style="font-size: 18px;">View Available ROMs</button>
-            </div>
-            <div class="android-card">
-                <img src="images/13.png" alt="Android 13">
-                <h3>Android 13 T</h3>
-                <button onclick="window.location.href='Android/13.html'" style="font-size: 18px;">View Available ROMs</button>
-            </div>
-             <div class="android-card">
-                <img src="images/14.png" alt="Android 14">
-                <h3>Android 14 U</h3>
-                <button onclick="window.location.href='Android/14.html'" style="font-size: 18px;">View Available ROMs</button>
-            </div>
-        </div>
-        <section class="donations-section">
-            <section class="donations-section">
-                <h2>Support the ROM Development</h2>
-                <p>You can support by sending donations via Vodafone Cash.</p>
-                <p style="font-size: 18px; margin: 10px 0;">
-                    <i class="fas fa-money-bill-wave"></i> Vodafone Cash: <strong>01095673573</strong>
-                </p>
-                <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center;">
-                    <a href="https://t.me/gtaxllte" class="donation-button telegram">
-                        <i class="fab fa-telegram"></i> Telegram Channel
-                    </a>
-                    <a href="https://t.me/smt585group" class="donation-button chat">
-                        <i class="fas fa-comments"></i> Chat Group
-                    </a>
-                    <a href="https://youtube.com/@seifel-deinhossam6690?feature=shared" class="donation-button youtube">
-                        <i class="fab fa-youtube"></i> YouTube Channel
-                    </a>
-                </div>
-            </section>
-            <footer>
-                <p>Developed by <a href="https://zoro2045.github.io/">ፚ Ꭷ Ꮢ Ꭷ ❥</a></p>
-                <div class="social-icons">
-                    <a href="https://twitter.com/DEV_ZORO2045" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://t.me/ZORO2045" target="_blank"><i class="fab fa-telegram"></i></a>
-                    <a href="https://github.com/ZORO2045" target="_blank"><i class="fab fa-github"></i></a>
-                </div>
-            </footer>
-            <span class="footer__copy">
-            &copy; 2024–2025 All rights reserved.
-         </span>
 </body>
-
     </html>
