@@ -1,1 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Guide to Flashing Samsung Galaxy Tab A 10.1 - LTE (SM-T585) and Wi-Fi (SM-T580) Editions | Unlock Bootloader, Install TWRP, Flash Custom ROMs</title>
+    <meta name="description" content="Detailed guide for flashing Samsung Galaxy Tab A 10.1 in both editions: LTE (SM-T585) and Wi-Fi (SM-T580). Complete instructions for unlocking bootloader, installing TWRP recovery, flashing custom ROMs, and obtaining root with Magisk or APatch">
+    <link rel="icon" type="image/png" href="../images/flash.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+    <style>
+        :root {
+            --bg-dark: #0F0F13;
+            --bg-surface: #1A1A24;
+            --primary-color: #6C4DF6;
+            --secondary-color: #4DB6FF;
+            --text-primary: #F5F5FF;
+            --text-secondary: #B8B8D6;
+            --text-tertiary: #7A7A9A;
+            --border-color: rgba(255,255,255,0.08);
+            --warning-color: #FF5E5E;
+            --note-color: #FFB74D;
+            --info-color: #4DB6FF;
+            --success-color: #66FF99;
+            --border-radius: 16px;
+            --sidebar-width: 300px;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.2);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --primary: #6C4DF6;
+            --primary-dark: #4D36D1;
+            --secondary: #FF7D59;
+            --dark: #12141D;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) var(--dark);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            display: flex;
+            line-height: 1.7;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(108, 77, 246, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255, 125, 89, 0.15) 0%, transparent 30%);  
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            padding: 30px;
+            overflow-y: auto;
+            z-index: 100;
+            user-select: none;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .sidebar-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 50px;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .sidebar-header span {
+            font-size: 0.9rem;
+            color: #D8D8EC;
+            font-weight: 600;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar-nav li a {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3); 
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05); 
+        }
+
+        .sidebar-nav li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .sidebar-nav li a i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+            color: var(--text-tertiary);
+            transition: var(--transition);
+        }
+
+        .sidebar-nav li a:hover {
+            background-color: rgba(108, 77, 246, 0.08);
+            border: 2px solid #6a5acd;
+            color: var(--text-primary);
+        }
+
+        .sidebar-nav li a:hover i {
+            color: var(--text-primary);
+        }
+
+        .sidebar-nav li a.active {
+            background-color: rgba(108, 77, 246, 0.15);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sidebar-nav li a.active i {
+            color: var(--primary-color);
+        }
+
+        .sidebar-nav li a.active::before {
+            opacity: 1;
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
+            padding: 50px;
+        }
+
+        .guide-section {
+            padding-top: 50px;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            max-width: 900px;
+            margin-right: auto;
+        }
+
+        .guide-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .guide-section h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            color: var(--text-primary);
+            position: relative;
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            user-select: none;
+        }
+        
+        .guide-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            box-shadow: 0 8px 25px rgba(108, 77, 246, 0.5);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .guide-section h2 i {
+            margin-right: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.8rem;
+        }
+
+        .guide-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            position: relative;
+            padding-left: 15px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .guide-section p, .guide-section ul, .guide-section ol {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .guide-section ul, .guide-section ol {
+            padding-left: 25px;
+        }
+
+        .guide-section li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 5px;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #272A2E;          
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: #2ECC71;
+            font-weight: 600;           
+            margin: 5px 0;
+            direction: ltr;
+            display: inline-block;
+            unicode-bidi: embed;
+            padding: 1px 5px;
+        }
+
+        .alert {
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: var(--border-radius);
+            background-color: var(--bg-surface);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid;
+        }
+
+        .alert::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background: currentColor;
+        }
+
+        .alert-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .alert-header i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .alert strong {
+             font-weight: 700;
+        }
+
+        .alert-warning { 
+            border-color: var(--warning-color);
+            color: var(--warning-color);
+        }
+        
+        .alert-note { 
+            border-color: var(--note-color);
+            color: var(--note-color);
+        }
+        
+        .alert-info { 
+            border-color: var(--info-color);
+            color: var(--info-color);
+        }
+
+        .alert-success {
+            border-color: var(--success-color);
+            color: var(--success-color);
+        }
+        
+        .download-group {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: var(--transition);
+            margin-top: 10px;
+            box-shadow: var(--shadow-sm);
+            border: none;
+            font-size: 0.95rem;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 77, 246, 0.5);
+            opacity: 0.9;
+        }
+        
+        .download-btn i {
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .download-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .download-btn.secondary:hover {
+            background: rgba(108, 77, 246, 0.1);
+        }
+        
+.code-block {
+    display: block;
+    background-color: rgba(20, 20, 30, 0.8);
+    padding: 10px;
+    border-radius: 12px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    color: var(--success-color);
+    margin: 20px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: pre;
+    word-wrap: normal;
+    line-height: 1.6;
+    border: 1px solid rgba(108, 77, 246, 0.2);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+    direction: ltr;
+    text-align: left;
+    max-width: 100%;
+}
+
+.code-block::before {
+    content: 'LOG';
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+}
+        
+@media (max-width: 768px) {
+    .code-block {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+}
+        
+@media (max-width: 1200px) {
+    :root {
+        --sidebar-width: 260px;
+    }
+    .main-content {
+        padding: 40px;
+    }
+}
+
+        @media (max-width: 1024px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 20px;
+            }
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 30px;
+            }
+            .sidebar-nav {
+                display: flex;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+            .sidebar-nav ul {
+                display: flex;
+            }
+            .sidebar-nav li {
+                margin-bottom: 0;
+                margin-right: 8px;
+            }
+            .sidebar-nav li a::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content { 
+                padding: 25px;
+            }
+            .guide-section { 
+                padding-top: 30px;
+                margin-bottom: 40px;
+            }
+            .guide-section h2 { 
+                font-size: 1.7rem;
+                margin-bottom: 40px;
+                padding-top: 10px;
+                padding-bottom: 10px;     
+                padding-left: 10px;
+                background: 
+                radial-gradient(circle at 20% 30%, rgba(108, 77, 246, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255, 125, 89, 0.15) 0%, transparent 30%);
+            }
+            .guide-section h3 { 
+                font-size: 1.3rem;
+                margin-top: 30px;
+            }
+            .download-group {
+                flex-direction: column;
+            }
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(108, 77, 246, 0.5);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(108, 77, 246, 0.7);
+        }
+        
+        .language-switcher {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1001;
+            padding: 15px 25px;
+        }
+
+        .language-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: rgba(108, 77, 246, 0.25);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+            transition: var(--transition);
+            border: 1px solid var(--primary-color);
+            backdrop-filter: blur(4px);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .language-btn:hover {
+            background: rgba(108, 77, 246, 0.4);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .language-btn i {
+            margin-left: 8px;
+            font-size: 0.9rem;
+        }
+
+        .main-content {
+            padding-top: 70px;
+        }
+
+        @media (max-width: 1024px) {
+            .language-switcher {
+                padding: 10px 15px;
+            }
+            .main-content {
+                padding-top: 60px;
+            }
+        }
+        
+        footer {
+            padding: 2rem;
+            text-align: center;
+            background: var(--dark);
+            border-top: 1px solid var(--border-color);
+            user-select: none;
+            color: #ccc;
+        }
+
+        footer a {
+            color: #A79AFF;
+            text-decoration: none;
+        }
+        
+        .settings-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            z-index: 1000;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+        }
+
+        .settings-button:hover {
+            background-color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .settings-menu {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            z-index: 1001;
+        }
+
+        .settings-menu.show {
+            display: flex;
+        }
+
+        .settings-menu a {
+            background-color: var(--primary-dark);
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .settings-menu a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        @media (max-width: 768px) {
+            .settings-button {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            
+            .settings-menu {
+                bottom: 70px;
+                right: 15px;
+            }
+            
+            .settings-menu a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="language-switcher">
+        <a href="../flash_guide/ar.html" class="language-btn">
+            العربية <i class="fas fa-globe"></i>
+        </a>
+    </div>
+    
+    <button class="settings-button" onclick="toggleSettingsMenu(event); return false;" title="Settings">
+        <i class="fas fa-question-circle"></i>
+        <i class="fas fa-times" style="display:none;"></i>
+    </button>        
+    <div class="settings-menu">
+        <a href="#" onclick="scrollToTop(event); return false;" title="Scroll to Top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+        <a href="https://t.me/ZORO2045" title="Contact Support">
+            <i class="fas fa-headset"></i>
+        </a>        
+        <a href="../index.html" title="Go Home">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
+
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h1>Flashing Guide</h1>
+            <span>Follow these steps to unlock bootloader, flash TWRP recovery, install custom ROMs, and get root with Magisk or APatch on Galaxy Tab A 10.1.</span>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="#preparation" class="active"><i class="fas fa-cogs"></i>Tablet Preparation</a></li>
+            <li><a href="#twrp-flashing-eros"><i class="fas fa-mobile"></i>Flashing TWRP</a></li>          
+            <li><a href="#terminology"><i class="fas fa-book"></i>Key Terminology</a></li>
+            <li><a href="#install-rom"><i class="fas fa-mobile-alt"></i>Flashing ROM</a></li>            
+            <li><a href="#install-magisk"><i class="fas fa-shield-alt"></i>Flashing Magisk</a></li>
+            <li><a href="#apatch-method"><i class="fas fa-code-branch"></i>APatch Method</a></li>
+            <li><a href="#dev-note"><i class="fas fa-lightbulb"></i> Developer's Note</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+
+        <section id="preparation" class="guide-section visible">
+            <h2><i class="fas fa-cogs"></i>Tablet Preparation</h2>
+            <p>Before starting the flashing process, make sure your device is properly set up to avoid any issues.</p>
+            
+            <div class="alert alert-success">
+                <div class="alert-header">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Important Note</span>
+                </div>
+                <p>Make sure your device is well charged and back up any important data before starting the steps.</p>
+            </div>
+            
+            <div class="alert alert-note">
+    <div class="alert-header">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>Egypt Specific: For 2020 High School Students with SM-T585 Tablets</span>
+    </div>
+    <p>• If you're from the 2020 batch, pay attention to this before downloading any ROM - you need to know your device's drivers first.</p>  
+    <p>• To know if your device has old or new drivers, download the <code>Device Info HW</code> app (link below the note).</p>
+    <p>❏ Look at the touchscreen information:</p>  
+    <p> ➩ If it says <code>d_fts_touch</code>, then you have new drivers.</p>  
+    <p> ➩ If it says <code>fts_touch</code>, then you have old drivers.</p>
+    <p>• If your device has new drivers, make sure before downloading any ROM from the site that it says <code>Rev05/07</code>,  
+    which means it supports both old and new drivers.</p>  
+    <p>• If it only says <code>Rev05</code>, it means it's for old drivers only.</p>  
+    <p>• To make it easier for you, go back to the main page of the site, and from the side menu choose <code>Rev07 ROMs Support</code> where you'll find all ROMs supporting new drivers gathered in one place, and you'll also find a link below.</p>
+            </div>
+            
+            <a href="https://play.google.com/store/apps/details?id=ru.andr7e.deviceinfohw" class="download-btn secondary" target="_blank">
+    <i class="fab fa-google-play"></i> Download Device Info HW
+            </a>           
+                        
+            <h3>1. Enable Developer Options</h3>
+            <ul>
+                <li>Go to Settings &gt; About Device &gt; Tap on Build Number 7 times until the option is enabled.</li>
+                <li>Return to the main Settings page, you'll find Developer Options activated.</li>
+            </ul>
+
+            <h3>2. Enable OEM unlocking and USB debugging "Unlock Bootloader"</h3>
+            <ul>
+                <li>In "Developer Options", enable the following options:
+                    <ul>
+                        <li><code>OEM unlocking</code></li>
+                        <li><code>USB debugging</code></li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <div class="alert alert-warning">
+                <div class="alert-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>Very Important Warning</span>
+                </div>
+                <p>If you don't unlock the bootloader (Step 2), you'll get this error message: <strong><code>Custom binary blocked by FRP lock</code></strong> with the first reboot after flashing, and to fix this problem you'll need to flash the original "Firmware" (you'll find the tutorial and download links below).</p>
+            </div>
+            
+            <a href="../flash_firmware/index.html" class="download-btn secondary" target="_blank">
+                    <i class="fas fa-history"></i> Flash Original Firmware
+                </a>
+            </div>
+            
+            <h3>3. Enter Download Mode</h3>
+            <ul>
+                <li>Power off the device, then press and hold (<code>Volume Down + Home + Power</code>) together, and when the green screen appears, press the <code>Volume Up</code> button to confirm.</li>
+            </ul>
+        </section>
+        
+        <section id="twrp-flashing-eros" class="guide-section">
+    <h2><i class="fas fa-mobile"></i>Flashing TWRP (Without PC)</h2>
+    
+    <div class="alert alert-success">
+    <div class="alert-header">
+        <i class="fas fa-info-circle"></i>
+        <span>Note</span>
+    </div>
+    <p>
+        If you prefer to flash recovery via PC using <code>Odin</code>, you can proceed directly to the next part of the tutorial.
+    </p>
+</div>
+    
+    <div class="alert alert-info">
+        <div class="alert-header">
+            <i class="fas fa-info-circle"></i>
+            <span>Note</span>
+        </div>
+        <p>You'll find download links for the Eros app and recovery file right below the tutorial.</p>
+    </div>
+    
+    <h3>1. Requirements</h3>
+    <ul>
+        <li>Another Android phone with the <code>Eros</code> app installed.</li>
+        <li>The recovery file <code>twrp-3.7.0_9-0.tar</code> downloaded on the phone.</li>
+        <li>The tablet's charging cable.</li>
+        <li>A suitable <code>OTG</code> cable for your phone's port.</li>
+    </ul>
+    
+    <h3>2. Connect the Tablet</h3>
+    <ul>
+        <li>After we've unlocked the bootloader and put the tablet into <code>Download Mode</code> (as explained in the previous part).</li>
+        <li>Open the <code>Eros</code> app on your phone and connect the tablet to the phone using an OTG cable.</li>
+        <li>You'll see a message from the app asking for permission to access, press <code>OK</code>.</li>
+    </ul>
+    
+    <div class="alert alert-note">
+        <div class="alert-header">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Warning</span>
+        </div>
+        <p>If your device is running Android 12 or higher, and the <code>Eros</code> app doesn’t detect or recognize your tablet, go to <code>Settings</code> &gt; <code>Bluetooth & devices</code> &gt; and enable the <code>OTG</code> option.  
+        You might find the same option in some older Android versions, and if the connection still doesn't work, try doing a <code>Restart</code> of the <code>Download Mode</code> or try another cable.</p>
+    </div>
+    
+    <h3>3. Select the Recovery File</h3>
+    <ul>
+        <li>After successful connection, you'll see a <code>Connected Device</code> message at the top.</li>
+        <li>Press on the <code>AP</code> box and choose the <code>TWRP.tar</code> file you downloaded.</li>
+    </ul>
+    
+    <h3>4. Disable "Auto Reboot"</h3>
+    <ul>
+        <li>From the settings (⚙️ Options), make sure to disable the <code>Auto Reboot</code> option.</li>
+    </ul>
+    
+    <h3>5. Start the Flashing Process</h3>
+    <ul>
+        <li>Return to the main page and press <code>Start</code>.</li>
+        <li>Wait until the flashing process completes successfully.</li>
+    </ul>
+    
+    <div class="alert alert-success">
+    <div class="alert-header">
+        <i class="fas fa-info-circle"></i>
+        <span>Note</span>
+    </div>
+    <p>
+        If you flashed <code>TWRP</code> using the <code>Eros</code> app and reached this step, 
+        you can proceed directly to the next part of the tutorial, starting from <code>Step 4</code>.
+    </p>
+</div>
+
+<div class="download-group">
+                <a href="../twrp/index.html" class="download-btn" target="_blank">
+                    <i class="fas fa-download"></i> Download TWRP Recovery
+                </a> 
+                <a href="https://github.com/Gabriel2392/ErosFlashTool/releases" class="download-btn secondary" target="_blank">
+    <i class="fas fa-download"></i> Download ErosFlash Tool
+                </a>
+</section>
+
+        <section id="twrp-flashing" class="guide-section">
+            <h2><i class="fas fa-desktop"></i>Flashing TWRP with PC</h2>
+            
+            <div class="alert alert-info">
+                <div class="alert-header">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Note</span>
+                </div>
+                <p>You'll find all file and tool download links right below the tutorial.</p>
+            </div>
+            
+            <h3>1. Preparing Odin</h3>
+            <ul>
+                <li>Install USB drivers on the PC, run the <code>Odin</code> program and connect the tablet. You should see the <code>"added!!!"</code> message.</li>
+                <li>Press the <code>AP</code> button and choose the <code>"twrp-3.7.0_9-0.tar"</code> file.</li>
+            </ul>
+
+            <h3>2. Disable "Auto Reboot"</h3>
+            <ul>
+                <li>In the <code>"Options"</code> section in Odin, remove the checkmark from <code>"Auto Reboot"</code>.</li>
+            </ul>
+            
+            <h3>3. Start Flashing the Recovery</h3>
+            <ul>
+                <li>Press <code>"Start"</code> and wait for the green <code>"PASS!"</code> message.</li>
+            </ul>
+            
+            <div class="alert alert-note">
+                <div class="alert-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Warning</span>
+                </div>
+                <p>The next step is important, please read it carefully and understand what's required before executing it, so the recovery works without problems.</p>
+            </div>
+            
+            <h3>4. Enter Recovery Mode</h3>
+            <ul>
+                <li>Press and hold the <code>(Volume Down + Home + Power)</code> buttons together to power off the device.</li>
+                <li>As soon as the screen turns off, immediately press <code>(Volume Up + Home + Power)</code> until the Samsung logo appears on the screen.</li>
+            </ul>
+            
+            <div class="alert alert-warning">
+                <div class="alert-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Warning</span>
+                </div>
+                <p>• If you make a mistake in the previous step and the device enters stock recovery, you'll need to reflash the recovery and perform the steps again.</p>
+                <p>• If the TWRP logo appears, it means you've successfully flashed the recovery.</p>
+            </div>
+            
+            <div class="alert alert-info">
+                <div class="alert-header">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Note</span>
+                </div>
+                <p>When TWRP recovery runs for the first time, it will ask if you want to use it in "read-only" mode. To allow modifications, swipe the arrow to confirm allowing changes.</p>
+            </div>
+            
+            <h3>5. Format Data</h3>
+            <ul>
+                <li>In TWRP, choose <code>Wipe</code> &gt; <code>Format Data</code> and confirm by typing <code>yes</code> then press the <code>✔</code> mark and wait until the data formatting process completes.</li>
+            </ul>
+            
+            <h3>6. Reboot to Recovery</h3>
+            <ul>
+                <li>Return to the main menu, choose <code>Reboot</code> then <code>Recovery</code>.</li>
+            </ul>
+            
+            <div class="alert alert-success">
+    <div class="alert-header">
+        <i class="fas fa-lightbulb"></i>
+        <span>Important Note</span>
+    </div>
+    <p>➩ Up to this point, the first part of the tutorial is complete (unlocking bootloader + flashing custom recovery <code>TWRP</code>).</p>
+    <p>➩ The remaining steps will be specific to flashing custom ROMs, and also explaining how to root using either <code>Magisk</code> or <code>APatch</code>.</p>
+    <p>➩ If you don't plan to install a custom ROM and want to stay on the official <code>Stock</code> ROM, you can proceed directly to the root section to learn how to install it.</p>
+    <p>➩ To exit recovery mode: return to the main menu, choose <code>Reboot</code> then <code>System</code>.</p>
+            </div>
+            
+            <div class="alert alert-warning">
+    <div class="alert-header">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>Very Important Warning</span>
+    </div>
+    <p>If you decide to stop at this step and stay on the Stock ROM without installing a custom ROM, don't disable developer options from settings. Because if you do, you'll get this error message:
+    <strong><code>Custom binary blocked by FRP lock</code></strong> as soon as you reboot the device, and then you'll have to flash the Stock "Firmware" to fix the problem.</p>
+            </div>
+
+            <div class="download-group">
+                <a href="https://developer.samsung.com/android-usb-driver" class="download-btn" target="_blank">
+                    <i class="fab fa-usb"></i> USB Drivers
+                </a>
+                <a href="https://odindownload.com/mobile/" class="download-btn" target="_blank">
+                    <i class="fas fa-cogs"></i> Odin
+                </a>
+                <a href="../twrp/index.html" class="download-btn" target="_blank">
+                    <i class="fas fa-download"></i> TWRP Recovery
+                </a>
+            </div>
+        </section>
+               
+        <section id="terminology" class="guide-section">
+            <h2><i class="fas fa-book"></i>Terminology You'll Encounter</h2>
+            
+            <h3>Types of ROMs</h3>
+            <div class="alert alert-info">
+                <div class="alert-header">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Types of ROMs by Source</span>
+                </div>
+                <p><strong>• Stock ROM:</strong> The official version that comes pre-installed on the device from the manufacturer. It's stable and secure, but usually has fewer features and customization options.</p>
+                <p><strong>• Custom ROM:</strong> A modified system developed by independent developers. It has additional features and customizations not available in the official version, and sometimes better performance.</p>
+                <p><strong>• Ported ROM:</strong> A ROM from another device (usually from the same manufacturer or similar processor) that has been modified to work on your device. It offers new features but might have some minor issues.</p>
+                <p><strong>• GSI ROM:</strong> A generic system that can run on many devices supported by the Treble project. It gives you the opportunity to try the latest Android versions even if your device hasn't received an official update.</p>
+            </div>
+                       
+            <div class="alert alert-note">
+                <div class="alert-header">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Types of ROMs by Google Services</span>
+                </div>
+                <p><strong>• Vanilla ROM:</strong> A raw Android ROM without any Google services or apps. Suitable for people who want a lightweight device or to manually add the services they prefer.</p>
+                <p><strong>• GApps ROM:</strong> The same ROM but integrated with basic Google services and apps (Google Play, Gmail, YouTube... etc). Suitable for those who want all Google services ready after installation.</p>
+                <p><strong>• MicroG ROM:</strong> A ROM that uses an open-source alternative to Google services called microG. It provides features similar to Google services but with less battery and resource consumption, and also gives you higher privacy.</p>
+            </div>
+        </section>
+        
+        <section id="install-rom" class="guide-section">
+            <h2><i class="fas fa-mobile-alt"></i>Flashing Custom ROM</h2>
+            
+            <div class="alert alert-success">
+    <div class="alert-header">
+        <i class="fas fa-info-circle"></i>
+        <span>Beginning of Part Two</span>
+    </div>
+    <p>
+        In the previous step, we performed Format Data through the custom recovery TWRP, 
+        and this step is very important if this is the first time you're flashing the custom recovery.  
+        Now let's continue with the remaining steps to flash the custom ROM.
+    </p>
+            </div>
+                          
+            <h3>1. Advanced Wipe</h3>
+            <ul>
+                <li>In TWRP, choose <code>Wipe</code> &gt; <code>Advanced Wipe</code>, and select all options except <code>SD Card</code>, <code>USB OTG</code>, and <code>Internal Storage</code>.</li>
+            </ul>
+            
+            <h3>2. Flash the ROM</h3>
+            <ul>
+                <li>Transfer the ROM file <code>ROM.zip</code> and the <code>GApps.zip</code> file (this file is optional depending on your need for Google services on the ROM) from the PC to the tablet.</li>
+<li>In TWRP, choose <code>Install</code>, select the ROM <code>.zip</code> file, then use <code>Add more Zips</code> to add the <code>GApps</code> file, then swipe to confirm the flashing and wait for the process to complete, then click <code>reboot system</code>.</li>
+            </ul>
+            
+            <div class="alert alert-info">
+    <div class="alert-header">
+        <i class="fas fa-info-circle"></i>
+        <span>Important Note</span>
+    </div>
+    <p>After starting the flashing process, if you see a <code>failed</code> message and a red error like this:</p>
+    <code class="code-block">Zip file is corrupt!</code></p>
+    <p> This means the ROM file is corrupted. The reason might be a problem during download or while transferring the ROM file from PC to tablet. All you need to do is transfer the file again and try flashing once more. If the error appears again, it means the problem is with the file and you should download the ROM file again.</p>
+            </div>
+                                              
+            <div class="download-group">
+                <a href="../index.html#roms" class="download-btn" target="_blank">
+                    <i class="fas fa-download"></i> Download Custom ROMs
+                </a> 
+                <a href="../Rev07/index.html" class="download-btn secondary" target="_blank">
+    <i class="fas fa-download"></i> New Drivers ROMs (Rev07)
+                </a>
+                
+                <div class="alert alert-note">
+        <div class="alert-header">
+            <i class="fas fa-info-circle"></i>
+            <span>Important Note</span>
+        </div>
+        <p>
+            For more tutorials and solutions to problems you might encounter,<br>
+            you can check the <strong>side menu on the main page</strong> where you'll find:
+        </p>
+        <ul>
+            <li>Detailed tutorials for advanced settings</li>
+            <li>Solutions to common problems</li>
+            <li>Many resources and tools</li>
+        </ul>
+    </div>                            
+        </section>
+        
+        <section id="install-magisk" class="guide-section">
+            <h2><i class="fas fa-shield-alt"></i>Rooting with Magisk</h2>
+            
+            <h3>1. Prepare Magisk File</h3>
+            <ul>
+                <li>Download the Magisk app <code>.apk</code> and change the extension to <code>.zip</code>.</li>
+            </ul>
+            
+            <h3>2. Flash from Recovery</h3>
+            <ul>
+                <li>Flash the <code>Magisk.zip</code> file from recovery using the same method as flashing the ROM through the <code>Install</code> option.</li>
+            </ul>
+            
+            <div class="alert alert-success">
+    <div class="alert-header">
+        <i class="fas fa-info-circle"></i>
+        <span>Reminder</span>
+    </div>
+    <p>To enter custom recovery:  power off the device, 
+    then press and hold (<strong>Home + Volume Up + Power</strong>) together 
+    until the Samsung logo appears on the screen.</p>
+            </div>
+
+            <h3>3. Complete Installation</h3>
+            <ul>
+                <li>After rebooting the device, install the Magisk <code>.apk</code> app to manage root permissions.</li>
+            </ul>
+            <a href="../root/index.html" class="download-btn" target="_blank">
+                    <i class="fas fa-download"></i> Download Magisk
+                </a>
+        </section>
+        
+        <section id="apatch-method" class="guide-section">
+            <h2><i class="fas fa-code-branch"></i>Alternative Method: Rooting with APatch</h2>
+            
+            <div class="alert alert-warning">
+                <div class="alert-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Warning</span>
+                </div>
+                
+                    <p>➩ Only supports <code>ARM64</code> architecture.</p>
+            </div>
+
+            <h3>1. Create Patch Through the App</h3>
+            <ul>
+                <li>Download the latest version of the <code>APatch</code> app from GitHub (download link below).</li>
+            </ul>
+
+            <h3>2. Select Boot File</h3>
+            <ul>
+                <li>Extract the <code>boot.img</code> file from your ROM file, tap on the patch button in the top right corner of the app, and tap on <code>Select a boot image to patch</code>.</li>
+            </ul>
+            
+            <h3>3. Specify boot.img File</h3>
+            <ul>
+                <li>Select your <code>boot.img</code> file (which you extracted earlier).</li>
+            </ul>
+            
+            <div class="alert alert-info">
+    <div class="alert-header">
+        <i class="fas fa-info-circle"></i>
+        <span>Note</span>
+    </div>
+    <p><strong>Root Key (SuperKey)</strong> that you'll create now is very important, 
+    as it's the key that will enable you to get root access. 
+    Make sure to save it properly for later use.</p>
+</div>
+
+            <h3>4. Set SuperKey</h3>
+            <ul>
+                <li>Set the <code>SuperKey</code> in the <code>"SuperKey"</code> card. It should be 8-63 characters long and include numbers and letters, but without special characters.</li>
+            </ul>
+
+            <div class="alert alert-warning">
+                <div class="alert-header">
+                    <i class="fas fa-key"></i>
+                    <span>Warning</span>
+                </div>
+                <p>It's strictly forbidden to set weak keys like <strong><code>12345678</code></strong>. The latest APatch versions require using strong keys.</p>
+            </div>
+
+            <h3>5. Start Patching Process</h3>
+            <ul>
+                <li>Tap on <code>"Start"</code> and wait a few seconds until patching completes.</li>
+            </ul>
+            
+            <div class="alert alert-info">
+                <div class="alert-header">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Note</span>
+                </div>
+                <p>After successful patching, the path of the modified <code>boot.img</code> will be displayed. For example:</p>
+                <code class="code-block">/storage/emulated/0/Download/apatch_patched_11107_0.12.0_equt.img</code>
+            </div>
+
+            <h3>6. Flash the Resulting File</h3>
+            <ul>
+                <li>Finally, flash the modified <code>boot.img</code> file (Patched) via recovery. From the <code>Install</code> menu, press <code>Install Image</code>, select the file, then choose to flash it as the <code>boot</code> partition, then swipe to confirm.</li>
+            </ul>
+            
+            <div class="alert alert-success">
+    <div class="alert-header">
+        <i class="fas fa-info-circle"></i>
+        <span>Reminder</span>
+    </div>
+    <p>To enter custom recovery:  power off the device, 
+    then press and hold (<strong>Home + Volume Up + Power</strong>) together 
+    until the Samsung logo appears on the screen.</p>
+            </div>
+            
+            <h3>7. Enable Root Permissions</h3>
+            <ul>
+                <li>After rebooting the device, open the <code>APatch</code> app and press on <code>SuperKey</code>. Enter the key you created earlier during patching to get root access.</li>
+            </ul>
+            
+            <a href="../root/index.html" class="download-btn" target="_blank">
+                    <i class="fas fa-download"></i> Download APatch
+                </a>
+        </section>
+        
+        <section id="dev-note" class="guide-section">
+    <h2><i class="fas fa-lightbulb"></i> Developer's Note</h2>
+
+    <div style="text-align: center; margin: 30px 0; padding: 20px; border-radius: var(--border-radius); background: rgba(108, 77, 246, 0.05);">
+    <div style="display: inline-block; padding: 15px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); margin-bottom: 15px;">
+        <i class="fas fa-heart" style="font-size: 2rem; color: white;"></i>
+    </div>
+    <h1>Thank You for Visiting</h1>
+    <p style="color: var(--text-secondary);">
+        I created this work with care to make things easier for you.<br>
+        If it helped, don’t forget to share it with others so they can benefit too.<br>
+        Wishing you success and smooth progress always.
+    </p>
+    
+    <div style="margin-top: 25px;">
+        <h1>Support & Donations</h1>
+        <p style="color: var(--text-secondary);">
+            If you would like to support this content and future updates through donations,  
+            you can use Binance Pay by scanning the QR code below.
+        </p>
+        <img src="../images/donation.png" alt="Binance Pay QR" style="width:200px; border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.5); margin-top:10px;">
+    </div>
+</div>    
+        
+        <div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap;">
+            <a href="https://t.me/OneUI_Legacy" class="download-btn secondary" style="padding: 10px 20px;">
+                <i class="fab fa-telegram"></i> Developer Channel
+            </a>
+            <a href="https://t.me/gtaxllte" class="download-btn secondary" style="padding: 10px 20px;">
+                <i class="fab fa-telegram"></i> Community Channel
+            </a>
+            <a href="../index.html" class="download-btn secondary" style="padding: 10px 20px;">
+                <i class="fas fa-home"></i> Return to Homepage
+            </a>
+        </div>      
+    </main>
+    <footer>
+    © <a href="https://zoro2045.github.io/" target="_blank">ZORO</a> All rights reserved.
+    </footer>
+    <script>
+   function toggleSettingsMenu(event) {
+            const settingsMenu = document.querySelector('.settings-menu');
+            const settingsButton = document.querySelector('.settings-button');
+            const cogIcon = settingsButton.querySelector('.fa-question-circle');
+            const timesIcon = settingsButton.querySelector('.fa-times');
+            
+            settingsMenu.classList.toggle('show');
+            if (settingsMenu.classList.contains('show')) {
+                cogIcon.style.display = 'none';
+                timesIcon.style.display = 'flex';
+            } else {
+                cogIcon.style.display = 'flex';
+                timesIcon.style.display = 'none';
+            }
+            event.stopPropagation();
+        }
+
+        document.addEventListener('click', function(event) {
+            const settingsMenu = document.querySelector('.settings-menu');
+            const settingsButton = document.querySelector('.settings-button');
+            
+            if (settingsMenu && settingsButton && settingsMenu.classList.contains('show') && 
+                !settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
+                settingsMenu.classList.remove('show');
+                const cogIcon = settingsButton.querySelector('.fa-question-circle');
+                const timesIcon = settingsButton.querySelector('.fa-times');
+                if (cogIcon) cogIcon.style.display = 'flex';
+                if (timesIcon) timesIcon.style.display = 'none';
+            }
+            
+            const downloadOptions = document.querySelectorAll('.download-options');
+            downloadOptions.forEach(options => {
+                if (!options.contains(event.target) && !event.target.closest('.btn')) {
+                    options.classList.remove('show');
+                }
+            });
+        });
+
+        function scrollToTop(event) {
+    event.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
+    const settingsMenu = document.querySelector('.settings-menu');
+    const settingsButton = document.querySelector('.settings-button');
+    const cogIcon = settingsButton.querySelector('.fa-question-circle');
+    const timesIcon = settingsButton.querySelector('.fa-times');
+
+    if (settingsMenu) {
+        settingsMenu.classList.remove('show');
+    }
+
+    if (cogIcon) cogIcon.style.display = 'flex';
+    if (timesIcon) timesIcon.style.display = 'none';
+}
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.guide-section');
+            const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            const scrollSpyObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-30% 0px -70% 0px' });
+
+            sections.forEach(section => {
+                scrollSpyObserver.observe(section);
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+  </html>
