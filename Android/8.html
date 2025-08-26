@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Android 8 (O) ROMs | Samsung Galaxy Tab A 10.1</title>
-    <link rel="icon" type="image/png" href="https://i.ibb.co/1r3HW3v/8.png">
+    <meta name="description" content="Custom Android 8 ROMs for Samsung Galaxy Tab A 10.1. Performance-enhanced custom ROMs, installation guides, and optimization tools for both LTE (SM-T585) and Wi-Fi (SM-T580) models.">
+    <link rel="icon" type="image/png" href="../images/8.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -310,10 +311,11 @@
             background: var(--dark);
             border-top: 1px solid var(--glass-border);
             user-select: none;
+            color: #ccc;
         }
 
         footer a {
-            color: var(--primary);
+            color: #A79AFF;
             text-decoration: none;
         }
 
@@ -431,11 +433,113 @@
                 padding: 1.5rem;
             }
         }
+        
+        .video-popup {
+            width: 80%;
+            max-width: 800px;
+            aspect-ratio: 16/9;
+            padding: 0;
+        }
+           
+        .video-popup iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        
+        .gallery-popup {
+            width: 90%;
+            max-width: 600px;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .gallery-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+            z-index: 10;
+        }      
+        
+        .gallery-nav.prev {
+            left: 5px;
+        }
+        
+        .gallery-nav.next {
+            right: 5px;
+        }
+        
+        .gallery-counter {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: var(--light);
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin: 0 auto;
+            width: fit-content;
+        }
+        
+        .gallery-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+            z-index: 10;
+        }
+        
+        .gallery-close:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
     <header>
-        <img src="https://i.ibb.co/1r3HW3v/8.png" alt="Android 8 Logo">
+        <img src="../images/8.png" alt="Android 8 Logo">
         <h1>Android 8 (O) ROMs</h1>
     </header>
 
@@ -451,7 +555,7 @@
         <a href="https://t.me/ZORO2045" title="Contact Support">
             <i class="fas fa-headset"></i>
         </a>
-        <a href="../flash_guide/index.html" title="Installation Guide">
+        <a href="../flash_guide/en.html" title="Installation Guide">
     <i class="fas fa-book"></i>
         </a>
         <a href="../index.html" title="Go Home">
@@ -463,7 +567,7 @@
         <h2>Available ROMs</h2>
         <div class="rom-grid">
             <div class="rom-card">
-                <img src="https://i.ibb.co/nML1JRx1/output-onlinepngtools-3.png" alt="LineageOS Logo">
+                <img src="../images/lineageos15.png" alt="LineageOS Logo">
                 <h3>LineageOS 15.1</h3>
                 <div class="rom-meta">
                     <span>Android 8</span>
@@ -490,7 +594,7 @@
             </div>
 
             <div class="rom-card">
-                <img src="https://i.ibb.co/KptRRYDB/images-3.jpg" alt="RR Logo">
+                <img src="../images/rr.png" alt="RR Logo">
                 <h3>RR OS</h3>
                 <div class="rom-meta">
                     <span>Android 8</span>
@@ -516,14 +620,14 @@
                     <a href="https://xdaforums.com/t/rom-sm-t580-sm-t585-unofficial-rr-o-v6-2-1-20181210-discontinued.3755034/page-23" target="_blank">
                         <i class="fas fa-link"></i> View on XDA
                     </a>
-                    <a href="https://youtu.be/zrsI52LtF2U?feature=shared" target="_blank">
-                        <i class="fab fa-youtube"></i> Watch Demo
+                    <a href="javascript:void(0)" onclick="showVideoPopup('https://www.youtube.com/embed/zrsI52LtF2U');">
+    <i class="fab fa-youtube" style="color:#FF0000;"></i> Watch Demo
                     </a>
                 </div>
             </div>
 
             <div class="rom-card">
-                <img src="https://i.ibb.co/MDbQxFRZ/Picsart-25-02-21-17-26-45-692.jpg" alt="Super OneUI Logo">
+                <img src="../images/superoneui.png" alt="Super OneUI Logo">
                 <h3>Super OneUI</h3>
                 <div class="rom-meta">
                     <span>Android 8</span>
@@ -542,8 +646,8 @@
                     <a href="https://xdaforums.com/t/rom-sm-t585-8-1-0-super-one-ui-8-0-2022-10-03.4469615/" target="_blank">
                         <i class="fas fa-link"></i> View on XDA
                     </a>
-                    <a href="https://youtu.be/K4qZyOSyYWY?feature=shared" target="_blank">
-                        <i class="fab fa-youtube"></i> Watch Demo
+                    <a href="javascript:void(0)" onclick="showVideoPopup('https://www.youtube.com/embed/K4qZyOSyYWY');">
+    <i class="fab fa-youtube" style="color:#FF0000;"></i> Watch Demo
                     </a>
                 </div>
             </div>
@@ -551,138 +655,285 @@
     </section>
 
     <footer>
-        <a>© ZORO All rights reserved.</a>
+    © <a href="https://zoro2045.github.io/" target="_blank">ZORO</a> All rights reserved.
     </footer>
 
     <script>
-        function toggleDownloadOptions(button) {
-            const card = button.closest('.rom-card');
-            const options = card.querySelector('.download-options');
-            const allOptions = document.querySelectorAll('.download-options');
-            
-            allOptions.forEach(option => {
-                if (option !== options) {
-                    option.classList.remove('show');
-                }
-            });
-            
-            options.classList.toggle('show');
-        }
+    function toggleDownloadOptions(button) {
+        const card = button.closest('.rom-card');
+        const options = card.querySelector('.download-options');
+        const allOptions = document.querySelectorAll('.download-options');
+        
+        allOptions.forEach(option => {
+            if (option !== options) {
+                option.classList.remove('show');
+            }
+        });
+        
+        options.classList.toggle('show');
+    }
 
-        function toggleSettingsMenu(event) {
-            const settingsMenu = document.querySelector('.settings-menu');
-            const settingsButton = document.querySelector('.settings-button');
+    function toggleSettingsMenu(event) {
+        const settingsMenu = document.querySelector('.settings-menu');
+        const settingsButton = document.querySelector('.settings-button');
+        const cogIcon = settingsButton.querySelector('.fa-question-circle');
+        const timesIcon = settingsButton.querySelector('.fa-times');
+        
+        settingsMenu.classList.toggle('show');
+        if (settingsMenu.classList.contains('show')) {
+            cogIcon.style.display = 'none';
+            timesIcon.style.display = 'flex';
+        } else {
+            cogIcon.style.display = 'flex';
+            timesIcon.style.display = 'none';
+        }
+        event.stopPropagation();
+    }
+
+    document.addEventListener('click', function(event) {
+        const settingsMenu = document.querySelector('.settings-menu');
+        const settingsButton = document.querySelector('.settings-button');
+        
+        if (settingsMenu && settingsButton && settingsMenu.classList.contains('show') && 
+            !settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
+            settingsMenu.classList.remove('show');
             const cogIcon = settingsButton.querySelector('.fa-question-circle');
             const timesIcon = settingsButton.querySelector('.fa-times');
-            
-            settingsMenu.classList.toggle('show');
-            if (settingsMenu.classList.contains('show')) {
-                cogIcon.style.display = 'none';
-                timesIcon.style.display = 'flex';
-            } else {
-                cogIcon.style.display = 'flex';
-                timesIcon.style.display = 'none';
-            }
-            event.stopPropagation();
+            if (cogIcon) cogIcon.style.display = 'flex';
+            if (timesIcon) timesIcon.style.display = 'none';
         }
-
-        document.addEventListener('click', function(event) {
-            const settingsMenu = document.querySelector('.settings-menu');
-            const settingsButton = document.querySelector('.settings-button');
-            
-            if (settingsMenu && settingsButton && settingsMenu.classList.contains('show') && 
-                !settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
-                settingsMenu.classList.remove('show');
-                const cogIcon = settingsButton.querySelector('.fa-question-circle');
-                const timesIcon = settingsButton.querySelector('.fa-times');
-                if (cogIcon) cogIcon.style.display = 'flex';
-                if (timesIcon) timesIcon.style.display = 'none';
-            }
-            
-            const downloadOptions = document.querySelectorAll('.download-options');
+        
+        const downloadOptions = document.querySelectorAll('.download-options');
+        const popups = document.querySelectorAll('.popup-backdrop');
+        const isClickOnPopup = Array.from(popups).some(popup => popup.contains(event.target));
+        
+        if (!isClickOnPopup) {
             downloadOptions.forEach(options => {
                 if (!options.contains(event.target) && !event.target.closest('.btn')) {
                     options.classList.remove('show');
                 }
             });
-        });
-
-        // Scroll to top function
-        function scrollToTop(event) {
-    event.preventDefault();
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+        }
     });
 
-    const settingsMenu = document.querySelector('.settings-menu');
-    const settingsButton = document.querySelector('.settings-button');
-    const cogIcon = settingsButton.querySelector('.fa-question-circle');
-    const timesIcon = settingsButton.querySelector('.fa-times');
+    function scrollToTop(event) {
+        event.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
 
-    if (settingsMenu) {
-        settingsMenu.classList.remove('show');
+        const settingsMenu = document.querySelector('.settings-menu');
+        const settingsButton = document.querySelector('.settings-button');
+        const cogIcon = settingsButton.querySelector('.fa-question-circle');
+        const timesIcon = settingsButton.querySelector('.fa-times');
+
+        if (settingsMenu) {
+            settingsMenu.classList.remove('show');
+        }
+
+        if (cogIcon) cogIcon.style.display = 'flex';
+        if (timesIcon) timesIcon.style.display = 'none';
     }
 
-    if (cogIcon) cogIcon.style.display = 'flex';
-    if (timesIcon) timesIcon.style.display = 'none';
-}
-
-        function showPopup(title, content) {
-            const popupBackdrop = document.createElement('div');
-            popupBackdrop.classList.add('popup-backdrop');
-            
-            const popupContent = document.createElement('div');
-            popupContent.classList.add('popup-content');
-            
-            const popupTitle = document.createElement('h3');
-            popupTitle.textContent = title;
-            popupContent.appendChild(popupTitle);
-            
-            const popupText = document.createElement('p');
-            popupText.textContent = content;
-            popupContent.appendChild(popupText);
-            
-            const popupClose = document.createElement('div');
-            popupClose.classList.add('popup-close');
-            popupClose.innerHTML = '<i class="fas fa-times"></i>';
-            popupClose.onclick = function() {
-                closePopup(popupBackdrop);
-            };
-            popupContent.appendChild(popupClose);
-            
-            popupBackdrop.appendChild(popupContent);
-            document.body.appendChild(popupBackdrop);
-            document.body.classList.add('no-scroll');
-            
-            setTimeout(() => {
-                popupBackdrop.classList.add('show');
-            }, 10);
-            
-            popupBackdrop.addEventListener('click', function(e) {
-                if (e.target === popupBackdrop) {
-                    closePopup(popupBackdrop);
-                }
-            });
-        }
-
-        function closePopup(popup) {
-            popup.classList.remove('show');
-            setTimeout(() => {
-                document.body.removeChild(popup);
-                document.body.classList.remove('no-scroll');
-            }, 300);
-        }
-
-        window.addEventListener('load', function() {
-            const logo = document.querySelector('header img');
-            const title = document.querySelector('header h1');
-            
-            setTimeout(() => {
-                if (logo) logo.classList.add('fade-in');
-                if (title) title.classList.add('fade-in');
-            }, 100);
+    function showPopup(title, content) {
+        const popupBackdrop = document.createElement('div');
+        popupBackdrop.classList.add('popup-backdrop');
+        
+        const popupContent = document.createElement('div');
+        popupContent.classList.add('popup-content');
+        
+        const popupTitle = document.createElement('h3');
+        popupTitle.innerHTML = title;
+        popupContent.appendChild(popupTitle);
+        
+        const popupText = document.createElement('div');
+        popupText.innerHTML = content;
+        popupContent.appendChild(popupText);
+        
+        const popupClose = document.createElement('div');
+        popupClose.classList.add('popup-close');
+        popupClose.innerHTML = '<i class="fas fa-times"></i>';
+        popupClose.onclick = function(e) {
+            e.stopPropagation();
+            closePopup(popupBackdrop);
+        };
+        popupContent.appendChild(popupClose);
+        
+        popupBackdrop.appendChild(popupContent);
+        document.body.appendChild(popupBackdrop);
+        document.body.classList.add('no-scroll');
+        
+        popupContent.addEventListener('click', function(e) {
+            e.stopPropagation();
         });
+        
+        setTimeout(() => {
+            popupBackdrop.classList.add('show');
+        }, 10);
+        
+        popupBackdrop.addEventListener('click', function(e) {
+            if (e.target === popupBackdrop) {
+                closePopup(popupBackdrop);
+            }
+        });
+    }
+
+    function showVideoPopup(videoUrl) {
+        const popupBackdrop = document.createElement('div');
+        popupBackdrop.classList.add('popup-backdrop');
+        
+        const popupContent = document.createElement('div');
+        popupContent.classList.add('popup-content', 'video-popup');
+        
+        const iframe = document.createElement('iframe');
+        iframe.src = videoUrl;
+        iframe.frameBorder = "0";
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.allowFullscreen = true;
+        
+        popupContent.appendChild(iframe);
+        
+        const popupClose = document.createElement('div');
+        popupClose.classList.add('popup-close');
+        popupClose.innerHTML = '<i class="fas fa-times"></i>';
+        popupClose.onclick = function(e) {
+            e.stopPropagation();
+            closePopup(popupBackdrop);
+        };
+        popupContent.appendChild(popupClose);
+        
+        popupBackdrop.appendChild(popupContent);
+        document.body.appendChild(popupBackdrop);
+        document.body.classList.add('no-scroll');
+        
+        popupContent.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        
+        setTimeout(() => {
+            popupBackdrop.classList.add('show');
+        }, 10);
+
+        popupBackdrop.addEventListener('click', function(e) {
+            if (e.target === popupBackdrop) {
+                closePopup(popupBackdrop);
+            }
+        });
+    }
+
+    function showGalleryPopup(imageUrls) {
+        const popupBackdrop = document.createElement('div');
+        popupBackdrop.classList.add('popup-backdrop');
+        
+        const popupContent = document.createElement('div');
+        popupContent.classList.add('popup-content', 'gallery-popup');
+        
+        const galleryContainer = document.createElement('div');
+        galleryContainer.classList.add('gallery-container');
+        
+        const galleryImage = document.createElement('img');
+        galleryImage.classList.add('gallery-image');
+        galleryImage.src = imageUrls[0];
+        galleryImage.alt = "Screenshot";
+        galleryContainer.appendChild(galleryImage);
+        
+        const prevButton = document.createElement('div');
+        prevButton.classList.add('gallery-nav', 'prev');
+        prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        galleryContainer.appendChild(prevButton);
+        
+        const nextButton = document.createElement('div');
+        nextButton.classList.add('gallery-nav', 'next');
+        nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        galleryContainer.appendChild(nextButton);
+        
+        const galleryClose = document.createElement('div');
+        galleryClose.classList.add('gallery-close');
+        galleryClose.innerHTML = '<i class="fas fa-times"></i>';
+        galleryContainer.appendChild(galleryClose);
+        
+        const galleryCounter = document.createElement('div');
+        galleryCounter.classList.add('gallery-counter');
+        galleryCounter.innerHTML = `1/${imageUrls.length}`;
+        galleryContainer.appendChild(galleryCounter);
+        
+        popupContent.appendChild(galleryContainer);
+        popupBackdrop.appendChild(popupContent);
+        document.body.appendChild(popupBackdrop);
+        document.body.classList.add('no-scroll');
+        
+        let currentIndex = 0;
+        
+        function updateGallery() {
+            galleryImage.src = imageUrls[currentIndex];
+            galleryCounter.innerHTML = `${currentIndex + 1}/${imageUrls.length}`;
+        }
+        
+        prevButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            currentIndex = (currentIndex - 1 + imageUrls.length) % imageUrls.length;
+            updateGallery();
+        });
+        
+        nextButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % imageUrls.length;
+            updateGallery();
+        });
+        
+        galleryClose.addEventListener('click', function(e) {
+            e.stopPropagation();
+            closePopup(popupBackdrop);
+        });
+        
+        galleryContainer.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        
+        setTimeout(() => {
+            popupBackdrop.classList.add('show');
+        }, 10);
+
+        popupBackdrop.addEventListener('click', function(e) {
+            if (e.target === popupBackdrop) {
+                closePopup(popupBackdrop);
+            }
+        });
+        
+        document.addEventListener('keydown', function handleKeyPress(e) {
+            if (e.key === 'ArrowLeft') {
+                currentIndex = (currentIndex - 1 + imageUrls.length) % imageUrls.length;
+                updateGallery();
+            } else if (e.key === 'ArrowRight') {
+                currentIndex = (currentIndex + 1) % imageUrls.length;
+                updateGallery();
+            } else if (e.key === 'Escape') {
+                closePopup(popupBackdrop);
+                document.removeEventListener('keydown', handleKeyPress);
+            }
+        });
+    }
+
+    function closePopup(popup) {
+        popup.classList.remove('show');
+        setTimeout(() => {
+            if (document.body.contains(popup)) {
+                document.body.removeChild(popup);
+            }
+            document.body.classList.remove('no-scroll');
+        }, 300);
+    }
+
+    window.addEventListener('load', function() {
+        const logo = document.querySelector('header img');
+        const title = document.querySelector('header h1');
+        
+        setTimeout(() => {
+            if (logo) logo.classList.add('fade-in');
+            if (title) title.classList.add('fade-in');
+        }, 100);
+    });
     </script>
 </body>
-</html>
+    </html>
