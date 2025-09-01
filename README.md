@@ -38,11 +38,13 @@ Join our active and supportive community on Telegram!
   <img src="https://img.shields.io/badge/Telegram-Join%20Community-blue?style=for-the-badge&logo=telegram" alt="Telegram Community"/>
 </a>
 
-## 🙏 Support
+## ☕️ Support My Work  
 
-Your support helps us develop content and provide more assistance for the Galaxy Tab A 10.1. Every donation or contribution goes a long way in improving the resources available, allowing us to offer more helpful information and support to users. Thank you for your continued support!
+![Binance](https://img.shields.io/badge/Binance-%23F0B90B.svg?style=for-the-badge&logo=binance&logoColor=white&labelColor=black&color=%23F0B90B&label=Donate%20BNB)
 
-[![Binance](https://img.shields.io/badge/Binance-%23F0B90B.svg?style=for-the-badge&logo=binance&logoColor=white&labelColor=black&color=%23F0B90B&label=Donate%20BNB)](https://pay.binance.com/en?merchantId=738956783)
+
+  <img src="images/donation.png" alt="Binance Pay QR" width="200">
+</div>
 
 ## ⚠️ Disclaimer
 
