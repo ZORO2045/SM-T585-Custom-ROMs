@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#000000">
     <title>Samsung Galaxy Tab A 10.1 LTE/WIFI (2016) | Custom ROMs & Development Hub</title>
     <meta name="description" content="Comprehensive resource for Samsung Galaxy Tab A 10.1 (2016) (SM-T585) & (SM-T580) custom ROMs, recoveries, guides, and development tools">
     <link rel="icon" type="image/png" href="images/logo.jpg">
@@ -917,6 +919,12 @@
     </footer>
 
     <script>
+        if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js").then(() => {
+        console.log("Service Worker registered");
+            }
+        });
+        
         const navToggle = document.getElementById('navToggle');
         const sidebar = document.getElementById('sidebar');
         const body = document.body;
