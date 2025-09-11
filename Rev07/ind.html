@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung Galaxy Tab A 10.1 (2016) SM-T585 REV07 ROMs Egypt - New Driver Support</title>
+    <meta name="description" content="Samsung Galaxy Tab A 10.1 (2016) SM-T585 REV07 ROMs in Egypt with new driver support">
+    <link rel="icon" type="image/png" href="images/logo.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6C4DF6;
+            --secondary: #FF7D59;
+            --dark: #12141D;
+            --darker: #0A0B10;
+            --light: #F5F7FF;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;         
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 5rem 0;          
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            user-select: none;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .section-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+            user-select: none;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .rom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .rom-card {
+            background: rgba(30, 31, 41, 0.9);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #2d2f3a;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            will-change: transform;
+            user-select: none;           
+        }
+
+        .rom-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+        }
+
+        .rom-card-header {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid #2d2f3a;
+        }
+
+        .rom-card-header img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        .rom-card-header h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .rom-card-body {
+            padding: 1.5rem;
+        }
+
+        .rom-card-body ul {
+            list-style: none;
+            margin-bottom: 1.2rem;
+        }
+
+        .rom-card-body li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .rom-card-body li i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+
+        .rom-card-footer {
+            padding: 0 1.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .rom-card-footer .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            background: var(--gradient);
+            color: #fff;
+            text-decoration: none;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .rom-card-footer .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        footer {
+    background: var(--dark);
+    padding: 0 0 2rem;
+    border-top: 1px solid #2d2f3a;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;            
+            border-top: 1px solid #2d2f3a;
+        }
+
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            .rom-card-footer .btn {
+                width: 100%;
+            }
+        }
+        
+        #backToHome {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #6C4DF6, #FF7D59);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        #backToHome:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+<button id="backToHome" onclick="window.location.href='../index.html'">
+  <i class="fas fa-home"></i>
+</button>
+
+    <section class="section" id="roms">
+        <div class="container">
+            <div class="section-header">
+                <h2>Custom Android ROMs</h2>
+                <p>Download and install ROMs with new driver support for the Samsung Galaxy Tab A 10.1 (2016) SM-T585 REV07 in Egypt</p>
+            </div>
+            <div class="rom-grid">
+                <div class="rom-card">
+                    <div class="rom-card-header">
+                        <img src="../images/11.png" alt="Android 11">
+                        <h3>Android 11</h3>
+                    </div>
+                    <div class="rom-card-body">
+                        <ul>
+                            <li><i class="fas fa-check"></i> ROM stability</li>
+                            <li><i class="fas fa-check"></i> Better performance</li>
+                            <li><i class="fas fa-check"></i> One-time permissions</li>
+                        </ul>
+                    </div>
+                    <div class="rom-card-footer">
+                        <a href="Android/11.html" class="btn">View ROMs</a>
+                    </div>
+                </div>
+                
+                <div class="rom-card">
+                    <div class="rom-card-header">
+                        <img src="../images/12.png" alt="Android 12">
+                        <h3>Android 12</h3>
+                    </div>
+                    <div class="rom-card-body">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Material You</li>
+                            <li><i class="fas fa-check"></i> Privacy dashboard</li>
+                            <li><i class="fas fa-check"></i> Performance improvements</li>
+                        </ul>
+                    </div>
+                    <div class="rom-card-footer">
+                        <a href="Android/12.html" class="btn">View ROMs</a>
+                    </div>
+                </div>
+                
+                <div class="rom-card">
+                    <div class="rom-card-header">
+                        <img src="../images/13.png" alt="Android 13">
+                        <h3>Android 13</h3>
+                    </div>
+                    <div class="rom-card-body">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Enhanced privacy</li>
+                            <li><i class="fas fa-check"></i> Themed app icons</li>
+                            <li><i class="fas fa-check"></i> Stable base over 12L</li>    
+                        </ul>
+                    </div>
+                    <div class="rom-card-footer">
+                        <a href="Android/13.html" class="btn">View ROMs</a>
+                    </div>
+                </div>
+                
+                <div class="rom-card">
+                    <div class="rom-card-header">
+                        <img src="../images/14.png" alt="Android 14">
+                        <h3>Android 14</h3>
+                    </div>
+                    <div class="rom-card-body">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Improved security</li>
+                            <li><i class="fas fa-check"></i> Latest AOSP features</li>
+                            <li><i class="fas fa-check"></i> New customization options</li>
+                        </ul>
+                    </div>
+                    <div class="rom-card-footer">
+                        <a href="Android/14.html" class="btn">View ROMs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-bottom">
+            <p>© 2024-2025 <a href="https://zoro2045.github.io/">ZORO</a>. All rights reserved.</p>
+            <p>Samsung Galaxy Tab A 10.1 (2016) Development Community</p>
+        </div>
+    </footer>
+
+</body>
+</html>
