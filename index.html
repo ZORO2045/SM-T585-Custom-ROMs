@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung Galaxy Tab A 10.1 LTE/WIFI (2016) | Custom ROMs & Development Hub</title>
+    <meta name="description" content="Custom ROMs, recoveries, guides, and development tools for Samsung Galaxy Tab A 10.1 (2016) LTE/WIFI (SM-T585 & SM-T580).">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#000000">
-    <title>Samsung Galaxy Tab A 10.1 LTE/WIFI (2016) | Custom ROMs & Development Hub</title>
-    <meta name="description" content="Comprehensive resource for Samsung Galaxy Tab A 10.1 (2016) (SM-T585) & (SM-T580) custom ROMs, recoveries, guides, and development tools">
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js").then(() => {
+      console.log("Service Worker registered");
+    });
+  }
+</script>
     <link rel="icon" type="image/png" href="images/logo.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -918,13 +926,7 @@
         </div>
     </footer>
 
-    <script>
-        if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/sw.js").then(() => {
-        console.log("Service Worker registered");
-            }
-        });
-        
+    <script>        
         const navToggle = document.getElementById('navToggle');
         const sidebar = document.getElementById('sidebar');
         const body = document.body;
