@@ -1,19 +1,19 @@
 {
-  "name": "Galaxy Tab A 10.1 ROMs Hub",
+  "name": "T58X ROMs Hub",
   "short_name": "T58X Hub",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
-  "description": "Custom ROMs, recoveries, guides, and development tools for Samsung Galaxy Tab A 10.1 (2016) LTE/WIFI (SM-T585 & SM-T580).",
+  "description": "Custom ROMs, recoveries, and tools for T58X devices (SM-T585 & SM-T580).",
   "icons": [
     {
-      "src": "/icons/icon.png",
+      "src": "icons/icon.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icons/icon.png",
+      "src": "icons/icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
