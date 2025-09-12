@@ -9,10 +9,10 @@
     <meta name="theme-color" content="#000000">
 
 <script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js").then(() => {
-      console.log("Service Worker registered");
-    });
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log('✅ Service Worker registered'))
+      .catch(err => console.log('❌ SW registration failed:', err));
   }
 </script>
     <link rel="icon" type="image/png" href="images/logo.jpg">
