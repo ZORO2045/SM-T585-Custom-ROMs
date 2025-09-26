@@ -46,12 +46,6 @@ Join our active and supportive community on Telegram!
   <img src="images/donation.png" alt="Binance Pay QR" width="200">
 </div>
 
-## ⚠️ Disclaimer
-
-Please note:
-1. I am not the original developer of most custom ROMs provided here - I act as a curator, gathering resources from reputable communities like XDA.
-2. **However**, I **have** developed my own port called **[OneUI Legacy](https://zoro2045.github.io/SM-T585-Custom-ROMs/Android/12.html)** (based on OneUI 4.1 - Android 12).
-
 ## ❤️ Special Thanks
 
 I'd like to extend my deepest gratitude to all the developers who have contributed their time and expertise to create amazing custom ROMs for the Galaxy Tab A 10.1 on platforms like XDA and other communities. Your work is invaluable!
