@@ -3,7 +3,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/ZORO2045/SM-T585-Custom-ROMs?style=social)](https://github.com/ZORO2045/SM-T585-Custom-ROMs/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/ZORO2045/SM-T585-Custom-ROMs?style=social)](https://github.com/ZORO2045/SM-T585-Custom-ROMs/network/members)
 [![GitHub Issues](https://img.shields.io/github/issues/ZORO2045/SM-T585-Custom-ROMs)](https://github.com/ZORO2045/SM-T585-Custom-ROMs/issues)
-[![Website](https://img.shields.io/badge/Website-Live-brightgreen)](https://zoro2045.github.io/)
+[![Website](https://img.shields.io/badge/Website-Live-brightgreen)](https://zoro2045.github.io/SM-T585-Custom-ROMs)
 [![Telegram](https://img.shields.io/badge/Telegram-Join%20Chat-blue)](https://t.me/smt585chat)
 
 ## 📱 Overview
