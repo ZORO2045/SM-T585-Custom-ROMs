@@ -70,7 +70,7 @@ Welcome to the comprehensive development hub for **Samsung Galaxy Tab A 10.1 (20
 - **Telegram Channel**: [@gtaxllte](https://t.me/gtaxllte)
 - **Telegram Chat**: [@smt585chat](https://t.me/smt585chat)
 - **YouTube Channel**: [@seifel-deinhossam6690](https://youtube.com/@seifel-deinhossam6690)
-- **Developer's Telegram Channel**: [@OneUI_Legacy](https://t.me/OneUI_Legacy)
+- **My Telegram Channel**: [@OneUI_Legacy](https://t.me/OneUI_Legacy)
 
 ### Developer Links
 - **GitHub**: [ZORO2045](https://github.com/ZORO2045)
