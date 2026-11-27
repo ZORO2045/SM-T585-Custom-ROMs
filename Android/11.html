@@ -601,6 +601,18 @@
 
         @media (max-width: 820px) { .hero { padding-top: 120px; } }
         @media (max-width: 420px) { .topbar { padding: 10px 12px; } .hero { padding-top: 96px; border-radius: 24px; } }
+
+        /* original header colors */
+        header { padding: 0; }
+        .hero { margin-top: 0; border-radius: 0; padding-top: 120px; background: radial-gradient(ellipse 35% 45% at 20% 45%, rgba(108,77,246,.18), transparent), radial-gradient(ellipse 35% 45% at 80% 55%, rgba(255,125,89,.15), transparent); }
+        .hero::before { display: none; }
+        header img { width: clamp(190px, 28vw, 280px); max-width: 80%; margin-bottom: 28px; }
+        header h1 { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hero p { color: #B9BCD0; }
+        .hero-actions a { border-color: var(--glass-border); }
+        .hero-actions .primary { background: var(--gradient); color: #fff; border-color: transparent; }
+        .hero-actions .primary:hover { background: var(--gradient); filter: brightness(1.1); }
+        @media (max-width: 420px) { .hero { padding-top: 96px; border-radius: 0; } }
     </style>
 </head>
 <body>
@@ -615,7 +627,6 @@
         </div>
         <div class="hero">
             <img src="../images/11.png" alt="Android 11 Logo">
-            <div class="big" aria-hidden="true">11</div>
             <h1>Android 11 ROMs for Galaxy Tab A 10.1</h1>
             <p>Custom ROMs for the SM-T580 (Wi-Fi) and SM-T585 (LTE). Check each card for the builds available for your model.</p>
             <div class="hero-actions">
@@ -1465,4 +1476,4 @@ function closePopup(popup) {
     })();
     </script>
 </body>
-                </html>
+                               </html>
