@@ -6,7 +6,7 @@
     <title>Android 11 (R) ROMs | Samsung Galaxy Tab A 10.1</title>
     <meta name="description" content="Custom Android 11 ROMs for Samsung Galaxy Tab A 10.1. Performance-enhanced custom ROMs, installation guides, and optimization tools for both LTE (SM-T585) and Wi-Fi (SM-T580) models.">
     <link rel="icon" type="image/png" href="../images/11.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -49,50 +49,6 @@
 
         .no-scroll {
             overflow: hidden;
-        }
-
-        header {
-            position: relative;
-            height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(108, 77, 246, 0.15) 0%, transparent 30%),
-                radial-gradient(circle at 80% 70%, rgba(255, 125, 89, 0.15) 0%, transparent 30%);
-            overflow: hidden;
-        }
-
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(20px); }
-        }
-
-        header img, header h1 {
-            user-select: none;
-            z-index: 2;
-        }
-
-        header img {
-            max-width: 150px;
-            margin-bottom: 20px;
-            opacity: 0;
-            transition: opacity 1s ease;
-            z-index: 2;
-        }
-
-        header h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            margin-bottom: 10px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            opacity: 0;
-            transition: opacity 1s ease;
         }
 
         .fade-in {
@@ -198,10 +154,13 @@
         }
 
         .rom-card img {
-            width: 300px;
-            height: 150px;
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            aspect-ratio: 2 / 1;
             object-fit: cover;
-            margin-bottom: 1.5rem;
+            margin: 0 auto 1.5rem;
             border-radius: 8px;
             border: 2px solid #6a5acd;
         }
@@ -401,7 +360,7 @@
             }
             
             .rom-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
             }
             
             .settings-button {
@@ -535,12 +494,99 @@
             background: var(--primary);
             transform: scale(1.1);
         }
+
+        /* ===== Redesign ===== */
+        body { background: radial-gradient(900px 500px at 50% 0, rgba(108,77,246,.14), transparent 70%) var(--darker); }
+        h1, h2, h3 { font-family: 'Sora', 'Poppins', sans-serif; line-height: 1.15; }
+        a:focus-visible, button:focus-visible { outline: 3px solid var(--secondary); outline-offset: 3px; }
+
+        header { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+        .topbar a { color: var(--light); text-decoration: none; font-size: .9rem; }
+        .topbar .brand { font-family: 'Sora', sans-serif; font-weight: 700; }
+        .topbar nav { display: flex; gap: 22px; }
+        .topbar nav a { color: #B9BCD0; }
+        .topbar nav a:hover { color: #fff; }
+
+        .hero { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; padding: 64px 0 40px; }
+        header h1 { text-wrap: balance; font-size: clamp(2.2rem, 4.6vw, 3.4rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: 18px; }
+        .hero p { color: #B9BCD0; max-width: 46ch; margin-bottom: 28px; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+        .hero-actions a { padding: .8rem 1.6rem; border-radius: 12px; font-weight: 600; text-decoration: none; color: #fff; border: 1px solid var(--glass-border); }
+        .hero-actions .primary { background: var(--primary); border-color: var(--primary); }
+        .hero-actions .primary:hover { background: var(--primary-dark); }
+        .hero-actions a:not(.primary):hover { border-color: var(--primary); }
+
+        /* tablet frame, 16:10 like the 10.1" screen */
+        .tablet { width: 100%; max-width: 500px; justify-self: end; padding: 14px; border-radius: 26px; background: #1B1D28; border: 1px solid #555A70; box-shadow: 0 30px 70px rgba(108,77,246,.28); transform: rotate(-3deg); }
+        .screen { aspect-ratio: 16 / 10; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at 85% 100%, var(--secondary), transparent 55%), linear-gradient(140deg, #25185F, var(--primary)); }
+        header img { width: 42%; max-width: 190px; height: auto; user-select: none; }
+
+        .section { padding: 3.5rem 20px 5rem; scroll-margin-top: 10px; }
+        .section h2 { max-width: 1200px; margin: 0 auto 1.5rem; text-align: left; font-size: 1.8rem; color: var(--light); background: none; }
+
+        .rom-grid { grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: 1.5rem; align-items: start; }
+        .rom-card { padding: 1rem; border-radius: 20px; background: #151722; border-color: #2B2E40; }
+        .rom-card:hover { transform: none; border-color: var(--primary); }
+        .rom-card img { max-width: 100%; border: 0; border-radius: 10px; margin-bottom: 1rem; }
+        .rom-card h3 { font-size: 1.3rem; text-align: left; margin-bottom: .75rem; }
+        .rom-card .rom-meta { justify-content: flex-start; gap: .4rem; margin-bottom: 1.2rem; }
+        .rom-card .rom-meta span { border: 1px solid transparent; border-radius: 6px; padding: .15rem .6rem; background: #23263A; font-size: .75rem; }
+        .rom-card .rom-meta span:hover { border: 1px solid transparent; }
+        .rom-card .rom-meta span.success { background: rgba(40,167,69,.18); }
+        .rom-card .rom-meta span.warning { background: rgba(255,193,7,.14); }
+        .rom-card .btn { width: 100%; border-radius: 12px; background: var(--primary); box-shadow: none; font-family: inherit; font-size: .95rem; }
+        .rom-card .btn:hover { transform: none; background: var(--primary-dark); box-shadow: none; }
+
+        .download-options { margin-top: 1rem; padding-top: .5rem; }
+        .download-options a { display: flex; align-items: center; gap: 12px; max-width: none; margin: .5rem 0 0; padding: .7rem 1rem; text-align: left; font-size: .9rem; background: #1E2131; border-color: #2B2E40; border-radius: 10px; }
+        .download-options a:hover { transform: none; background: #2B234D; border-color: var(--primary); }
+        .download-options a i { width: 20px; text-align: center; flex: none; }
+
+        .popup-content:not(.video-popup):not(.gallery-popup) { max-height: 85vh; overflow-y: auto; overflow-wrap: anywhere; }
+        .popup-content:not(.video-popup):not(.gallery-popup) { background: #171925; }
+
+        @media (max-width: 820px) {
+            .hero { grid-template-columns: 1fr; gap: 36px; padding-top: 36px; text-align: center; }
+            .hero p { margin-left: auto; margin-right: auto; }
+            .hero-actions { justify-content: center; }
+            .tablet { justify-self: center; max-width: 380px; padding: 10px; border-radius: 20px; }
+        }
+        @media (max-width: 420px) {
+            .topbar nav { gap: 14px; }
+            .topbar .brand { display: none; }
+            .topbar nav { width: 100%; justify-content: space-around; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+        }
     </style>
 </head>
 <body>
     <header>
-        <img src="../images/11.png" alt="Android 11 Logo">
-        <h1>Android 11 (R) ROMs</h1>
+        <div class="topbar">
+            <a class="brand" href="../index.html">Tab A 10.1 ROMs</a>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../flash_guide/en.html">Install guide</a>
+                <a href="https://t.me/ZORO2045">Support</a>
+            </nav>
+        </div>
+        <div class="hero">
+            <div>
+                <h1>Android 11 ROMs for Galaxy Tab A 10.1</h1>
+                <p>Custom ROMs for the SM-T580 (Wi-Fi) and SM-T585 (LTE). Check each card for the builds available for your model.</p>
+                <div class="hero-actions">
+                    <a class="primary" href="#roms">Browse ROMs</a>
+                    <a href="../flash_guide/en.html">How to install</a>
+                </div>
+            </div>
+            <div class="tablet">
+                <div class="screen">
+                    <img src="../images/11.png" alt="Android 11 Logo">
+                </div>
+            </div>
+        </div>
     </header>
 
     <button class="settings-button" onclick="toggleSettingsMenu(event); return false;" title="Settings">
@@ -563,7 +609,7 @@
         </a>
     </div>
 
-    <section class="section">
+    <section class="section" id="roms">
         <h2>Available ROMs</h2>
         <div class="rom-grid">
             <div class="rom-card">
@@ -1341,16 +1387,6 @@ function closePopup(popup) {
         document.body.classList.remove('no-scroll');
     }, 300);
 }
-
-window.addEventListener('load', function() {
-    const logo = document.querySelector('header img');
-    const title = document.querySelector('header h1');
-    
-    setTimeout(() => {
-        if (logo) logo.classList.add('fade-in');
-        if (title) title.classList.add('fade-in');
-    }, 100);
-    });
     </script>
 </body>
                                </html>
