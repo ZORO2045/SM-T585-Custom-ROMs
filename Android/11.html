@@ -6,7 +6,7 @@
     <title>Android 11 (R) ROMs | Samsung Galaxy Tab A 10.1</title>
     <meta name="description" content="Custom Android 11 ROMs for Samsung Galaxy Tab A 10.1. Performance-enhanced custom ROMs, installation guides, and optimization tools for both LTE (SM-T585) and Wi-Fi (SM-T580) models.">
     <link rel="icon" type="image/png" href="../images/11.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Unbounded:wght@600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -560,6 +560,47 @@
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
         }
+
+        /* ===== V2 ===== */
+        body { background: #07060F; }
+        h1, h2, h3, .topbar .brand { font-family: 'Unbounded', 'Poppins', sans-serif; }
+        header { max-width: none; padding: 0 12px; }
+        .topbar { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); width: min(1176px, calc(100% - 24px)); z-index: 900; padding: 12px 20px; border: 1px solid rgba(255,255,255,.14); border-radius: 100px; background: rgba(12,10,26,.65); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+        .topbar .brand { font-size: .8rem; }
+
+        .hero { position: relative; isolation: isolate; overflow: hidden; display: block; text-align: center; margin-top: 12px; padding: 130px 20px 56px; border-radius: 32px; background: #1A0F4A; }
+        .hero::before { content: ''; position: absolute; inset: -40%; z-index: -1; background: radial-gradient(circle at 30% 35%, #6C4DF6, transparent 32%), radial-gradient(circle at 72% 62%, #FF7D59, transparent 28%), radial-gradient(circle at 70% 25%, #B03CF0, transparent 26%); animation: aurora 14s ease-in-out infinite alternate; }
+        @keyframes aurora { to { transform: translate(7%, 5%) rotate(18deg); } }
+        .hero .big { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: clamp(9rem, 34vw, 22rem); line-height: .85; letter-spacing: -.06em; background: linear-gradient(180deg, #fff 35%, rgba(255,255,255,.08)); -webkit-background-clip: text; background-clip: text; color: transparent; padding-right: .06em; user-select: none; }
+        header img { position: relative; display: block; width: 72px; margin: 0 auto 20px; }
+        header h1 { font-size: clamp(1.5rem, 4vw, 2.8rem); font-weight: 800; max-width: 22ch; margin: 8px auto 16px; letter-spacing: -.02em; }
+        .hero p { color: #E4E0FF; margin: 0 auto 28px; }
+        .hero-actions { justify-content: center; }
+        .hero-actions a { border-radius: 100px; border-color: rgba(255,255,255,.45); backdrop-filter: blur(8px); }
+        .hero-actions .primary { background: #fff; color: #1A0F4A; border-color: #fff; }
+        .hero-actions .primary:hover { background: #E4E0FF; }
+
+        .section h2 { text-align: center; font-size: clamp(1.4rem, 3vw, 2rem); }
+        .tools { max-width: 1200px; margin: 0 auto 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+        .tools input, .tools button { font: inherit; font-size: .9rem; color: #fff; background: #12101F; border: 1px solid #2C2846; border-radius: 100px; padding: .65rem 1.2rem; }
+        .tools input { flex: 1 1 240px; max-width: 360px; min-width: 0; }
+        .tools button { cursor: pointer; }
+        .tools button[aria-pressed="true"] { background: #fff; color: #12101F; border-color: #fff; }
+        .tools input:focus-visible { outline: 3px solid var(--secondary); }
+        .no-results { display: none; color: #B9BCD0; }
+
+        .rom-card { position: relative; padding: 10px 10px 18px; border-radius: 28px; border-color: transparent; background: linear-gradient(#100E1C, #100E1C) padding-box, radial-gradient(260px circle at var(--x, 50%) var(--y, 0%), #A58BFF, #26223D 70%) border-box; }
+        .rom-card:hover { border-color: transparent; }
+        .rom-card img { border-radius: 20px; max-width: 100%; }
+        .rom-card h3 { font-size: 1.15rem; padding: 0 8px; }
+        .rom-card .rom-meta { padding: 0 8px; }
+        .rom-card .rom-meta span { border-radius: 100px; }
+        .rom-card .btn { border-radius: 100px; background: linear-gradient(100deg, #6C4DF6, #B03CF0); }
+        .rom-card .btn:hover { filter: brightness(1.15); }
+        .download-options a { border-radius: 16px; }
+
+        @media (max-width: 820px) { .hero { padding-top: 120px; } }
+        @media (max-width: 420px) { .topbar { padding: 10px 12px; } .hero { padding-top: 96px; border-radius: 24px; } }
     </style>
 </head>
 <body>
@@ -573,18 +614,13 @@
             </nav>
         </div>
         <div class="hero">
-            <div>
-                <h1>Android 11 ROMs for Galaxy Tab A 10.1</h1>
-                <p>Custom ROMs for the SM-T580 (Wi-Fi) and SM-T585 (LTE). Check each card for the builds available for your model.</p>
-                <div class="hero-actions">
-                    <a class="primary" href="#roms">Browse ROMs</a>
-                    <a href="../flash_guide/en.html">How to install</a>
-                </div>
-            </div>
-            <div class="tablet">
-                <div class="screen">
-                    <img src="../images/11.png" alt="Android 11 Logo">
-                </div>
+            <img src="../images/11.png" alt="Android 11 Logo">
+            <div class="big" aria-hidden="true">11</div>
+            <h1>Android 11 ROMs for Galaxy Tab A 10.1</h1>
+            <p>Custom ROMs for the SM-T580 (Wi-Fi) and SM-T585 (LTE). Check each card for the builds available for your model.</p>
+            <div class="hero-actions">
+                <a class="primary" href="#roms">Browse ROMs</a>
+                <a href="../flash_guide/en.html">How to install</a>
             </div>
         </div>
     </header>
@@ -611,6 +647,13 @@
 
     <section class="section" id="roms">
         <h2>Available ROMs</h2>
+        <div class="tools">
+            <input type="search" id="romSearch" placeholder="Search ROMs by name" aria-label="Search ROMs by name">
+            <button type="button" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" data-filter="warning" aria-pressed="false">Unofficial</button>
+            <button type="button" data-filter="success" aria-pressed="false">Ported</button>
+        </div>
+        <p class="no-results">No ROMs match. Try another name or choose All.</p>
         <div class="rom-grid">
             <div class="rom-card">
                 <img src="../images/ancient.png" alt="Ancient Logo">
@@ -1387,6 +1430,39 @@ function closePopup(popup) {
         document.body.classList.remove('no-scroll');
     }, 300);
 }
+
+    // search + filter
+    (function () {
+        const cards = document.querySelectorAll('.rom-card');
+        const search = document.getElementById('romSearch');
+        const buttons = document.querySelectorAll('.tools button');
+        let filter = 'all';
+
+        function apply() {
+            const q = search.value.trim().toLowerCase();
+            let shown = 0;
+            cards.forEach(card => {
+                const ok = card.querySelector('h3').textContent.toLowerCase().includes(q) &&
+                    (filter === 'all' || card.querySelector('.rom-meta .' + filter));
+                card.style.display = ok ? '' : 'none';
+                if (ok) shown++;
+            });
+            document.querySelector('.no-results').style.display = shown ? 'none' : 'block';
+        }
+
+        search.addEventListener('input', apply);
+        buttons.forEach(btn => btn.addEventListener('click', () => {
+            filter = btn.dataset.filter;
+            buttons.forEach(b => b.setAttribute('aria-pressed', b === btn));
+            apply();
+        }));
+
+        cards.forEach(card => card.addEventListener('pointermove', e => {
+            const r = card.getBoundingClientRect();
+            card.style.setProperty('--x', (e.clientX - r.left) + 'px');
+            card.style.setProperty('--y', (e.clientY - r.top) + 'px');
+        }));
+    })();
     </script>
 </body>
-                               </html>
+                </html>
